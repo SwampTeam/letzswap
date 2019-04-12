@@ -1,0 +1,7 @@
+{% extends 'base.html.twig'%}
+
+<li class="nav-item {% if app.request.attributes.get('_route') == 'term_of_service' %} active {% endif %}">
+    <a class="nav-link active " href="{{ path('terms_of_service') }}">
+        {{ 'NAV.TERMS'|trans }}
+    </a>
+</li>

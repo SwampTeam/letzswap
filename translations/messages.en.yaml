@@ -1,0 +1,11 @@
+HOME:
+  ITEM_COUNT:             'Total items count'
+NAV.HOME:                 'Home'
+NAV.TERMS:                'Terms of service'
+NAV.LOGIN:                'Login'
+NAV.REGISTER:             'Register'
+NAV.LOGOUT:               'Logout'
+NAV.LOGGED_AS:            'Logged in as %username%'
+NAV.ADD_ITEM:             'Add a item to swap/give'
+
+

@@ -1,7 +1,7 @@
 HOME:
   ITEM_COUNT:             'Total items count'
 NAV.HOME:                 'Home'
-NAV.TERMS:                'Terms of service'
+NAV.TERMS:                'Terms of Service'
 NAV.LOGIN:                'Login'
 NAV.REGISTER:             'Register'
 NAV.LOGOUT:               'Logout'

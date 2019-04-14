@@ -14,7 +14,7 @@
 
 <p>
     {{ 'REGISTRATION.MAIL.HTML.PLEASE_CLICK'|trans }}
-    <a href="{{ url('activate_account', {'token': user.getActivationToken()}) }}">
+    <a href="{{ url('account_activation', {'token': user.getActivationToken()}) }}">
         {{ 'REGISTRATION.MAIL.HTML.LINK'|trans }}
     </a>
 </p>

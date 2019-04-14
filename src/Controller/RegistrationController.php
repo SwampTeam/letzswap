@@ -19,7 +19,7 @@ class RegistrationController extends AbstractController
 {
 
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/register", name="register")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
      * @param RegistrationMailer $mailer
@@ -56,7 +56,7 @@ class RegistrationController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('activation_required');
+            return $this->redirectToRoute('account_activation_required');
         }
 
         return $this->render('Registration/register.html.twig', [

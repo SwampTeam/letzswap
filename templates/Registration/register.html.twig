@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{#TODO: Create translations#}
+{% block title %}Letzswap | {{ 'REGISTRATION.TITLE'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <h1>{{ 'REGISTRATION.TITLE'|trans }}</h1>
 
     {{ form_end(registrationForm) }}
 {% endblock %}

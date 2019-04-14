@@ -2,4 +2,4 @@
 
 {{ 'REGISTRATION.MAIL.TEXT'|trans({'%name%': user.getUsername()}) }}
 
-{{ 'REGISTRATION.MAIL.TXT.COPY_LINK'|trans }} {{ url('account_activation', {'token': user.getActivationToken()}) }}
+{{ 'REGISTRATION.MAIL.TXT.COPY_LINK'|trans }} {{ url('account_activation_token', {'token': user.getActivationToken()}) }}

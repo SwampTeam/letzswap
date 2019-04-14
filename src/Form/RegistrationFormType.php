@@ -20,6 +20,8 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            /* TODO: How to assign admin role? Another form?
+               TODO: Verify if user role is automatically assigned  */
             ->add('username', TextType::class, ['label' => 'FORM.USER.USERNAME'])
             ->add('password', RepeatedType::class,
                 [

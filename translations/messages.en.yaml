@@ -21,3 +21,13 @@ FORM:
     SUBMIT:         "Submit"
     TOS_ACCEPTED:   "I've read and accept the Terms of Service"
     USERNAME:       "Username"
+
+REGISTRATION:
+  MAIL:
+    TITLE:          'Please, activate your Letzswap account'
+    TEXT:           'Hello %name%, your brand new Letzswap account was successfully created! To start swapping, please activate your account.'
+    HTML:
+      PLEASE_CLICK: 'Please click'
+      LINK:         'on this activation link'
+    TXT:
+      COPY_LINK:    'Please, copy the following link and paste it in your web browser:'

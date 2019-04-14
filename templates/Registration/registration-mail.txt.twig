@@ -1,0 +1,5 @@
+{{ 'REGISTRATION.MAIL.TITLE'|trans }}
+
+{{ 'REGISTRATION.MAIL.TEXT'|trans({'%name%': user.getUsername()}) }}
+
+{{ 'REGISTRATION.MAIL.TXT.COPY_LINK'|trans }} {{ url('activate_account', {'token': user.getActivationToken()}) }}

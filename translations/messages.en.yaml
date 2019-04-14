@@ -8,4 +8,16 @@ NAV.LOGOUT:               'Logout'
 NAV.LOGGED_AS:            'Logged in as %username%'
 NAV.ADD_ITEM:             'Add a item to swap/give'
 
-
+FORM:
+  USER:
+    PASSWORD:
+      ERROR:
+        BLANK:      "Password cannot be blank"
+        LENGTH:     "Password should be at least {{ limit }} characters"
+        DONT_MATCH: "Typed passwords don't match"
+      LABEL:
+        FIRST:      "Password"
+        REPEAT:     "Please, repeat your password"
+    SUBMIT:         "Submit"
+    TOS_ACCEPTED:   "I've read and accept the Terms of Service"
+    USERNAME:       "Username"

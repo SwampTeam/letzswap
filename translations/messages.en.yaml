@@ -8,4 +8,30 @@ NAV.LOGOUT:               'Logout'
 NAV.LOGGED_AS:            'Logged in as %username%'
 NAV.ADD_ITEM:             'Add a item to swap/give'
 
+FORM:
+  USER:
+    PASSWORD:
+      ERROR:
+        BLANK:      "Password cannot be blank"
+        LENGTH:     "Password should be at least {{ limit }} characters"
+        DONT_MATCH: "Typed passwords don't match"
+      FIRST:        "Password"
+      REPEAT:       "Please, repeat your password"
+    EMAIL:          "Email address"
+    SUBMIT:         "Submit"
+    TOS_ACCEPTED:   "I've read and accept the Terms of Service"
+    USERNAME:       "Username"
 
+REGISTRATION:
+  TITLE:            "Registration Form"
+  ACTIVATION:
+    TITLE:          'Activation required'
+    INFO:           'Your Letzswap account is almost ready! Please check your email account to activate it.'
+  MAIL:
+    TITLE:          'Please, activate your Letzswap account'
+    TEXT:           'Hello %name%, your brand new Letzswap account was successfully created! To start swapping, please activate your account.'
+    HTML:
+      PLEASE_CLICK: 'Please click'
+      LINK:         'on this activation link'
+    TXT:
+      COPY_LINK:    'Please, copy the following link and paste it in your web browser:'

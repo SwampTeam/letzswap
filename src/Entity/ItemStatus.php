@@ -19,14 +19,16 @@ class ItemStatus
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Item")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Item", inversedBy="itemStatuses")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $item_id;
+    private $items;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Status", inversedBy="itemStatuses")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="itemStatuses")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $status_id;
+    private $statuses;
 
     /**
      * @ORM\Column(type="datetime")
@@ -35,8 +37,8 @@ class ItemStatus
 
     public function __construct()
     {
-        $this->item_id = new ArrayCollection();
-        $this->status_id = new ArrayCollection();
+        $this->items = new ArrayCollection();
+        $this->statuses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -47,24 +49,24 @@ class ItemStatus
     /**
      * @return Collection|Item[]
      */
-    public function getItemId(): Collection
+    public function getItems(): Collection
     {
-        return $this->item_id;
+        return $this->items;
     }
 
-    public function addItemId(Item $itemId): self
+    public function addItem(Item $itemId): self
     {
-        if (!$this->item_id->contains($itemId)) {
-            $this->item_id[] = $itemId;
+        if (!$this->items->contains($itemId)) {
+            $this->items[] = $itemId;
         }
 
         return $this;
     }
 
-    public function removeItemId(Item $itemId): self
+    public function removeItem(Item $itemId): self
     {
-        if ($this->item_id->contains($itemId)) {
-            $this->item_id->removeElement($itemId);
+        if ($this->items->contains($itemId)) {
+            $this->items->removeElement($itemId);
         }
 
         return $this;
@@ -73,24 +75,24 @@ class ItemStatus
     /**
      * @return Collection|Status[]
      */
-    public function getStatusId(): Collection
+    public function getStatuses(): Collection
     {
-        return $this->status_id;
+        return $this->statuses;
     }
 
-    public function addStatusId(Status $statusId): self
+    public function addStatus(Status $statusId): self
     {
-        if (!$this->status_id->contains($statusId)) {
-            $this->status_id[] = $statusId;
+        if (!$this->statuses->contains($statusId)) {
+            $this->statuses[] = $statusId;
         }
 
         return $this;
     }
 
-    public function removeStatusId(Status $statusId): self
+    public function removeStatus(Status $statusId): self
     {
-        if ($this->status_id->contains($statusId)) {
-            $this->status_id->removeElement($statusId);
+        if ($this->statuses->contains($statusId)) {
+            $this->statuses->removeElement($statusId);
         }
 
         return $this;

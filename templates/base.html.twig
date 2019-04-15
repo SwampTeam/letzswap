@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang={{ locale }}>
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
@@ -6,10 +7,11 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="../public/css/style.css">
     {% endblock %}
 </head>
-{% include 'Main/header.html.twig' %}
 <body>
+{% include 'Main/header.html.twig' %}
 {% block body %}
 {% endblock %}
 {% block javascripts %}
@@ -23,6 +25,6 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
 {% endblock %}
-</body>
 {% include 'Main/footer.html.twig' %}
+</body>
 </html>

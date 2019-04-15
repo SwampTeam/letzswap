@@ -8,4 +8,9 @@ NAV.LOGOUT:               'Logout'
 NAV.LOGGED_AS:            'Logged in as %username%'
 NAV.ADD_ITEM:             'Add a item to swap/give'
 
+NAV.ABOUT:                'More about Letzswap'
 
+CONTACT:
+  FORM:
+    EMAIL:                'Please insert your email'
+    MESSAGE:              'Please insert your question/message'

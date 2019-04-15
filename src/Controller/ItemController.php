@@ -39,10 +39,13 @@ class ItemController extends AbstractController
             // rename file
             $fileName = Uuid::uuid4()->toString() . '.' . 'pic';
             // save the file
-            $item->setPath($fileName);
-            $item->setSharer($this->getUser());
-            $item->setMimeType($file->getMimeType());
+            $item->setTitle();
+            $item->setDescription();
+            $item->setConditionStatus();
+            $item->setUserId();
             $file->move($this->getParameter('upload_directory'), $fileName);
+
+
             // get doctrine
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($item);

@@ -50,6 +50,7 @@ class RegistrationFormType extends AbstractType
                 CheckboxType::class,
                 ['label' => 'FORM.USER.TOS_ACCEPTED']
             );
+
         if ($options['standalone']) {
             $builder->add(
                 'Submit',

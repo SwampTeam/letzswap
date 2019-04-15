@@ -6,6 +6,21 @@ NAV.LOGIN:                'Login'
 NAV.REGISTER:             'Register'
 NAV.LOGOUT:               'Logout'
 NAV.LOGGED_AS:            'Logged in as %username%'
+
 NAV.ADD_ITEM:             'Add a item to swap/give'
+  USERNAME:
+    LABEL:                'Username'
+  TITLE:
+    LABEL:                'Title'
+  DESCRIPTION:
+    LABEL:                'Description'
+  CONDITION_STATUS:
+    LABEL:                'Select the condition'
+  PICTURE:
+    LABEL:                'Choose a picture'
+  SUBMIT:
+    LABEL:                 'Submit'
+
+
 
 

@@ -24,3 +24,6 @@ REGISTRATION.MAIL.TEXT: 'Hello %name%, your brand new Letzswap account was succe
 REGISTRATION.MAIL.HTML.PLEASE_CLICK: 'Please click'
 REGISTRATION.MAIL.HTML.LINK: 'on this activation link'
 REGISTRATION.MAIL.TXT.COPY_LINK: 'Please, copy the following link and paste it in your web browser:'
+ITEM.NEW.TITLE: 'Add new Item'
+ITEM.NEW.PAGETITLE: 'Add new Item | LëtzSwap!'
+ITEM.NEW.BACKLINK: 'Back to the items list'

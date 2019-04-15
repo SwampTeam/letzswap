@@ -19,9 +19,10 @@ class Item
     private $id;
 
     /**
-     * @ORM\Column(type="guid")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="items")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $user_id;
+    private $user;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -36,12 +37,37 @@ class Item
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $condition_status;
+    private $conditionStatus;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="item_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture",
+     *     mappedBy="item", orphanRemoval=true)
      */
     private $pictures;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ItemStatus",
+     *     mappedBy="items", fetch="EXTRA_LAZY")
+     */
+    private $itemStatuses;
+
+    /**
+     * @return mixed
+     */
+    public function getItemStatuses()
+    {
+        return $this->itemStatuses;
+    }
+
+    /**
+     * @param mixed $itemStatuses
+     * @return Item
+     */
+    public function setItemStatuses($itemStatuses)
+    {
+        $this->itemStatuses = $itemStatuses;
+        return $this;
+    }
 
     public function __construct()
     {
@@ -53,14 +79,14 @@ class Item
         return $this->id;
     }
 
-    public function getUserId(): ?User
+    public function getUser(): ?string
     {
-        return $this->user_id;
+        return $this->user;
     }
 
-    public function setUserId(?User $user_id): self
+    public function setUser(string $user): self
     {
-        $this->user_id = $user_id;
+        $this->user = $user;
 
         return $this;
     }
@@ -91,12 +117,12 @@ class Item
 
     public function getConditionStatus(): ?string
     {
-        return $this->condition_status;
+        return $this->conditionStatus;
     }
 
-    public function setConditionStatus(string $condition_status): self
+    public function setConditionStatus(string $conditionStatus): self
     {
-        $this->condition_status = $condition_status;
+        $this->conditionStatus = $conditionStatus;
 
         return $this;
     }
@@ -113,7 +139,7 @@ class Item
     {
         if (!$this->pictures->contains($picture)) {
             $this->pictures[] = $picture;
-            $picture->setItemId($this);
+            $picture->setItem($this);
         }
 
         return $this;
@@ -124,8 +150,8 @@ class Item
         if ($this->pictures->contains($picture)) {
             $this->pictures->removeElement($picture);
             // set the owning side to null (unless already changed)
-            if ($picture->getItemId() === $this) {
-                $picture->setItemId(null);
+            if ($picture->getItem() === $this) {
+                $picture->setItem(null);
             }
         }
 

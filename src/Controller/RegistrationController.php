@@ -98,7 +98,10 @@ class RegistrationController extends AbstractController
         $manager->flush();
 
         $tokenStorage->setToken(
-            new UsernamePasswordToken($user, null, 'main', $user->getRoles())
+            new UsernamePasswordToken($user,
+                null,
+                'main',
+                $user->getRoles())
         );
 
         return $this->redirectToRoute('homepage');

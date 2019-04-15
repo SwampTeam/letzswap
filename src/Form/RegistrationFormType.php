@@ -21,22 +21,11 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             /* TODO: How to assign admin role? Another form?
-               TODO: Verify if user role is automatically assigned  */
+               TODO: User role is NOT automatically assigned  */
             ->add('username', TextType::class, ['label' => 'FORM.USER.USERNAME'])
             ->add('password', RepeatedType::class,
                 [
                     'type' => PasswordType::class,
-                    'mapped' => false,
-                    'constraints' => [
-                        new NotBlank([
-                            'message' => 'FORM.USER.PASSWORD.ERROR.BLANK',
-                        ]),
-                        new Length([
-                            'min' => 8,
-                            'minMessage' => 'FORM.USER.PASSWORD.ERROR.LENGTH',
-                            'max' => 255,
-                        ]),
-                    ],
                     'invalid_message' => 'FORM.USER.PASSWORD.ERROR.DONT_MATCH',
                     'first_options' => ['label' => 'FORM.USER.PASSWORD.FIRST'],
                     'second_options' => ['label' => 'FORM.USER.PASSWORD.REPEAT'],

@@ -83,7 +83,8 @@ class RegistrationController extends AbstractController
     public function activationToken(
         string $token,
         TokenStorageInterface $tokenStorage
-    ) {
+    )
+    {
         $manager = $this->getDoctrine()->getManager();
         $userRepository = $manager->getRepository(User::class);
         $user = $userRepository->findOneByActivationToken($token);
@@ -98,7 +99,10 @@ class RegistrationController extends AbstractController
         $manager->flush();
 
         $tokenStorage->setToken(
-            new UsernamePasswordToken($user, null, 'main', $user->getRoles())
+            new UsernamePasswordToken($user,
+                null,
+                'main',
+                $user->getRoles())
         );
 
         return $this->redirectToRoute('homepage');

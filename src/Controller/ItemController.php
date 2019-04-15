@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Form\NewItemFormType;
 use App\Entity\Item;
 use Ramsey\Uuid\Uuid;
@@ -42,7 +43,7 @@ class ItemController extends AbstractController
             $item->setTitle();
             $item->setDescription();
             $item->setConditionStatus();
-            $item->setUserId();
+            $item->setUserId($this->getUser());
             $file->move($this->getParameter('upload_directory'), $fileName);
 
 

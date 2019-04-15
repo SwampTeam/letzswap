@@ -53,12 +53,12 @@ class Item
         return $this->id;
     }
 
-    public function getUserId(): ?string
+    public function getUserId(): ?User
     {
         return $this->user_id;
     }
 
-    public function setUserId(string $user_id): self
+    public function setUserId(?User $user_id): self
     {
         $this->user_id = $user_id;
 

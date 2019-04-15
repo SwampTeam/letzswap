@@ -24,12 +24,12 @@ class Status
     private $label;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\ItemStatus", mappedBy="status_id")
+     * @ORM\OneToMany(targetEntity="App\Entity\ItemStatus", mappedBy="statuses")
      */
     private $itemStatuses;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\UserStatus", mappedBy="status_id")
+     * @ORM\OneToMany(targetEntity="App\Entity\UserStatus", mappedBy="statuses")
      */
     private $userStatuses;
 

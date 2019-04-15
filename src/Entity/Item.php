@@ -19,9 +19,10 @@ class Item
     private $id;
 
     /**
-     * @ORM\Column(type="guid")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="items")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $userId;
+    private $user;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -40,7 +41,7 @@ class Item
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Picture",
-     *     mappedBy="itemId", orphanRemoval=true)
+     *     mappedBy="item", orphanRemoval=true)
      */
     private $pictures;
 
@@ -78,14 +79,14 @@ class Item
         return $this->id;
     }
 
-    public function getUserId(): ?string
+    public function getUser(): ?string
     {
-        return $this->userId;
+        return $this->user;
     }
 
-    public function setUserId(string $userId): self
+    public function setUser(string $user): self
     {
-        $this->userId = $userId;
+        $this->user = $user;
 
         return $this;
     }
@@ -138,7 +139,7 @@ class Item
     {
         if (!$this->pictures->contains($picture)) {
             $this->pictures[] = $picture;
-            $picture->setItemId($this);
+            $picture->setItem($this);
         }
 
         return $this;
@@ -149,8 +150,8 @@ class Item
         if ($this->pictures->contains($picture)) {
             $this->pictures->removeElement($picture);
             // set the owning side to null (unless already changed)
-            if ($picture->getItemId() === $this) {
-                $picture->setItemId(null);
+            if ($picture->getItem() === $this) {
+                $picture->setItem(null);
             }
         }
 

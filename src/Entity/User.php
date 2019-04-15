@@ -71,6 +71,30 @@ class User implements UserInterface
     private $activationToken;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Item",
+     *     mappedBy="user", orphanRemoval=true)
+     */
+    private $items;
+
+    /**
+     * @return mixed
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param mixed $items
+     * @return User
+     */
+    public function setItems($items)
+    {
+        $this->items = $items;
+        return $this;
+    }
+
+    /**
      * @ORM\OneToMany(targetEntity="UserStatus", mappedBy="users", fetch="EXTRA_LAZY")
      */
     private $userStatuses;

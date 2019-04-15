@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ 'REGISTRATION.MAIL.TITLE'|trans }}</title>
+</head>
+<body>
+<h1>{{ 'REGISTRATION.MAIL.TITLE'|trans }}</h1>
+
+<p>{{ 'REGISTRATION.MAIL.TEXT'|trans({'%name%': user.getUsername()}) }}</p>
+
+<p>
+    {{ 'REGISTRATION.MAIL.HTML.PLEASE_CLICK'|trans }}
+    <a href="{{ url('account_activation_token', {'token': user.getActivationToken()}) }}">
+        {{ 'REGISTRATION.MAIL.HTML.LINK'|trans }}
+    </a>
+</p>
+</body>
+</html>

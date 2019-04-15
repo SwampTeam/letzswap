@@ -20,17 +20,15 @@ class NewItemFormType extends AbstractType
             ->add('title', TextType::class, ['label' => 'FORM.ITEM.TITLE.LABEL'])
             ->add('description', TextareaType::class,
                 ['label' => 'NAV.ADD_ITEM.DESCRIPTION.LABEL',
-                'required' => false
+                    'required' => false
                 ])
             ->add('condition_status', EntityType::class, ['label' => 'NAV.ADD_ITEM.STATUS.LABEL',
-                'class' => Tag::class,
+                'class' => Item::class,
                 'choice_label' => 'label',
                 'multiple' => true,
                 'required' => false
             ])
-
-
-            ->add('picture', FileType::class,
+            ->add('picture', Picture::class,
                 ['label' => 'NAV.ADD_ITEM.PICTURE.LABEL',
                     'mapped' => false,
                     'constraints' => [

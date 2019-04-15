@@ -61,15 +61,6 @@ class UserStatus
         return $this;
     }
 
-    public function removeUserId(User $userId): self
-    {
-        if ($this->user_id->contains($userId)) {
-            $this->user_id->removeElement($userId);
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection|Status[]
      */
@@ -87,24 +78,8 @@ class UserStatus
         return $this;
     }
 
-    public function removeStatusId(Status $statusId): self
-    {
-        if ($this->status_id->contains($statusId)) {
-            $this->status_id->removeElement($statusId);
-        }
-
-        return $this;
-    }
-
     public function getTime(): ?\DateTimeInterface
     {
         return $this->time;
-    }
-
-    public function setTime(\DateTimeInterface $time): self
-    {
-        $this->time = $time;
-
-        return $this;
     }
 }

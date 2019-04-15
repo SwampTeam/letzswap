@@ -135,6 +135,9 @@
     "psr/simple-cache": {
         "version": "1.0.1"
     },
+    "ramsey/uuid": {
+        "version": "3.8.0"
+    },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
         "recipe": {
@@ -149,6 +152,18 @@
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.2.0"
+    },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "c82bead70f9a4f656354a193df7bf0ca2114efa0"
+        },
+        "files": [
+            "./public/.htaccess"
+        ]
     },
     "symfony/asset": {
         "version": "v4.2.5"

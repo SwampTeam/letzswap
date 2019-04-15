@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class=nav>
 
     <ul class="nav nav-pills nav-fill">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -15,7 +15,7 @@
                 </a>
             </li>
         {% else %}
-            <li class="nav-item {% if app.request.attributes.get('_route') == 'login' %} active {% endif %}">
+            <li class="nav-item {% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %}">
                 <a class="nav-link" href="{{ path('login') }}">
                     {{ 'NAV.LOGIN'|trans }}
                 </a>

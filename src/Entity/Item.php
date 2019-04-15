@@ -21,7 +21,7 @@ class Item
     /**
      * @ORM\Column(type="guid")
      */
-    private $user_id;
+    private $userId;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -36,12 +36,37 @@ class Item
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $condition_status;
+    private $conditionStatus;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Picture", mappedBy="item_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Picture",
+     *     mappedBy="itemId", orphanRemoval=true)
      */
     private $pictures;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ItemStatus",
+     *     mappedBy="items", fetch="EXTRA_LAZY")
+     */
+    private $itemStatuses;
+
+    /**
+     * @return mixed
+     */
+    public function getItemStatuses()
+    {
+        return $this->itemStatuses;
+    }
+
+    /**
+     * @param mixed $itemStatuses
+     * @return Item
+     */
+    public function setItemStatuses($itemStatuses)
+    {
+        $this->itemStatuses = $itemStatuses;
+        return $this;
+    }
 
     public function __construct()
     {
@@ -55,12 +80,12 @@ class Item
 
     public function getUserId(): ?string
     {
-        return $this->user_id;
+        return $this->userId;
     }
 
-    public function setUserId(string $user_id): self
+    public function setUserId(string $userId): self
     {
-        $this->user_id = $user_id;
+        $this->userId = $userId;
 
         return $this;
     }
@@ -91,12 +116,12 @@ class Item
 
     public function getConditionStatus(): ?string
     {
-        return $this->condition_status;
+        return $this->conditionStatus;
     }
 
-    public function setConditionStatus(string $condition_status): self
+    public function setConditionStatus(string $conditionStatus): self
     {
-        $this->condition_status = $condition_status;
+        $this->conditionStatus = $conditionStatus;
 
         return $this;
     }

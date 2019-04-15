@@ -19,13 +19,13 @@ class Picture
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $mime_type;
+    private $mimeType;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Item", inversedBy="pictures")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $item_id;
+    private $itemId;
 
     public function getId(): ?int
     {
@@ -34,24 +34,24 @@ class Picture
 
     public function getMimeType(): ?string
     {
-        return $this->mime_type;
+        return $this->mimeType;
     }
 
-    public function setMimeType(string $mime_type): self
+    public function setMimeType(string $mimeType): self
     {
-        $this->mime_type = $mime_type;
+        $this->mimeType = $mimeType;
 
         return $this;
     }
 
     public function getItemId(): ?Item
     {
-        return $this->item_id;
+        return $this->itemId;
     }
 
-    public function setItemId(?Item $item_id): self
+    public function setItemId(?Item $itemId): self
     {
-        $this->item_id = $item_id;
+        $this->itemId = $itemId;
 
         return $this;
     }

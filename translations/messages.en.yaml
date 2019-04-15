@@ -19,7 +19,7 @@ NAV.ADD_ITEM:             'Add a item to swap/give'
   PICTURE:
     LABEL:                'Choose a picture'
   SUBMIT:
-    LABEL:                 'Submit'
+    LABEL:                'Submit'
 
 
 

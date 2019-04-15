@@ -17,7 +17,7 @@ class NewItemFormType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, ['label' => 'NAV.ADD_ITEM.USERNAME.LABEL'])
-            ->add('title', TextType::class, ['label' => 'FORM.ITEM.TITLE.LABEL'])
+            ->add('title', TextType::class, ['label' => 'NAV.ITEM.TITLE.LABEL'])
             ->add('description', TextareaType::class,
                 ['label' => 'NAV.ADD_ITEM.DESCRIPTION.LABEL',
                 'required' => false

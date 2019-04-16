@@ -27,6 +27,11 @@ class Picture
      */
     private $item;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $path;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +57,18 @@ class Picture
     public function setItem(?Item $item): self
     {
         $this->item = $item;
+
+        return $this;
+    }
+
+    public function getPath(): ?string
+    {
+        return $this->path;
+    }
+
+    public function setPath(string $path): self
+    {
+        $this->path = $path;
 
         return $this;
     }

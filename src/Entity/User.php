@@ -118,6 +118,18 @@ class User implements UserInterface
     }
 
 
+    /**
+     * @param $userStatus
+     * @return User
+     */
+    public function addUserStatus($userStatus)
+    {
+        if (!$this->userStatuses->contains($userStatus)) {
+            $this->userStatuses[] = $userStatus;
+        }
+        return $this;
+    }
+
     public function getId(): ?string
     {
         return $this->id;

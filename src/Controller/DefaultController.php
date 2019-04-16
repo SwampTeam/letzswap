@@ -16,10 +16,14 @@ class DefaultController extends AbstractController
 
         ]);
     }
-
+    /**
+     * @Route("/terms", name="term_of_service")
+     */
     public function termsOfServicesAction()
     {
-        return new Response ('<!DOCTYPE> 
-        <html> <body> This are the terms ...</html> </body>');
+        return $this->render('/Terms/terms.html.twig', [
+
+        ]);
     }
+
 }

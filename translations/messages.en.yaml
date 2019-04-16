@@ -1,11 +1,14 @@
 APP.TITLE: 'LëtzSwap!'
-NAV.HOME: Home
-NAV.TERMS: 'Terms of Service'
-NAV.LOGIN: Login
-NAV.REGISTER: Register
-NAV.LOGOUT: Logout
-NAV.LOGGED_AS: 'Logged in as %username%'
-NAV.ADD_ITEM: 'Add a item to swap/give'
+NAV.HOME:                 'Home'
+NAV.TERMS:                'Terms of Service'
+NAV.LOGIN:                'Login'
+NAV.REGISTER:             'Register'
+NAV.LOGOUT:               'Logout'
+NAV.LOGGED_AS:            'Logged in as %username%'
+NAV.ADD_ITEM:             'Add a item to swap/give'
+NAV.ABOUT:                'More about Letzswap'
+CONTACT.FORM.EMAIL: 'Please insert your email'
+CONTACT.FORM.MESSAGE: 'Please insert your question/message'
 HOME.ITEM_COUNT: 'Total items count'
 FORM.USER.PASSWORD.ERROR.BLANK: 'Password cannot be blank'
 FORM.USER.PASSWORD.ERROR.LENGTH: 'Password should be at least {{ limit }} characters'
@@ -23,4 +26,4 @@ REGISTRATION.MAIL.TITLE: 'Please, activate your Letzswap account'
 REGISTRATION.MAIL.TEXT: 'Hello %name%, your brand new Letzswap account was successfully created! To start swapping, please activate your account.'
 REGISTRATION.MAIL.HTML.PLEASE_CLICK: 'Please click'
 REGISTRATION.MAIL.HTML.LINK: 'on this activation link'
-REGISTRATION.MAIL.TXT.COPY_LINK: 'Please, copy the following link and paste it in your web browser:'
+REGISTRATION.MAIL.TXT.COPY_LINK: 'Please, copy the following link'

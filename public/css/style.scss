@@ -10,6 +10,7 @@ body{
     position: relative;
     background-color: #7959db;
     margin-top: 40px;
+    font-family: "Source Code Pro", sans-serif;
 }
 
 .navbar {
@@ -20,9 +21,8 @@ body{
     width: 100%;
     height: 40px;
     justify-content: flex-end;
-
-
 }
+
 .navbar_list {
     top: 0;
     display: flex;
@@ -34,4 +34,11 @@ body{
 }
 .navbar_element {
     margin-left: 10px;
+    background-color: #fd680b;
+    border-radius: 12px;
+    padding: 2px 12px;
+    color: white;
+    .navbar_link_local {
+        color: white;
+    }
 }

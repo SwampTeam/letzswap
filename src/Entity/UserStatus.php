@@ -19,14 +19,17 @@ class UserStatus
     private $id;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\User")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="userStatuses")
+     * @ORM\JoinColumn(nullable=false)
+     *
      */
-    private $user_id;
+    private $users;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Status", inversedBy="userStatuses")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="userStatuses")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $status_id;
+    private $statuses;
 
     /**
      * @ORM\Column(type="datetime")
@@ -35,8 +38,8 @@ class UserStatus
 
     public function __construct()
     {
-        $this->user_id = new ArrayCollection();
-        $this->status_id = new ArrayCollection();
+        $this->users = new ArrayCollection();
+        $this->statuses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -47,15 +50,15 @@ class UserStatus
     /**
      * @return Collection|User[]
      */
-    public function getUserId(): Collection
+    public function getUsers(): Collection
     {
-        return $this->user_id;
+        return $this->users;
     }
 
-    public function addUserId(User $userId): self
+    public function addUser(User $userId): self
     {
-        if (!$this->user_id->contains($userId)) {
-            $this->user_id[] = $userId;
+        if (!$this->users->contains($userId)) {
+            $this->users[] = $userId;
         }
 
         return $this;
@@ -64,15 +67,15 @@ class UserStatus
     /**
      * @return Collection|Status[]
      */
-    public function getStatusId(): Collection
+    public function getStatuses(): Collection
     {
-        return $this->status_id;
+        return $this->statuses;
     }
 
-    public function addStatusId(Status $statusId): self
+    public function addStatus(Status $statusId): self
     {
-        if (!$this->status_id->contains($statusId)) {
-            $this->status_id[] = $statusId;
+        if (!$this->statuses->contains($statusId)) {
+            $this->statuses[] = $statusId;
         }
 
         return $this;

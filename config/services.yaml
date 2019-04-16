@@ -9,6 +9,7 @@ parameters:
     register_mail_sender:           'no-reply@letzswap.lu'
     register_mail_txt_template:     'Registration/registration-mail.txt.twig'
     register_mail_html_template:    'Registration/registration-mail.html.twig'
+    upload_directory:               '%kernel.root_dir%/../var/uploads/'
 
 services:
     # default configuration for services in *this* file

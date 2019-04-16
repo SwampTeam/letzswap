@@ -3,9 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Status;
-use App\Entity\UserStatus;
-use Doctrine\Common\Collections\Collection;
 use App\Form\RegistrationFormType;
 use App\Mailer\RegistrationMailer;
 use Ramsey\Uuid\Uuid;
@@ -67,7 +64,6 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/account/activation/required", name="account_activation_required")
      */
@@ -75,7 +71,6 @@ class RegistrationController extends AbstractController
     {
         return $this->render('Registration/activation-required.html.twig');
     }
-
 
     /**
      * @Route("/account/activation/{token}", name="account_activation_token")
@@ -95,8 +90,7 @@ class RegistrationController extends AbstractController
         if (!$user) {
             throw new NotFoundHttpException('User not found');
         }
-
-
+        
         // TODO: Method is there, what's wrong?
         $user->setActivationToken(null);
         //      ->setStatuses($status);

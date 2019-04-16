@@ -14,7 +14,7 @@ class ContactController extends AbstractController
 */
 public function SendMessage(Request $request, \Swift_Mailer $mailer)
 {
-    $form + $this->createForm(ContactType::class);
+    $form = $this->createForm(ContactType::class);
 
     $form->handleRequest($request);
 

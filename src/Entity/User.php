@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Status;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -96,36 +97,37 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity="UserStatus", mappedBy="users", fetch="EXTRA_LAZY")
+     * @ORM\JoinTable(name="user_status")
      */
-    private $userStatuses;
+    private $statuses;
 
     /**
      * @return mixed
      */
-    public function getUserStatuses()
+    public function getStatuses()
     {
-        return $this->userStatuses;
+        return $this->statuses;
     }
 
     /**
-     * @param mixed $userStatuses
+     * @param mixed $statuses
      * @return User
      */
-    public function setUserStatuses($userStatuses)
+    public function setStatuses($statuses)
     {
-        $this->userStatuses = $userStatuses;
+        $this->statuses = $statuses;
         return $this;
     }
 
 
     /**
-     * @param $userStatus
+     * @param $status
      * @return User
      */
-    public function addUserStatus($userStatus)
+    public function addStatus(Status $status)
     {
-        if (!$this->userStatuses->contains($userStatus)) {
-            $this->userStatuses[] = $userStatus;
+        if (!$this->statuses->contains($status)) {
+            $this->statuses[] = $status;
         }
         return $this;
     }

@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Status;
+use App\Entity\UserStatus;
+use Doctrine\Common\Collections\Collection;
 use App\Form\RegistrationFormType;
 use App\Mailer\RegistrationMailer;
 use Ramsey\Uuid\Uuid;
@@ -84,7 +86,8 @@ class RegistrationController extends AbstractController
     public function activationToken(
         string $token,
         TokenStorageInterface $tokenStorage
-    ) {
+    )
+    {
         $manager = $this->getDoctrine()->getManager();
         $userRepository = $manager->getRepository(User::class);
         $user = $userRepository->findOneByActivationToken($token);
@@ -93,12 +96,10 @@ class RegistrationController extends AbstractController
             throw new NotFoundHttpException('User not found');
         }
 
-        $status = new Status();
-        $status->addUserStatus('Active');
 
         // TODO: Method is there, what's wrong?
-        $user->setActivationToken(null)
-            ->setUserStatuse($status);
+        $user->setActivationToken(null);
+        //      ->setStatuses($status);
         $manager->flush();
 
         $tokenStorage->setToken(

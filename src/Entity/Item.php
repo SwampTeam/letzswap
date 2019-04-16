@@ -13,8 +13,8 @@ class Item
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\Column(type="guid")
      */
     private $id;
 
@@ -49,23 +49,23 @@ class Item
      * @ORM\OneToMany(targetEntity="App\Entity\ItemStatus",
      *     mappedBy="items", fetch="EXTRA_LAZY")
      */
-    private $itemStatuses;
+    private $statuses;
 
     /**
      * @return mixed
      */
-    public function getItemStatuses()
+    public function getStatuses()
     {
-        return $this->itemStatuses;
+        return $this->statuses;
     }
 
     /**
-     * @param mixed $itemStatuses
+     * @param mixed $statuses
      * @return Item
      */
-    public function setItemStatuses($itemStatuses)
+    public function setStatuses($statuses)
     {
-        $this->itemStatuses = $itemStatuses;
+        $this->statuses = $statuses;
         return $this;
     }
 

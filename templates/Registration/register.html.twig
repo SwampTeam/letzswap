@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Letzswap | {{ 'REGISTRATION.TITLE'|trans }}{% endblock %}
+
+{% block body %}
+    <h1>{{ 'REGISTRATION.TITLE'|trans }}</h1>
+
+    {{ form(registrationForm) }}
+{% endblock %}

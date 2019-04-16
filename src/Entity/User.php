@@ -96,24 +96,25 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity="UserStatus", mappedBy="users", fetch="EXTRA_LAZY")
+     * @ORM\JoinTable(name="user_status")
      */
-    private $userStatuses;
+    private $statuses;
 
     /**
      * @return mixed
      */
-    public function getUserStatuses()
+    public function getStatuses()
     {
-        return $this->userStatuses;
+        return $this->statuses;
     }
 
     /**
      * @param mixed $userStatuses
      * @return User
      */
-    public function setUserStatuses($userStatuses)
+    public function setStatuses($statuses)
     {
-        $this->userStatuses = $userStatuses;
+        $this->statuses = $statuses;
         return $this;
     }
 

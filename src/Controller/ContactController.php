@@ -12,40 +12,38 @@ class ContactController extends AbstractController
 /**
 * @Route("/about", name="about")
 */
-public function SendMessage(Request $request, $name, \Swift_Mailer $mailer)
+public function SendMessage(Request $request, \Swift_Mailer $mailer)
 {
-$message = (new \Swift_Message(''));
-$form = $this->createForm(ContactType::class, $message, ['standalone' => true]);
-$form->handleRequest($request)
-    ->setFrom('send@example.com')
-    ->setTo('recipient@example.com')
-    ->setBody(
-        $this->renderView(
-        // templates/emails/registration.html.twig
-            'about/about.html.twig',
-            ['name' => $name]
-        ),
-        'text/html'
-    )/*
-     * If you also want to include a plaintext version of the message
-    ->addPart(
-        $this->renderView(
-            'emails/registration.txt.twig',
-            ['name' => $name]
-        ),
-        'text/plain'
-    )
-    */
-;
+    $form + $this->createForm(ContactType::class);
 
-$mailer->send($message);
+    $form->handleRequest($request);
 
+    $this->addFlash('info', 'Some useful info');
 
-{
+    if ($form->isSubmitted() && $form->isValid()) {
+
+        $contactFormData = $form->getData();
+
+        dump($contactFormData);
+
+        $message = (new \Swift_Message('You received a swap request'))
+            ->setForm($contactFormData ['email'])
+            ->setTo('recipient@exemple.com')
+            ->setBody(
+                $contactFormData ['message'],
+                'text/plain'
+            );
+        $mailer->send($message);
+
+        $this->addFlash('success', 'It sent!');
+
+        return $this->redirectToRoute('contact');
+    }
+
     return $this->render('about/about.html.twig', [
-        'controller_name' => 'ContactController',
+        'our form' => $form->createView()
+
     ]);
-}
-}
+    }
 }
 

@@ -15,17 +15,17 @@
                 </a>
             </li>
         {% else %}
-            <li class="navbar_element {% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %}">
+            <li class="navbar-item {% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %}">
                 <a class="navbar_link" href="{#{ path('app_login') }#}">
                     {{ 'NAV.LOGIN'|trans }}
                 </a>
             </li>
-            <li class="navbar_element {% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
+            <li class="navbar-item {% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
                 <a class="navbar_link" href="{{ path('register')}}">
                     {{ 'NAV.REGISTER'|trans }}
                 </a>
             </li>
-            <li class="nav-item {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
+            <li class="navbar-item {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
                 <a class="nav-link" href="{{ path('about')}}">
                     {{ 'NAV.ABOUT'|trans }}
                 </a>

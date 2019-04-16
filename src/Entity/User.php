@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Status;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -109,7 +110,7 @@ class User implements UserInterface
     }
 
     /**
-     * @param mixed $userStatuses
+     * @param mixed $statuses
      * @return User
      */
     public function setStatuses($statuses)
@@ -120,13 +121,13 @@ class User implements UserInterface
 
 
     /**
-     * @param $userStatus
+     * @param $status
      * @return User
      */
-    public function addUserStatus($userStatus)
+    public function addStatus(Status $status)
     {
-        if (!$this->userStatuses->contains($userStatus)) {
-            $this->userStatuses[] = $userStatus;
+        if (!$this->statuses->contains($status)) {
+            $this->statuses[] = $status;
         }
         return $this;
     }

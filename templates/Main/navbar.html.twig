@@ -16,7 +16,7 @@
             </li>
         {% else %}
             <li class="navbar_element {% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %}">
-                <a class="navbar_link" href="{{ path('login') }}">
+                <a class="navbar_link" href="{{ path('app_login') }}">
                     {{ 'NAV.LOGIN'|trans }}
                 </a>
             </li>

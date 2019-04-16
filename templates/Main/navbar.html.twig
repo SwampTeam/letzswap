@@ -4,24 +4,24 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
             <li class="navbar_element {% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
-                <a class="navbar_link_local" href="{{ path('add_item') }}">
+                <a class="navbar_link" href="{#{ path('add_item') }#}">
                     {{ 'NAV.ADD_ITEM'|trans }}
                 </a>
             </li>
 
             <li class="navbar_element">
-                <a class="navbar_link_local" href="{{ path('app_logout') }}">
+                <a class="navbar_link" href="{#{ path('app_logout') }#}">
                     {{ 'NAV.LOGOUT'|trans }}
                 </a>
             </li>
         {% else %}
             <li class="navbar_element {% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %}">
-                <a class="navbar_link_local" href="{#{ path('app_login') }#}">
+                <a class="navbar_link" href="{#{ path('app_login') }#}">
                     {{ 'NAV.LOGIN'|trans }}
                 </a>
             </li>
             <li class="navbar_element {% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
-                <a class="navbar_link_local" href="{{ path('register')}}">
+                <a class="navbar_link" href="{{ path('register')}}">
                     {{ 'NAV.REGISTER'|trans }}
                 </a>
             </li>

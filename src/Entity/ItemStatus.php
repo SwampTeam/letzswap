@@ -13,19 +13,19 @@ class ItemStatus
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\Column(type="guid")
      */
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Item", inversedBy="itemStatuses")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Item", inversedBy="statuses")
      * @ORM\JoinColumn(nullable=false)
      */
     private $items;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="itemStatuses")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="itemStatus")
      * @ORM\JoinColumn(nullable=false)
      */
     private $statuses;

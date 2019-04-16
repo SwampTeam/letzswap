@@ -13,8 +13,8 @@ class Status
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\Column(type="guid")
      */
     private $id;
 
@@ -26,17 +26,17 @@ class Status
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\ItemStatus", mappedBy="statuses")
      */
-    private $itemStatuses;
+    private $itemStatus;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\UserStatus", mappedBy="statuses")
      */
-    private $userStatuses;
+    private $userStatus;
 
     public function __construct()
     {
-        $this->itemStatuses = new ArrayCollection();
-        $this->userStatuses = new ArrayCollection();
+        $this->itemStatus = new ArrayCollection();
+        $this->userStatus = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -59,15 +59,15 @@ class Status
     /**
      * @return Collection|ItemStatus[]
      */
-    public function getItemStatuses(): Collection
+    public function getItemStatus(): Collection
     {
-        return $this->itemStatuses;
+        return $this->itemStatus;
     }
 
     public function addItemStatus(ItemStatus $itemStatus): self
     {
-        if (!$this->itemStatuses->contains($itemStatus)) {
-            $this->itemStatuses[] = $itemStatus;
+        if (!$this->itemStatus->contains($itemStatus)) {
+            $this->itemStatus[] = $itemStatus;
             $itemStatus->addStatusId($this);
         }
 
@@ -76,8 +76,8 @@ class Status
 
     public function removeItemStatus(ItemStatus $itemStatus): self
     {
-        if ($this->itemStatuses->contains($itemStatus)) {
-            $this->itemStatuses->removeElement($itemStatus);
+        if ($this->itemStatus->contains($itemStatus)) {
+            $this->itemStatus->removeElement($itemStatus);
             $itemStatus->removeStatusId($this);
         }
 
@@ -87,15 +87,15 @@ class Status
     /**
      * @return Collection|UserStatus[]
      */
-    public function getUserStatuses(): Collection
+    public function getUserStatus(): Collection
     {
-        return $this->userStatuses;
+        return $this->userStatus;
     }
 
     public function addUserStatus(UserStatus $userStatus): self
     {
-        if (!$this->userStatuses->contains($userStatus)) {
-            $this->userStatuses[] = $userStatus;
+        if (!$this->userStatus->contains($userStatus)) {
+            $this->userStatus[] = $userStatus;
             $userStatus->addStatusId($this);
         }
 
@@ -104,8 +104,8 @@ class Status
 
     public function removeUserStatus(UserStatus $userStatus): self
     {
-        if ($this->userStatuses->contains($userStatus)) {
-            $this->userStatuses->removeElement($userStatus);
+        if ($this->userStatus->contains($userStatus)) {
+            $this->userStatus->removeElement($userStatus);
             $userStatus->removeStatusId($this);
         }
 

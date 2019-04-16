@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Entity\Status;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -35,8 +36,8 @@ class User implements UserInterface
      * @Assert\NotBlank()
      * @Assert\Length(min="8", max="255")
      * @Assert\Regex(
-     * pattern= "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&, ])[A-Za-z\d@$!%*?&]{8,}$/",
-     * message="Password need 1 upper case, 1 lower case, 1 special character, 1 number"
+     * pattern= "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,255}$/",
+     * message="Password need 1 upper case, 1 lower case, 1 number"
      * )
      */
     private $password;
@@ -96,27 +97,40 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity="UserStatus", mappedBy="users", fetch="EXTRA_LAZY")
+     * @ORM\JoinTable(name="user_status")
      */
-    private $userStatuses;
+    private $statuses;
 
     /**
      * @return mixed
      */
-    public function getUserStatuses()
+    public function getStatuses()
     {
-        return $this->userStatuses;
+        return $this->statuses;
     }
 
     /**
-     * @param mixed $userStatuses
+     * @param mixed $statuses
      * @return User
      */
-    public function setUserStatuses($userStatuses)
+    public function setStatuses($statuses)
     {
-        $this->userStatuses = $userStatuses;
+        $this->statuses = $statuses;
         return $this;
     }
 
+
+    /**
+     * @param $status
+     * @return User
+     */
+    public function addStatus(Status $status)
+    {
+        if (!$this->statuses->contains($status)) {
+            $this->statuses[] = $status;
+        }
+        return $this;
+    }
 
     public function getId(): ?string
     {

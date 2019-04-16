@@ -1,27 +1,27 @@
-<nav class="nav">
+<nav class="navbar">
 
-    <ul class="nav nav-pills nav-fill">
+    <ul class="navbar_list">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-            <li class="nav-item {% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
-                <a class="nav-link" href="{{ path('add_item') }}">
+            <li class="navbar_element {% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
+                <a class="navbar_link" href="{{ path('add_item') }}">
                     {{ 'NAV.ADD_ITEM'|trans }}
                 </a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link active" href="{{ path('app_logout') }}">
+            <li class="navbar_element">
+                <a class="navbar_link" href="{{ path('app_logout') }}">
                     {{ 'NAV.LOGOUT'|trans }}
                 </a>
             </li>
         {% else %}
-            <li class="nav-item {% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %}">
-                <a class="nav-link" href="{#{ path('app_login') }#}">
+            <li class="navbar_element {% if app.request.attributes.get('_route') == 'app_login' %} active {% endif %}">
+                <a class="navbar_link" href="{#{ path('app_login') }#}">
                     {{ 'NAV.LOGIN'|trans }}
                 </a>
             </li>
-            <li class="nav-item {% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
-                <a class="nav-link" href="{{ path('register')}}">
+            <li class="navbar_element {% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
+                <a class="navbar_link" href="{{ path('register')}}">
                     {{ 'NAV.REGISTER'|trans }}
                 </a>
             </li>

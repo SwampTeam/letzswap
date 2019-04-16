@@ -62,7 +62,7 @@ class RegistrationController extends AbstractController
             return $this->redirectToRoute('account_activation_required');
         }
 
-        return $this->render('Registration/register.html.twig', [
+        return $this->render('Registration/registration.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
     }

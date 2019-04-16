@@ -16,6 +16,7 @@ class DefaultController extends AbstractController
 
         ]);
     }
+
     /**
      * @Route("/terms", name="term_of_service")
      */

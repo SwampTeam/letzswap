@@ -13,20 +13,20 @@ class UserStatus
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="UUID")
+     * @ORM\Column(type="guid")
      */
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="userStatuses")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="statuses")
      * @ORM\JoinColumn(nullable=false)
      *
      */
     private $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="userStatuses")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Status", inversedBy="userStatus")
      * @ORM\JoinColumn(nullable=false)
      */
     private $statuses;

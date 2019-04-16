@@ -21,7 +21,6 @@ class Item
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="items")
      * @ORM\JoinColumn(nullable=false)
-     *  mappedBy="user"
      */
     private $user;
 
@@ -37,7 +36,6 @@ class Item
 
     /**
      * @ORM\Column(type="string", length=255)
-     *   mappedBy="$condition"
      */
     private $conditionStatus;
 
@@ -117,12 +115,12 @@ class Item
         return $this;
     }
 
-    public function getCondition(): ?string
+    public function getConditionStatus(): ?string
     {
         return $this->conditionStatus;
     }
 
-    public function setCondition(string $conditionStatus): self
+    public function setConditionStatus(string $conditionStatus): self
     {
         $this->conditionStatus = $conditionStatus;
 

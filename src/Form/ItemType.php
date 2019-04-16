@@ -25,7 +25,7 @@ class ItemType extends AbstractType
                 ['label' => 'NAV.ADD_ITEM.DESCRIPTION.LABEL',
                     'required' => false
                 ])
-            ->add('condition', ChoiceType::class, ['label' => 'NAV.ADD_ITEM.STATUS.LABEL',
+            ->add('conditionstatus', ChoiceType::class, ['label' => 'NAV.ADD_ITEM.STATUS.LABEL',
                 'choices'  => [
                     'Brand new' => 'Brand new',
                     'Used once' => 'Used once',

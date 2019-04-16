@@ -7,11 +7,11 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
               crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+        <link rel="stylesheet" href= {{ asset('CSS/style.css') }}>
     {% endblock %}
 </head>
-<body>
 {% include 'Main/header.html.twig' %}
+<body>
 {% block body %}
 {% endblock %}
 {% block javascripts %}
@@ -25,6 +25,6 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
 {% endblock %}
-{% include 'Main/footer.html.twig' %}
 </body>
+{% include 'Main/footer.html.twig' %}
 </html>

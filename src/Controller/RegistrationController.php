@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Status;
 use App\Form\RegistrationFormType;
 use App\Mailer\RegistrationMailer;
 use Ramsey\Uuid\Uuid;
@@ -93,9 +94,12 @@ class RegistrationController extends AbstractController
             throw new NotFoundHttpException('User not found');
         }
 
+        $status = new Status();
+        $status->addUserStatus('Active');
+
         // TODO: Method is there, what's wrong?
         $user->setActivationToken(null)
-            ->setActive(true);
+            ->setUserStatuse($status);
         $manager->flush();
 
         $tokenStorage->setToken(

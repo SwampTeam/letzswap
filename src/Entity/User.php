@@ -35,7 +35,7 @@ class User implements UserInterface
      * @Assert\NotBlank()
      * @Assert\Length(min="8", max="255")
      * @Assert\Regex(
-     * pattern= "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&, ])[A-Za-z\d@$!%*?&]{8,}$/",
+     * pattern= "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/",
      * message="Password need 1 upper case, 1 lower case, 1 special character, 1 number"
      * )
      */

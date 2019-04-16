@@ -53,18 +53,30 @@ body{
     box-shadow: 3px 3px 3px 3px ;
     }
 
-.btn.btn-primary {
-    margin-left: 5rem;
-    border-radius: 100%;
-}
-.btn.btn-danger {
-    border-radius: 100%;
-}
 #butons {
     display: flex;
 }
 
 .card {
     padding: 1rem;
-    border-radius: 20%;
+    border-radius: 3%;
+    box-shadow: 2px 2px 4px 2px;
+}
+.btn.btn-danger
+ {
+    border-radius: 100%;
+    -webkit-box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
+    box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
+}
+.btn.btn-primary
+{
+    margin-left: 4rem;
+    border-radius: 100%;
+    -webkit-box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
+    box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
+}
+.container {
+    display: flex;
 }

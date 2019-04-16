@@ -49,6 +49,11 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $emailConfirmed;
+
+    /**
      * @ORM\Column(type="json")
      */
     private $roles = [];
@@ -58,17 +63,60 @@ class User implements UserInterface
      * @Assert\NotBlank()
      * @Assert\IsTrue()
      */
-    private $tos_accepted;
-
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $email_confirmed;
+    private $tosAccepted;
 
     /**
      * @ORM\Column(type="guid", nullable=true, unique=true)
      */
-    private $activation_token;
+    private $activationToken;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Item",
+     *     mappedBy="user", orphanRemoval=true)
+     */
+    private $items;
+
+    /**
+     * @return mixed
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param mixed $items
+     * @return User
+     */
+    public function setItems($items)
+    {
+        $this->items = $items;
+        return $this;
+    }
+
+    /**
+     * @ORM\OneToMany(targetEntity="UserStatus", mappedBy="users", fetch="EXTRA_LAZY")
+     */
+    private $userStatuses;
+
+    /**
+     * @return mixed
+     */
+    public function getUserStatuses()
+    {
+        return $this->userStatuses;
+    }
+
+    /**
+     * @param mixed $userStatuses
+     * @return User
+     */
+    public function setUserStatuses($userStatuses)
+    {
+        $this->userStatuses = $userStatuses;
+        return $this;
+    }
+
 
     public function getId(): ?string
     {
@@ -157,36 +205,36 @@ class User implements UserInterface
 
     public function getTosAccepted(): ?bool
     {
-        return $this->tos_accepted;
+        return $this->tosAccepted;
     }
 
-    public function setTosAccepted(?bool $tos_accepted): self
+    public function setTosAccepted(?bool $tosAccepted): self
     {
-        $this->tos_accepted = $tos_accepted;
+        $this->tosAccepted = $tosAccepted;
 
         return $this;
     }
 
     public function getEmailConfirmed(): ?bool
     {
-        return $this->email_confirmed;
+        return $this->emailConfirmed;
     }
 
-    public function setEmailConfirmed(?bool $email_confirmed): self
+    public function setEmailConfirmed(?bool $emailConfirmed): self
     {
-        $this->email_confirmed = $email_confirmed;
+        $this->emailConfirmed = $emailConfirmed;
 
         return $this;
     }
 
     public function getActivationToken(): ?string
     {
-        return $this->activation_token;
+        return $this->activationToken;
     }
 
-    public function setActivationToken(?string $activation_token): self
+    public function setActivationToken(?string $activationToken): self
     {
-        $this->activation_token = $activation_token;
+        $this->activationToken = $activationToken;
 
         return $this;
     }

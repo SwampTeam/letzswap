@@ -1,12 +1,32 @@
-HOME:
-  ITEM_COUNT:             'Total items count'
-NAV.HOME:                 'Home'
-NAV.TERMS:                'Terms of Service'
-NAV.LOGIN:                'Login'
-NAV.REGISTER:             'Register'
-NAV.LOGOUT:               'Logout'
-NAV.LOGGED_AS:            'Logged in as %username%'
-NAV.ADD_ITEM:             'Add a item to swap/give'
+APP.TITLE: 'LëtzSwap!'
+NAV.HOME: Home
+NAV.TERMS: 'Terms of Service'
+NAV.LOGIN: Login
+NAV.REGISTER: Register
+NAV.LOGOUT: Logout
+NAV.LOGGED_AS: 'Logged in as %username%'
+NAV.ADD_ITEM: 'Add a item to swap/give'
+HOME.ITEM_COUNT: 'Total items count'
+FORM.USER.PASSWORD.ERROR.BLANK: 'Password cannot be blank'
+FORM.USER.PASSWORD.ERROR.LENGTH: 'Password should be at least {{ limit }} characters'
+FORM.USER.PASSWORD.ERROR.DONT_MATCH: 'Typed passwords don''t match'
+FORM.USER.PASSWORD.FIRST: Password
+FORM.USER.PASSWORD.REPEAT: 'Please, repeat your password'
+FORM.USER.EMAIL: 'Email address'
+FORM.USER.SUBMIT: Submit
+FORM.USER.TOS_ACCEPTED: 'I''ve read and accept the Terms of Service'
+FORM.USER.USERNAME: Username
+REGISTRATION.TITLE: 'Registration Form'
+REGISTRATION.ACTIVATION.TITLE: 'Activation required'
+REGISTRATION.ACTIVATION.INFO: 'Your Letzswap account is almost ready! Please check your email account to activate it.'
+REGISTRATION.MAIL.TITLE: 'Please, activate your Letzswap account'
+REGISTRATION.MAIL.TEXT: 'Hello %name%, your brand new Letzswap account was successfully created! To start swapping, please activate your account.'
+REGISTRATION.MAIL.HTML.PLEASE_CLICK: 'Please click'
+REGISTRATION.MAIL.HTML.LINK: 'on this activation link'
+REGISTRATION.MAIL.TXT.COPY_LINK: 'Please, copy the following link and paste it in your web browser:'
+ITEM.NEW.TITLE: 'Add new Item'
+ITEM.NEW.PAGETITLE: 'Add new Item | LëtzSwap!'
+ITEM.NEW.BACKLINK: 'Back to the items list'
 
 NAV.ABOUT:                'More about Letzswap'
 

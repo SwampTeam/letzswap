@@ -43,7 +43,7 @@ services:
 
     App\Mailer\Mailer:
         arguments:
-            $defaultRecipient:          '%contact_mail_recipient%'
+            $defaultRecipient:          '%default_mail_recipient%'
             $defaultSender:             '%default_mail_sender%'
             $htmlContactTemplate:       '%contact_mail_html_template%'
             $txtContactTemplate:        '%contact_mail_txt_template%'

@@ -7,6 +7,8 @@
 
 {% endblock %}
 
+{% block topmenu "" %}
+
 {% block body %}
 <h1>Page not found by the Swamp Team.</h1>
 <svg xmlns="http://www.w3.org/2000/svg" width="1226.887px" height="908px" viewBox="0 0 1226.887 908">
@@ -126,4 +128,5 @@
     {{ parent() }}
     <script src= {{ asset('Js/404.js') }}></script>
 
+{% block footer "" %}
 {% endblock %}

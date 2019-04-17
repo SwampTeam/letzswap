@@ -12,7 +12,9 @@
 
     {% endblock %}
 </head>
+{% block topmenu %}
 {% include 'Main/header.html.twig' %}
+{% endblock %}
 <body>
 {% block body %}
 {% endblock %}
@@ -29,5 +31,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.4/TweenMax.min.js"> </script>
 {% endblock %}
 </body>
+
+{% block footer %}
 {% include 'Main/footer.html.twig' %}
+{% endblock %}
 </html>

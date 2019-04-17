@@ -28,9 +28,9 @@ class ItemController extends AbstractController
      * @param PictureRepository $pictureRepository
      * @return Response
      */
-    public function index(ItemRepository $itemRepository, PictureRepository $pictureRepository): Response
+    public function getItems(ItemRepository $itemRepository, PictureRepository $pictureRepository): Response
     {
-        return $this->render('item/index.html.twig', [
+        return $this->render('Main/index.html.twig', [
             'items' => $itemRepository->findAll(),
             'pictures' => $pictureRepository->findAll(),
         ]);
@@ -57,7 +57,7 @@ class ItemController extends AbstractController
      * @return Response
      * @throws \Exception
      */
-    public function new(Request $request): Response
+    public function addItem(Request $request): Response
     {
         $item = new Item();
         $picture = new Picture();

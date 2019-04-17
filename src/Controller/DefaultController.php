@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -17,15 +18,14 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/about", name="about")
-     */
-    public function aboutAction()
-    {
-        return $this->render('About/about.html.twig', [
-
-        ]);
-    }
+//    /
+//      Route("/about", name="about")
+//     /
+//    public function aboutAction()
+//    {
+//
+//    // return $this->render('About/about.html.twig', []);
+//    }
 
     /**
      * @Route("/terms", name="term_of_service")

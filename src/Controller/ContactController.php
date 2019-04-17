@@ -2,42 +2,43 @@
 
 namespace App\Controller;
 
-use App\Form\ContactType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\ContactFormType;
+use App\Mailer\Mailer;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @param Request $request
+ * @param Mailer $mailer
+ * @return Response
+ * @throws \Exception
+ */
 class ContactController extends AbstractController
 {
-/**
-* @Route("/about", name="about")
-*/
-public function SendMessage(Request $request, \Swift_Mailer $mailer)
+
+public function contact(
+    Request $request,
+    Mailer $mailer
+) : Response
 {
-    $form = $this->createForm(ContactType::class);
+    $form = $this->createForm(
+        ContactFormType::class,
+        ['standalone' => true]
+    );
 
     $form->handleRequest($request);
 
-    $this->addFlash('info', 'Some useful info');
 
     if ($form->isSubmitted() && $form->isValid()) {
 
-        $contactFormData = $form->getData();
+        $mailer->setTo('contact@letzswap.lu');
+        $mailer->sendMail();
 
-        dump($contactFormData);
+        $this->addFlash('success', "Your message was sent.");
 
-        $message = (new \Swift_Message('You received a swap request'))
-            ->setForm($contactFormData ['email'])
-            ->setTo('recipient@exemple.com')
-            ->setBody(
-                $contactFormData ['message'],
-                'text/plain'
-            );
-        $mailer->send($message);
-
-        $this->addFlash('success', 'It sent!');
-
-        return $this->redirectToRoute('contact');
+        return $this->redirectToRoute('homepage');
     }
 
     return $this->render('about/about.html.twig', [

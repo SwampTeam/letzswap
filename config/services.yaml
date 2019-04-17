@@ -5,12 +5,20 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
-    contact_mail_recipient:             'contact@letzswap.lu'
-    registration_mail_subject:          'Please, activate your account'
-    registration_mail_sender:           'no-reply@letzswap.lu'
-    registration_mail_txt_template:     'Registration/registration-mail.txt.twig'
+
+    default_mail_recipient:             'contact@letzswap.lu'
+    default_mail_sender:                'no-reply@letzswap.lu'
+
+    contact_mail_html_template:         'Contact/contact-mail.html.twig'
+    contact_mail_txt_template:          'Contact/contact-mail.txt.twig'
+
     registration_mail_html_template:    'Registration/registration-mail.html.twig'
-    upload_directory:               '%kernel.root_dir%/../var/uploads/'
+    registration_mail_txt_template:     'Registration/registration-mail.txt.twig'
+
+    swap_mail_html_template:            'Swap/swap-mail.html.twig'
+    swap_mail_txt_template:             'Swap/swap-mail.txt.twig'
+
+    upload_directory:                   '%kernel.root_dir%/../var/uploads/'
 
 services:
     # default configuration for services in *this* file
@@ -35,8 +43,11 @@ services:
 
     App\Mailer\Mailer:
         arguments:
-            $recipient:     '%contact_mail_recipient%'
-            $subject:       '%registration_mail_subject%'
-            $sender:        '%registration_mail_sender%'
-            $txtTemplate:   '%registration_mail_txt_template%'
-            $htmlTemplate:  '%registration_mail_html_template%'
+            $defaultRecipient:          '%contact_mail_recipient%'
+            $defaultSender:             '%default_mail_sender%'
+            $htmlContactTemplate:       '%contact_mail_html_template%'
+            $txtContactTemplate:        '%contact_mail_txt_template%'
+            $htmlRegistrationTemplate:  '%registration_mail_html_template%'
+            $txtRegistrationTemplate:   '%registration_mail_txt_template%'
+            $htmlSwapTemplate:          '%swap_mail_html_template%'
+            $txtSwapTemplate:           '%swap_mail_txt_template%'

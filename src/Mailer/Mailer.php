@@ -6,46 +6,59 @@ namespace App\Mailer;
 
 use App\Entity\Item;
 use App\Entity\User;
-use App\Form\ContactFormType;
 use Twig\Environment;
 
 class Mailer
 {
     private $twig;
     private $mailer;
-    private $recipient;
-    private $subject;
-    private $sender;
-    private $txtTemplate;
-    private $htmlTemplate;
+    private $defaultRecipient;
+    private $defaultSender;
+    private $htmlContactTemplate;
+    private $txtContactTemplate;
+    private $htmlRegistrationTemplate;
+    private $txtRegistrationTemplate;
+    private $htmlSwapTemplate;
+    private $txtSwapTemplate;
 
     public function __construct(
         Environment $twig,
         \Swift_Mailer $mailer,
-        string $recipient,
-        string $subject,
-        string $sender,
-        string $txtTemplate,
-        string $htmlTemplate
+        string $defaultRecipient,
+        string $defaultSender,
+        string $htmlContactTemplate,
+        string $txtContactTemplate,
+        string $htmlRegistrationTemplate,
+        string $txtRegistrationTemplate,
+        string $htmlSwapTemplate,
+        string $txtSwapTemplate
     )
     {
         $this->twig = $twig;
         $this->mailer = $mailer;
-        $this->recipient = $recipient;
-        $this->subject = $subject;
-        $this->sender = $sender;
-        $this->txtTemplate = $txtTemplate;
-        $this->htmlTemplate = $htmlTemplate;
+        $this->defaultSender = $defaultSender;
+        $this->defaultRecipient = $defaultRecipient;
+        $this->htmlContactTemplate = $htmlContactTemplate;
+        $this->txtContactTemplate = $txtContactTemplate;
+        $this->htmlRegistrationTemplate = $htmlRegistrationTemplate;
+        $this->txtRegistrationTemplate = $txtRegistrationTemplate;
+        $this->htmlSwapTemplate = $htmlSwapTemplate;
+        $this->txtSwapTemplate = $txtSwapTemplate;
     }
 
     public function sendRegistrationMail(User $user)
     {
         $message = (new \Swift_Message())
-            ->setSubject($this->subject)
-            ->setFrom($this->sender)
+            ->setFrom($this->defaultSender)
             ->setTo($user->getEmail())
-            ->setBody($this->twig->render($this->htmlTemplate, ['user' => $user]), 'text/html')
-            ->addPart($this->twig->render($this->txtTemplate, ['user' => $user]), 'text/plain');
+            ->setBody($this->twig->render($this->htmlRegistrationTemplate,
+                ['user' => $user]),
+                'text/html')
+            ->addPart($this->twig->render($this->txtRegistrationTemplate,
+                ['user' => $user]),
+                'text/plain'
+            );
+
         $this->mailer->send($message);
     }
 
@@ -53,22 +66,27 @@ class Mailer
     {
         $message = (new \Swift_Message())
             ->setSubject($item->getTitle() . ': someone is interested!')
-            ->setFrom('no-reply@')
-            ->setTo($user->getEmail())
-            ->setBody($this->twig->render($this->htmlTemplate, ['user' => $user]), 'text/html')
-            ->addPart($this->twig->render($this->txtTemplate, ['user' => $user]), 'text/plain');
+            ->setFrom($this->defaultSender)
+            ->setTo($item->getUser()->getEmail())
+            ->setBody($this->twig->render($this->htmlSwapTemplate,
+                ['user' => $user, 'item' => $item]),
+                'text/html')
+            ->addPart($this->twig->render($this->txtSwapTemplate,
+                ['user' => $user, 'item' => $item]),
+                'text/plain');
         $this->mailer->send($message);
     }
 
-    public function sendMail()
+    public function sendContactMail(string $subject, string $sender)
     {
         $message = (new \Swift_Message())
-            ->setSubject($this->subject)
-            ->setFrom($this->sender)
-            ->setTo($this->recipient)
-            ->setBody($this->twig->render($this->htmlTemplate, ['user' => $user]), 'text/html')
-            ->addPart($this->twig->render($this->txtTemplate, ['user' => $user]), 'text/plain');
-        $this->mailer->send($message);
+            ->setSubject($subject)
+            ->setFrom($sender)
+            ->setTo($this->defaultRecipient)
+            ->setBody($this->twig->render($this->htmlContactTemplate, []),
+                'text/html')
+            ->addPart($this->twig->render($this->txtContactTemplate, []),
+                'text/plain');
         $this->mailer->send($message);
     }
 }

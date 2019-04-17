@@ -15,9 +15,9 @@
 
 body{
     position: relative;
-    background-color: #7959db;
+    background-color: #ffffff;
     margin-top: 40px;
-    font-family: "Source Code Pro", sans-serif;
+    font-family: 'Source Sans Pro', sans-serif;
 }
 
 .navbar {
@@ -49,40 +49,84 @@ body{
 .navbar_link_local {
         color: white;
     }
-
+/* Short pitch to introduce Letzswap*/
 #elevator_pitch {
-    border: 1px solid black;
-    margin: 3rem 10rem 1rem 33rem;
+    margin: 3rem 10rem 3rem 33rem;
     width: 40%;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 3px 3px 3px 3px ;
+    box-shadow: 1px 1px 1px 1px #336655 ;
     }
-
+/* 2 buttons report and see more, flex applied so they appear next to each other */
 #butons {
     display: flex;
 }
-
+/* The...card*/
 .card {
     padding: 1rem;
+    border-radius: 5%;
+    box-shadow: 2px 2px 2px 2px #336655;
+    border: 2px solid #336655;
+    background-color: #ffffff;
+}
+.card img {
+    box-shadow: 2px 2px 3px 1px;
     border-radius: 3%;
-    box-shadow: 2px 2px 4px 2px;
 }
-.btn.btn-danger
- {
-    border-radius: 100%;
-    -webkit-box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
-    box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
+
+.card_category_free {
+    position: absolute;
+    bottom: 88.5%;
+    left: 77%;
+    background-color: #336655;
+    color: white;
+    font-weight: bold;
+    border: 1px solid rgba(0, 0, 0, 0.31);
+    padding: 0.3rem;
+    border-radius: 7%;
 }
-.btn.btn-primary
-{
-    margin-left: 4rem;
-    border-radius: 100%;
-    -webkit-box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
-    box-shadow: 10px 9px 17px -14px rgba(0,0,0,0.75);
+.card_category_swap {
+    position: absolute;
+    bottom: 88.5%;
+    left: 75%;
+    background-color: #336655;
+    color: white;
+    font-weight: bold;
+    border: 1px solid rgba(0, 0, 0, 0.31);
+    padding: 0.3rem;
+    border-radius: 7%;
+
 }
+/* Container for the cards, so they appear next to each other*/
 .container {
     display: flex;
 }
+.card-title {
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Red button with flag to report the item*/
+.btn.btn-danger
+ {
+    border-radius: 100%;
+    -webkit-box-shadow: -2px 6px 21px -10px rgba(0,0,0,1);
+    -moz-box-shadow: -2px 6px 21px -10px rgba(0,0,0,1);
+    box-shadow: -2px 6px 21px -10px rgba(0,0,0,1);
+}
+
+/* Blue button with asterik to see the details of the item*/
+.btn.btn-primary
+{
+    margin-left: 7rem;
+    border-radius: 100%;
+    -webkit-box-shadow: -2px 6px 21px -10px rgba(0,0,0,1);
+    -moz-box-shadow: -2px 6px 21px -10px rgba(0,0,0,1);
+    box-shadow: -2px 6px 21px -10px rgba(0,0,0,1);
+}
+
+
+
+

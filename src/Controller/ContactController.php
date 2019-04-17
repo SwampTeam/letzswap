@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
+ * @Route("/about", name="about")
  * @param Request $request
  * @param Mailer $mailer
  * @return Response
@@ -18,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
 
-public function contact(
+public function contactAction(
     Request $request,
     Mailer $mailer
 ) : Response
@@ -33,7 +34,6 @@ public function contact(
 
     if ($form->isSubmitted() && $form->isValid()) {
 
-        $mailer->setTo('contact@letzswap.lu');
         $mailer->sendMail();
 
         $this->addFlash('success', "Your message was sent.");
@@ -41,9 +41,8 @@ public function contact(
         return $this->redirectToRoute('homepage');
     }
 
-    return $this->render('about/about.html.twig', [
-        'our form' => $form->createView()
-
+    return $this->render('About/about.html.twig', [
+        'contactForm' => $form->createView(),
     ]);
     }
 }

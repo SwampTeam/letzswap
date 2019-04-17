@@ -4,7 +4,7 @@
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
             <li class="navbar_element {% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
-                <a class="navbar_link_local" href="{{ path('item_new') }}">
+                <a class="navbar_link" href="{{ path('item_new') }}">
                     {{ 'NAV.ADD_ITEM'|trans }}
                 </a>
             </li>
@@ -14,14 +14,14 @@
                     {{ 'NAV.LOGOUT'|trans }}
                 </a>
             </li>
-            <li class="nav-item {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
-                <a class="nav-link" href="{{ path('about')}}">
+            <li class="navbar_element {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
+                <a class="navbar_link" href="{{ path('about')}}">
                     {{ 'NAV.ABOUT'|trans }}
                 </a>
             </li>
         {% else %}
-            <li class="nav-item {% if app.request.attributes.get('_route') == 'login' %} active {% endif %}">
-                <a class="nav-link" href="{{ path('login') }}">
+            <li class="navbar_element {% if app.request.attributes.get('_route') == 'login' %} active {% endif %}">
+                <a class="navbar_link" href="{{ path('login') }}">
                     {{ 'NAV.LOGIN'|trans }}
                 </a>
             </li>
@@ -30,8 +30,8 @@
                     {{ 'NAV.REGISTER'|trans }}
                 </a>
             </li>
-            <li class="nav-item {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
-                <a class="nav-link" href="{{ path('about') }}">
+            <li class="navbar_element {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
+                <a class="navbar_link" href="{{ path('about') }}">
                     {{ 'NAV.ABOUT'|trans }}
                 </a>
             </li>

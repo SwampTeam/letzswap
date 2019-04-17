@@ -22,19 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ItemController extends AbstractController
 {
 
-    /**
-     * @Route("/", name="item_index", methods={"GET"})
-     * @param ItemRepository $itemRepository
-     * @param PictureRepository $pictureRepository
-     * @return Response
-     */
-    public function index(ItemRepository $itemRepository, PictureRepository $pictureRepository): Response
-    {
-        return $this->render('item/index.html.twig', [
-            'items' => $itemRepository->findAll(),
-            'pictures' => $pictureRepository->findAll(),
-        ]);
-    }
+
 
     /**
      * @Route("/picture/{picture}", name="get_picture_content")
@@ -76,7 +64,6 @@ class ItemController extends AbstractController
             $fileName = Uuid::uuid4()->toString() . '.swp';
             $picture->setPath($fileName);
             $picture->setMimeType($file->getMimeType());
-            //$lastItem = $item->getId();
             $picture->setItem($item);
             $file->move($this->getParameter('upload_directory'), $fileName);
             $entityManager->persist($picture);

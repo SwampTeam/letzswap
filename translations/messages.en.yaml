@@ -44,3 +44,8 @@ CONTACT:
     EMAIL:                'Please insert your email'
     MESSAGE:              'Please insert your question/message'
 
+ITEM:
+  NEW:
+    TITLE: 'Add new Item'
+    PAGETITLE: 'Add new Item | LëtzSwap!'
+    BACKLINK: 'Back to the items list'

@@ -74,17 +74,17 @@ class Item
         $this->pictures = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): ?string
     {
         return $this->id;
     }
 
-    public function getUser(): ?string
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUser(string $user): self
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
@@ -135,12 +135,9 @@ class Item
         return $this->pictures;
     }
 
-    public function addPicture(Picture $picture): self
+    public function setPicture(Picture $picture): self
     {
-        if (!$this->pictures->contains($picture)) {
-            $this->pictures[] = $picture;
-            $picture->setItem($this);
-        }
+        $this->pictures = $picture;
 
         return $this;
     }

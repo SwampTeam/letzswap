@@ -38,8 +38,7 @@ class UserStatus
 
     public function __construct()
     {
-        $this->users = new ArrayCollection();
-        $this->statuses = new ArrayCollection();
+        $this->time = new \DateTime();
     }
 
     public function getId(): ?int
@@ -55,12 +54,9 @@ class UserStatus
         return $this->users;
     }
 
-    public function addUser(User $userId): self
+    public function setUser(User $userId): self
     {
-        if (!$this->users->contains($userId)) {
-            $this->users[] = $userId;
-        }
-
+        $this->users = $userId;
         return $this;
     }
 
@@ -72,12 +68,9 @@ class UserStatus
         return $this->statuses;
     }
 
-    public function addStatus(Status $statusId): self
+    public function setStatus(Status $statusId): self
     {
-        if (!$this->statuses->contains($statusId)) {
-            $this->statuses[] = $statusId;
-        }
-
+        $this->statuses = $statusId;
         return $this;
     }
 

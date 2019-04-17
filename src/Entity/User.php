@@ -77,6 +77,11 @@ class User implements UserInterface
      */
     private $items;
 
+    public function __construct()
+    {
+        $this->setRoles(['USER_ROLE']);
+    }
+
     /**
      * @return mixed
      */

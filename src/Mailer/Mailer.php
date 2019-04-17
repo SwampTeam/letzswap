@@ -46,11 +46,12 @@ class Mailer
         $this->txtSwapTemplate = $txtSwapTemplate;
     }
 
-    public function sendRegistrationMail(User $user)
+    public function sendRegistrationMail(User $user, string $subject)
     {
         $message = (new \Swift_Message())
             ->setFrom($this->defaultSender)
             ->setTo($user->getEmail())
+            ->setSubject($subject)
             ->setBody($this->twig->render($this->htmlRegistrationTemplate,
                 ['user' => $user]),
                 'text/html')
@@ -89,4 +90,5 @@ class Mailer
                 'text/plain');
         $this->mailer->send($message);
     }
+    
 }

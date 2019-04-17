@@ -52,13 +52,12 @@ class RegistrationController extends AbstractController
             );
 
             $user->setActivationToken(Uuid::uuid4());
-            $mailer->sendRegistrationMail($user);
+            $subject = 'Please, activate your account';
+            $mailer->sendRegistrationMail($user, $subject);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
-
-            // do anything else you need here, like send an email
 
             return $this->redirectToRoute('account_activation_required');
         }

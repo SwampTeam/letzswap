@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class DefaultController extends AbstractController
 {
     /**
-     * @Route("/", name="item_index", methods={"GET"})
+     * @Route("/", name="homepage", methods={"GET"})
      * @param ItemRepository $itemRepository
      * @param PictureRepository $pictureRepository
      * @return Response

@@ -18,6 +18,16 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("/about", name="about")
+     */
+    public function aboutAction()
+    {
+        return $this->render('About/about.html.twig', [
+
+        ]);
+    }
+
+    /**
      * @Route("/terms", name="term_of_service")
      */
     public function termsOfServicesAction()

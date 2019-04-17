@@ -28,7 +28,7 @@ class RegistrationController extends AbstractController
      * @return Response
      * @throws \Exception
      */
-    public function register(
+    public function registrationAction(
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder,
         Mailer $mailer

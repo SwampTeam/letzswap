@@ -19,15 +19,13 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            /* TODO: How to assign admin role? Another form?
-               TODO: User role is NOT automatically assigned  */
-            ->add('username', TextType::class, ['label' => 'FORM.USER.USERNAME'])
+            ->add('username', TextType::class, ['label' => 'FORM.USER.USERNAME', 'required' => true])
             ->add('password', RepeatedType::class,
                 [
                     'type' => PasswordType::class,
                     'invalid_message' => 'FORM.USER.PASSWORD.ERROR.DONT_MATCH',
-                    'first_options' => ['label' => 'FORM.USER.PASSWORD.FIRST'],
-                    'second_options' => ['label' => 'FORM.USER.PASSWORD.REPEAT'],
+                    'first_options' => ['label' => 'FORM.USER.PASSWORD.FIRST', 'required' => true],
+                    'second_options' => ['label' => 'FORM.USER.PASSWORD.REPEAT', 'required' => true],
                 ]
             )->add(
                 'email',
@@ -36,7 +34,7 @@ class RegistrationFormType extends AbstractType
             )->add(
                 'tosAccepted',
                 CheckboxType::class,
-                ['label' => 'FORM.USER.TOS_ACCEPTED']
+    ['label' => 'FORM.USER.TOS_ACCEPTED', 'required' => true]
             );
 
         if ($options['standalone']) {

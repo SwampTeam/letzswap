@@ -38,3 +38,8 @@ services:
             $sender:        '%register_mail_sender%'
             $txtTemplate:   '%register_mail_txt_template%'
             $htmlTemplate:  '%register_mail_html_template%'
+
+    AvatarGenetaror:
+        class: 'App\Service\AvatarGenerator'
+        public: true
+

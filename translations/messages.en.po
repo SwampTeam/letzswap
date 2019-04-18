@@ -1,0 +1,104 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+msgid "APP.TITLE"
+msgstr "LëtzSwap!"
+
+msgid "HOME.ITEM_COUNT"
+msgstr "Total items count"
+
+msgid "NAV.HOME"
+msgstr "Home"
+
+msgid "NAV.TERMS"
+msgstr "Terms of Service"
+
+msgid "NAV.LOGIN"
+msgstr "Login"
+
+msgid "NAV.REGISTER"
+msgstr "Register"
+
+msgid "NAV.LOGOUT"
+msgstr "Logout"
+
+msgid "NAV.LOGGED_AS"
+msgstr "Logged in as %username%"
+
+msgid "NAV.ADD_ITEM"
+msgstr "Swap Now"
+
+msgid "NAV.ABOUT"
+msgstr "About"
+
+msgid "CONTACT.FORM.TITLE"
+msgstr "Send us a message!"
+
+msgid "CONTACT.FORM.NAME"
+msgstr "Your name"
+
+msgid "CONTACT.FORM.SUBJECT"
+msgstr "The subject of your message"
+
+msgid "CONTACT.FORM.EMAIL"
+msgstr "Please insert your e-mail"
+
+msgid "CONTACT.FORM.MESSAGE"
+msgstr "Please type your message"
+
+msgid "ITEM.NEW.TITLE"
+msgstr "Add new Item"
+
+msgid "ITEM.NEW.PAGETITLE"
+msgstr "Add new Item | LëtzSwap!"
+
+msgid "ITEM.NEW.BACKLINK"
+msgstr "Back to the items list"
+
+msgid "ADD_ITEM.TITLE"
+msgstr "Title"
+
+msgid "ADD_ITEM.DESCRIPTION"
+msgstr "Describe your item"
+
+msgid "ADD_ITEM.STATUS"
+msgstr "Select the condition of your item"
+
+msgid "ADD_ITEM.PICTURE"
+msgstr "Choose your picture"
+
+msgid "LOGIN.USERNAME.LABEL"
+msgstr "Login"
+
+msgid "LOGIN.PASSWORD.LABEL"
+msgstr "Password"
+
+msgid "LOGIN.SUBMIT"
+msgstr "Login"
+
+msgid "SWAP.MAIL.TITLE"
+msgstr "__SWAP.MAIL.TITLE"
+
+msgid "FORM.ITEM.TITLE.LABEL"
+msgstr "Title of your item"
+
+msgid "FORM.ITEM.DESCRIPTION.LABEL"
+msgstr "Description"
+
+msgid "FORM.ITEM.STATUS.LABEL"
+msgstr "How is your Item?"
+
+msgid "FORM.ITEM.STATUS.NEW"
+msgstr "As New"
+
+msgid "FORM.ITEM.STATUS.SIGNS"
+msgstr "Signs of Wear"
+
+msgid "FORM.ITEM.STATUS.PARTS"
+msgstr "For Parts"
+
+msgid "FORM.ITEM.PICTURE.LABEL"
+msgstr "Insert a picture of your Item"

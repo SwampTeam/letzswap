@@ -22,20 +22,20 @@ class ItemType extends AbstractType
         $builder
             ->add('title', TextType::class, ['label' => 'FORM.ITEM.TITLE.LABEL'])
             ->add('description', TextareaType::class,
-                ['label' => 'NAV.ADD_ITEM.DESCRIPTION.LABEL',
+                ['label' => 'FORM.ITEM.DESCRIPTION.LABEL',
                     'required' => false
                 ])
-            ->add('conditionstatus', ChoiceType::class, ['label' => 'NAV.ADD_ITEM.STATUS.LABEL',
+            ->add('conditionstatus', ChoiceType::class, ['label' => 'FORM.ITEM.STATUS.LABEL',
                 'choices' => [
-                    'As New' => 'As New',
-                    'Signs of Wear' => 'Signs of Wear',
-                    'For Parts' => 'For Parts'
+                    'FORM.ITEM.STATUS.NEW' => 'As New',
+                    'FORM.ITEM.STATUS.SIGNS' => 'Signs of Wear',
+                    'FORM.ITEM.STATUS.PARTS' => 'For Parts'
                 ],
                 'multiple' => false,
                 'required' => true
             ])
             ->add('picture', FileType::class,
-                ['label' => 'NAV.ADD_ITEM.PICTURE.LABEL',
+                ['label' => 'FORM.ITEM.PICTURE.LABEL',
                     'mapped' => false,
                     'constraints' => [
                         new Image([
@@ -53,7 +53,6 @@ class ItemType extends AbstractType
                 'Submit',
                 SubmitType::class,
                 [
-                    'label' => 'NAV.ADD_ITEM.SUBMIT.LABEL',
                     'attr' => [
                         'class' => 'btn-success'
                     ]

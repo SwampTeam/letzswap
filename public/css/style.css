@@ -110,10 +110,12 @@ body{
 
 }
 /* Item details ui, Karlo start, mobile first*/
-.table {
-
+.table td, .table th {
+    border: none;
 }
-
+.img-thumbnail {
+    border: none;
+}
 #item_detail_buttons {
     display: flex;
     justify-content: space-between;
@@ -143,10 +145,11 @@ body{
 .row img {
     width: 300px;
     height: 300px;
+
 }
 
 /* Tablet */
-@media screen and (min-width:900px) {
+@media screen and (min-width:800px) {
 
     #item_detail_buttons {
         display: flow;
@@ -169,7 +172,11 @@ body{
         border:none;
     }
 }
-
+@media screen and (min-width: 1200px) {
+    #item_detail_buttons {
+        display: none;
+    }
+}
 /* Item details ui, Karlo end*/
 
 

@@ -19,7 +19,7 @@
                                         <div class="card_category_free">Free</div>
                                         <h5 class="card-title">{{ item.title }}</h5>
                                         <div id="butons">
-                                            <a href="#"
+                                            <a href="{{ path('item_report', {'id': item.getId()}) }}"
                                                class="btn btn-danger"><i class="fab fa-font-awesome-flag"></i></a>
                                             <a href="{{ path('item_details', {'id': item.getId()}) }}"
                                                class="btn btn-info"><i class="fas fa-info"></i></a>

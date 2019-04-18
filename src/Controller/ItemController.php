@@ -7,6 +7,7 @@ use App\Entity\Status;
 use App\Entity\ItemStatus;
 use App\Entity\Picture;
 use App\Form\ItemType;
+use App\Service\AvatarGenerator as AVA;
 use App\Repository\ItemRepository;
 use App\Repository\ItemStatusRepository;
 use App\Repository\PictureRepository;
@@ -105,13 +106,19 @@ class ItemController extends AbstractController
      * @Route("/{id}", name="item_details", methods={"GET"})
      * @param Item $item
      * @param PictureRepository $pictureRepository
+     * @param AVA $getGravar
      * @return Response
      */
-    public function getDetails(Item $item, PictureRepository $pictureRepository): Response
+    public function getDetails(Item $item, PictureRepository $pictureRepository, AVA $getGravar): Response
     {
+        $email = $item->getUser()->getEmail();
+        $username = $item->getUser()->getUsername();
+        $showGravatar = $getGravar->getAvatar($email, $username, 200);
         return $this->render('item/details.html.twig', [
             'item' => $item,
             'picture' => $pictureRepository->findOneByItem($item->getId()),
+            'avatar' => $showGravatar,
+            'username' => $username
         ]);
     }
 

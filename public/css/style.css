@@ -174,7 +174,10 @@ body{
 }
 @media screen and (min-width: 1200px) {
     #item_detail_buttons {
-        display: none;
+    }
+    #description img {
+        width: 800px;
+        height: 600px;
     }
 }
 /* Item details ui, Karlo end*/

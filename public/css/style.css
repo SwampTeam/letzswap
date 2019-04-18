@@ -122,10 +122,10 @@ body{
 #registration_title {
     text-align: center;
 }
+
 .registration_form_container {
     display: flex;
     justify-content: center;
-
 }
 
 .login_page {
@@ -136,4 +136,10 @@ body{
     max-width: 350px;
 }
 
-
+.about_info{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 550px;
+}

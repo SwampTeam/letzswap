@@ -2,11 +2,12 @@ HOME:
   ITEM_COUNT:             'Total items count'
 NAV.HOME:                 'Home'
 NAV.TERMS:                'Terms of Service'
-NAV.LOGIN:                'Login'
+NAV.LOGIN:                'Log In'
 NAV.REGISTER:             'Register'
-NAV.LOGOUT:               'Logout'
+NAV.LOGOUT:               'Log Out'
 NAV.LOGGED_AS:            'Logged in as %username%'
-NAV.ADD_ITEM:             'Add a item to swap/give'
+NAV.ADD_ITEM:             'Swap Now'
+NAV.ABOUT:                'About'
 
 
 FORM:
@@ -20,7 +21,7 @@ FORM:
       REPEAT:       "Please retype your password"
     EMAIL:          "Email address"
     SUBMIT:         "Submit"
-    TOS_ACCEPTED:   "I've read and accept the Terms of Service"
+    TOS_ACCEPTED:   "I've read and accepted LetzSwap Terms of Service"
     USERNAME:       "Username"
 
 REGISTRATION:
@@ -37,12 +38,11 @@ REGISTRATION:
     TXT:
       COPY_LINK:    'Please, copy the following link and paste it in your web browser:'
 
-NAV.ABOUT:                'More about Letzswap'
 
 CONTACT:
   FORM:
-    EMAIL:                'Please insert your email'
-    MESSAGE:              'Please insert your question/message'
+    EMAIL:                'Please type the e-mail account where we can contact you'
+    MESSAGE:              'Please insert your question/message here'
 
 ITEM:
   NEW:

@@ -3,44 +3,37 @@
 {% block title %}Item Details{% endblock %}
 
 {% block body %}
-    <h1>Item Details</h1>
+    <div id="avatar">
+    {{ avatar | raw }}
+    <h2>{{ username }}</h2>
+    </div>
+    <article id="description">
+    <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}" class="img-thumbnail" width="500px" height="200px">
 
     <table class="table">
         <tbody>
         <tr>
-            <th>Username</th>
-            <td>{{ username }}</td>
-        </tr>
-        <tr>
-            <th>User avatar</th>
-            <td>{{ avatar | raw }}</td>
-        </tr>
-        <tr>
-            <th>Picture</th>
-            <td><img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
-                     alt="{{ item.title }}" width="200px"></td>
-        </tr>
-        <tr>
-            <th>Id</th>
-            <td>{{ item.id }}</td>
-        </tr>
-        <tr>
-            <th>Title</th>
+            <th style="color: rgb(70,161,142)">Title:</th>
             <td>{{ item.title }}</td>
         </tr>
         <tr>
-            <th>Description</th>
-            <td>{{ item.description }}</td>
-        </tr>
-        <tr>
-            <th>ConditionStatus</th>
+            <th style="color: #46a18e">ConditionStatus:</th>
             <td>{{ item.conditionStatus }}</td>
         </tr>
+        <tr>
+            <th style="color: #46a18e">Description:</th>
+            <td>{{ item.description }}</td>
+        </tr>
         </tbody>
+        <!--<h1 id="item_details_h1">{{item.title }}</h1>-->
     </table>
-    <a href="{{ path('item_index') }}">back to list</a>
+    </article>
 
-    <a href="{{ path('item_edit', {'id': item.id}) }}">edit</a>
+    <div id="item_detail_buttons">
+    <a href="{{ path('item_index') }}"><button type="button" class="btn btn-success">Back to list</button></a>
+
+    <a href="{{ path('item_edit', {'id': item.id}) }}"><button type="button" class="btn btn-success">Edit</button></a>
 
     {{ include('item/delete-confirm.html.twig') }}
+    </div>
 {% endblock %}

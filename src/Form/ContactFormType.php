@@ -27,8 +27,8 @@ class ContactFormType extends AbstractType
                 ['label' => 'CONTACT.FORM.EMAIL'])
             ->add('message',
                 TextareaType::class,
-                ['label' => 'CONTACT.FORM.MESSAGE']
-            );
+                ['label' => 'CONTACT.FORM.MESSAGE']);
+
 
         if ($options['standalone']) {
             $builder->add(

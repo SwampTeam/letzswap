@@ -26,6 +26,7 @@ public function contactAction(
 {
     $form = $this->createForm(
         ContactFormType::class,
+        null,
         ['standalone' => true]
     );
 
@@ -34,11 +35,12 @@ public function contactAction(
 
     if ($form->isSubmitted() && $form->isValid()) {
         
-        $data = $form->getData()
+        $data = $form->getData();
         $mailer->sendContactMail($data);
 
-        // TODO: use flash message on homepage
         $this->addFlash('success', "Your message was sent.");
+
+        // TODO: use flash message on homepage
         return $this->redirectToRoute('homepage');
     }
 

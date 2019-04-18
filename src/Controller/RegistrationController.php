@@ -6,7 +6,7 @@ use App\Entity\Status;
 use App\Entity\User;
 use App\Entity\UserStatus;
 use App\Form\RegistrationFormType;
-use App\Mailer\RegistrationMailer;
+use App\Mailer\Mailer;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,21 +24,23 @@ class RegistrationController extends AbstractController
      * @Route("/register", name="register")
      * @param Request $request
      * @param UserPasswordEncoderInterface $passwordEncoder
-     * @param RegistrationMailer $mailer
+     * @param Mailer $mailer
      * @return Response
      * @throws \Exception
      */
-    public function register(
+    public function registrationAction(
         Request $request,
         UserPasswordEncoderInterface $passwordEncoder,
-        RegistrationMailer $mailer
+        Mailer $mailer
     ): Response
     {
         $user = new User();
         $form = $this->createForm(
             RegistrationFormType::class,
             $user,
-            ['standalone' => true]);
+            ['standalone' => true]
+        );
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -50,15 +52,18 @@ class RegistrationController extends AbstractController
             );
 
             $user->setActivationToken(Uuid::uuid4());
-            $mailer->sendMail($user);
+            $subject = 'Please, activate your account';
+            $mailer->sendRegistrationMail($user, $subject);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
 
-            // do anything else you need here, like send an email
+            $this->addFlash('success', "You need to activate your account, please check your email.");
 
+            // TODO: use flash message on homepage and disable activation route
             return $this->redirectToRoute('account_activation_required');
+            // return $this->redirectToRoute('homepage');
         }
 
         return $this->render('Registration/registration.html.twig', [

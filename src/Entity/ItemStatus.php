@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -37,8 +36,7 @@ class ItemStatus
 
     public function __construct()
     {
-        $this->items = new ArrayCollection();
-        $this->statuses = new ArrayCollection();
+        $this->time = new \DateTime();
     }
 
     public function getId(): ?int
@@ -54,11 +52,9 @@ class ItemStatus
         return $this->items;
     }
 
-    public function addItem(Item $itemId): self
+    public function setItem(Item $itemId): self
     {
-        if (!$this->items->contains($itemId)) {
-            $this->items[] = $itemId;
-        }
+        $this->items = $itemId;
 
         return $this;
     }
@@ -80,11 +76,9 @@ class ItemStatus
         return $this->statuses;
     }
 
-    public function addStatus(Status $statusId): self
+    public function setStatus(Status $statusId): self
     {
-        if (!$this->statuses->contains($statusId)) {
-            $this->statuses[] = $statusId;
-        }
+        $this->statuses = $statusId;
 
         return $this;
     }

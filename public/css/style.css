@@ -111,8 +111,23 @@ body{
     align-items: center;
     list-style: none;
 }
+.registration_page {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 950px;
+   
 
+}
+#registration_title {
+    text-align: center;
+}
+.registration_form_container {
+    display: flex;
+    justify-content: center;
 
+}
 
 
 

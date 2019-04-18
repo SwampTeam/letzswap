@@ -34,7 +34,7 @@ class RegistrationFormType extends AbstractType
             )->add(
                 'tosAccepted',
                 CheckboxType::class,
-    ['label' => 'FORM.USER.TOS_ACCEPTED', 'required' => true]
+                ['label' => 'FORM.USER.TOS_ACCEPTED', 'required' => true]
             );
 
         if ($options['standalone']) {

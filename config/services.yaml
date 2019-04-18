@@ -5,11 +5,23 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
-    register_mail_subject:          'Please, activate your account'
-    register_mail_sender:           'no-reply@letzswap.lu'
-    register_mail_txt_template:     'Registration/registration-mail.txt.twig'
-    register_mail_html_template:    'Registration/registration-mail.html.twig'
-    upload_directory:               '%kernel.root_dir%/../var/uploads/'
+
+    letzswap_contact_email:             'contact@letzswap.lu'
+    letzswap_no-reply_email:            'no-reply@letzswap.lu'
+
+    contact_mail_html_template:         'Contact/contact-mail.html.twig'
+    contact_mail_txt_template:          'Contact/contact-mail.txt.twig'
+
+    registration_mail_html_template:    'Registration/registration-mail.html.twig'
+    registration_mail_txt_template:     'Registration/registration-mail.txt.twig'
+
+    report_mail_html_template:          'Report/report-mail.html.twig'
+    report_mail_txt_template:           'Report/report-mail.txt.twig'
+
+    swap_mail_html_template:            'Swap/swap-mail.html.twig'
+    swap_mail_txt_template:             'Swap/swap-mail.txt.twig'
+
+    upload_directory:                   '%kernel.root_dir%/../var/uploads/'
 
 services:
     # default configuration for services in *this* file
@@ -32,9 +44,15 @@ services:
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 
-    App\Mailer\RegistrationMailer:
+    App\Mailer\Mailer:
         arguments:
-            $subject:       '%register_mail_subject%'
-            $sender:        '%register_mail_sender%'
-            $txtTemplate:   '%register_mail_txt_template%'
-            $htmlTemplate:  '%register_mail_html_template%'
+            $letzswapContactEmail:      '%letzswap_contact_email%'
+            $letzswapNoReplyEmail:      '%letzswap_no-reply_email%'
+            $htmlContactTemplate:       '%contact_mail_html_template%'
+            $txtContactTemplate:        '%contact_mail_txt_template%'
+            $htmlRegistrationTemplate:  '%registration_mail_html_template%'
+            $txtRegistrationTemplate:   '%registration_mail_txt_template%'
+            $htmlReportTemplate:        '%report_mail_html_template%'
+            $txtReportTemplate:         '%report_mail_txt_template%'
+            $htmlSwapTemplate:          '%swap_mail_html_template%'
+            $txtSwapTemplate:           '%swap_mail_txt_template%'

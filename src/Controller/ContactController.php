@@ -2,47 +2,50 @@
 
 namespace App\Controller;
 
-use App\Form\ContactType;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\ContactFormType;
+use App\Mailer\Mailer;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/about", name="about")
+ * @param Request $request
+ * @param Mailer $mailer
+ * @return Response
+ * @throws \Exception
+ */
 class ContactController extends AbstractController
 {
-/**
-* @Route("/about", name="about")
-*/
-public function SendMessage(Request $request, \Swift_Mailer $mailer)
+
+public function contactAction(
+    Request $request,
+    Mailer $mailer
+) : Response
 {
-    $form = $this->createForm(ContactType::class);
+    $form = $this->createForm(
+        ContactFormType::class,
+        null,
+        ['standalone' => true]
+    );
 
     $form->handleRequest($request);
 
-    $this->addFlash('info', 'Some useful info');
 
     if ($form->isSubmitted() && $form->isValid()) {
+        
+        $data = $form->getData();
+        $mailer->sendContactMail($data);
 
-        $contactFormData = $form->getData();
+        $this->addFlash('success', "Your message was sent.");
 
-        dump($contactFormData);
-
-        $message = (new \Swift_Message('You received a swap request'))
-            ->setForm($contactFormData ['email'])
-            ->setTo('recipient@exemple.com')
-            ->setBody(
-                $contactFormData ['message'],
-                'text/plain'
-            );
-        $mailer->send($message);
-
-        $this->addFlash('success', 'It sent!');
-
-        return $this->redirectToRoute('contact');
+        // TODO: use flash message on homepage
+        return $this->redirectToRoute('homepage');
     }
 
-    return $this->render('about/about.html.twig', [
-        'our form' => $form->createView()
-
+    return $this->render('About/about.html.twig', [
+        'contactForm' => $form->createView(),
     ]);
     }
 }

@@ -41,8 +41,10 @@ NAV.ABOUT:                'More about Letzswap'
 
 CONTACT:
   FORM:
-    EMAIL:                'Please insert your email'
-    MESSAGE:              'Please insert your question/message'
+    TITLE:    'Send us a message!'
+    NAME:     'Your name'
+    EMAIL:    'Please insert your email'
+    MESSAGE:  'Please type your message'
 
 ITEM:
   NEW:

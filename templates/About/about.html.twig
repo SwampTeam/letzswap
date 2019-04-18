@@ -27,9 +27,7 @@
         </p>
     </article>
 
-{% include 'flash_message.html.twig' %}
-
-{% include 'about/contact.html.twig' %}
-
+{#{% include 'Contact/contact.html.twig' %}#}
+    {{ form(contactForm) }}
 {% endblock %}
 

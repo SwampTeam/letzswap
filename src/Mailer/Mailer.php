@@ -78,15 +78,15 @@ class Mailer
         $this->mailer->send($message);
     }
 
-    public function sendContactMail(string $subject, string $sender)
+    public function sendContactMail(string $senderName, string $senderEmail, string $text)
     {
         $message = (new \Swift_Message())
             ->setSubject($subject)
-            ->setFrom($sender)
+            ->setFrom($this->defaultSender)
             ->setTo($this->defaultRecipient)
-            ->setBody($this->twig->render($this->htmlContactTemplate, []),
+            ->setBody($this->twig->render($this->htmlContactTemplate, ['name' => $senderName, 'email' => $senderEmail, 'message' => $text]),
                 'text/html')
-            ->addPart($this->twig->render($this->txtContactTemplate, []),
+            ->addPart($this->twig->render($this->txtContactTemplate, ['name' => $senderName, 'email' => $senderEmail, 'message' => $text]),
                 'text/plain');
         $this->mailer->send($message);
     }

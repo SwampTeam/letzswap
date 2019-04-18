@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -20,14 +21,14 @@ class DefaultController extends AbstractController
         return $this->forward('App\Controller\ItemController::getItems');
     }
 
-//    /
-//      Route("/about", name="about")
-//     /
-//    public function aboutAction()
-//    {
-//
-//    // return $this->render('About/about.html.twig', []);
-//    }
+    /**
+     * @Route("swamp", name="swamp", methods={"GET"})
+     * @return BinaryFileResponse
+     */
+    public function swampAction() : Response
+    {
+        return $this->render('bundles/TwigBundle/Exception/error404.html.twig', []);
+    }
 
     /**
      * @Route("/terms", name="term_of_service")

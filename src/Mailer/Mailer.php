@@ -86,12 +86,11 @@ class Mailer
     }
 
 
-    // FIXME: We need to pass the item from ReportController, disabling the null item
-    public function sendReportMail(User $user, Item $item = null)
+    public function sendReportMail(User $user, Item $item)
     {
         $message = (new \Swift_Message())
-            // FIXME: We need to pass the item from ReportController, disabling the check for item
-            ->setSubject(($item ? $item->getTitle() : 'Something'). ': was reported!')
+            // FIXME: We need form data to pass to the email
+            ->setSubject(($item->getTitle()). ': was reported!')
             ->setFrom($this->letzswapNoReplyEmail)
             ->setTo($this->letzswapContactEmail)
             ->setBody($this->twig->render($this->htmlReportTemplate,

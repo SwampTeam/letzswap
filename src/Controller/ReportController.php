@@ -15,7 +15,7 @@ class ReportController extends AbstractController
      * @param Mailer $mailer
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function reportAction(Mailer $mailer)
+    public function reportItem(Mailer $mailer)
     {
         $user = $this->getUser();
 

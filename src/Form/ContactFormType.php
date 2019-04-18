@@ -19,6 +19,9 @@ class ContactFormType extends AbstractType
             ->add('name',
                 TextType::class,
                 ['label' => 'CONTACT.FORM.NAME'])
+            ->add('subject',
+                TextType::class,
+                ['label' => 'CONTACT.FORM.SUBJECT'])
             ->add('email',
                 EmailType::class,
                 ['label' => 'CONTACT.FORM.EMAIL'])

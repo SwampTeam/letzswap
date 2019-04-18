@@ -1,3 +1,5 @@
+{% trans_default_domain 'registration' %}
+
 {{ 'REGISTRATION.MAIL.TITLE'|trans }}
 
 {{ 'REGISTRATION.MAIL.TEXT'|trans({'%name%': user.getUsername()}) }}

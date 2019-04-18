@@ -80,7 +80,7 @@ msgid "LOGIN.SUBMIT"
 msgstr "Login"
 
 msgid "SWAP.MAIL.TITLE"
-msgstr "__SWAP.MAIL.TITLE"
+msgstr "E-mail from LëtzSwap!"
 
 msgid "FORM.ITEM.TITLE.LABEL"
 msgstr "Title of your item"
@@ -102,3 +102,6 @@ msgstr "For Parts"
 
 msgid "FORM.ITEM.PICTURE.LABEL"
 msgstr "Insert a picture of your Item"
+
+msgid "REPORT.MAIL.TITLE"
+msgstr "The item: %item% was reported!"

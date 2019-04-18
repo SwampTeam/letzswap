@@ -27,7 +27,7 @@ class ItemRepository extends ServiceEntityRepository
         return $paginator->paginate(
             $queryBuilder->getQuery(),
             $request->query->getInt('page', 1),
-            5
+            10
         );
     }
 }

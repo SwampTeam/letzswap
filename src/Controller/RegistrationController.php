@@ -59,7 +59,11 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
+            $this->addFlash('success', "You need to activate your account, please check your email.");
+
+            // TODO: use flash message on homepage and disable activation route
             return $this->redirectToRoute('account_activation_required');
+            // return $this->redirectToRoute('homepage');
         }
 
         return $this->render('Registration/registration.html.twig', [

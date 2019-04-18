@@ -6,14 +6,17 @@
 parameters:
     locale: 'en'
 
-    default_mail_recipient:             'contact@letzswap.lu'
-    default_mail_sender:                'no-reply@letzswap.lu'
+    letzswap_contact_email:             'contact@letzswap.lu'
+    letzswap_no-reply_email:            'no-reply@letzswap.lu'
 
     contact_mail_html_template:         'Contact/contact-mail.html.twig'
     contact_mail_txt_template:          'Contact/contact-mail.txt.twig'
 
     registration_mail_html_template:    'Registration/registration-mail.html.twig'
     registration_mail_txt_template:     'Registration/registration-mail.txt.twig'
+
+    report_mail_html_template:          'Report/report-mail.html.twig'
+    report_mail_txt_template:           'Report/report-mail.txt.twig'
 
     swap_mail_html_template:            'Swap/swap-mail.html.twig'
     swap_mail_txt_template:             'Swap/swap-mail.txt.twig'
@@ -43,11 +46,13 @@ services:
 
     App\Mailer\Mailer:
         arguments:
-            $defaultRecipient:          '%default_mail_recipient%'
-            $defaultSender:             '%default_mail_sender%'
+            $letzswapContactEmail:      '%letzswap_contact_email%'
+            $letzswapNoReplyEmail:      '%letzswap_no-reply_email%'
             $htmlContactTemplate:       '%contact_mail_html_template%'
             $txtContactTemplate:        '%contact_mail_txt_template%'
             $htmlRegistrationTemplate:  '%registration_mail_html_template%'
             $txtRegistrationTemplate:   '%registration_mail_txt_template%'
+            $htmlReportTemplate:        '%report_mail_html_template%'
+            $txtReportTemplate:         '%report_mail_txt_template%'
             $htmlSwapTemplate:          '%swap_mail_html_template%'
             $txtSwapTemplate:           '%swap_mail_txt_template%'

@@ -1,5 +1,3 @@
-{{ 'REGISTRATION.MAIL.TITLE'|trans }}
+{{ 'SWAP.MAIL.TITLE'|trans({'%item%': item.getTitle(), '%name%': user.getUsername()}) }}
 
-{{ 'REGISTRATION.MAIL.TEXT'|trans({'%name%': user.getUsername()}) }}
-
-{{ 'REGISTRATION.MAIL.TXT.COPY_LINK'|trans }} {{ url('account_activation_token', {'token': user.getActivationToken()}) }}
+{# FIXME: We need content using the entities Item and User properties as above #}

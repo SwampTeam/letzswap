@@ -1,25 +1,19 @@
 <?php
 
-
 namespace App\Service;
-
-
-use App\Entity\User;
 
 class AvatarGenerator
 {
     /**
-     * @param User $user
+     * @param string $email
+     * @param string $username
      * @param int $size
      * @return string
      */
-    public function getAvatar(string $user, int $size): string
+    public function getAvatar(string $email, string $username, int $size): string
     {
-//        $email = new User();
-//        $email->getEmail($user);
-        $grav_url = "https://www.gravatar.com/avatar/" . md5(strtolower(trim($user))) . "?d=" . "&s=" . $size;
+        $grav_url = '<img src="https://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) . "?s=" . $size . '" alt="' . $username . ' logo">';
 
-        // return "<img src='" . $grav_url . "'>";
         return $grav_url;
     }
 

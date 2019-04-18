@@ -112,11 +112,13 @@ class ItemController extends AbstractController
     public function getDetails(Item $item, PictureRepository $pictureRepository, AVA $getGravar): Response
     {
         $email = $item->getUser()->getEmail();
-        $showGravatar = $getGravar->getAvatar($email, 100);
+        $username = $item->getUser()->getUsername();
+        $showGravatar = $getGravar->getAvatar($email, $username, 200);
         return $this->render('item/details.html.twig', [
             'item' => $item,
             'picture' => $pictureRepository->findOneByItem($item->getId()),
-            'avatar' => $showGravatar
+            'avatar' => $showGravatar,
+            'username' => $username
         ]);
     }
 

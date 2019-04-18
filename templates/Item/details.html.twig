@@ -4,9 +4,17 @@
 
 {% block body %}
     <h1>Item Details</h1>
-    {{ avatar }}
+
     <table class="table">
         <tbody>
+        <tr>
+            <th>Username</th>
+            <td>{{ username }}</td>
+        </tr>
+        <tr>
+            <th>User avatar</th>
+            <td>{{ avatar | raw }}</td>
+        </tr>
         <tr>
             <th>Picture</th>
             <td><img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"

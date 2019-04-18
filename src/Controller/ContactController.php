@@ -33,11 +33,12 @@ public function contactAction(
 
 
     if ($form->isSubmitted() && $form->isValid()) {
+        
+        $data = $form->getData()
+        $mailer->sendContactMail($data);
 
-        $mailer->sendMail();
-
+        // TODO: use flash message on homepage
         $this->addFlash('success', "Your message was sent.");
-
         return $this->redirectToRoute('homepage');
     }
 

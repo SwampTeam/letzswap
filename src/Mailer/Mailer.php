@@ -90,7 +90,7 @@ class Mailer
     {
         $message = (new \Swift_Message())
             ->setSubject($item->getTitle() . ': was reported!')
-            ->setFrom($user->getEmail())
+            ->setFrom($this->letzswapNoReplyEmail)
             ->setTo($this->letzswapContactEmail)
             ->setBody($this->twig->render($this->htmlReportTemplate,
                 ['user' => $user, 'item' => $item]),

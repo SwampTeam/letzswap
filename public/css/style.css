@@ -1,9 +1,4 @@
-#terms {
-    margin: 2rem;
-}
-#terms h1 {
-    text-align: center;
-}
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -67,16 +62,6 @@ body{
     color:#336655;
 }
 
-#elevator_pitch {
-    margin: 3rem 10rem 3rem 33rem;
-    width: 40%;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 1px 1px #336655 ;
-    }
-/* 2 buttons report and see more, flex applied so they appear next to each other */
-
-/* Container for the cards, so they appear next to each other*/
 .container-fluid {
     display: flex;
     flex-wrap: wrap;
@@ -104,9 +89,9 @@ body{
 }
 
 .card-img-top {
-
+    max-height: 180px;
+    object-fit: contain;
 }
-
 
 
 

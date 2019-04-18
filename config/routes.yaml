@@ -3,9 +3,6 @@
 #    controller: App\Controller\DefaultController::index
 app_logout:
   path: '/logout'
-about:
-  path: /about
-  controller: App\Controller\ContactController::contactAction
 
 #_errors:
  # resource: '@TwigBundle/Resources/config/routing/errors.xml'

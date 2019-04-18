@@ -5,11 +5,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {# FIXME:   #}
-    <title>{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()}) }} {{ user.getUsername()|default('someone') }}!</title>
+    {# FIXME: We need to pass the item from ReportController, disabling the null item  #}
+    <title>{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()|default('Something')}) }} {{ user.getUsername()|default('someone') }}!</title>
 </head>
 <body>
-<h1>{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()}) }} {{ user.getUsername()|default('someone') }}!</h1>
+{# FIXME: We need to pass the item from ReportController, disabling the null item  #}
+<h1>{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()|default('Something')}) }} {{ user.getUsername()|default('someone') }}!</h1>
 
 {# FIXME: Content needed #}
 <p>We need content here! User and Item properties are available to use on the text as in titles above</p>

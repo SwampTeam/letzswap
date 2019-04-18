@@ -93,6 +93,25 @@ body{
     object-fit: contain;
 }
 
+.footer {
+    display: flex;
+    z-index: 9999;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    position: fixed;
+    background-color: #f2f2f2;
+    box-shadow: 0px -10px 30px -12px rgba(0,0,0,0.75);
+}
+
+.footer_elements {
+    display: flex;
+    justify-content: space-between; /*WHY DOES THIS NOT PUT SPACE BETWEEN TOS AND COPYRIgtH?? ARGHRGH*/
+    align-items: center;
+    list-style: none;
+}
+
 
 
 

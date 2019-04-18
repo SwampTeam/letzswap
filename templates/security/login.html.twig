@@ -3,33 +3,43 @@
 {% block title %}Log in!{% endblock %}
 
 {% block body %}
-    <form method="post">
+
+        <form method="post">
         {% if error %}
             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
         {% endif %}
 
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <label for="inputUsername" class="sr-only">{{ 'LOGIN.USERNAME.LABEL' | trans }}</label>
-        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control"
-               placeholder="Username" required autofocus>
-        <label for="inputPassword" class="sr-only">{{ 'LOGIN.PASSWORD.LABEL' | trans }}</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
 
-        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+    <div class="container">
 
-        {#
-            Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-            See https://symfony.com/doc/current/security/remember_me.html
+        <!-- Modal -->
+        <div class="modal fade" id="modalLogin" role="dialog">
+            <div class="modal-dialog">
 
-            <div class="checkbox mb-3">
-                <label>
-                    <input type="checkbox" name="_remember_me"> Remember me
-                </label>
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="h3 mb-3 font-weight-normal">Please sign in</h3>
+                        <label for="inputUsername" class="sr-only" >{{ 'LOGIN.USERNAME.LABEL' | trans }} </label>
+                    </div>
+                    <div class="modal-body">
+                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control"
+                               placeholder="Username" required autofocus><br>
+                        <label for="inputPassword" class="sr-only">{{ 'LOGIN.PASSWORD.LABEL' | trans }}</label>
+                        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-lg btn-primary" type="submit">
+                            {{ 'LOGIN.SUBMIT' | trans }}
+                        </button>
+                    </div>
+                </div>
+
             </div>
-        #}
+        </div>
 
-        <button class="btn btn-lg btn-primary" type="submit">
-            {{ 'LOGIN.SUBMIT' | trans }}
-        </button>
-    </form>
+    </div>
+
 {% endblock %}

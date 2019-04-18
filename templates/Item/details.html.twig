@@ -3,36 +3,31 @@
 {% block title %}Item Details{% endblock %}
 
 {% block body %}
-    <h1>Item Details</h1>
+    <div  class="item_container">
+        <h2>{{ item.title }} details
+        <br><small>{{ item.id }}</small></h2>
+            <div class="center-div">
+                <div class="item_pic">
+                        <div><img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
+                                 alt="{{ item.title }}" width="250px"></div>
+                    </div>
+                    <div>
+                        <h2>{{ item.title }}</h2>
+                    </div>
+                    <div class="active-row">
+                        <p>{{ item.description }}</p>
+                    </div>
+                    <div>
+                        <p>{{ item.conditionStatus }}</p>
+                    </div>
 
-    <table class="table">
-        <tbody>
-        <tr>
-            <th>Picture</th>
-            <td><img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
-                     alt="{{ item.title }}" width="200px"></td>
-        </tr>
-        <tr>
-            <th>Id</th>
-            <td>{{ item.id }}</td>
-        </tr>
-        <tr>
-            <th>Title</th>
-            <td>{{ item.title }}</td>
-        </tr>
-        <tr>
-            <th>Description</th>
-            <td>{{ item.description }}</td>
-        </tr>
-        <tr>
-            <th>ConditionStatus</th>
-            <td>{{ item.conditionStatus }}</td>
-        </tr>
-        </tbody>
-    </table>
-    <a href="{{ path('item_index') }}">back to list</a>
+                <a href="{{ path('item_index') }}">back to list</a>
 
-    <a href="{{ path('item_edit', {'id': item.id}) }}">edit</a>
+                <a href="{{ path('item_edit', {'id': item.id}) }}">edit</a>
 
-    {{ include('item/delete-confirm.html.twig') }}
+                {{ include('item/delete-confirm.html.twig') }}
+            </div>
+
+    </div>
+
 {% endblock %}

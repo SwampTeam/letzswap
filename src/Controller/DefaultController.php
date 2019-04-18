@@ -23,7 +23,7 @@ class DefaultController extends AbstractController
 
     /**
      * @Route("swamp", name="swamp", methods={"GET"})
-     * @return BinaryFileResponse
+     * @return Response
      */
     public function swampAction() : Response
     {

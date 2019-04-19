@@ -36,7 +36,7 @@ class ContactFormType extends AbstractType
                 SubmitType::class,
                 [
                     'label' => 'FORM.USER.SUBMIT',
-                    'attr' => ['class' => 'btn-success']
+                    'attr' => ['class' => 'button']
                 ]);
         }
     }

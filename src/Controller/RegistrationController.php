@@ -88,12 +88,16 @@ class RegistrationController extends AbstractController
             throw new NotFoundHttpException('User not found');
         }
 
+
         $status = $manager->getRepository(Status::class)->findOneByLabel('active');
         if (!$status) {
             $status = new Status();
             $status->setLabel('active');
             $manager->persist($status);
         }
+
+        $user->addRole('ROLE_USER');
+        $manager->persist($user);
 
         $userStatus = new UserStatus();
         $userStatus->setUser($user)

@@ -58,5 +58,6 @@ services:
             $txtSwapTemplate:           '%swap_mail_txt_template%'
 
     AvatarGenetaror:
-      class: 'App\Service\AvatarGenerator'
-      public: true
+        class: 'App\Service\AvatarGenerator'
+        public: true
+

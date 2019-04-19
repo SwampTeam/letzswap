@@ -77,11 +77,6 @@ class User implements UserInterface
      */
     private $items;
 
-    public function __construct()
-    {
-        $this->setRoles(['USER_ROLE']);
-    }
-
     /**
      * @return mixed
      */
@@ -123,7 +118,6 @@ class User implements UserInterface
         $this->statuses = $statuses;
         return $this;
     }
-
 
     /**
      * @param $status

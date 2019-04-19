@@ -8,6 +8,7 @@ use App\Entity\ItemStatus;
 use App\Entity\Picture;
 use App\Form\ItemType;
 use App\Mailer\Mailer;
+use App\Service\AvatarGenerator as AVA;
 use App\Repository\ItemRepository;
 use App\Repository\ItemStatusRepository;
 use App\Repository\PictureRepository;
@@ -106,13 +107,19 @@ class ItemController extends AbstractController
      * @Route("/{id}", name="item_details", methods={"GET"})
      * @param Item $item
      * @param PictureRepository $pictureRepository
+     * @param AVA $getGravar
      * @return Response
      */
-    public function getDetails(Item $item, PictureRepository $pictureRepository): Response
+    public function getDetails(Item $item, PictureRepository $pictureRepository, AVA $getGravar): Response
     {
+        $email = $item->getUser()->getEmail();
+        $username = $item->getUser()->getUsername();
+        $showGravatar = $getGravar->getAvatar($email, $username, 200);
         return $this->render('item/details.html.twig', [
             'item' => $item,
             'picture' => $pictureRepository->findOneByItem($item->getId()),
+            'avatar' => $showGravatar,
+            'username' => $username
         ]);
     }
 
@@ -128,7 +135,9 @@ class ItemController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->getDoctrine()
+                ->getManager()
+                ->flush();
 
             return $this->redirectToRoute('item_index', [
                 'id' => $item->getId(),
@@ -136,7 +145,7 @@ class ItemController extends AbstractController
         }
         return $this->render('item/edit.html.twig', [
             'item' => $item,
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 
@@ -163,7 +172,7 @@ class ItemController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/report", name="item_swap", methods={"GET"})
+     * @Route("/{id}/report", name="item_report", methods={"GET"})
      * @param Item $item
      * @param Mailer $mailer
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -182,7 +191,7 @@ class ItemController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/swap", name="item_report", methods={"GET"})
+     * @Route("/{id}/swap", name="item_swap", methods={"GET"})
      * @param Item $item
      * @param Mailer $mailer
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

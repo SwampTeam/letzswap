@@ -56,3 +56,8 @@ services:
             $txtReportTemplate:         '%report_mail_txt_template%'
             $htmlSwapTemplate:          '%swap_mail_html_template%'
             $txtSwapTemplate:           '%swap_mail_txt_template%'
+
+    AvatarGenetaror:
+        class: 'App\Service\AvatarGenerator'
+        public: true
+

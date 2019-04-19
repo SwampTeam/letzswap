@@ -3,34 +3,36 @@
     <ul class="navbar_list">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-            <li class="navbar_element {% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
+            <li class="button {% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
                 <a class="navbar_link" href="{{ path('item_new') }}">
                     {{ 'NAV.ADD_ITEM'|trans }}
                 </a>
             </li>
 
-            <li class="navbar_element">
+            <li class="button">
                 <a class="navbar_link" href="{{ path('app_logout') }}">
                     {{ 'NAV.LOGOUT'|trans }}
                 </a>
             </li>
-            <li class="navbar_element {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
+            <li class="button {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
                 <a class="navbar_link" href="{{ path('about')}}">
                     {{ 'NAV.ABOUT'|trans }}
                 </a>
             </li>
         {% else %}
             <li class="navbar_element {% if app.request.attributes.get('_route') == 'login' %} active {% endif %}">
-                <a class="navbar_link" href="{{ path('login') }}">
+                <button type="button" data-toggle="modal" data-target="#modalLogin">
                     {{ 'NAV.LOGIN'|trans }}
-                </a>
+                       <!--<a class="navbar_link" href="{{ path('login')}}">
+                       </a>-->
+                </button>
             </li>
-            <li class="navbar_element {% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
+            <li class="button {% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
                 <a class="navbar_link" href="{{ path('register') }}">
                     {{ 'NAV.REGISTER'|trans }}
                 </a>
             </li>
-            <li class="navbar_element {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
+            <li class="button {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
                 <a class="navbar_link" href="{{ path('about') }}">
                     {{ 'NAV.ABOUT'|trans }}
                 </a>
@@ -38,3 +40,35 @@
         {% endif %}
     </ul>
 </nav>
+
+<div class="modal fade" id="modalLogin" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="h3 mb-3 font-weight-normal">Please sign in</h3>
+                <label for="inputUsername" class="sr-only" >{{ 'LOGIN.USERNAME.LABEL' | trans }} </label>
+            </div>
+            <form method="post" action="{{ path('login') }}">
+                {% if error|default(false) %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="modal-body">
+                    <input type="text" value="{{ last_username|default("") }}" name="username" id="inputUsername" class="form-control"
+                           placeholder="Username" required autofocus><br>
+                    <label for="inputPassword" class="sr-only">{{ 'LOGIN.PASSWORD.LABEL' | trans }}</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-lg btn-primary" type="submit">
+                        {{ 'LOGIN.SUBMIT' | trans }}
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

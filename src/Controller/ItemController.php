@@ -75,7 +75,8 @@ class ItemController extends AbstractController
 
             // Picture processing
             $file = $form->get('picture')->getData();
-            $fileName = Uuid::uuid4()->toString() . '.swp';
+            $ext = $file->guessExtension();
+            $fileName = Uuid::uuid4()->toString() . '.' . $ext;
             $picture->setPath($fileName);
             $picture->setMimeType($file->getMimeType());
             $picture->setItem($item);

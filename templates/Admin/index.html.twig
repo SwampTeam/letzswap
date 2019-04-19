@@ -4,34 +4,48 @@
 
 {% block body %}
 
-    <h1>Items Listing</h1>
+    <h1>Items</h1>
     <table border="5">
         <thead>
         <tr>
-            <th>Picture</th>
+            <th>Item Picture</th>
             <th>Title</th>
             <th>Description</th>
             <th>Condition Status</th>
+            <th>Reported</th>
             <th>Item Owner</th>
-            <th>Admin Actions</th>
+            <th>Options</th>
         </tr>
         </thead>
         <tbody>
         {% for item in items %}
+
             <tr>
                 {% for picture in pictures %}
                     {% if picture.item.id  == item.getId() %}
                         <td><img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
-                                 alt="{{ item.title }}" width="50px">
+                                 alt="{{ item.title }}" width="150px">
                         </td>
                     {% endif %}
                 {% endfor %}
                 <td>{{ item.title }}</td>
                 <td>{{ item.description }}</td>
                 <td>{{ item.conditionStatus }}</td>
+                <td>
+                    {% set repported = false %}
+                    {% for stats in item.getStatuses() %}
+                        {% if stats.getStatuses().getLabel() == 'reported' %}
+                            {% set repported = true %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if repported %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </td>
                 <td>{{ item.getUser().getUsername() }}</td>
                 <td>
-
                     <div>
                         <form method="get" action="{{ path('item_details', {'id': item.id}) }}">
                             <button class="btn">Details</button>
@@ -61,24 +75,28 @@
         {% endfor %}
         </tbody>
     </table>
-    <a href="{{ path('item_new') }}">Insert new item</a>
+    <a href="{{ path('item_new') }}">Add new item</a>
 
-    <h1>Users Listing</h1>
+    <h1>Users</h1>
     <table border="5">
         <thead>
         <tr>
+            <th>User Gravatar</th>
             <th>Username</th>
             <th>E-mail</th>
             <th>E-mail confirmed</th>
             <th>ToS Accepted</th>
             <th>Role</th>
-            <th>Register Date</th>
-            <th>Items for Swap</th>
+            <th>Reported</th>
+            <th>Options</th>
         </tr>
         </thead>
         <tbody>
         {% for user in users %}
             <tr>
+                <td>
+                    {{ user_avatar.getAvatar(user.email, user.username, 100) | raw }}
+                </td>
                 <td>
                     {{ user.username }}
                 </td>
@@ -102,15 +120,27 @@
                 <td>
                     {% for role in user.getroles() %}
                         {% if role == 'ROLE_ADMIN' %}
-                            Admin
+                            Admin,
                         {% endif %}
                         {% if role == 'ROLE_USER' %}
                             User
                         {% endif %}
                     {% endfor %}
                 </td>
-                <td>status: </td>
-                <td>items counter</td>
+                <td>
+                    {% set repported = false %}
+                    {% for stats in user.getStatuses() %}
+                        {% if stats.getStatuses().getLabel() == 'reported' %}
+                            {% set repported = true %}
+                        {% endif %}
+                    {% endfor %}
+                    {% if repported %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </td>
+                <td>options</td>
             </tr>
         {% else %}
             <tr>

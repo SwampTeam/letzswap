@@ -12,8 +12,17 @@
     {{ include('item/form.html.twig', {'button_label': 'Add Item'}) }}
     </div>
 </div>
-    <a href="{{ path('item_index') }}"><button id="back_button" type="button" class="btn-primary">{{ 'ITEM.NEW.BACKLINK'|trans }}</button></a>
+
 </div>
+        <div>
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    <div id="add_item_buttons" class="d-flex justify-content-between">
+        <a href="{{ path('item_index') }}"><button type="button" class="button">{{ 'ITEM.NEW.BACKLINK'|trans }}</button></a>
+            <button class="button" >{{ button_label|default('Save') }}</button>
+    </div>
 
 {% endblock %}
 

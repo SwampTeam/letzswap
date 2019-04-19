@@ -104,6 +104,11 @@ body{
     max-height: 180px;
     object-fit: contain;
 }
+
+#add_item_buttons {
+    display: flex;
+}
+
 /* Item details ui, Karlo start, mobile first*/
 .table td, .table th {
     border: none;
@@ -232,9 +237,8 @@ body{
 }
 
 /* Add new item ui Karlo*/
-#back_button {
-    margin-left: 0.5rem;
-}
+
+
 @media screen and (min-width:800px) {
     #back_button {
         display: block;

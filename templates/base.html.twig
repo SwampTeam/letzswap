@@ -28,6 +28,9 @@
 <body>
 <div id="App">
     {% block body %}
+        {% block flash %}
+            {% include 'flash_message.html.twig' %}
+        {% endblock %}
     {% endblock %}
 </div>
 {% block javascripts %}

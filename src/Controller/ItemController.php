@@ -170,7 +170,7 @@ class ItemController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/report", name="item_swap", methods={"GET"})
+     * @Route("/{id}/report", name="item_report", methods={"GET"})
      * @param Item $item
      * @param Mailer $mailer
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -189,7 +189,7 @@ class ItemController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/swap", name="item_report", methods={"GET"})
+     * @Route("/{id}/swap", name="item_swap", methods={"GET"})
      * @param Item $item
      * @param Mailer $mailer
      * @return \Symfony\Component\HttpFoundation\RedirectResponse

@@ -1,0 +1,123 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}LëtzSwap Admin Area{% endblock %}
+
+{% block body %}
+
+    <h1>Items Listing</h1>
+    <table border="5">
+        <thead>
+        <tr>
+            <th>Picture</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Condition Status</th>
+            <th>Item Owner</th>
+            <th>Admin Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+            <tr>
+                {% for picture in pictures %}
+                    {% if picture.item.id  == item.getId() %}
+                        <td><img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
+                                 alt="{{ item.title }}" width="50px">
+                        </td>
+                    {% endif %}
+                {% endfor %}
+                <td>{{ item.title }}</td>
+                <td>{{ item.description }}</td>
+                <td>{{ item.conditionStatus }}</td>
+                <td>{{ item.getUser().getUsername() }}</td>
+                <td>
+
+                    <div>
+                        <form method="get" action="{{ path('item_details', {'id': item.id}) }}">
+                            <button class="btn">Details</button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <form method="post" action="{{ path('item_edit', {'id': item.id}) }}">
+                            <button class="btn">Edit</button>
+                        </form>
+                    </div>
+
+                    <div>
+                        <form method="post" action="{{ path('item_delete', {'id': item.id}) }}"
+                              onsubmit="return confirm('Are you sure you really want to delete this item?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token('delete-item') }}"/>
+                            <button class="btn">Delete</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no items found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('item_new') }}">Insert new item</a>
+
+    <h1>Users Listing</h1>
+    <table border="5">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>E-mail</th>
+            <th>E-mail confirmed</th>
+            <th>ToS Accepted</th>
+            <th>Role</th>
+            <th>Register Date</th>
+            <th>Items for Swap</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>
+                    {{ user.username }}
+                </td>
+                <td>
+                    {{ user.email }}
+                </td>
+                <td>
+                    {% if user.emailconfirmed == 1 %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </td>
+                <td>
+                    {% if user.tosaccepted == 1 %}
+                        Yes
+                    {% else %}
+                        No
+                    {% endif %}
+                </td>
+                <td>
+                    {% for role in user.getroles() %}
+                        {% if role == 'ROLE_ADMIN' %}
+                            Admin
+                        {% endif %}
+                        {% if role == 'ROLE_USER' %}
+                            User
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td>status: </td>
+                <td>items counter</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no users found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

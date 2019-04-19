@@ -1,6 +1,9 @@
 <nav class="navbar">
-
+    <div id="logo">
+    <a href="{{ path('homepage') }}"><p>LetzSwap</p></a>
+    </div>
     <ul class="navbar_list">
+
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
             <li class="{% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">

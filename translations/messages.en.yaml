@@ -6,7 +6,7 @@ NAV.LOGIN:                'Log In'
 NAV.REGISTER:             'Register'
 NAV.LOGOUT:               'Log Out'
 NAV.LOGGED_AS:            'Logged in as %username%'
-NAV.ADD_ITEM:             'Swap Now'
+NAV.ADD_ITEM:             'Add item'
 NAV.ABOUT:                'About'
 
 

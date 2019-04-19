@@ -21,7 +21,7 @@ class AdminController extends AbstractController
     public function getUsers(UserRepository $userRepository): Response
     {
 
-        if (in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
+        if ($this->isGranted('ROLE_ADMIN')) {
             return $this->render('Admin/admin.html.twig', [
                 'users' => $userRepository->findAll(),
             ]);

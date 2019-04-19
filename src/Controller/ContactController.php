@@ -41,7 +41,6 @@ class ContactController extends AbstractController
 
             $this->addFlash('success', "Your message was sent.");
 
-            // TODO: use flash message on homepage
             return $this->redirectToRoute('homepage');
         }
 

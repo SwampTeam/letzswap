@@ -114,7 +114,8 @@ body{
 #item_detail_buttons {
     display: flex;
     justify-content: space-between;
-    margin: 1rem;
+    margin: 0.5rem;
+
 }
 #item_detail_buttons button:hover {
     filter: brightness(130%);
@@ -138,6 +139,8 @@ body{
 .btn-success, .btn-primary {
     background-color: #46A18E !important;
     border: none;
+    border-radius: 5%;
+    padding: 0.45rem;
 }
 .row img {
     width: 300px;
@@ -152,7 +155,6 @@ body{
         display: flow;
         justify-content: center;
         margin: 1rem;
-        transform: scale(1.1);
     }
     #item_detail_buttons button {
         margin: 1rem;
@@ -228,3 +230,28 @@ body{
     justify-content: center;
     max-width: 550px;
 }
+
+/* Add new item ui Karlo*/
+#back_button {
+    margin-left: 0.5rem;
+}
+@media screen and (min-width:800px) {
+    #back_button {
+        display: block;
+        margin-top: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20%;
+
+    }
+    .new_item_page {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 950px;
+    }
+}
+
+
+

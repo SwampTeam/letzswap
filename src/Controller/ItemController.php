@@ -222,7 +222,8 @@ class ItemController extends AbstractController
         // FIXME: We need a form with reason and
         $mailer->sendSwapMail($user, $item);
 
-        $this->addFlash('success', "The item was reported successfully.");
+        // TODO: Add this message to translation
+        $this->addFlash('success', "We just sent an email to the owner informing you are interested.");
 
         return $this->redirectToRoute('item_index');
     }

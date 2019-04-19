@@ -20,8 +20,8 @@ class AdminController extends AbstractController
      */
     public function getUsers(UserRepository $userRepository): Response
     {
-        ;
-        if ($this->getUser()->getRoles()) {
+
+        if (in_array('ROLE_ADMIN', $this->getUser()->getRoles())) {
             return $this->render('Admin/admin.html.twig', [
                 'users' => $userRepository->findAll(),
             ]);

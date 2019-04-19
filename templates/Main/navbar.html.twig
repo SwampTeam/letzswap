@@ -1,4 +1,4 @@
-<nav class="navbar">
+<nav class="navbar" xmlns="http://www.w3.org/1999/html">
 
     <ul class="navbar_list">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -27,11 +27,15 @@
                        </a>-->
                 </button>
             </li>
-            <li class="button {% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
-                <a class="navbar_link" href="{{ path('register') }}">
+
+            <li class="navbar_element {% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
+                <button type="button" data-toggle="modal" data-target="#modalRegister">
                     {{ 'NAV.REGISTER'|trans }}
-                </a>
+                    <!--<a class="navbar_link" href="{{ path('register') }}">
+                </a>-->
+                </button>
             </li>
+
             <li class="button {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
                 <a class="navbar_link" href="{{ path('about') }}">
                     {{ 'NAV.ABOUT'|trans }}
@@ -44,7 +48,7 @@
 <div class="modal fade" id="modalLogin" role="dialog">
     <div class="modal-dialog">
 
-        <!-- Modal content-->
+        <!-- Modal content login-->
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="h3 mb-3 font-weight-normal">Please sign in</h3>
@@ -65,6 +69,36 @@
                 <div class="modal-footer">
                     <button class="btn btn-lg btn-primary" type="submit">
                         {{ 'LOGIN.SUBMIT' | trans }}
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal content register-->
+<div class="modal fade" id="modalRegister" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="h3 mb-3 font-weight-normal">Please Register</h3>
+            </div>
+            <form method="post" action="{{ path('register') }}">
+                {% if error|default(false) %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="modal-body">
+
+                           <p>mettre ici le register form</p>
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-lg btn-primary" type="submit">
+                        {{ 'REGISTER.SUBMIT' | trans }}
                     </button>
                 </div>
             </form>

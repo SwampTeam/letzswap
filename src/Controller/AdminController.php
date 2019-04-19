@@ -27,6 +27,6 @@ class AdminController extends AbstractController
             ]);
         }
 
-        return null;
+        return $this->redirectToRoute('swamp');
     }
 }

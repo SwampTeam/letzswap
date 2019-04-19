@@ -179,14 +179,34 @@ class ItemController extends AbstractController
      */
     public function reportItem(Item $item, Mailer $mailer)
     {
-        $user = $this->getUser();
 
-        // FIXME: We need a form with reason and
-        $mailer->sendReportMail($user, $item);
+        if ($this->isGranted('ROLE_USER')) {
 
-        $this->addFlash('success', "We send an email to the owner.");
+            $manager = $this->getDoctrine()->getManager();
+            $status = $manager->getRepository(Status::class)->findOneByLabel('reported');
+            if (!$status) {
+                $status = new Status();
+                $status->setLabel('reported');
+                $manager->persist($status);
+            }
 
-        return $this->redirectToRoute('item_index');
+            $itemStatus = new ItemStatus();
+            $itemStatus->setItem($item)
+                ->setStatus($status);
+            $manager->persist($itemStatus);
+
+            $manager->flush();
+
+            $user = $this->getUser();
+
+            // FIXME: We need a form with reason and
+            $mailer->sendReportMail($user, $item);
+
+            // TODO: Add this to messages
+            $this->addFlash('success', "The item was successfully reported and we send an email to its owner.");
+
+            return $this->redirectToRoute('item_index');
+        }
     }
 
     /**

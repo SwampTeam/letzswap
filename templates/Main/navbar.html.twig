@@ -77,32 +77,4 @@
     </div>
 </div>
 
-
-<!-- Modal content register-->
-<div class="modal fade" id="modalRegister" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="h3 mb-3 font-weight-normal">Please Register</h3>
-            </div>
-            <form method="post" action="{{ path('register') }}">
-                {% if error|default(false) %}
-                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
-                <div class="modal-body">
-
-                           <p>mettre ici le register form</p>
-
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-lg btn-primary" type="submit">
-                        {{ 'REGISTER.SUBMIT' | trans }}
-                    </button>
-                </div>
-            </form>
-        </div>
-
-    </div>
-</div>
+{{ createRegisterModal() }}

@@ -6,13 +6,18 @@
     margin: 0;
     padding: 0;
     transition-duration: 0.3s;
+
 }
 
 body{
     position: relative;
     background-color: white;
-    margin-top: 80px;
     font-family: 'Source Sans Pro', sans-serif;
+}
+
+#App{
+    max-width: 1200px;
+    margin: 80px auto 100px;
 }
 
 .navbar {
@@ -92,6 +97,80 @@ body{
     max-height: 180px;
     object-fit: contain;
 }
+/* Item details ui, Karlo start, mobile first*/
+.table td, .table th {
+    border: none;
+}
+.img-thumbnail {
+    border: none;
+}
+#item_detail_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+#item_detail_buttons button:hover {
+    filter: brightness(130%);
+    border: 1px solid black;
+
+}
+#avatar {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+}
+#avatar img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right:2rem ;
+
+}
+
+.btn-success, .btn-primary {
+    background-color: #46A18E !important;
+    border: none;
+}
+.row img {
+    width: 300px;
+    height: 300px;
+
+}
+
+/* Tablet */
+@media screen and (min-width:800px) {
+
+    #item_detail_buttons {
+        display: flow;
+        justify-content: center;
+        margin: 1rem;
+        transform: scale(1.1);
+    }
+    #item_detail_buttons button {
+        margin: 1rem;
+    }
+    #description {
+        display: flex;
+        margin: 1rem;
+    }
+    #description img {
+        width: 400px;
+        height: 400px;
+    }
+    .img-thumbnail {
+        border:none;
+    }
+}
+@media screen and (min-width: 1200px) {
+    #item_detail_buttons {
+    }
+    #description img {
+        width: 800px;
+        height: 600px;
+    }
+}
+/* Item details ui, Karlo end*/
 
 .footer {
     display: flex;

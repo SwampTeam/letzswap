@@ -38,7 +38,8 @@ class ItemType extends AbstractType
                     'constraints' => [
                         new Image([
                             'mimeTypes' => ['image/png', 'image/jpeg'],
-                            'maxSize' => '5M',
+                            'mimeTypesMessage' => 'Please upload a jpeg or a png',
+                            'maxSize' => '10M',
                             'minWidth' => 300,
                             'minHeight' => 300
                         ])

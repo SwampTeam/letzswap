@@ -70,14 +70,6 @@ class RegistrationController extends AbstractController
     }
 
     /**
-     * @Route("/account/activation/required", name="account_activation_required")
-     */
-    public function activationRequired()
-    {
-        return $this->render('Registration/activation-required.html.twig');
-    }
-
-    /**
      * @Route("/account/activation/{token}", name="account_activation_token")
      * @param string $token
      * @param TokenStorageInterface $tokenStorage

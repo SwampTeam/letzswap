@@ -34,7 +34,9 @@
 
     <a href="{{ path('item_edit', {'id': item.id}) }}"><button type="button" class="btn btn-success">Edit</button></a>
 
-       <!-- <a href="{{ path('item_edit', {'id': item.id}) }}"><button type="button" class="btn btn-success">Report</button></a> -->
+    <a href="{{ path('item_swap', {'id': item.id}) }}"><button type="button" class="btn btn-primary">LetzSwap!</button></a>
+
+    <a href="{{ path('item_report', {'id': item.id}) }}"><button type="button" class="btn btn-danger">Report</button></a>
 
     {{ include('item/delete-confirm.html.twig') }}
     </div>

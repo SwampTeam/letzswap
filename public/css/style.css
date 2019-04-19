@@ -125,8 +125,10 @@ body{
     margin-right:2rem ;
 
 }
-.btn-success {
+
+.btn-success, .btn-primary {
     background-color: #46A18E !important;
+    border: none;
 }
 .row img {
     width: 300px;

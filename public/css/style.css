@@ -1,9 +1,4 @@
-#terms {
-    margin: 2rem;
-}
-#terms h1 {
-    text-align: center;
-}
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -70,16 +65,6 @@ body{
     color:#336655;
 }
 
-#elevator_pitch {
-    margin: 3rem 10rem 3rem 33rem;
-    width: 40%;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 1px 1px #336655 ;
-    }
-/* 2 buttons report and see more, flex applied so they appear next to each other */
-
-/* Container for the cards, so they appear next to each other*/
 .container-fluid {
     display: flex;
     flex-wrap: wrap;
@@ -107,7 +92,8 @@ body{
 }
 
 .card-img-top {
-
+    max-height: 180px;
+    object-fit: contain;
 }
 /* Item details ui, Karlo start, mobile first*/
 .table td, .table th {
@@ -182,8 +168,53 @@ body{
 }
 /* Item details ui, Karlo end*/
 
+.footer {
+    display: flex;
+    z-index: 9999;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    position: fixed;
+    background-color: #f2f2f2;
+    box-shadow: 0px -10px 30px -12px rgba(0,0,0,0.75);
+}
 
+.footer_elements {
+    display: flex;
+    justify-content: space-between; /*WHY DOES THIS NOT PUT SPACE BETWEEN TOS AND COPYRIgtH?? ARGHRGH*/
+    align-items: center;
+    list-style: none;
+}
+.registration_page {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 950px;
+}
 
+#registration_title {
+    text-align: center;
+}
 
+.registration_form_container {
+    display: flex;
+    justify-content: center;
+}
 
+.login_page {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 350px;
+}
 
+.about_info{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 550px;
+}

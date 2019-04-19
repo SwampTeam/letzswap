@@ -9,44 +9,45 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @Route("/about", name="about")
- * @param Request $request
- * @param Mailer $mailer
- * @return Response
- * @throws \Exception
- */
+
 class ContactController extends AbstractController
 {
 
-public function contactAction(
-    Request $request,
-    Mailer $mailer
-) : Response
-{
-    $form = $this->createForm(
-        ContactFormType::class,
-        null,
-        ['standalone' => true]
-    );
+    /**
+     * @Route("/about", name="about")
+     * @param Request $request
+     * @param Mailer $mailer
+     * @return Response
+     * @throws \Exception
+     */
+    public function contactAction(
+        Request $request,
+        Mailer $mailer
+    ): Response
+    {
+        $form = $this->createForm(
+            ContactFormType::class,
+            null,
+            ['standalone' => true]
+        );
 
-    $form->handleRequest($request);
+        $form->handleRequest($request);
 
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        
-        $data = $form->getData();
-        $mailer->sendContactMail($data);
+        if ($form->isSubmitted() && $form->isValid()) {
 
-        $this->addFlash('success', "Your message was sent.");
+            $data = $form->getData();
+            $mailer->sendContactMail($data);
 
-        // TODO: use flash message on homepage
-        return $this->redirectToRoute('homepage');
-    }
+            $this->addFlash('success', "Your message was sent.");
 
-    return $this->render('About/about.html.twig', [
-        'contactForm' => $form->createView(),
-    ]);
+            // TODO: use flash message on homepage
+            return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render('About/about.html.twig', [
+            'contactForm' => $form->createView(),
+        ]);
     }
 }
 

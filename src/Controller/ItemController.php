@@ -7,6 +7,7 @@ use App\Entity\Status;
 use App\Entity\ItemStatus;
 use App\Entity\Picture;
 use App\Form\ItemType;
+use App\Mailer\Mailer;
 use App\Service\AvatarGenerator as AVA;
 use App\Repository\ItemRepository;
 use App\Repository\ItemStatusRepository;
@@ -165,6 +166,44 @@ class ItemController extends AbstractController
             $entityManager->remove($picture);
             $entityManager->flush();
         }
+        return $this->redirectToRoute('item_index');
+    }
+
+    /**
+     * @Route("/{id}/report", name="item_report", methods={"GET"})
+     * @param Item $item
+     * @param Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function reportItem(Item $item, Mailer $mailer)
+    {
+        $user = $this->getUser();
+
+        // FIXME: We need a form with reason and
+        $mailer->sendReportMail($user, $item);
+
+        $this->addFlash('success', "We send an email to the owner.");
+
+        // TODO: use flash message on item and disable activation route
+        return $this->redirectToRoute('item_index');
+    }
+
+    /**
+     * @Route("/{id}/swap", name="item_swap", methods={"GET"})
+     * @param Item $item
+     * @param Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function swapItem(Item $item, Mailer $mailer)
+    {
+        $user = $this->getUser();
+
+        // FIXME: We need a form with reason and
+        $mailer->sendSwapMail($user, $item);
+
+        $this->addFlash('success', "The item was reported successfully.");
+
+        // TODO: use flash message on item and disable activation route
         return $this->redirectToRoute('item_index');
     }
 }

@@ -135,7 +135,9 @@ class ItemController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->getDoctrine()
+                ->getManager()
+                ->flush();
 
             return $this->redirectToRoute('item_index', [
                 'id' => $item->getId(),
@@ -143,7 +145,7 @@ class ItemController extends AbstractController
         }
         return $this->render('item/edit.html.twig', [
             'item' => $item,
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 

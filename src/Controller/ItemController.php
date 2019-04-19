@@ -7,6 +7,7 @@ use App\Entity\Status;
 use App\Entity\ItemStatus;
 use App\Entity\Picture;
 use App\Form\ItemType;
+use App\Mailer\Mailer;
 use App\Service\AvatarGenerator as AVA;
 use App\Repository\ItemRepository;
 use App\Repository\ItemStatusRepository;
@@ -134,7 +135,9 @@ class ItemController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->getDoctrine()
+                ->getManager()
+                ->flush();
 
             return $this->redirectToRoute('item_index', [
                 'id' => $item->getId(),
@@ -142,7 +145,7 @@ class ItemController extends AbstractController
         }
         return $this->render('item/edit.html.twig', [
             'item' => $item,
-            'form' => $form->createView(),
+            'form' => $form->createView()
         ]);
     }
 
@@ -165,6 +168,63 @@ class ItemController extends AbstractController
             $entityManager->remove($picture);
             $entityManager->flush();
         }
+        return $this->redirectToRoute('item_index');
+    }
+
+    /**
+     * @Route("/{id}/report", name="item_report", methods={"GET"})
+     * @param Item $item
+     * @param Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function reportItem(Item $item, Mailer $mailer)
+    {
+
+        if ($this->isGranted('ROLE_USER')) {
+
+            $manager = $this->getDoctrine()->getManager();
+            $status = $manager->getRepository(Status::class)->findOneByLabel('reported');
+            if (!$status) {
+                $status = new Status();
+                $status->setLabel('reported');
+                $manager->persist($status);
+            }
+
+            $itemStatus = new ItemStatus();
+            $itemStatus->setItem($item)
+                ->setStatus($status);
+            $manager->persist($itemStatus);
+
+            $manager->flush();
+
+            $user = $this->getUser();
+
+            // FIXME: We need a form with reason and
+            $mailer->sendReportMail($user, $item);
+
+            // TODO: Add this to messages
+            $this->addFlash('success', "The item was successfully reported and we send an email to its owner.");
+
+            return $this->redirectToRoute('item_index');
+        }
+    }
+
+    /**
+     * @Route("/{id}/swap", name="item_swap", methods={"GET"})
+     * @param Item $item
+     * @param Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function swapItem(Item $item, Mailer $mailer)
+    {
+        $user = $this->getUser();
+
+        // FIXME: We need a form with reason and
+        $mailer->sendSwapMail($user, $item);
+
+        // TODO: Add this message to translation
+        $this->addFlash('success', "We just sent an email to the owner informing you are interested.");
+
         return $this->redirectToRoute('item_index');
     }
 }

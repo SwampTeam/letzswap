@@ -3,10 +3,14 @@
 #    controller: App\Controller\DefaultController::index
 app_logout:
   path: '/logout'
-about:
-  path: /about
-  controller: App\Controller\ContactController::contactAction
 
 #_errors:
  # resource: '@TwigBundle/Resources/config/routing/errors.xml'
   #prefix:   /_error
+
+#test to add multilingual in the all website
+ # parameters:    locale: en_GB
+                  # app.locales: en_GB|fr_FR|es_ES
+
+  #framework:
+   # translator:  { fallbacks: ["%locale%"] }

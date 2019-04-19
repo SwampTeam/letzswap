@@ -1,12 +1,10 @@
 {% block flash_messages %}
-    {% for type, messages in app.session.flashbag.all() %}
+    {# read and display all flash messages #}
+    {% for label, messages in app.flashes %}
         {% for message in messages %}
-            <div class="alert alert-{{ type }} alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert">
-                    <span aria-hidden="true">&times;</span>
-                    <span class="sr-only">Close</span>
-                </button>
-                {{ message | raw }}
+            {# classes are here https://getbootstrap.com/docs/4.0/components/alerts/#}
+            <div class="text-center alert alert-{{ label }}">
+                {{ message }}
             </div>
         {% endfor %}
     {% endfor %}

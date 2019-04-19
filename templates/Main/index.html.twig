@@ -4,28 +4,21 @@
 
 {% block body %}
     <main>
-        <article id="elevator_pitch">
-            <p>Consumers are becoming more and more conscious about the effects of their purchase habits. As
-                unsustainable production methods and sourcing from long distances contribute to global warming, there
-                is a growing demand for sustainable alternatives. One growing trend amongst consumers is to purchase
-                pre-owned items or to exchange unwanted goods.</p>
-        </article>
 
-        <div class="container">
-            <div class="d-flex justify-content-center">
+        <div class="container-fluid justify-content-center">
+            <div class="d-flex justify-content-center flex-wrap ">
                 {% for item in items %}
                     {% for picture in pictures %}
                         {% if picture.item.id  == item.getId() %}
                             <div class="col">
                                 <div class="card" style="width: 17rem;">
                                     {#  TODO: Remove the width of the image, use CSS - Adolfo #}
-                                    <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
+                                    <img class="card-img-top" src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
                                          alt="{{ item.title }}" width="250px">
                                     <div class="card-body">
-                                        <div class="card_category_free">Free</div>
                                         <h5 class="card-title">{{ item.title }}</h5>
                                         <div id="butons">
-                                            <a href="#"
+                                            <a href="{{ path('item_report', {'id': item.getId()}) }}"
                                                class="btn btn-danger"><i class="fab fa-font-awesome-flag"></i></a>
                                             <a href="{{ path('item_details', {'id': item.getId()}) }}"
                                                class="btn btn-info"><i class="fas fa-info"></i></a>
@@ -36,28 +29,6 @@
                         {% endif %}
                     {% endfor %}
                 {% endfor %}
-            </div>
-            <div class="row align-items-center">
-                <div class="col">
-                    One of three columns
-                </div>
-                <div class="col">
-                    One of three columns
-                </div>
-                <div class="col">
-                    One of three columns
-                </div>
-            </div>
-            <div class="row align-items-end">
-                <div class="col">
-                    One of three columns
-                </div>
-                <div class="col">
-                    One of three columns
-                </div>
-                <div class="col">
-                    One of three columns
-                </div>
             </div>
         </div>
 

@@ -3,8 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Item;
-use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -20,7 +18,7 @@ class ItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, ['label' => 'FORM.ITEM.TITLE.LABEL'])
+            ->add('title', TextType::class, ['label' => 'ADD_ITEM.TITLE'])
             ->add('description', TextareaType::class,
                 ['label' => 'FORM.ITEM.DESCRIPTION.LABEL',
                     'required' => false
@@ -40,7 +38,8 @@ class ItemType extends AbstractType
                     'constraints' => [
                         new Image([
                             'mimeTypes' => ['image/png', 'image/jpeg'],
-                            'maxSize' => '5M',
+                            'mimeTypesMessage' => 'Please upload a jpeg or a png',
+                            'maxSize' => '10M',
                             'minWidth' => 300,
                             'minHeight' => 300
                         ])
@@ -53,8 +52,9 @@ class ItemType extends AbstractType
                 'Submit',
                 SubmitType::class,
                 [
+                    'label' => 'ADD_ITEM.SUBMIT',
                     'attr' => [
-                        'class' => 'btn-success'
+                        'class' => 'button'
                     ]
                 ]
             );

@@ -4,7 +4,12 @@
 {% block title %}Letzswap | {{ 'REGISTRATION.TITLE'|trans({}, 'registration') }}{% endblock %}
 
 {% block body %}
-    <h1>{{ 'REGISTRATION.TITLE'|trans }}</h1>
-
-    {{ form(registrationForm) }}
+    <div class="registration_page">
+        <div>
+            <h1 id="registration_title">{{ 'REGISTRATION.TITLE'|trans }}</h1>
+        </div>
+        <div class="registration_form_container">
+        {{ form(registrationForm) }}
+        </div>
+    </div>
 {% endblock %}

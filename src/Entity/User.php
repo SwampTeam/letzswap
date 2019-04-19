@@ -77,11 +77,6 @@ class User implements UserInterface
      */
     private $items;
 
-    public function __construct()
-    {
-        $this->setRoles(['USER_ROLE']);
-    }
-
     /**
      * @return mixed
      */
@@ -124,7 +119,6 @@ class User implements UserInterface
         return $this;
     }
 
-
     /**
      * @param $status
      * @return User
@@ -165,16 +159,24 @@ class User implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
+    }
+
+    /**
+     * @param string $role
+     * @return User
+     */
+    public function addRole(string $role) : self
+    {
+        $roles = $this->roles;
+        $roles[] = $role;
+        $this->roles = array_unique($roles);
+        return $this;
     }
 
     public function setRoles(array $roles): self
     {
-        $this->roles = $roles;
-
+        $this->roles = array_unique($roles);
         return $this;
     }
 

@@ -1,9 +1,4 @@
-#terms {
-    margin: 2rem;
-}
-#terms h1 {
-    text-align: center;
-}
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -11,13 +6,32 @@
     margin: 0;
     padding: 0;
     transition-duration: 0.3s;
+
 }
 
+#terms {
+    margin: 2rem;
+}
+#terms h1 {
+    text-align: center;
+}
+
+
 body{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+    min-height: 100vh;
     position: relative;
     background-color: white;
-    margin-top: 80px;
     font-family: 'Source Sans Pro', sans-serif;
+}
+
+#App{
+    /*min-height: 70vh;*/
+    max-width: 1200px;
+    margin: 80px auto 100px;
 }
 
 .navbar {
@@ -25,11 +39,10 @@ body{
     top: 0;
     width: 100%;
     height: 50px;
-    justify-content: flex-end;
     display: flex;
     position: fixed;
     background-color: #f2f2f2;
-    box-shadow: -2px 10px 30px -12px rgba(0,0,0,0.75);
+    box-shadow: -6px 4px 7px -5px rgba(0,0,0,0.75);
 }
 
 .navbar_list {
@@ -42,17 +55,18 @@ body{
     color: #336655;
     list-style: none;
 }
-.navbar_element {
+.button {
     padding: 2px 18px;
-    margin-left: 10px;
-    background-color: #f2f2f2;
+    margin-left: 5px;
+    margin-right: 5px;
     border-radius: 10px;
-    border:1px solid #336655;
     font-size: 16px;
-    }
-.navbar_element:hover {
     background-color: #c9f0e3;
     border:1px solid #c9f0e3;
+    }
+.button:hover {
+    background-color: pink;
+    border:1px solid pink;
 }
 
 .navbar_link {
@@ -63,20 +77,9 @@ body{
 
 .navbar_link:hover {
     text-decoration: none;
-    background-color: #c9f0e3;
     color:#336655;
 }
 
-#elevator_pitch {
-    margin: 3rem 10rem 3rem 33rem;
-    width: 40%;
-    padding: 10px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 1px 1px #336655 ;
-    }
-/* 2 buttons report and see more, flex applied so they appear next to each other */
-
-/* Container for the cards, so they appear next to each other*/
 .container-fluid {
     display: flex;
     flex-wrap: wrap;
@@ -90,25 +93,198 @@ body{
     margin: 1rem;
     overflow: hidden;
     border-radius: 0.5rem;
-    -webkit-box-shadow: 0 0 100px 40px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 1px 6px 0px rgba(166,166,166,1);
     /* card:hover*/
 }
 
 
 .card:hover {
-    -webkit-box-shadow: 0 0 100px 10px rgba(0, 0, 0, 0.2);
-    box-shadow: 0 0 100px 10px rgba(0, 0, 0, 0.2);
-    -webkit-transform: translateY(-20px);
-    transform: translateY(-20px);
+    outline: 5px solid #c9f0e3;
+    
+    /*-webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);*/
+    /*box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);*/
+    /*-webkit-transform: translateY(-5px);*/
+    /*transform: translateY(-5px);*/
 }
 
 .card-img-top {
+    max-height: 180px;
+    object-fit: contain;
+}
 
+#add_item_buttons {
+    display: flex;
+}
+
+/* Item details ui, Karlo start, mobile first*/
+.table td, .table th {
+    border: none;
+}
+.img-thumbnail {
+    border: none;
+}
+#item_detail_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem;
+
+}
+#item_detail_buttons button:hover {
+    filter: brightness(130%);
+    border: 1px solid black;
+
+}
+#avatar {
+    margin-left: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    display: flex;
+}
+#avatar img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-right:2rem ;
+
+}
+
+.btn-success, .btn-primary {
+    background-color: #46A18E !important;
+    border: none;
+    border-radius: 5%;
+    padding: 0.45rem;
+}
+.row img {
+    width: 300px;
+    height: 300px;
+
+}
+
+/* Tablet */
+@media screen and (min-width:800px) {
+
+    #item_detail_buttons {
+        display: flow;
+        justify-content: center;
+        margin: 1rem;
+    }
+    #item_detail_buttons button {
+        margin: 1rem;
+    }
+    #description {
+        display: flex;
+        margin: 1rem;
+    }
+    #description img {
+        width: 400px;
+        height: 400px;
+    }
+    .img-thumbnail {
+        border:none;
+    }
+}
+@media screen and (min-width: 1200px) {
+    #item_detail_buttons {
+    }
+    #description img {
+        width: 800px;
+        height: 600px;
+    }
+}
+/* Item details ui, Karlo end*/
+
+.footer {
+    display: flex;
+    z-index: 9999;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    background-color: #f2f2f2;
+    /*position: relative;*/
+    /*min-height: 100vh;*/
+    /*padding-bottom: 60px; !* Should be equal to the height of your footer *!*/
+    /*box-shadow: 0px -10px 30px -12px rgba(0,0,0,0.75);*/
+}
+
+.footer_elements {
+    display: flex;
+    justify-content: space-between; /*WHY DOES THIS NOT PUT SPACE BETWEEN TOS AND COPYRIgtH?? ARGHRGH*/
+    align-items: center;
+    list-style: none;
+}
+.registration_page {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 950px;
+}
+
+#registration_title {
+    text-align: center;
+}
+
+.registration_form_container {
+    display: flex;
+    justify-content: center;
+}
+
+.login_page {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 350px;
+}
+
+.about_info{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 550px;
+}
+
+/* Add new item ui Karlo*/
+
+
+@media screen and (min-width:800px) {
+    #back_button {
+        display: block;
+        margin-top: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20%;
+
+    }
+    .new_item_page {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 950px;
+    }
+}
+
+
+/* Adding logo to navbar with help of Filip   */
+#logo  {
+    font-family: 'Catamaran', sans-serif;
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+}
+#logo a:hover {
+    text-decoration: none;
 }
 
 
 
-
-
-
+.modal-dialog {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
+}

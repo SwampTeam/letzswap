@@ -4,12 +4,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Language: en\n"
 
-msgid "APP.TITLE"
-msgstr "LëtzSwap!"
-
-msgid "HOME.ITEM_COUNT"
-msgstr "Total items count"
-
 msgid "NAV.HOME"
 msgstr "Home"
 
@@ -34,6 +28,60 @@ msgstr "Swap Now"
 msgid "NAV.ABOUT"
 msgstr "About"
 
+msgid "HOME.ITEM_COUNT"
+msgstr "Total items count"
+
+msgid "FORM.USER.PASSWORD.ERROR.BLANK"
+msgstr "Password cannot be blank"
+
+msgid "FORM.USER.PASSWORD.ERROR.LENGTH"
+msgstr "Password should be at least {{ limit }} characters"
+
+msgid "FORM.USER.PASSWORD.ERROR.DONT_MATCH"
+msgstr "Passwords don't match"
+
+msgid "FORM.USER.PASSWORD.FIRST"
+msgstr "Password"
+
+msgid "FORM.USER.PASSWORD.REPEAT"
+msgstr "Please retype your password"
+
+msgid "FORM.USER.EMAIL"
+msgstr "Email address"
+
+msgid "FORM.USER.SUBMIT"
+msgstr "Submit"
+
+msgid "FORM.USER.TOS_ACCEPTED"
+msgstr "I've read and accepted LetzSwap Terms of Service"
+
+msgid "FORM.USER.USERNAME"
+msgstr "Username"
+
+msgid "REGISTRATION.TITLE"
+msgstr "Registration Form"
+
+msgid "REGISTRATION.ACTIVATION.TITLE"
+msgstr "Activation required"
+
+msgid "REGISTRATION.ACTIVATION.INFO"
+msgstr "Your Letzswap account was created! Please check your email account to activate it."
+
+msgid "REGISTRATION.MAIL.TITLE"
+msgstr "Thank you for joining the LetzSwap community"
+
+msgid "REGISTRATION.MAIL.TEXT"
+msgstr "Hello %name%, your LetzSwap account was successfully created! Follow the activation link to enjoy Swap now."
+
+msgid "REGISTRATION.MAIL.HTML.PLEASE_CLICK"
+msgstr "Please click"
+
+msgid "REGISTRATION.MAIL.HTML.LINK"
+msgstr "on this activation link"
+
+msgid "REGISTRATION.MAIL.TXT.COPY_LINK"
+msgstr "Please, copy the following link and paste it in your web browser:"
+
 msgid "CONTACT.FORM.TITLE"
 msgstr "Send us a message!"
 
@@ -57,6 +105,12 @@ msgstr "Add new Item | LëtzSwap!"
 
 msgid "ITEM.NEW.BACKLINK"
 msgstr "Back to the items list"
+
+msgid "APP.TITLE"
+msgstr "LëtzSwap!"
+
+msgid "CONTACT.FORM.SUBJECT"
+msgstr "The subject of your message"
 
 msgid "ADD_ITEM.TITLE"
 msgstr "Title"

@@ -184,7 +184,6 @@ class ItemController extends AbstractController
 
         $this->addFlash('success', "We send an email to the owner.");
 
-        // TODO: use flash message on item and disable activation route
         return $this->redirectToRoute('item_index');
     }
 
@@ -203,7 +202,6 @@ class ItemController extends AbstractController
 
         $this->addFlash('success', "The item was reported successfully.");
 
-        // TODO: use flash message on item and disable activation route
         return $this->redirectToRoute('item_index');
     }
 }

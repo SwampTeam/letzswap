@@ -238,6 +238,11 @@ body{
     justify-content: center;
     max-width: 350px;
 }
+/* This is applied on the log-in form template in case of a user clicking on letzswap withouth being loged */
+.form-control {
+    margin:0.5rem;
+}
+
 
 .about_info{
     margin: 0 auto;

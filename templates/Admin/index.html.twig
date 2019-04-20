@@ -11,71 +11,71 @@
         </div>
     {% else %}
         <table border="5">
-        <thead>
-        <tr>
-            <th>Item Picture</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Condition Status</th>
-            <th>Reported</th>
-            <th>Item Owner</th>
-            <th>Options</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for item in items %}
-
+            <thead>
             <tr>
-                {% for picture in pictures %}
-                    {% if picture.item.id  == item.getId() %}
-                        <td><img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
-                                 alt="{{ item.title }}" width="150px">
-                        </td>
-                    {% endif %}
-                {% endfor %}
-                <td>{{ item.title }}</td>
-                <td>{{ item.description }}</td>
-                <td>{{ item.conditionStatus }}</td>
-                <td>
-                    {% set reported = false %}
-                    {% for stats in item.getStatuses() %}
-                        {% if stats.getStatuses().getLabel() == 'reported' %}
-                            {% set reported = true %}
+                <th>Item Picture</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Condition Status</th>
+                <th>Reported</th>
+                <th>Item Owner</th>
+                <th>Options</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for item in items %}
+
+                <tr>
+                    {% for picture in pictures %}
+                        {% if picture.item.id  == item.getId() %}
+                            <td><img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
+                                     alt="{{ item.title }}" width="150px">
+                            </td>
                         {% endif %}
                     {% endfor %}
-                    {% if reported %}
-                        Yes
-                    {% else %}
-                        No
-                    {% endif %}
-                </td>
-                <td>{{ item.getUser().getUsername() }}</td>
-                <td>
-                    <div>
-                        <form method="get" action="{{ path('item_details', {'id': item.id}) }}">
-                            <button class="btn">Details</button>
-                        </form>
-                    </div>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.conditionStatus }}</td>
+                    <td>
+                        {% set reported = false %}
+                        {% for stats in item.getStatuses() %}
+                            {% if stats.getStatuses().getLabel() == 'reported' %}
+                                {% set reported = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if reported %}
+                            Yes
+                        {% else %}
+                            No
+                        {% endif %}
+                    </td>
+                    <td>{{ item.getUser().getUsername() }}</td>
+                    <td>
+                        <div>
+                            <form method="get" action="{{ path('item_details', {'id': item.id}) }}">
+                                <button class="btn">Details</button>
+                            </form>
+                        </div>
 
-                    <div>
-                        <form method="post" action="{{ path('item_edit', {'id': item.id}) }}">
-                            <button class="btn">Edit</button>
-                        </form>
-                    </div>
+                        <div>
+                            <form method="post" action="{{ path('item_edit', {'id': item.id}) }}">
+                                <button class="btn">Edit</button>
+                            </form>
+                        </div>
 
-                    <div>
-                        <form method="post" action="{{ path('item_delete', {'id': item.id}) }}"
-                              onsubmit="return confirm('Are you sure you really want to delete this item?');">
-                            <input type="hidden" name="_method" value="DELETE">
-                            <input type="hidden" name="csrf_token" value="{{ csrf_token('delete-item') }}"/>
-                            <button class="btn">Delete</button>
-                        </form>
-                    </div>
-                </td>
-            </tr>
+                        <div>
+                            <form method="post" action="{{ path('item_delete', {'id': item.id}) }}"
+                                  onsubmit="return confirm('Are you sure you really want to delete this item?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token('delete-item') }}"/>
+                                <button class="btn">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
             </tbody>
-            </table>
-        {% endfor %}
+        </table>
     {% endif %}
 
     <h1>Users</h1>
@@ -85,80 +85,98 @@
         </div>
     {% else %}
         <table border="5">
-        <thead>
-        <tr>
-            <th>User Gravatar</th>
-            <th>Username</th>
-            <th>E-mail</th>
-            <th>E-mail confirmed</th>
-            <th>ToS Accepted</th>
-            <th>Role</th>
-            <th>Reported</th>
-            <th>Options</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
+            <thead>
             <tr>
-                <td>
-                    {{ user_avatar.getAvatar(user.email, user.username, 100) | raw }}
-                </td>
-                <td>
-                    {{ user.username }}
-                </td>
-                <td>
-                    {{ user.email }}
-                </td>
-                <td>
-                    {% if user.emailconfirmed == 1 %}
-                        Yes
-                    {% else %}
-                        No
-                    {% endif %}
-                </td>
-                <td>
-                    {% if user.tosaccepted == 1 %}
-                        Yes
-                    {% else %}
-                        No
-                    {% endif %}
-                </td>
-                <td>
-                    {% for role in user.getroles() %}
-                        {% if role == 'ROLE_ADMIN' %}
-                            Admin,
-                        {% endif %}
-                        {% if role == 'ROLE_USER' %}
-                            User
-                        {% endif %}
-                    {% endfor %}
-                </td>
-                <td>
-                    {% set reported = false %}
-                    {% for stats in user.getStatuses() %}
-                        {% if stats.getStatuses().getLabel() == 'reported' %}
-                            {% set reported = true %}
-                        {% endif %}
-                    {% endfor %}
-                    {% if reported %}
-                        Yes
-                    {% else %}
-                        No
-                    {% endif %}
-                </td>
-                <td>
-                    {#options#}
-                    <form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
-                          onsubmit="return confirm('Are you sure you really want to delete this user?');">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <input type="hidden" name="csrf_token_rmuser" value="{{ csrf_token('delete-user') }}"/>
-                        <button class="btn">Delete</button>
-                    </form>
-                </td>
+                <th>User Gravatar</th>
+                <th>Username</th>
+                <th>E-mail</th>
+                <th>E-mail confirmed</th>
+                <th>ToS Accepted</th>
+                <th>Role</th>
+                <th>Reported</th>
+                <th>Options</th>
             </tr>
-
+            </thead>
+            <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>
+                        {{ user_avatar.getAvatar(user.email, user.username, 100) | raw }}
+                    </td>
+                    <td>
+                        {{ user.username }}
+                    </td>
+                    <td>
+                        {{ user.email }}
+                    </td>
+                    <td>
+                        {% if user.emailconfirmed == 1 %}
+                            Yes
+                        {% else %}
+                            No
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if user.tosaccepted == 1 %}
+                            Yes
+                        {% else %}
+                            No
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% for role in user.getroles() %}
+                            {% if role == 'ROLE_ADMIN' %}
+                                Admin,
+                            {% endif %}
+                            {% if role == 'ROLE_USER' %}
+                                User
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>
+                        {% set reported = false %}
+                        {% for stats in user.getStatuses() %}
+                            {% if stats.getStatuses().getLabel() == 'reported' %}
+                                {% set reported = true %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if reported %}
+                            Yes
+                        {% else %}
+                            No
+                        {% endif %}
+                    </td>
+                    <td>
+                        {#options#}
+                        <div>
+                            <form method="post" action="{{ path('user_unban', {'id': user.id}) }}"
+                                  onsubmit="return confirm('Are you sure you really want to BAN this user?');">
+                                <input type="hidden" name="_method" value="POST">
+                                <input type="hidden" name="csrf_token_banuser" value="{{ csrf_token('ban-user') }}"/>
+                                <button class="btn">Unban</button>
+                            </form>
+                        </div>
+                        <div>
+                            <form method="post" action="{{ path('user_ban', {'id': user.id}) }}"
+                                  onsubmit="return confirm('Are you sure you really want to BAN this user?');">
+                                <input type="hidden" name="_method" value="POST">
+                                <input type="hidden" name="csrf_token_banuser" value="{{ csrf_token('ban-user') }}"/>
+                                <button class="btn">Ban</button>
+                            </form>
+                        </div>
+                        <div>
+                            <form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
+                                  onsubmit="return confirm('Are you sure you really want to DELETE user {{ user.username }}?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="csrf_token_rmuser" value="{{ csrf_token('delete-user') }}"/>
+                                <button class="btn">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
             </tbody>
-            </table>
-        {% endfor %}
+        </table>
+
     {% endif %}
 {% endblock %}

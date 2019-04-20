@@ -1,4 +1,10 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
+<ul class="pictures">
+    {# iterate over each existing tag and render its only field: name #}
+    {% for picture in pictures %}
+        <img src="{{ asset(''~ '../var/uploads/' ~ picture.path ~ '') }}" width="200px" alt="test">
+    {% endfor %}
+</ul>
 <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

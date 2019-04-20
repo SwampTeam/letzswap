@@ -141,11 +141,12 @@ class ItemController extends AbstractController
                 ->flush();
 
             return $this->redirectToRoute('item_index', [
-                'id' => $item->getId(),
+                'id' => $item->getId()
             ]);
         }
         return $this->render('item/edit.html.twig', [
             'item' => $item,
+            'pictures' => $item->getPictures(),
             'form' => $form->createView()
         ]);
     }

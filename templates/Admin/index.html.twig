@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}LëtzSwap Admin Area{% endblock %}
+{% block title %}LëtzSwap! Admin Area{% endblock %}
 
 {% block body %}
 
     <h1>Items</h1>
-    <table border="5">
+    {% if items == null %}
+        <div class="empty-items">
+            No Items found
+        </div>
+    {% else %}
+        <table border="5">
         <thead>
         <tr>
             <th>Item Picture</th>
@@ -32,13 +37,13 @@
                 <td>{{ item.description }}</td>
                 <td>{{ item.conditionStatus }}</td>
                 <td>
-                    {% set repported = false %}
+                    {% set reported = false %}
                     {% for stats in item.getStatuses() %}
                         {% if stats.getStatuses().getLabel() == 'reported' %}
-                            {% set repported = true %}
+                            {% set reported = true %}
                         {% endif %}
                     {% endfor %}
-                    {% if repported %}
+                    {% if reported %}
                         Yes
                     {% else %}
                         No
@@ -68,17 +73,18 @@
                     </div>
                 </td>
             </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no items found</td>
-            </tr>
+            </tbody>
+            </table>
         {% endfor %}
-        </tbody>
-    </table>
-    <a href="{{ path('item_new') }}">Add new item</a>
+    {% endif %}
 
     <h1>Users</h1>
-    <table border="5">
+    {% if users == null %}
+        <div class="empty-items">
+            No Users found
+        </div>
+    {% else %}
+        <table border="5">
         <thead>
         <tr>
             <th>User Gravatar</th>
@@ -128,26 +134,31 @@
                     {% endfor %}
                 </td>
                 <td>
-                    {% set repported = false %}
+                    {% set reported = false %}
                     {% for stats in user.getStatuses() %}
                         {% if stats.getStatuses().getLabel() == 'reported' %}
-                            {% set repported = true %}
+                            {% set reported = true %}
                         {% endif %}
                     {% endfor %}
-                    {% if repported %}
+                    {% if reported %}
                         Yes
                     {% else %}
                         No
                     {% endif %}
                 </td>
-                <td>options</td>
+                <td>
+                    {#options#}
+                    <form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
+                          onsubmit="return confirm('Are you sure you really want to delete this user?');">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="hidden" name="csrf_token_rmuser" value="{{ csrf_token('delete-user') }}"/>
+                        <button class="btn">Delete</button>
+                    </form>
+                </td>
             </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no users found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
+            </tbody>
+            </table>
+        {% endfor %}
+    {% endif %}
 {% endblock %}

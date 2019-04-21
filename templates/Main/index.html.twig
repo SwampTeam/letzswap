@@ -7,6 +7,9 @@
 
         <div class="container-fluid justify-content-center">
             <div class="d-flex justify-content-center flex-wrap ">
+                {% if items == null %}
+                    Scotty, I think we have a big problem!
+                {% endif %}
                 {% for item in items %}
                     {% for picture in pictures %}
                         {% if picture.item.id  == item.getId() %}

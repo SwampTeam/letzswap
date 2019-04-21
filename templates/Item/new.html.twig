@@ -12,9 +12,8 @@
         {{ form_start(formNew) }}
         {{ form_widget(formNew) }}
     </div>
-    <div id="add_item_buttons" class="d-flex justify-content-between">
-        {% if formNew.Submit is defined %}
-            {{ form_widget(formNew.Submit, { 'label': 'NAV.ADD_ITEM.SUBMIT.LABEL' }) }}
-        {% endif %}    </div>
     {{ form_end(formNew) }}
+{% block javascripts %}
+    {{ encore_entry_script_tags('edit-item') }}
+{% endblock %}
 {% endblock %}

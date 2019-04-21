@@ -17,7 +17,7 @@ class PropertyFixture extends Fixture
             $property
                 ->setType($faker->words(2, true))
                 ->setDescription($faker->sentences(3, true))
-                ->setPicture($faker->image(200,200,200));
+                ->setPicture($faker->image('image',250,200));
             $manager->persist($property);
         }
 

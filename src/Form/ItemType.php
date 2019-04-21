@@ -48,7 +48,7 @@ class ItemType extends AbstractType
 
         if ($options['standalone']) {
             $builder->add(
-                'submit',
+                'Submit',
                 SubmitType::class,
                 [
                     'attr' => [

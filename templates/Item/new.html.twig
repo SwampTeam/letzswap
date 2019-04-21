@@ -13,10 +13,8 @@
         {{ form_widget(formNew) }}
     </div>
     <div id="add_item_buttons" class="d-flex justify-content-between">
-        <div id="add_item_buttons" class="d-flex justify-content-between">
-            <button class="button">Save</button>
-        </div>
-        {{ form_widget(formNew.Submit, { 'label': 'NAV.ADD_ITEM.SUBMIT.LABEL' }) }}
-    </div>
+        {% if formNew.Submit is defined %}
+            {{ form_widget(formNew.Submit, { 'label': 'NAV.ADD_ITEM.SUBMIT.LABEL' }) }}
+        {% endif %}    </div>
     {{ form_end(formNew) }}
 {% endblock %}

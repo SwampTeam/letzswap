@@ -63,7 +63,7 @@ class ItemController extends AbstractController
     {
         $item = new Item();
         $picture = new Picture();
-        $form = $this->createForm(ItemType::class, $item);
+        $form = $this->createForm(ItemType::class, $item, ['standalone' => true]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -2,9 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href= {{ asset('css/404.css') }}>
-
-
+    {{ encore_entry_link_tags('404') }}
 {% endblock %}
 
 {% block topmenu "" %}
@@ -126,7 +124,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src= {{ asset('Js/404.js') }}></script>
-
+    {{ encore_entry_script_tags('404') }}
 {% block footer "" %}
 {% endblock %}

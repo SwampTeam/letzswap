@@ -1,3 +1,5 @@
+import '../css/404.css';
+
 TweenMax.to('h1', 1, {
     alpha: 1,
     y: 20,

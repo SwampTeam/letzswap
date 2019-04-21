@@ -54,6 +54,21 @@ class ItemController extends AbstractController
     }
 
     /**
+     * @Route("/upload", name="upload_pictures")
+     */
+    public function upload()
+    {
+        if (empty($_FILES) || $_FILES["file"]["error"]) {
+            die('{"OK": 0}');
+        }
+
+        $fileName = $_FILES["file"]["name"];
+        move_uploaded_file($_FILES["file"]["tmp_name"], "uploads/$fileName");
+
+        die('{"OK": 1}');
+    }
+
+    /**
      * @Route("/new", name="item_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response

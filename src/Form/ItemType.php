@@ -40,21 +40,27 @@ class ItemType extends AbstractType
                     'required' => true,
                     'attr' => ['value' => '']])
             ->add(
-                'Add',
+                'Browse',
                 ButtonType::class,
-                ['label' => 'NAV.ADD_PICTURE.SUBMIT.LABEL',
-                    'attr' => ['class' => 'btn btn-primary upload']]
+                ['label' => 'NAV.ADD_PICTURE.BROWSE.LABEL',
+                    'attr' => [
+                        'class' => 'btn btn-primary browse',
+                        'id' => 'browse']]
+            )
+            ->add(
+                'Upload',
+                ButtonType::class,
+                ['label' => 'NAV.ADD_PICTURE.UPLOAD.LABEL',
+                    'attr' => [
+                        'class' => 'btn btn-primary upload',
+                        'id' => 'upload']]
             );
 
         if ($options['standalone']) {
             $builder->add(
                 'Submit',
                 SubmitType::class,
-                [
-                    'attr' => [
-                        'class' => 'button'
-                    ]
-                ]
+                ['label' => 'NAV.ADD_ITEM.SUBMIT.LABEL', 'attr' => ['class' => 'button']]
             );
         }
     }

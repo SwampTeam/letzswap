@@ -11,4 +11,3 @@ import '../css/app.css';
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // const $ = require('jquery');
 // JS Imports
-import plupload from 'plupload';

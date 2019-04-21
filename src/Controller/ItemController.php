@@ -100,7 +100,7 @@ class ItemController extends AbstractController
         }
         return $this->render('item/new.html.twig', [
             'item' => $item,
-            'form' => $form->createView(),
+            'formNew' => $form->createView(),
         ]);
     }
 

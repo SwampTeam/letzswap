@@ -3,9 +3,20 @@
 {% block title %}{{ 'ITEM.NEW.PAGETITLE'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>{{ 'ITEM.NEW.TITLE'|trans }}</h1>
-
-    {{ include('item/form.html.twig', {'button_label': 'Add Item'}) }}
-
-    <a href="{{ path('item_index') }}">{{ 'ITEM.NEW.BACKLINK'|trans }}</a>
+    <div class="new_item_page">
+        <div>
+            <h1 id="registration_title">{{ 'ITEM.NEW.TITLE'|trans }}</h1>
+        </div>
+    </div>
+    <div>
+        {{ form_start(formNew) }}
+        {{ form_widget(formNew) }}
+    </div>
+    <div id="add_item_buttons" class="d-flex justify-content-between">
+        <div id="add_item_buttons" class="d-flex justify-content-between">
+            <button class="button">Save</button>
+        </div>
+        {{ form_widget(formNew.Submit, { 'label': 'NAV.ADD_ITEM.SUBMIT.LABEL' }) }}
+    </div>
+    {{ form_end(formNew) }}
 {% endblock %}

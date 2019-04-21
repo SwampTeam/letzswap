@@ -38,22 +38,21 @@ class ItemType extends AbstractType
             ->add('pictures', HiddenType::class,
                 ['label' => 'NAV.ADD_ITEM.PICTURE.LABEL',
                     'required' => true,
-                    'value' => null,])
+                    'attr' => ['value' => '']])
             ->add(
                 'Add',
                 ButtonType::class,
                 ['label' => 'NAV.ADD_PICTURE.SUBMIT.LABEL',
-                    'attr' => ['class' => 'btn-success']]
+                    'attr' => ['class' => 'btn btn-primary upload']]
             );
 
         if ($options['standalone']) {
             $builder->add(
-                'Submit',
+                'submit',
                 SubmitType::class,
                 [
-                    'label' => 'NAV.ADD_ITEM.SUBMIT.LABEL',
                     'attr' => [
-                        'class' => 'btn-success'
+                        'class' => 'button'
                     ]
                 ]
             );

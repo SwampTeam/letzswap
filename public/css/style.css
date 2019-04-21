@@ -1,3 +1,4 @@
+/*Phone first! */
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -181,7 +182,8 @@ body{
 .card:hover {
     box-shadow: 0 0 0 3pt #c9f0e3;
 }
-/* This is the end of the Fade in for the card and elevator pitch, Karlo, I also added border-radius to the card hover */
+/* This is the end of the Fade in for the card and elevator pitch, I (Karlo) also added border-radius to the card hover
+its the same what Marco put but only with a border radius tell me what you think*/
 
 .card-img-top {
     max-height: 180px;
@@ -250,7 +252,7 @@ body{
 
 .footer_elements {
     display: flex;
-    justify-content: space-between; /*WHY DOES THIS NOT PUT SPACE BETWEEN TOS AND COPYRIgtH?? ARGHRGH*/
+    justify-content: space-between; /*WHY DOES THIS NOT PUT SPACE BETWEEN TOS AND COPYRIgtH?? ARGHRGH*/ /* Idk Filip */
     align-items: center;
     list-style: none;
 }
@@ -285,81 +287,20 @@ body{
 
 
 .about_info{
-    margin: 0 auto;
+    margin: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 550px;
 }
 
-/* Tablet */
-@media screen and (min-width:800px) {
-
-    #item_detail_buttons {
-        display: flow;
-        justify-content: center;
-        margin: 1rem;
-    }
-    #item_detail_buttons button {
-        margin: 1rem;
-    }
-    #description {
-        display: flex;
-        margin: 1rem;
-    }
-    #description img {
-        width: 400px;
-        height: 400px;
-    }
-    .img-thumbnail {
-        border:none;
-    }
-    #back_button {
-        display: block;
-        margin-top: 1rem;
-        margin-left: auto;
-        margin-right: auto;
-        width: 20%;
-
-    }
-    .new_item_page {
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        max-width: 950px;
-    }
+/* Apolline`s modal to be applied differently on each platform */
+.modal-dialog {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%) !important;
 }
-@media screen and (min-width: 1200px) {
-    #item_detail_buttons {
-    }
-    #description img {
-        width: 800px;
-        height: 600px;
-    }
-    #elevator_pitch h1{
-        text-align: center;
-        font-family: 'Catamaran', sans-serif;
-        font-size: 70px;
-        align-items: center;
-        animation: fadein 3s;
-    }
-    #elevator_pitch p {
-        font-size: 28px;
-        text-align: center;
-        font-family: 'Source Sans Pro', sans-serif;
-
-    }
-
-    .col {
-        margin-top: 6rem;
-    }
-}
-/* Item details ui, Karlo end*/
-
-
-
-/* Add new item ui Karlo*/
 
 
 /* Adding logo to navbar with help of Filip   */
@@ -394,10 +335,86 @@ body{
 /* Terms of service page end */
 
 
-/* Apollines modal to be applied differently on each platform */
-.modal-dialog {
-    position: absolute;
-    top: 30%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
+
+/* Tablet */
+@media screen and (min-width:800px) {
+
+    #item_detail_buttons {
+        display: flow;
+        justify-content: center;
+        margin: 1rem;
+    }
+    #item_detail_buttons button {
+        margin: 1rem;
+    }
+    #description {
+        display: flex;
+        margin: 1rem;
+    }
+    #description img {
+        width: 600px;
+        height: 450px;
+    }
+    .img-thumbnail {
+        border:none;
+    }
+    #back_button {
+        display: block;
+        margin-top: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+        width: 20%;
+
+    }
+    .new_item_page {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 950px;
+    }
+    /* Apolline`s modal to be applied differently on each platform */
+    .modal-dialog {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+    }
 }
+@media screen and (min-width: 1200px) {
+    #item_detail_buttons {
+    }
+    #description img {
+        border-radius: 1.1%;
+        width: 800px;
+        height: 600px;
+    }
+    #elevator_pitch h1{
+        text-align: center;
+        font-family: 'Catamaran', sans-serif;
+        font-size: 70px;
+        align-items: center;
+        animation: fadein 3s;
+    }
+    #elevator_pitch p {
+        font-size: 28px;
+        text-align: center;
+        font-family: 'Source Sans Pro', sans-serif;
+
+    }
+
+    .col {
+        margin-top: 6rem;
+    }
+
+    /* Apolline`s modal to be applied differently on each platform */
+    .modal-dialog {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%) !important;
+    }
+}
+
+
+

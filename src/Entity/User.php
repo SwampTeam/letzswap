@@ -72,8 +72,7 @@ class User implements UserInterface
     private $activationToken;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Item",
-     *     mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Item", mappedBy="user", cascade={"remove"}, orphanRemoval=true)
      */
     private $items;
 
@@ -96,7 +95,7 @@ class User implements UserInterface
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="UserStatus", mappedBy="users", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="UserStatus", mappedBy="users", cascade={"remove"}, fetch="EXTRA_LAZY")
      * @ORM\JoinTable(name="user_status")
      */
     private $statuses;

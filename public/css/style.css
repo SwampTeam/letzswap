@@ -47,7 +47,7 @@ body{
 
 .navbar_list {
     top: 0;
-    margin: 0;
+    margin-bottom: 9px;
     padding: 0;
     display: flex;
     flex-direction: row;
@@ -238,6 +238,11 @@ body{
     justify-content: center;
     max-width: 350px;
 }
+/* This is applied on the log-in form template in case of a user clicking on letzswap withouth being loged */
+.form-control {
+    margin:0.5rem;
+}
+
 
 .about_info{
     margin: 0 auto;
@@ -276,10 +281,19 @@ body{
     font-size: 20px;
     align-items: center;
 }
+#logo h2 {
+    font-weight: bold;
+}
+#logo a {
+    color: #5ff03f;
+}
+
 #logo a:hover {
     text-decoration: none;
 }
-
+#nav_username {
+    margin-right: 2rem;
+}
 
 
 .modal-dialog {

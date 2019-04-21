@@ -20,20 +20,20 @@ class ItemType extends AbstractType
         $builder
             ->add('title', TextType::class, ['label' => 'ADD_ITEM.TITLE'])
             ->add('description', TextareaType::class,
-                ['label' => 'ADD_ITEM.DESCRIPTION',
+                ['label' => 'FORM.ITEM.DESCRIPTION.LABEL',
                     'required' => false
                 ])
-            ->add('conditionstatus', ChoiceType::class, ['label' => 'ADD_ITEM.STATUS',
+            ->add('conditionstatus', ChoiceType::class, ['label' => 'FORM.ITEM.STATUS.LABEL',
                 'choices' => [
-                    'As New' => 'As New',
-                    'Signs of Wear' => 'Signs of Wear',
-                    'For Parts' => 'For Parts'
+                    'FORM.ITEM.STATUS.NEW' => 'As New',
+                    'FORM.ITEM.STATUS.SIGNS' => 'Signs of Wear',
+                    'FORM.ITEM.STATUS.PARTS' => 'For Parts'
                 ],
                 'multiple' => false,
                 'required' => true
             ])
             ->add('picture', FileType::class,
-                ['label' => 'ADD_ITEM.PICTURE',
+                ['label' => 'FORM.ITEM.PICTURE.LABEL',
                     'mapped' => false,
                     'constraints' => [
                         new Image([

@@ -1,0 +1,56 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+msgid "FORM.USER.PASSWORD.ERROR.BLANK"
+msgstr "Password cannot be blank"
+
+msgid "FORM.USER.PASSWORD.ERROR.LENGTH"
+msgstr "Password should be at least {{ limit }} characters"
+
+msgid "FORM.USER.PASSWORD.ERROR.DONT_MATCH"
+msgstr "Typed passwords don't match"
+
+msgid "FORM.USER.PASSWORD.FIRST"
+msgstr "Password"
+
+msgid "FORM.USER.PASSWORD.REPEAT"
+msgstr "Please, repeat your password"
+
+msgid "FORM.USER.EMAIL"
+msgstr "Email address"
+
+msgid "FORM.USER.SUBMIT"
+msgstr "Submit"
+
+msgid "FORM.USER.TOS_ACCEPTED"
+msgstr "I've read and accept the Terms of Service"
+
+msgid "FORM.USER.USERNAME"
+msgstr "Username"
+
+msgid "REGISTRATION.TITLE"
+msgstr "Registration Form"
+
+msgid "REGISTRATION.ACTIVATION.TITLE"
+msgstr "Activation required"
+
+msgid "REGISTRATION.ACTIVATION.INFO"
+msgstr "Your LëtzSwap! account is almost ready! Please check your e-mail account to activate it."
+
+msgid "REGISTRATION.MAIL.TITLE"
+msgstr "Please, activate your LëtzSwap! account"
+
+msgid "REGISTRATION.MAIL.TEXT"
+msgstr "Hello %name%, your brand new LëtzSwap! account was successfully created! To start swapping, please activate your account."
+
+msgid "REGISTRATION.MAIL.HTML.PLEASE_CLICK"
+msgstr "Please click"
+
+msgid "REGISTRATION.MAIL.HTML.LINK"
+msgstr "on this activation link"
+
+msgid "REGISTRATION.MAIL.TXT.COPY_LINK"
+msgstr "Please, copy the following link and paste it in your web browser:"

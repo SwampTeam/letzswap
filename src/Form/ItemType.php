@@ -2,10 +2,10 @@
 
 namespace App\Form;
 
-use App\Entity\Picture;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -35,12 +35,16 @@ class ItemType extends AbstractType
 
         // Pictures data
         $builder
-            ->add('pictures', CollectionType::class,
+            ->add('pictures', HiddenType::class,
                 ['label' => 'NAV.ADD_ITEM.PICTURE.LABEL',
-                    'entry_type' => Picture::class,
-                    'entry_options' => ['label' => false],
-                    'required' => true
-                ]);
+                    'required' => true,
+                    'value' => null,])
+            ->add(
+                'Add',
+                ButtonType::class,
+                ['label' => 'NAV.ADD_PICTURE.SUBMIT.LABEL',
+                    'attr' => ['class' => 'btn-success']]
+            );
 
         if ($options['standalone']) {
             $builder->add(
@@ -59,7 +63,6 @@ class ItemType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-//            'data_class' => Item::class,
             'standalone' => false
         ]);
     }

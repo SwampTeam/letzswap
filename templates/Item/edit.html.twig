@@ -1,13 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Item{% endblock %}
+{% block title %}{{ 'ITEM.EDIT.PAGETITLE'|trans }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Item</h1>
-
-    {{ include('item/form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('item_index') }}">back to list</a>
-
-    {{ include('item/delete-confirm.html.twig') }}
+    <div class="new_item_page">
+        <div>
+            <h1 id="registration_title">{{ 'ITEM.EDIT.TITLE'|trans }}</h1>
+        </div>
+    </div>
+    <div>
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
+    </div>
+    <div id="add_item_buttons" class="d-flex justify-content-between">
+        <button class="button">Save</button>
+    </div>
+    {{ form_end(form) }}
 {% endblock %}

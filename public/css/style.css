@@ -22,6 +22,8 @@ body{
     position: relative;
     background-color: white;
     font-family: 'Source Sans Pro', sans-serif;
+    animation: fadein 3s;
+
 }
 
 #App{
@@ -106,10 +108,10 @@ body{
     flex-direction: row;
 }
 .card {
-    width: 300px;
-    height: 350px;
+    width: 330px;
+    height: 370px;
     background-color: white;
-    margin: 1rem;
+    margin: 2rem;
     overflow: hidden;
     border-radius: 0.5rem;
     -webkit-box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.2);
@@ -119,15 +121,21 @@ body{
     -moz-animation: fadein 2s; /* Firefox < 16 */
     -ms-animation: fadein 2s; /* Internet Explorer */
     -o-animation: fadein 2s; /* Opera < 12.1 */
-    animation: fadein 3s;
+    -webkit-animation-direction: alternate;
+    animation: move-in 2s;
 }
 
-/* The reason why this is applied is when on PC the cards in the second row is "cut" so the above fold rule is not
-respected for the second row of cards, Karlo a.k.a most anxious person alive.
- */
-.col {
-    margin-top: 2rem;
+@keyframes move-in {
+    0% {
+        opacity: 0;
+        transform: translateY(20rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 
 /* This is the start of the Fade in for the card and elevator pitch, Karlo */
 @keyframes fadein {
@@ -170,7 +178,6 @@ respected for the second row of cards, Karlo a.k.a most anxious person alive.
     box-shadow: 0 0 3pt 2pt #c9f0e3;
 }
 
-/* Hard "outline" with box-shadow: */
 .card:hover {
     box-shadow: 0 0 0 3pt #c9f0e3;
 }
@@ -338,10 +345,14 @@ respected for the second row of cards, Karlo a.k.a most anxious person alive.
         animation: fadein 3s;
     }
     #elevator_pitch p {
-        font-size: 30px;
+        font-size: 28px;
         text-align: center;
         font-family: 'Source Sans Pro', sans-serif;
 
+    }
+
+    .col {
+        margin-top: 6rem;
     }
 }
 /* Item details ui, Karlo end*/

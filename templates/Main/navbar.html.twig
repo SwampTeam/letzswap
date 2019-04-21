@@ -5,7 +5,6 @@
     <ul class="navbar_list">
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li id="nav_username">Welcome {{ app.user.username }}! </li>
             <li class="{% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
                 <a class="button navbar_link" href="{{ path('item_new') }}">
                     {{ 'NAV.ADD_ITEM'|trans }}

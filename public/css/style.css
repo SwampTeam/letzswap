@@ -1,4 +1,3 @@
-
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -8,13 +7,10 @@
     transition-duration: 0.3s;
 
 }
+::-webkit-scrollbar {
+    display: none;
+}
 
-#terms {
-    margin: 2rem;
-}
-#terms h1 {
-    text-align: center;
-}
 
 
 body{
@@ -32,6 +28,29 @@ body{
     /*min-height: 70vh;*/
     max-width: 1200px;
     margin: 80px auto 100px;
+}
+
+#elevator_pitch  {
+    margin: 1rem auto 2rem auto;
+    animation: fadein 3s;
+
+}
+#elevator_pitch h1{
+    text-align: center;
+    font-family: 'Catamaran', sans-serif;
+    font-size: 40px;
+    align-items: center;
+    animation: fadein 3s;
+}
+#elevator_pitch h1 span {
+    color: #5ff03f;
+    font-weight: bold;
+}
+#elevator_pitch p {
+    font-size: 25px;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+
 }
 
 .navbar {
@@ -96,17 +115,66 @@ body{
     -webkit-box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 1px 6px 0px rgba(166,166,166,1);
     /* card:hover*/
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 3s;
 }
 
+/* The reason why this is applied is when on PC the cards in the second row is "cut" so the above fold rule is not
+respected for the second row of cards, Karlo a.k.a most anxious person alive.
+ */
+.col {
+    margin-top: 2rem;
+}
+
+/* This is the start of the Fade in for the card and elevator pitch, Karlo */
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
 
 .card:hover {
-    outline: 5px solid #c9f0e3;
-    
+    /*outline: 5px solid #c9f0e3;
     /*-webkit-box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);*/
     /*box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);*/
     /*-webkit-transform: translateY(-5px);*/
     /*transform: translateY(-5px);*/
 }
+.card:hover {
+    box-shadow: 0 0 3pt 2pt #c9f0e3;
+}
+
+/* Hard "outline" with box-shadow: */
+.card:hover {
+    box-shadow: 0 0 0 3pt #c9f0e3;
+}
+/* This is the end of the Fade in for the card and elevator pitch, Karlo, I also added border-radius to the card hover */
 
 .card-img-top {
     max-height: 180px;
@@ -159,54 +227,19 @@ body{
     width: 300px;
     height: 300px;
 
-}
-
-/* Tablet */
-@media screen and (min-width:800px) {
-
-    #item_detail_buttons {
-        display: flow;
-        justify-content: center;
-        margin: 1rem;
-    }
-    #item_detail_buttons button {
-        margin: 1rem;
-    }
-    #description {
-        display: flex;
-        margin: 1rem;
-    }
-    #description img {
-        width: 400px;
-        height: 400px;
-    }
-    .img-thumbnail {
-        border:none;
-    }
-}
-@media screen and (min-width: 1200px) {
-    #item_detail_buttons {
-    }
-    #description img {
-        width: 800px;
-        height: 600px;
-    }
-}
-/* Item details ui, Karlo end*/
-
-.footer {
-    display: flex;
-    z-index: 9999;
-    bottom: 0;
-    width: 100%;
-    height: 50px;
-    justify-content: center;
-    background-color: #f2f2f2;
-    /*position: relative;*/
-    /*min-height: 100vh;*/
-    /*padding-bottom: 60px; !* Should be equal to the height of your footer *!*/
-    /*box-shadow: 0px -10px 30px -12px rgba(0,0,0,0.75);*/
-}
+}.footer {
+     display: flex;
+     z-index: 9999;
+     bottom: 0;
+     width: 100%;
+     height: 50px;
+     justify-content: center;
+     background-color: #f2f2f2;
+     /*position: relative;*/
+     /*min-height: 100vh;*/
+     /*padding-bottom: 60px; !* Should be equal to the height of your footer *!*/
+     /*box-shadow: 0px -10px 30px -12px rgba(0,0,0,0.75);*/
+ }
 
 .footer_elements {
     display: flex;
@@ -252,10 +285,28 @@ body{
     max-width: 550px;
 }
 
-/* Add new item ui Karlo*/
-
-
+/* Tablet */
 @media screen and (min-width:800px) {
+
+    #item_detail_buttons {
+        display: flow;
+        justify-content: center;
+        margin: 1rem;
+    }
+    #item_detail_buttons button {
+        margin: 1rem;
+    }
+    #description {
+        display: flex;
+        margin: 1rem;
+    }
+    #description img {
+        width: 400px;
+        height: 400px;
+    }
+    .img-thumbnail {
+        border:none;
+    }
     #back_button {
         display: block;
         margin-top: 1rem;
@@ -272,6 +323,32 @@ body{
         max-width: 950px;
     }
 }
+@media screen and (min-width: 1200px) {
+    #item_detail_buttons {
+    }
+    #description img {
+        width: 800px;
+        height: 600px;
+    }
+    #elevator_pitch h1{
+        text-align: center;
+        font-family: 'Catamaran', sans-serif;
+        font-size: 70px;
+        align-items: center;
+        animation: fadein 3s;
+    }
+    #elevator_pitch p {
+        font-size: 30px;
+        text-align: center;
+        font-family: 'Source Sans Pro', sans-serif;
+
+    }
+}
+/* Item details ui, Karlo end*/
+
+
+
+/* Add new item ui Karlo*/
 
 
 /* Adding logo to navbar with help of Filip   */
@@ -291,11 +368,22 @@ body{
 #logo a:hover {
     text-decoration: none;
 }
-#nav_username {
-    margin-right: 2rem;
+#username {
+    text-align: center;
+    margin:2rem;
 }
 
+/* Terms of service page start */
+#terms {
+    margin: 2rem;
+}
+#terms h1 {
+    text-align: center;
+}
+/* Terms of service page end */
 
+
+/* Apollines modal to be applied differently on each platform */
 .modal-dialog {
     position: absolute;
     top: 30%;

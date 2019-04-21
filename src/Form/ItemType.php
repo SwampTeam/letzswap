@@ -18,12 +18,12 @@ class ItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, ['label' => 'FORM.ITEM.TITLE.LABEL'])
+            ->add('title', TextType::class, ['label' => 'ADD_ITEM.TITLE'])
             ->add('description', TextareaType::class,
-                ['label' => 'NAV.ADD_ITEM.DESCRIPTION.LABEL',
+                ['label' => 'ADD_ITEM.DESCRIPTION',
                     'required' => false
                 ])
-            ->add('conditionstatus', ChoiceType::class, ['label' => 'NAV.ADD_ITEM.STATUS.LABEL',
+            ->add('conditionstatus', ChoiceType::class, ['label' => 'ADD_ITEM.STATUS',
                 'choices' => [
                     'As New' => 'As New',
                     'Signs of Wear' => 'Signs of Wear',
@@ -33,7 +33,7 @@ class ItemType extends AbstractType
                 'required' => true
             ])
             ->add('picture', FileType::class,
-                ['label' => 'NAV.ADD_ITEM.PICTURE.LABEL',
+                ['label' => 'ADD_ITEM.PICTURE',
                     'mapped' => false,
                     'constraints' => [
                         new Image([
@@ -52,9 +52,9 @@ class ItemType extends AbstractType
                 'Submit',
                 SubmitType::class,
                 [
-                    'label' => 'NAV.ADD_ITEM.SUBMIT.LABEL',
+                    'label' => 'ADD_ITEM.SUBMIT',
                     'attr' => [
-                        'class' => 'btn-success'
+                        'class' => 'button'
                     ]
                 ]
             );

@@ -38,10 +38,10 @@ msgid "REGISTRATION.ACTIVATION.TITLE"
 msgstr "Activation required"
 
 msgid "REGISTRATION.ACTIVATION.INFO"
-msgstr "Your Letzswap account is almost ready! Please check your email account to activate it."
+msgstr "Your LëtzSwap! account is almost ready! Please check your e-mail account to activate it."
 
 msgid "REGISTRATION.MAIL.TITLE"
-msgstr "Please, activate your Letzswap account"
+msgstr "Please, activate your LëtzSwap! account"
 
 msgid "REGISTRATION.MAIL.TEXT"
 msgstr "Hello %name%, your brand new LëtzSwap! account was successfully created! To start swapping, please activate your account."

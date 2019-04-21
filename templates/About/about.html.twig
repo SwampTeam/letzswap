@@ -1,22 +1,23 @@
-{% extends 'base.html.twig'%}
+{% extends 'base.html.twig' %}
 
-{% block title %}About Letzswap{% endblock %}
+{% block title %}{{ 'ABOUT.PAGETITLE'|trans }}{% endblock %}
 
 {% block body %}
 
     <article class="about_info">
-        <h2>About LetzSwap </h2>
+        <h2>About LëtzSwap!</h2>
 
         <p>
-            LetzSwap provides users a place where they can post unwanted items to swap them between themselves.
+            LëtzSwap! provides users a place where they can post unwanted items to swap them between themselves.
         </p>
         <p>
-            Most of us are more and more aware about the effects of our purchase habits and communities are demanding for more sustainable ways to answer their needs.
+            Most of us are more and more aware about the effects of our purchase habits and communities are demanding
+            for more sustainable ways to answer their needs.
         </p>
 
         <h2>Contact us </h2>
-{#{% include 'Contact/contact.html.twig' %}#}
-    {{ form(contactForm) }}
+        {#{% include 'Contact/contact.html.twig' %}#}
+        {{ form(contactForm) }}
     </article>
 
 {% endblock %}

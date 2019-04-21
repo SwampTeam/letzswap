@@ -53,7 +53,7 @@ msgid "FORM.USER.SUBMIT"
 msgstr "Submit"
 
 msgid "FORM.USER.TOS_ACCEPTED"
-msgstr "I've read and accepted LetzSwap Terms of Service"
+msgstr "I've read and accepted LëtzSwap! Terms of Service"
 
 msgid "FORM.USER.USERNAME"
 msgstr "Username"
@@ -65,13 +65,13 @@ msgid "REGISTRATION.ACTIVATION.TITLE"
 msgstr "Activation required"
 
 msgid "REGISTRATION.ACTIVATION.INFO"
-msgstr "Your Letzswap account was created! Please check your email account to activate it."
+msgstr "Your LëtzSwap! account was created! Please check your email account to activate it."
 
 msgid "REGISTRATION.MAIL.TITLE"
-msgstr "Thank you for joining the LetzSwap community"
+msgstr "Thank you for joining the LëtzSwap! community"
 
 msgid "REGISTRATION.MAIL.TEXT"
-msgstr "Hello %name%, your LetzSwap account was successfully created! Follow the activation link to enjoy Swap now."
+msgstr "Hello %name%, your LëtzSwap! account was successfully created! Follow the activation link to enjoy Swap now."
 
 msgid "REGISTRATION.MAIL.HTML.PLEASE_CLICK"
 msgstr "Please click"
@@ -88,9 +88,6 @@ msgstr "Send us a message!"
 msgid "CONTACT.FORM.NAME"
 msgstr "Your name"
 
-msgid "CONTACT.FORM.SUBJECT"
-msgstr "The subject of your message"
-
 msgid "CONTACT.FORM.EMAIL"
 msgstr "Please insert your e-mail"
 
@@ -101,16 +98,16 @@ msgid "ITEM.NEW.TITLE"
 msgstr "Add new Item"
 
 msgid "ITEM.NEW.PAGETITLE"
-msgstr "Add new Item | LëtzSwap!"
+msgstr "New Item | LëtzSwap!"
 
 msgid "ITEM.NEW.BACKLINK"
 msgstr "Back to the items list"
 
-msgid "APP.TITLE"
-msgstr "LëtzSwap!"
-
 msgid "CONTACT.FORM.SUBJECT"
 msgstr "The subject of your message"
+
+msgid "APP.TITLE"
+msgstr "LëtzSwap!"
 
 msgid "ADD_ITEM.TITLE"
 msgstr "Title"
@@ -159,3 +156,24 @@ msgstr "Insert a picture of your Item"
 
 msgid "REPORT.MAIL.TITLE"
 msgstr "The item: %item% was reported!"
+
+msgid "ITEM.EDIT.PAGETITLE"
+msgstr "Item edition | LëtzSwap!"
+
+msgid "HOME.PAGETITLE"
+msgstr "LëtzSwap! | Swap you unused items with locals"
+
+msgid "ITEM.DETAILS.PAGETITLE"
+msgstr "Item details | LëtzSwap!"
+
+msgid "ITEM.EDIT.TITLE"
+msgstr "Edit your item"
+
+msgid "ABOUT.PAGETITLE"
+msgstr "About LëtzSwap!"
+
+msgid "ERROR.404.PAGETITLE"
+msgstr "Welcome in the swamp!"
+
+msgid "TERMS.PAGETITLE"
+msgstr "Terms of Service | LëtzSwap!"

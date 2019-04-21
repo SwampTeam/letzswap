@@ -2,7 +2,7 @@
 
     <ul class="footer_elements">
         <li {% if app.request.attributes.get('_route') == 'term_of_service' %} active {% endif %}>
-            <a class="footer_link" href="{{ path('term_of_service') }}">
+            <a style="margin-right: 1rem" class="footer_link" href="{{ path('term_of_service') }}">
                 {{ 'NAV.TERMS'|trans }}
             </a>
         </li>

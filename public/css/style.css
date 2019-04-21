@@ -75,7 +75,8 @@ body{
     font-weight: bold;
 }
 #elevator_pitch p {
-    font-size: 25px;
+    margin: auto 1rem auto 1rem;
+    font-size: 24px;
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
 
@@ -312,12 +313,29 @@ its the same what Marco put but only with a border radius tell me what you think
 
 
 .about_info{
-    margin: 1rem;
+    text-align: center;
+    margin: 0.7rem;
     display: flex;
+    font-size: 20px;
     flex-direction: column;
     justify-content: center;
     max-width: 550px;
 }
+.about_info h2 {
+    font-size: 50px;
+
+}
+.about_info h2 span {
+    color: #5ff03f;
+    font-weight: bold;
+    font-size: 50px;
+
+}
+/* This is a bootstrap property changed to fit the responsive needs*/
+.form-group {
+    margin-bottom: 0rem;
+}
+/*
 
 /* Apolline`s modal to be applied differently on each platform */
 .modal-dialog {
@@ -405,6 +423,24 @@ its the same what Marco put but only with a border radius tell me what you think
         left: 50%;
         transform: translate(-50%, -50%) !important;
     }
+    .about_info{
+        text-align: center;
+        display: flex;
+        font-size: 20px;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 550px;
+    }
+    .about_info h2 {
+        font-size: 60px;
+
+    }
+    .about_info h2 span {
+        color: #5ff03f;
+        font-weight: bold;
+        font-size: 60px;
+
+    }
 }
 @media screen and (min-width: 1200px) {
     #item_detail_buttons {
@@ -429,7 +465,25 @@ its the same what Marco put but only with a border radius tell me what you think
     }
 
     .col {
-        margin-top: 6rem;
+        margin-top: 4rem;
+    }
+    .about_info{
+        text-align: center;
+        display: flex;
+        font-size: 20px;
+        flex-direction: column;
+        justify-content: center;
+        max-width: 550px;
+    }
+    .about_info h2 {
+        font-size: 60px;
+
+    }
+    .about_info h2 span {
+        color: #5ff03f;
+        font-weight: bold;
+        font-size: 60px;
+
     }
 
     /* Apolline`s modal to be applied differently on each platform */

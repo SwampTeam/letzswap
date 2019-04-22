@@ -151,7 +151,9 @@ body{
     -webkit-animation-direction: alternate;
     animation: move-in 2s;
 }
-
+.card-title {
+    font-size: 18px;
+}
 @keyframes move-in {
     0% {
         opacity: 0;
@@ -212,8 +214,8 @@ body{
 its the same what Marco put but only with a border radius tell me what you think*/
 
 .card-img-top {
-    max-height: 180px;
-    object-fit: contain;
+    max-height: 260px;
+    object-fit: cover;
 }
 
 #add_item_buttons {
@@ -343,6 +345,7 @@ its the same what Marco put but only with a border radius tell me what you think
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%) !important;
+    margin: 8.75rem auto ;
 }
 
 

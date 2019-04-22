@@ -63,7 +63,9 @@ class ItemController extends AbstractController
         }
 
         $fileName = $_FILES["file"]["name"];
-        move_uploaded_file($_FILES["file"]["tmp_name"], "uploads/$fileName");
+        $ext = pathinfo($fileName, PATHINFO_EXTENSION);
+        $uniqueFileName = Uuid::uuid4()->toString() . '.' . $ext;
+        move_uploaded_file($_FILES["file"]["tmp_name"], "../public/uploads/$uniqueFileName");
 
         die('{"OK": 1}');
     }
@@ -90,8 +92,6 @@ class ItemController extends AbstractController
 
             // Picture processing
             $file = $form->get('picture')->getData();
-            $ext = $file->guessExtension();
-            $fileName = Uuid::uuid4()->toString() . '.' . $ext;
             $picture->setPath($fileName);
             $picture->setMimeType($file->getMimeType());
             $picture->setItem($item);

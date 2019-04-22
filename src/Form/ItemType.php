@@ -35,10 +35,10 @@ class ItemType extends AbstractType
 
         // Pictures data
         $builder
-            ->add('pictures', HiddenType::class,
-                ['label' => 'NAV.ADD_ITEM.PICTURE.LABEL',
-                    'required' => true,
-                    'attr' => ['value' => '']])
+//            ->add('pictures', HiddenType::class,
+//                ['label' => 'NAV.ADD_ITEM.PICTURE.LABEL',
+//                    'required' => true,
+//                    'attr' => ['value' => '']])
             ->add(
                 'Browse',
                 ButtonType::class,

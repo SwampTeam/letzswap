@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}{{ 'ITEM.NEW.PAGETITLE'|trans }}{% endblock %}
-
+{% block stylesheets %}
+    {{ encore_entry_link_tags('app') }}
+    {{ encore_entry_link_tags('edit-item') }}
+{% endblock %}
 {% block body %}
     <div class="new_item_page">
         <div>
@@ -10,10 +13,20 @@
     </div>
     <div>
         {{ form_start(formNew) }}
-        {{ form_widget(formNew) }}
+        {{ form_row(formNew.title) }}
+        {{ form_row(formNew.description) }}
+        {{ form_row(formNew.conditionstatus) }}
+        {{ form_row(formNew.Browse) }}
+        <div id="filelist">Your browser doesn't have HTML5 support.</div>
+        <div id="myProgress">
+            <div id="myBar"></div>
+        </div>
+        <pre id="console"></pre>
+        {{ form_row(formNew.Upload) }}
     </div>
     {{ form_end(formNew) }}
-{% block javascripts %}
-    {{ encore_entry_script_tags('edit-item') }}
-{% endblock %}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {{ encore_entry_script_tags('edit-item') }}
+    {% endblock %}
 {% endblock %}

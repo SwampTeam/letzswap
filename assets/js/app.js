@@ -7,7 +7,12 @@
 
 // any CSS you require will output into a single css file (app.css in this case)
 import '../css/app.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
-// const $ = require('jquery');
+
 // JS Imports
+import 'jquery';
+const $ = require('jquery');
+import 'popper.js'
+import 'bootstrap';

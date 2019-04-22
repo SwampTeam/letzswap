@@ -3,6 +3,16 @@
 {% block title %}{{ 'ITEM.EDIT.PAGETITLE'|trans }}{% endblock %}
 
 {% block body %}
+    {#    TODO: Need to be add to CSS to fix bootstrap file imput bug #}
+    <style>
+        .custom-file-label {
+            opacity: 0;
+        }
+
+        .custom-file-input {
+            opacity: 1;
+        }
+    </style>
     <div class="new_item_page">
         <div>
             <h1 id="registration_title">{{ 'ITEM.EDIT.TITLE'|trans }}</h1>
@@ -11,6 +21,11 @@
     <div>
         {{ form_start(form) }}
         {{ form_widget(form) }}
+    </div>
+    <div class="pictures-preview">
+        {% for picturez in picture %}
+            <img src="{{ path('get_picture_content', {'picture': picturez.getId()}) }}" width="150px" alt="">
+        {% endfor %}
     </div>
     <div id="add_item_buttons" class="d-flex justify-content-between">
         <button class="button">Save</button>

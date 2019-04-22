@@ -62,12 +62,10 @@ class ItemController extends AbstractController
     public function addItem(Request $request): Response
     {
         $item = new Item();
-        $picture = new Picture();
         $form = $this->createForm(ItemType::class, $item);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             // Get the user who posted the item
             $item->setUser($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
@@ -77,6 +75,7 @@ class ItemController extends AbstractController
             $file = $form->get('picture')->getData();
             $ext = $file->guessExtension();
             $fileName = Uuid::uuid4()->toString() . '.' . $ext;
+            $picture = new Picture();
             $picture->setPath($fileName);
             $picture->setMimeType($file->getMimeType());
             $picture->setItem($item);
@@ -93,7 +92,6 @@ class ItemController extends AbstractController
             $itemStatus = new ItemStatus();
             $itemStatus->setItem($item)->setStatus($status);
             $entityManager->persist($itemStatus);
-            // Manager do your job
             $entityManager->flush();
 
             return $this->redirectToRoute('item_index');
@@ -128,25 +126,43 @@ class ItemController extends AbstractController
      * @Route("/{id}/edit", name="item_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Item $item
+     * @param PictureRepository $pictureRepository
      * @return Response
+     * @throws \Exception
      */
-    public function editItem(Request $request, Item $item): Response
+    public function editItem(Request $request, Item $item, PictureRepository $pictureRepository): Response
     {
-        $form = $this->createForm(ItemType::class, $item);
+        $form = $this->createForm(ItemType::class, $item, ['empty_data' => true]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $file = $form->get('picture')->getData();
+            if (!empty($file)) {
+                $picture = $pictureRepository->findOneByItem($item->getId());
+                $entityManager->remove($picture);
+                $ext = $file->guessExtension();
+                $fileName = Uuid::uuid4()->toString() . '.' . $ext;
+                $picture = new Picture();
+                $picture->setPath($fileName);
+                $picture->setMimeType($file->getMimeType());
+                $picture->setItem($item);
+                $file->move($this->getParameter('upload_directory'), $fileName);
+                $entityManager->persist($picture);
+            }
             $this->getDoctrine()
                 ->getManager()
                 ->flush();
 
-            return $this->redirectToRoute('item_index', [
+            return $this->redirectToRoute('item_details', [
                 'id' => $item->getId(),
             ]);
         }
         return $this->render('item/edit.html.twig', [
             'item' => $item,
-            'form' => $form->createView()
+            'picture' => $item->getPictures(),
+            'form' => $form->createView(),
+            'upload_directory' => $this->getParameter('upload_directory')
         ]);
     }
 

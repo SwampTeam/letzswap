@@ -394,6 +394,9 @@ its the same what Marco put but only with a border radius tell me what you think
      border-collapse:separate;
  }
 
+#admin_dashboard_items thead {
+    text-align: -webkit-right;
+}
 
 #admin_dashboard_items td {
     padding-right:40px;
@@ -439,7 +442,9 @@ its the same what Marco put but only with a border radius tell me what you think
     border-collapse:separate;
 
 }
-
+#admin_dashboard_users thead {
+    width: 545px;
+}
 
 /*Users end*/
 
@@ -507,6 +512,40 @@ its the same what Marco put but only with a border radius tell me what you think
         font-size: 60px;
 
     }
+    #admin_dashboards {
+        display: flex;
+        flex-direction: column;
+        margin: 2rem;
+    }
+    #admin_dashboard_items {
+        padding: 0.5rem;
+    }
+    #admin_dashboard_items {
+        width: auto;
+    }
+    #admin_dashboard_buttons_users {
+        margin: 2rem ;
+    }
+    #admin_dashboard_items img {
+        width: 250px;
+        height: 250px;
+    }
+    #admin_dashboard_items thead {
+        display: flex;
+        justify-content: flex-end;
+        padding-right: 30px;
+    }
+    #admin_dashboard_users {
+        padding: 0.5rem;
+        align-self: center;
+    }
+
+    #admin_dashboard_buttons_users {
+        margin: 2rem ;
+    }
+    #admin_dashboard_users thead {
+        padding-left: 2px;
+    }
 }
 @media screen and (min-width: 1200px) {
     #item_detail_buttons {
@@ -558,6 +597,19 @@ its the same what Marco put but only with a border radius tell me what you think
         top: 30%;
         left: 50%;
         transform: translate(-50%, -50%) !important;
+    }
+
+    #admin_dashboards {
+        display: flex;
+        flex-direction:row ;
+        width: 1920px;
+    }
+    #App {
+        min-height: initial;
+        max-width: none;
+    }
+    #admin_dashboard_items h1 {
+        
     }
 }
 

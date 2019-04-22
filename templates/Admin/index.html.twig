@@ -3,20 +3,21 @@
 {% block title %}LëtzSwap! Admin Area{% endblock %}
 
 {% block body %}
-
+    <div id="admin_dashboards">
     <h1 style="text-align: center">Items</h1>
     {% if items == null %}
         <div class="empty-items">
             No Items found
         </div>
     {% else %}
+
         <table class="d-flex flex-column" id="admin_dashboard_items">
             <thead>
             <tr>
-                <th id="dashboard_item_picture">Item Picture</th>
+                <th>Picture</th>
                 <th>Title</th>
                 <th>Reported</th>
-                <th>Item Owner</th>
+                <th>Owner</th>
                 <th>Options</th>
             </tr>
             </thead>
@@ -77,7 +78,7 @@
         <table class="d-flex flex-column" id="admin_dashboard_users">
             <thead>
             <tr>
-                <th>Username</th>
+                <th style="padding-right: 102px" width="174px">Username</th>
                 <th>E-mail</th>
                 <th>Reported</th>
                 <th>Options</th>
@@ -145,6 +146,6 @@
             {% endfor %}
             </tbody>
         </table>
-
+        </div>
     {% endif %}
 {% endblock %}

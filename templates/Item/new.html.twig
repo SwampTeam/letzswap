@@ -3,6 +3,16 @@
 {% block title %}{{ 'ITEM.NEW.PAGETITLE'|trans }}{% endblock %}
 
 {% block body %}
+    {#    TODO: Need to be add to CSS to fix bootstrap file imput bug #}
+    <style>
+        .custom-file-label {
+            opacity: 0;
+        }
+
+        .custom-file-input {
+            opacity: 1;
+        }
+    </style>
     <div class="new_item_page">
         <div>
             <h1 id="registration_title">{{ 'ITEM.NEW.TITLE'|trans }}</h1>

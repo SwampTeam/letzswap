@@ -38,8 +38,13 @@ let uploader = new plupload.Uploader({
             $('#myBar').css('width', file.percent + '%');
         },
 
-        UploadComplete: function () {
+        FileUploaded: function () {
             $('#myProgress').hide();
+        },
+
+        UploadComplete: function (up, files) {
+            $('#myProgress').hide();
+            $("#item_pictures").val(files);
         },
 
         Error: function (up, err) {

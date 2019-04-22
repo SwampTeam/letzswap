@@ -32,7 +32,7 @@ class ItemController extends AbstractController
      */
     public function getItems(ItemRepository $itemRepository, PictureRepository $pictureRepository): Response
     {
-        return $this->render('Main/index.html.twig', [
+        return $this->render('main/index.html.twig', [
             'items' => $itemRepository->findAll(),
             'pictures' => $pictureRepository->findAll(),
         ]);

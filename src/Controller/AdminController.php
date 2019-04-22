@@ -31,7 +31,7 @@ class AdminController extends AbstractController
     public function getAdmin(UserRepository $userRepository, ItemRepository $itemRepository, PictureRepository $pictureRepository, AVA $getGravar): Response
     {
 // if ($this->isGranted('ROLE_ADMIN')) {
-        return $this->render('Admin/index.html.twig', [
+        return $this->render('admin/index.html.twig', [
             'users' => $userRepository->findAll(),
             'user_avatar' => $getGravar,
             'items' => $itemRepository->findAll(),

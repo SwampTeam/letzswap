@@ -6,7 +6,7 @@ let uploader = new plupload.Uploader({
     url: '/item/upload',
 
     filters: {
-        max_file_size: '10mb',
+        max_file_size: '5mb',
         mime_types: [
             {title: "Image files", extensions: "jpg,jpeg,png"},
         ]
@@ -38,13 +38,15 @@ let uploader = new plupload.Uploader({
             $('#myBar').css('width', file.percent + '%');
         },
 
-        FileUploaded: function () {
+        FileUploaded: function (up, file, res) {
             $('#myProgress').hide();
-        },
-
-        UploadComplete: function (up, files) {
-            $('#myProgress').hide();
-            $("#item_pictures").val(files);
+            let $pic = $("#item_pictures").val();
+            if ($pic !== '') {
+                $pic += ',';
+            }
+            $pic += res.response;
+            $("#item_pictures").val($pic);
+            console.log(res.response);
         },
 
         Error: function (up, err) {

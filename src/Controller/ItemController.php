@@ -56,18 +56,19 @@ class ItemController extends AbstractController
     /**
      * @Route("/upload", name="upload_pictures")
      */
-    public function upload()
+    public function upload(): Response
     {
         if (empty($_FILES) || $_FILES["file"]["error"]) {
-            die('{"OK": 0}');
+            die('{"NOK": ' . print_r($_FILES, true) . '}');
         }
 
         $fileName = $_FILES["file"]["name"];
         $ext = pathinfo($fileName, PATHINFO_EXTENSION);
         $uniqueFileName = Uuid::uuid4()->toString() . '.' . $ext;
-        move_uploaded_file($_FILES["file"]["tmp_name"], "../public/uploads/$uniqueFileName");
+        move_uploaded_file($_FILES["file"]["tmp_name"], "../public/uploads_tmp/$uniqueFileName");
 
-        die('{"OK": 1}');
+        $res = new Response($uniqueFileName, Response::HTTP_OK);
+        return $res;
     }
 
     /**
@@ -91,12 +92,25 @@ class ItemController extends AbstractController
             $entityManager->persist($item);
 
             // Picture processing
-            $file = $form->get('picture')->getData();
-            $picture->setPath($fileName);
-            $picture->setMimeType($file->getMimeType());
-            $picture->setItem($item);
-            $file->move($this->getParameter('upload_directory'), $fileName);
-            $entityManager->persist($picture);
+            $files = $form->get('pictures')->getData();
+            $filesArray = explode(',', $files);
+            if (!is_array($filesArray)) {
+                $filesArray = [];
+                $filesArray[] = $files;
+            }
+            foreach ($filesArray as $file) {
+                if (file_exists($this->getParameter('upload_tmp_directory') . $file)) {
+                    $originalFilePath = $this->getParameter('upload_tmp_directory') . $file;
+                    $filePath = $this->getParameter('upload_directory') . $file;
+                    $picture = new Picture();
+                    $picture->setPath($file);
+                    $picture->setMimeType(mime_content_type($originalFilePath));
+                    $picture->setItem($item);
+                    rename($originalFilePath, $filePath);
+                    $entityManager->persist($picture);
+
+                }
+            }
 
             // Set active status
             $status = $entityManager->getRepository(Status::class)->findOneByLabel('active');
@@ -162,7 +176,7 @@ class ItemController extends AbstractController
         return $this->render('item/edit.html.twig', [
             'item' => $item,
             'pictures' => $item->getPictures(),
-            'form' => $form->createView()
+            'formEdit' => $form->createView()
         ]);
     }
 

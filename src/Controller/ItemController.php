@@ -122,6 +122,15 @@ class ItemController extends AbstractController
         ]);
     }
 
+    public function rmFile($file)
+    {
+        $file_path = 'var/uploads' . $file;
+        if (file_exists($file_path)) {
+            chown($file_path, 465);
+            unlink($file_path);
+        }
+    }
+
     /**
      * @Route("/{id}/edit", name="item_edit", methods={"GET","POST"})
      * @param Request $request
@@ -139,8 +148,8 @@ class ItemController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $file = $form->get('picture')->getData();
             if (!empty($file)) {
-                $picture = $pictureRepository->findOneByItem($item->getId());
-                $entityManager->remove($picture);
+                $oldPic = $item->getPictures();
+                $this->rmFile($oldPic['name']);
                 $ext = $file->guessExtension();
                 $fileName = Uuid::uuid4()->toString() . '.' . $ext;
                 $picture = new Picture();
@@ -149,11 +158,11 @@ class ItemController extends AbstractController
                 $picture->setItem($item);
                 $file->move($this->getParameter('upload_directory'), $fileName);
                 $entityManager->persist($picture);
+            } else {
+                $this->getDoctrine()
+                    ->getManager()
+                    ->flush();
             }
-            $this->getDoctrine()
-                ->getManager()
-                ->flush();
-
             return $this->redirectToRoute('item_details', [
                 'id' => $item->getId(),
             ]);

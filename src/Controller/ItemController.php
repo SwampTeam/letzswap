@@ -72,6 +72,20 @@ class ItemController extends AbstractController
     }
 
     /**
+     * @param $data
+     * @return string
+     */
+    protected function sanitize($data)
+    {
+        $sanIn = filter_var($data, FILTER_SANITIZE_STRING, FILTER_FLAG_STRIP_HIGH);
+        $sanHttp = str_replace("http:", "", $sanIn);
+        $sanFtp = str_replace("ftp:", "", $sanHttp);
+        $sanOut = strtolower($sanFtp);
+
+        return $sanOut;
+    }
+
+    /**
      * @Route("/new", name="item_new", methods={"GET","POST"})
      * @param Request $request
      * @return Response
@@ -80,7 +94,6 @@ class ItemController extends AbstractController
     public function addItem(Request $request): Response
     {
         $item = new Item();
-        $picture = new Picture();
         $form = $this->createForm(ItemType::class, $item, ['standalone' => true]);
         $form->handleRequest($request);
 
@@ -99,16 +112,16 @@ class ItemController extends AbstractController
                 $filesArray[] = $files;
             }
             foreach ($filesArray as $file) {
-                if (file_exists($this->getParameter('upload_tmp_directory') . $file)) {
-                    $originalFilePath = $this->getParameter('upload_tmp_directory') . $file;
-                    $filePath = $this->getParameter('upload_directory') . $file;
+                $fileClean = $this->sanitize($file);
+                if (file_exists($this->getParameter('upload_tmp_directory') . $fileClean)) {
+                    $originalFilePath = $this->getParameter('upload_tmp_directory') . $fileClean;
+                    $filePath = $this->getParameter('upload_directory') . $fileClean;
                     $picture = new Picture();
-                    $picture->setPath($file);
+                    $picture->setPath($fileClean);
                     $picture->setMimeType(mime_content_type($originalFilePath));
                     $picture->setItem($item);
                     rename($originalFilePath, $filePath);
                     $entityManager->persist($picture);
-
                 }
             }
 

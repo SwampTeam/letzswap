@@ -4,7 +4,6 @@
 
 {% block body %}
     <div id="admin_dashboards">
-    <h1 style="text-align: center">Items</h1>
     {% if items == null %}
         <div class="empty-items">
             No Items found
@@ -12,6 +11,7 @@
     {% else %}
 
         <table class="d-flex flex-column" id="admin_dashboard_items">
+            <caption>All Items</caption>
             <thead>
             <tr>
                 <th>Picture</th>
@@ -69,13 +69,13 @@
         </table>
     {% endif %}
 
-    <h1 style="text-align: center">Users</h1>
     {% if users == null %}
         <div class="empty-items">
             No Users found
         </div>
     {% else %}
         <table class="d-flex flex-column" id="admin_dashboard_users">
+            <caption>All Users</caption>
             <thead>
             <tr>
                 <th style="padding-right: 102px" width="174px">Username</th>
@@ -112,7 +112,7 @@
                         <div>
                             <div id="admin_dashboard_buttons_users">
                             <form method="post" action="{{ path('user_unban', {'id': user.id}) }}"
-                                  onsubmit="return confirm('Are you sure you really want to BAN this user?');">
+                                  onsubmit="return confirm('Are you sure you really want to UN-BAN this user?');">
                                 <input type="hidden" name="_method" value="POST">
                                 <input type="hidden" name="csrf_token_banuser" value="{{ csrf_token('ban-user') }}"/>
                                 <button class="btn btn-primary">Unban</button>

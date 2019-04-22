@@ -1,4 +1,3 @@
-
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -9,13 +8,13 @@
 
 }
 
-body{
+body {
     position: relative;
     background-color: white;
     font-family: 'Source Sans Pro', sans-serif;
 }
 
-#App{
+#App {
     max-width: 1200px;
     margin: 80px auto 100px;
 }
@@ -29,7 +28,7 @@ body{
     display: flex;
     position: fixed;
     background-color: #f2f2f2;
-    box-shadow: -2px 10px 30px -12px rgba(0,0,0,0.75);
+    box-shadow: -2px 10px 30px -12px rgba(0, 0, 0, 0.75);
 }
 
 .navbar_list {
@@ -42,17 +41,19 @@ body{
     color: #336655;
     list-style: none;
 }
+
 .button {
     padding: 2px 18px;
     margin-left: 10px;
     border-radius: 10px;
     font-size: 16px;
     background-color: #c9f0e3;
-    border:1px solid #c9f0e3;
+    border: 1px solid #c9f0e3;
 }
+
 .button:hover {
     background-color: pink;
-    border:1px solid pink;
+    border: 1px solid pink;
 }
 
 .navbar_link {
@@ -63,7 +64,7 @@ body{
 
 .navbar_link:hover {
     text-decoration: none;
-    color:#336655;
+    color: #336655;
 }
 
 .container-fluid {
@@ -72,6 +73,7 @@ body{
     justify-content: center;
     flex-direction: row;
 }
+
 .card {
     width: 300px;
     height: 350px;
@@ -80,7 +82,7 @@ body{
     overflow: hidden;
     border-radius: 0.5rem;
     -webkit-box-shadow: 0 0 100px 40px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 1px 6px 0px rgba(166,166,166,1);
+    box-shadow: 0px 1px 6px 0px rgba(166, 166, 166, 1);
     /* card:hover*/
 }
 
@@ -96,34 +98,40 @@ body{
     max-height: 180px;
     object-fit: contain;
 }
+
 /* Item details ui, Karlo start, mobile first*/
 .table td, .table th {
     border: none;
 }
+
 .img-thumbnail {
     border: none;
 }
+
 #item_detail_buttons {
     display: flex;
     justify-content: space-between;
     margin: 1rem;
 }
+
 #item_detail_buttons button:hover {
     filter: brightness(130%);
     border: 1px solid black;
 
 }
+
 #avatar {
     margin-left: 1rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
     display: flex;
 }
+
 #avatar img {
     border-radius: 50%;
     width: 100px;
     height: 100px;
-    margin-right:2rem ;
+    margin-right: 2rem;
 
 }
 
@@ -131,6 +139,7 @@ body{
     background-color: #46A18E !important;
     border: none;
 }
+
 .row img {
     width: 300px;
     height: 300px;
@@ -138,7 +147,7 @@ body{
 }
 
 /* Tablet */
-@media screen and (min-width:800px) {
+@media screen and (min-width: 800px) {
 
     #item_detail_buttons {
         display: flow;
@@ -146,29 +155,36 @@ body{
         margin: 1rem;
         transform: scale(1.1);
     }
+
     #item_detail_buttons button {
         margin: 1rem;
     }
+
     #description {
         display: flex;
         margin: 1rem;
     }
+
     #description img {
         width: 400px;
         height: 400px;
     }
+
     .img-thumbnail {
-        border:none;
+        border: none;
     }
 }
+
 @media screen and (min-width: 1200px) {
     #item_detail_buttons {
     }
+
     #description img {
         width: 800px;
         height: 600px;
     }
 }
+
 /* Item details ui, Karlo end*/
 
 .footer {
@@ -179,7 +195,7 @@ body{
     height: 50px;
     justify-content: center;
     background-color: #f2f2f2;
-    box-shadow: 0px -10px 30px -12px rgba(0,0,0,0.75);
+    box-shadow: 0px -10px 30px -12px rgba(0, 0, 0, 0.75);
 }
 
 .footer_elements {
@@ -188,6 +204,7 @@ body{
     align-items: center;
     list-style: none;
 }
+
 .registration_page {
     margin: 0 auto;
     display: flex;
@@ -213,7 +230,7 @@ body{
     max-width: 350px;
 }
 
-.about_info{
+.about_info {
     margin: 0 auto;
     display: flex;
     flex-direction: column;

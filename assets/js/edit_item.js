@@ -2,7 +2,7 @@ import plupload from 'plupload';
 import '../css/edit-item.css'
 
 let uploader = new plupload.Uploader({
-    browse_button: 'item_Browse', // this can be an id of a DOM element or the DOM element itself
+    browse_button: 'item_Browse',
     url: '/item/upload',
 
     filters: {
@@ -27,8 +27,8 @@ let uploader = new plupload.Uploader({
         FilesAdded: function (up, files) {
             plupload.each(files, function (file) {
                 document.getElementById('filelist').innerHTML += '<div id="' + file.id + '">' + file.name + ' (' + plupload.formatSize(file.size) + ') <b></b></div>';
-                $('#myProgress').show();
                 $('#myBar').css('width', 1 + '%');
+                $('#myProgress').show();
             });
         },
 
@@ -36,7 +36,10 @@ let uploader = new plupload.Uploader({
             document.getElementById(file.id).getElementsByTagName('b')[0].innerHTML = '<span>' + file.percent + "%</span>";
             $('#myProgress').show();
             $('#myBar').css('width', file.percent + '%');
+        },
 
+        UploadComplete: function () {
+            $('#myProgress').hide();
         },
 
         Error: function (up, err) {

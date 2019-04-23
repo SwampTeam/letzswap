@@ -7,6 +7,7 @@ use App\Entity\Status;
 use App\Entity\ItemStatus;
 use App\Entity\Picture;
 use App\Form\ItemType;
+use App\Form\SwapFormType;
 use App\Mailer\Mailer;
 use App\Service\AvatarGenerator as AVA;
 use App\Repository\ItemRepository;
@@ -102,15 +103,41 @@ class ItemController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/{id}", name="item_details", methods={"GET"})
+     * @param Request $request
      * @param Item $item
      * @param PictureRepository $pictureRepository
      * @param AVA $getGravar
+     * @param Mailer $mailer
      * @return Response
      */
-    public function getDetails(Item $item, PictureRepository $pictureRepository, AVA $getGravar): Response
+    public function getDetails(
+        Request $request, Item $item, PictureRepository $pictureRepository,
+        AVA $getGravar,
+        Mailer $mailer
+    ): Response
     {
+        $form = $this->createForm(
+            SwapFormType::class,
+            null,
+            ['standalone' => true, 'method' => 'GET']
+        );
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $user = $this->getUser();
+            $data = $form->getData();
+            $mailer->sendSwapMail($user, $item, $data);
+            $this->addFlash('success', "We just sent an email to the owner informing you are interested.");
+
+            return $this->redirectToRoute('homepage');
+        }
+
+
         $email = $item->getUser()->getEmail();
         $username = $item->getUser()->getUsername();
         $showGravatar = $getGravar->getAvatar($email, $username, 200);
@@ -118,7 +145,8 @@ class ItemController extends AbstractController
             'item' => $item,
             'picture' => $pictureRepository->findOneByItem($item->getId()),
             'avatar' => $showGravatar,
-            'username' => $username
+            'username' => $username,
+            'swapForm' => $form->createView(),
         ]);
     }
 
@@ -238,22 +266,28 @@ class ItemController extends AbstractController
         }
     }
 
-    /**
-     * @Route("/{id}/swap", name="item_swap", methods={"GET"})
-     * @param Item $item
-     * @param Mailer $mailer
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function swapItem(Item $item, Mailer $mailer)
-    {
-        $user = $this->getUser();
-
-        // FIXME: We need a form with reason and
-        $mailer->sendSwapMail($user, $item);
-
-        // TODO: Add this message to translation
-        $this->addFlash('success', "We just sent an email to the owner informing you are interested.");
-
-        return $this->redirectToRoute('item_index');
-    }
+//    /**
+//     * @Route("/{id}/swap", name="item_swap", methods={"GET"})
+//     * @param Item $item
+//     * @param Mailer $mailer
+//     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+//     */
+//    public function swapItem(Item $item, Mailer $mailer)
+//    {
+//        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+//
+//            $user = $this->getUser();
+//
+//            // FIXME: We need a form with reason and
+//            $mailer->sendSwapMail($user, $item);
+//
+//            // TODO: Add this message to translation
+//            $this->addFlash('success', "We just sent an email to the owner informing you are interested.");
+//
+//            return $this->redirectToRoute('homepage');
+//        }
+//
+//        $this->addFlash('error', "Sorry, only registered users can swap.");
+//        $this->addFlash('warning', "To register, please click on the 'Register' button.");
+//    }
 }

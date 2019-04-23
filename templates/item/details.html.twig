@@ -8,7 +8,8 @@
         <h2>{{ username }}</h2>
     </div>
     <article id="description">
-    <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}" class="img-thumbnail" width="500px" height="200px">
+        <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}" class="img-thumbnail" width="500px"
+             height="200px">
 
         <table class="table">
             <tbody>
@@ -33,18 +34,42 @@
             <button type="button" class="btn btn-success">Back</button>
         </a>
 
-    <a href="{{ path('item_edit', {'id': item.id}) }}"><button type="button" class="btn btn-success">Edit</button></a>
+        <a href="{{ path('item_edit', {'id': item.id}) }}">
+            <button type="button" class="btn btn-success">Edit</button>
+        </a>
+
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
-        <a href="{{ path('item_swap', {'id': item.id}) }}"><button type="button" class="btn btn-primary">LetzSwap!</button></a>
+            <a href="{#{ path('item_swap', {'id': item.id}) }#}">
+                <button id="swap_button" type="button" class="btn btn-primary">LetzSwap!</button>
+            </a>
 
+            <a href="{{ path('item_report', {'id': item.id}) }}">
+                <button type="button" class="btn btn-danger" >Report</button>
+            </a>
 
-
-            <a href="{{ path('register', {'id': item.id}) }}"><button type="button" class="btn btn-primary">LetzSwap!</button></a>
-
-
-        <a href="{{ path('item_report', {'id': item.id}) }}"><button type="button" class="btn btn-danger">Report</button></a>
         {% endif %}
+
         {{ include('item/_delete-confirm.html.twig') }}
+
+
+        <div id="swap_form" style="display:none">
+            {#{ form(swapForm, {'action': path('item_swap', {'id': item.id})}) }#}
+            {{ form(swapForm) }}
+        </div>
+
     </div>
+    <script>
+        document.getElementById("swap_button").addEventListener("click", function(event){
+            event.preventDefault();
+            showHideSwapForm();
+        });
+
+        function showHideSwapForm() {
+            document.getElementById("swap_form").style.display === "none"
+            ? document.getElementById("swap_form").style.display = "block"
+            : document.getElementById("swap_form").style.display = "none";
+
+        }
+    </script>
 {% endblock %}

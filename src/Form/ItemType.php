@@ -54,7 +54,7 @@ class ItemType extends AbstractType
                 [
                     'label' => 'ADD_ITEM.SUBMIT',
                     'attr' => [
-                        'class' => 'button'
+                        'class' => 'btn-success'
                     ]
                 ]
             );

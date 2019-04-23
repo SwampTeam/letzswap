@@ -1,11 +1,10 @@
 <nav class="navbar">
     <div id="logo">
-    <a href="{{ path('homepage') }}"><p>{{ 'APP.TITLE'|trans }}</p></a>
+    <a href="{{ path('homepage') }}"><h2>LëtzSwap</h2></a>
     </div>
     <ul class="navbar_list">
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
             <li class="{% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
                 <a class="button navbar_link" href="{{ path('item_new') }}">
                     {{ 'NAV.ADD_ITEM'|trans }}

@@ -52,7 +52,6 @@ class Mailer
         $this->txtSwapTemplate = $txtSwapTemplate;
     }
 
-    // Working
     public function sendRegistrationMail(User $user, string $subject)
     {
         $message = (new \Swift_Message())
@@ -86,7 +85,6 @@ class Mailer
         $this->mailer->send($message);
     }
 
-
     public function sendReportMail(User $user, Item $item, array $data)
     {
         $text = $data["message"];
@@ -104,7 +102,6 @@ class Mailer
         $this->mailer->send($message);
     }
 
-    // Working
     public function sendContactMail(array $data)
     {
         $message = (new \Swift_Message())

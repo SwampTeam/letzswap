@@ -5,12 +5,12 @@
 {% block body %}
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-    <main>
-        <div id="elevator_pitch">
-            <h1>Welcome back to <span>LëtzSwap</span></h1>
-            <h2 id="username">{{ app.user.username }}   </h2>
-            <p > Letzswap is the simplest way to extend the life of your goods
-                by giving them a new owner. Swish locally, exchange on your own terms, swap easily!
+        <main>
+            <div id="elevator_pitch">
+                <h1>Welcome back to <span>LëtzSwap</span></h1>
+                <h2 id="username">{{ app.user.username }}   </h2>
+                <p> Letzswap is the simplest way to extend the life of your goods
+                    by giving them a new owner. Swish locally, exchange on your own terms, swap easily!
                 </p>
             </div>
 
@@ -37,10 +37,6 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ item.title }}</h5>
                                     <div id="butons">
-                                        {% if (item.getUser.getId() != app.user.id) %}
-                                        <a href="{{ path('item_report', {'id': item.getId()}) }}"
-                                           class="btn btn-danger"><i class="fab fa-font-awesome-flag"></i></a>
-                                        {% endif %}
                                         <a href="{{ path('item_details', {'id': item.getId()}) }}"
                                            class="btn btn-info"><i class="fas fa-info"></i></a>
                                     </div>
@@ -85,15 +81,8 @@
                                      alt="{{ item.title }}" width="250px">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ item.title }}</h5>
-                                    {% if is_granted('ROLE_USER') %}
-                                        <div id="butons">
-                                            <a href="{{ path('item_report', {'id': item.getId()}) }}"
-                                               class="btn btn-danger"><i class="fab fa-font-awesome-flag"></i></a>
-                                        </div>
-                                    {% else %}
-                                        <a href="{{ path('item_details', {'id': item.getId()}) }}"
-                                           class="btn btn-info"><i class="fas fa-info"></i></a>
-                                    {% endif %}
+                                    <a href="{{ path('item_details', {'id': item.getId()}) }}"
+                                       class="btn btn-info"><i class="fas fa-info"></i></a>
                                 </div>
                             </div>
                         </div>

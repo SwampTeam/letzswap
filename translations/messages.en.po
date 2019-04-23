@@ -28,6 +28,9 @@ msgstr "Swap Now"
 msgid "NAV.ABOUT"
 msgstr "About"
 
+msgid "NAV.ADMIN"
+msgstr "Admin"
+
 msgid "HOME.ITEM_COUNT"
 msgstr "Total items count"
 

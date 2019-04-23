@@ -5,6 +5,13 @@
     <ul class="navbar_list">
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li class="{% if app.request.attributes.get('_route') == 'admin' %} active {% endif %}">
+                    <a class="button navbar_link" href="{{ path('admin') }}">
+                        {{ 'NAV.ADMIN'|trans }}
+                    </a>
+                </li>
+            {% endif %}
             <li class="{% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
                 <a class="button navbar_link" href="{{ path('item_new') }}">
                     {{ 'NAV.ADD_ITEM'|trans }}

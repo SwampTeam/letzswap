@@ -45,7 +45,7 @@
         {% if is_granted('ROLE_USER') %}
             {% if (item.getUser.getId() != app.user.id) %}
             <a href="#">
-                <button id="swap_button" type="button" class="btn btn-primary">LetzSwap!</button>
+                <button id="swap_button" type="button" class="btn btn-primary">LëtzSwap!</button>
             </a>
             <a href="#">
                 <button id="report_button" type="button" class="btn btn-danger">Report</button>
@@ -53,7 +53,6 @@
             {% endif %}
         {% endif %}
     </div>
-        {{ include('item/_delete-confirm.html.twig') }}
 
         <div id="swap_form" style="display:none">
             {{ form(swapForm) }}
@@ -63,11 +62,6 @@
             {{ form(reportForm) }}
         </div>
 
-
-
-    <div id="swap_form" style="display:none">
-        {{ form(swapForm) }}
-    </div>
     <script>
         document.getElementById("swap_button").addEventListener("click", function (event) {
             event.preventDefault();

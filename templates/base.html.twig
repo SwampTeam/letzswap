@@ -27,10 +27,11 @@
 
 
 <body>
-{% block topmenu %}
-    {% include 'main/navbar.html.twig' %}
-{% endblock %}
+{% include 'main/navbar.html.twig' %}
 
+{% block banner %}
+    <div style="height: 100px"></div>
+{% endblock %}
 
 <div id="App">
     {% include 'flash_message.html.twig' %}

@@ -8,7 +8,7 @@
         <h2>{{ username }}</h2>
     </div>
     <article id="description">
-        <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}" class="img-fluid" width="500px"
+        <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}" class="img-thumbnail" width="500px"
              height="200px">
 
         <table class="table">
@@ -21,50 +21,52 @@
                 <th style="color: #46a18e">Condition Status:</th>
                 <td>{{ item.conditionStatus }}</td>
             </tr>
-            {% if item.description %}
-                <tr>
-                    <th style="color: #46a18e">Description:</th>
-                    <td>{{ item.description }}</td>
-                </tr>
-            {% endif %}
+            <tr>
+                <th style="color: #46a18e">Description:</th>
+                <td>{{ item.description }}</td>
+            </tr>
             </tbody>
         </table>
     </article>
 
     <div id="item_detail_buttons">
-        <a href="{{ path('item_index') }}">
+        <a href="{{ path('homepage') }}">
             <button type="button" class="btn btn-success">Back</button>
         </a>
+        {% if is_granted('ROLE_USER') and (item.getUser.getId() == app.user.id) %}
 
-        <a href="{{ path('item_edit', {'id': item.id}) }}">
-            <button type="button" class="btn btn-success">Edit</button>
-        </a>
-
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-
-            <a href="{#{ path('item_swap', {'id': item.id}) }#}">
-                <button id="swap_button" type="button" class="btn btn-primary">LetzSwap!</button>
+            <a href="{{ path('item_edit', {'id': item.id}) }}">
+                <button type="button" class="btn btn-success">Edit</button>
             </a>
 
-            <a href="{#{ path('item_report', {'id': item.id}) }#}">
-                <button id="report_button" type="button" class="btn btn-danger">Report</button>
-            </a>
+            {{ include('item/_delete-confirm.html.twig') }}
 
         {% endif %}
-
+        {% if is_granted('ROLE_USER') %}
+            {% if (item.getUser.getId() != app.user.id) %}
+            <a href="#">
+                <button id="swap_button" type="button" class="btn btn-primary">LetzSwap!</button>
+            </a>
+            <a href="#">
+                <button id="report_button" type="button" class="btn btn-danger">Report</button>
+            </a>
+            {% endif %}
+        {% endif %}
+    </div>
         {{ include('item/_delete-confirm.html.twig') }}
 
-
         <div id="swap_form" style="display:none">
-            {#{ form(swapForm, {'action': path('item_swap', {'id': item.id})}) }#}
             {{ form(swapForm) }}
         </div>
 
         <div id="report_form" style="display:none">
-            {#{ form(swapForm, {'action': path('item_swap', {'id': item.id})}) }#}
             {{ form(reportForm) }}
         </div>
 
+
+
+    <div id="swap_form" style="display:none">
+        {{ form(swapForm) }}
     </div>
     <script>
         document.getElementById("swap_button").addEventListener("click", function (event) {
@@ -84,8 +86,6 @@
             } else {
                 document.getElementById("swap_form").style.display = "none";
             }
-
-
         }
 
         function showHideReportForm() {
@@ -95,7 +95,7 @@
             } else {
                 document.getElementById("report_form").style.display = "none";
             }
-
         }
+
     </script>
 {% endblock %}

@@ -25,6 +25,20 @@ class ItemController extends AbstractController
 {
 
     /**
+     * @Route("/items/all", name="item_index", methods={"GET"})
+     * @param ItemRepository $itemRepository
+     * @param PictureRepository $pictureRepository
+     * @return Response
+     */
+    public function getItems(ItemRepository $itemRepository, PictureRepository $pictureRepository): Response
+    {
+        return $this->render('main/index.html.twig', [
+            'items' => $itemRepository->findAll(),
+            'pictures' => $pictureRepository->findAll(),
+        ]);
+    }
+
+    /**
      * @Route("/picture/{picture}", name="get_picture_content")
      * @param Picture $picture
      * @return Response
@@ -47,6 +61,11 @@ class ItemController extends AbstractController
      */
     public function addItem(Request $request): Response
     {
+        // Check if not activated
+        if (!$this->isGranted('ROLE_USER')) {
+            // Redirect to 404 if not user activated
+            return $this->redirectToRoute('swamp');
+        }
         $item = new Item();
         $form = $this->createForm(ItemType::class, $item);
         $form->handleRequest($request);
@@ -127,6 +146,12 @@ class ItemController extends AbstractController
      */
     public function editItem(Request $request, Item $item, PictureRepository $pictureRepository): Response
     {
+        // Owner of the Item check
+        if ($item->getUser() !== $this->getUser()) {
+            //Redirect to 404 if not owner
+            return $this->redirectToRoute('swamp');
+        }
+
         $form = $this->createForm(ItemType::class, $item, ['empty_data' => true]);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {

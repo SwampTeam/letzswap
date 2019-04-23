@@ -25,20 +25,6 @@ class ItemController extends AbstractController
 {
 
     /**
-     * @Route("/items/all", name="item_index", methods={"GET"})
-     * @param ItemRepository $itemRepository
-     * @param PictureRepository $pictureRepository
-     * @return Response
-     */
-    public function getItems(ItemRepository $itemRepository, PictureRepository $pictureRepository): Response
-    {
-        return $this->render('main/index.html.twig', [
-            'items' => $itemRepository->findAll(),
-            'pictures' => $pictureRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/picture/{picture}", name="get_picture_content")
      * @param Picture $picture
      * @return Response

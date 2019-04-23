@@ -21,13 +21,15 @@ class ItemRepository extends ServiceEntityRepository
         parent::__construct($registry, Item::class);
     }
 
-    public function findPaginated(Request $request, PaginatorInterface $paginator)
+    public function findPaginated(Request $request, PaginatorInterface $paginator, int $itemsPerPage)
     {
-        $queryBuilder = $this->createQueryBuilder('i');
-        return $paginator->paginate(
+        $queryBuilder = $this->createQueryBuilder('p');
+        $pagination = $paginator->paginate(
             $queryBuilder->getQuery(),
             $request->query->getInt('page', 1),
-            5
+            $itemsPerPage
         );
+
+        return $pagination;
     }
 }

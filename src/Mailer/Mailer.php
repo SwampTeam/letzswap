@@ -81,7 +81,7 @@ class Mailer
                 ['user' => $user, 'item' => $item, 'text' => $text]),
                 'text/html')
             ->addPart($this->twig->render($this->txtSwapTemplate,
-                ['user' => $user, 'item' => $item, 'text' => $text]),
+                ['user' => $user, 'item' => $item, 'text-coming-from-swapForm' => $text]),
                 'text/plain');
         $this->mailer->send($message);
     }

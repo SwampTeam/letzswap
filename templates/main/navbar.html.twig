@@ -1,6 +1,6 @@
 <nav class="navbar">
     <div id="logo">
-    <a href="{{ path('homepage') }}"><h2>LëtzSwap</h2></a>
+        <a href="{{ path('homepage') }}"><h2>LëtzSwap</h2></a>
     </div>
     <ul class="navbar_list">
 
@@ -17,17 +17,17 @@
                 </a>
             </li>
             <li class="{% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
-                <a class="button navbar_link" href="{{ path('about')}}">
+                <a class="button navbar_link" href="{{ path('about') }}">
                     {{ 'NAV.ABOUT'|trans }}
                 </a>
             </li>
         {% else %}
             <li class="{% if app.request.attributes.get('_route') == 'login' %} active {% endif %}">
-                <a class="button navbar_link"  data-toggle="modal" data-target="#modalLogin"  >
+                {#  <a class="button navbar_link" data-toggle="modal" data-target="#modalLogin">#}
+                <a class="button navbar_link" href="{{ path('login') }}">
                     {{ 'NAV.LOGIN'|trans }}
-                       <!--<a class="navbar_link" href="{{ path('login')}}">
-                       </a>-->
                 </a>
+                {#  </a>#}
             </li>
             <li class="{% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
                 <a class="button navbar_link" href="{{ path('register') }}">
@@ -50,17 +50,19 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h3 class="h3 mb-3 font-weight-normal">Please sign in</h3>
-                <label for="inputUsername" class="sr-only" >{{ 'LOGIN.USERNAME.LABEL' | trans }} </label>
+                <label for="inputUsername" class="sr-only">{{ 'LOGIN.USERNAME.LABEL' | trans }} </label>
             </div>
             <form method="post" action="{{ path('login') }}">
                 {% if error|default(false) %}
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
                 <div class="modal-body">
-                    <input type="text" value="{{ last_username|default("") }}" name="username" id="inputUsername" class="form-control"
+                    <input type="text" value="{{ last_username|default("") }}" name="username" id="inputUsername"
+                           class="form-control"
                            placeholder="Username" required autofocus><br>
                     <label for="inputPassword" class="sr-only">{{ 'LOGIN.PASSWORD.LABEL' | trans }}</label>
-                    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <input type="password" name="password" id="inputPassword" class="form-control"
+                           placeholder="Password" required>
 
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                 </div>

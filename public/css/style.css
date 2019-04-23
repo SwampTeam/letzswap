@@ -56,7 +56,7 @@ body{
 #App{
     /*min-height: 70vh;*/
     max-width: 1200px;
-    margin: 80px auto 100px;
+    margin: 10px auto 100px;
 }
 
 
@@ -133,7 +133,6 @@ body{
     font-weight: bold;
 }
 #elevator_pitch p {
-    margin: auto ;
     font-size: 14px;
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
@@ -266,7 +265,7 @@ its the same what Marco put but only with a border radius tell me what you think
 .btn-success, .btn-primary {
     background-color: #336655 !important;
     border: none;
-    border-radius: 5%;
+    border-radius: 10px;
     padding: 0.45rem;
 }
 .row img {

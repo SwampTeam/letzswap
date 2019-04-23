@@ -119,20 +119,38 @@ class ItemController extends AbstractController
         Mailer $mailer
     ): Response
     {
-        $form = $this->createForm(
+        $swapForm = $this->createForm(
             SwapFormType::class,
             null,
             ['standalone' => true, 'method' => 'GET']
         );
 
-        $form->handleRequest($request);
+        $swapForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($swapForm->isSubmitted() && $swapForm->isValid()) {
 
             $user = $this->getUser();
-            $data = $form->getData();
-            $mailer->sendSwapMail($user, $item, $data);
+            $swapFormData = $swapForm->getData();
+            $mailer->sendSwapMail($user, $item, $swapFormData);
             $this->addFlash('success', "We just sent an email to the owner informing you are interested.");
+
+            return $this->redirectToRoute('homepage');
+        }
+
+        $reportForm = $this->createForm(
+            SwapFormType::class,
+            null,
+            ['standalone' => true, 'method' => 'GET']
+        );
+
+        $reportForm->handleRequest($request);
+
+        if ($reportForm->isSubmitted() && $reportForm->isValid()) {
+
+            $user = $this->getUser();
+            $reportFormData = $swapForm->getData();
+            $mailer->sendSwapMail($user, $item, $reportFormData);
+            $this->addFlash('success', "Our admins will receive this message and get back to you as soon as possible.");
 
             return $this->redirectToRoute('homepage');
         }
@@ -146,7 +164,8 @@ class ItemController extends AbstractController
             'picture' => $pictureRepository->findOneByItem($item->getId()),
             'avatar' => $showGravatar,
             'username' => $username,
-            'swapForm' => $form->createView(),
+            'swapForm' => $swapForm->createView(),
+            'reportForm' => $reportForm->createView(),
         ]);
     }
 

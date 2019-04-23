@@ -8,6 +8,7 @@ use App\Entity\ItemStatus;
 use App\Entity\Picture;
 use App\Form\ItemType;
 use App\Form\SwapFormType;
+use App\Form\ReportFormType;
 use App\Mailer\Mailer;
 use App\Service\AvatarGenerator as AVA;
 use App\Repository\ItemRepository;
@@ -126,7 +127,6 @@ class ItemController extends AbstractController
         );
 
         $swapForm->handleRequest($request);
-
         if ($swapForm->isSubmitted() && $swapForm->isValid()) {
 
             $user = $this->getUser();
@@ -138,19 +138,35 @@ class ItemController extends AbstractController
         }
 
         $reportForm = $this->createForm(
-            SwapFormType::class,
+            ReportFormType::class,
             null,
             ['standalone' => true, 'method' => 'GET']
         );
 
         $reportForm->handleRequest($request);
-
         if ($reportForm->isSubmitted() && $reportForm->isValid()) {
 
+            $manager = $this->getDoctrine()->getManager();
+            $status = $manager->getRepository(Status::class)->findOneByLabel('reported');
+            if (!$status) {
+                $status = new Status();
+                $status->setLabel('reported');
+                $manager->persist($status);
+            }
+
+            $itemStatus = new ItemStatus();
+            $itemStatus->setItem($item)
+                ->setStatus($status);
+            $manager->persist($itemStatus);
+
+            $manager->flush();
+
             $user = $this->getUser();
-            $reportFormData = $swapForm->getData();
-            $mailer->sendSwapMail($user, $item, $reportFormData);
-            $this->addFlash('success', "Our admins will receive this message and get back to you as soon as possible.");
+
+            $reportFormData = $reportForm->getData();
+            $mailer->sendReportMail($user, $item, $reportFormData);
+
+            $this->addFlash('success', "The item was successfully reported and we send an email to its owner.");
 
             return $this->redirectToRoute('homepage');
         }
@@ -247,43 +263,43 @@ class ItemController extends AbstractController
         return $this->redirectToRoute('item_index');
     }
 
-    /**
-     * @Route("/{id}/report", name="item_report", methods={"GET"})
-     * @param Item $item
-     * @param Mailer $mailer
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function reportItem(Item $item, Mailer $mailer)
-    {
-
-        if ($this->isGranted('ROLE_USER')) {
-
-            $manager = $this->getDoctrine()->getManager();
-            $status = $manager->getRepository(Status::class)->findOneByLabel('reported');
-            if (!$status) {
-                $status = new Status();
-                $status->setLabel('reported');
-                $manager->persist($status);
-            }
-
-            $itemStatus = new ItemStatus();
-            $itemStatus->setItem($item)
-                ->setStatus($status);
-            $manager->persist($itemStatus);
-
-            $manager->flush();
-
-            $user = $this->getUser();
-
-            // FIXME: We need a form with reason and
-            $mailer->sendReportMail($user, $item);
-
-            // TODO: Add this to messages
-            $this->addFlash('success', "The item was successfully reported and we send an email to its owner.");
-
-            return $this->redirectToRoute('item_index');
-        }
-    }
+//    /**
+//     * @Route("/{id}/report", name="item_report", methods={"GET"})
+//     * @param Item $item
+//     * @param Mailer $mailer
+//     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+//     */
+//    public function reportItem(Item $item, Mailer $mailer)
+//    {
+//
+//        if ($this->isGranted('ROLE_USER')) {
+//
+//            $manager = $this->getDoctrine()->getManager();
+//            $status = $manager->getRepository(Status::class)->findOneByLabel('reported');
+//            if (!$status) {
+//                $status = new Status();
+//                $status->setLabel('reported');
+//                $manager->persist($status);
+//            }
+//
+//            $itemStatus = new ItemStatus();
+//            $itemStatus->setItem($item)
+//                ->setStatus($status);
+//            $manager->persist($itemStatus);
+//
+//            $manager->flush();
+//
+//            $user = $this->getUser();
+//
+//            // FIXME: We need a form with reason and
+//            $mailer->sendReportMail($user, $item);
+//
+//            // TODO: Add this to messages
+//            $this->addFlash('success', "The item was successfully reported and we send an email to its owner.");
+//
+//            return $this->redirectToRoute('item_index');
+//        }
+//    }
 
 //    /**
 //     * @Route("/{id}/swap", name="item_swap", methods={"GET"})

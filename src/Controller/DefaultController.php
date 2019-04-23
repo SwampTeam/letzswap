@@ -30,6 +30,15 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("denied", name="denied", methods={"GET"})
+     * @return Response
+     */
+    public function deniedAction() : Response
+    {
+        return $this->render('bundles/TwigBundle/Exception/error403.html.twig', []);
+    }
+
+    /**
      * @Route("/terms", name="term_of_service")
      */
     public function termsOfServicesAction()

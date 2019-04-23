@@ -45,6 +45,6 @@
 
         <a href="{{ path('item_report', {'id': item.id}) }}"><button type="button" class="btn btn-danger">Report</button></a>
         {% endif %}
-        {{ include('item/delete-confirm.html.twig') }}
+        {{ include('item/_delete-confirm.html.twig') }}
     </div>
 {% endblock %}

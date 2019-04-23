@@ -25,7 +25,7 @@ class ItemController extends AbstractController
 {
 
     /**
-     * @Route("/items/all", name="items_all", methods={"GET"})
+     * @Route("/items/all", name="item_index", methods={"GET"})
      * @param ItemRepository $itemRepository
      * @param PictureRepository $pictureRepository
      * @return Response
@@ -94,7 +94,7 @@ class ItemController extends AbstractController
             $entityManager->persist($itemStatus);
             $entityManager->flush();
 
-            return $this->redirectToRoute('item_index');
+            return $this->redirectToRoute('homepage');
         }
         return $this->render('item/new.html.twig', [
             'item' => $item,
@@ -143,13 +143,15 @@ class ItemController extends AbstractController
     {
         $form = $this->createForm(ItemType::class, $item, ['empty_data' => true]);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $em = $this->getDoctrine()->getManager();
             $file = $form->get('picture')->getData();
             if (!empty($file)) {
                 $oldPic = $item->getPictures();
                 $this->rmFile($oldPic['name']);
+                $picture = $pictureRepository->findOneByItem($item->getId());
+                $em->remove($picture);
+                unset($picture);
                 $ext = $file->guessExtension();
                 $fileName = Uuid::uuid4()->toString() . '.' . $ext;
                 $picture = new Picture();
@@ -157,7 +159,8 @@ class ItemController extends AbstractController
                 $picture->setMimeType($file->getMimeType());
                 $picture->setItem($item);
                 $file->move($this->getParameter('upload_directory'), $fileName);
-                $entityManager->persist($picture);
+                $em->persist($picture);
+                $em->flush();
             } else {
                 $this->getDoctrine()
                     ->getManager()

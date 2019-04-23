@@ -24,19 +24,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class ItemController extends AbstractController
 {
 
-    /**
-     * @Route("/items/all", name="item_index", methods={"GET"})
-     * @param ItemRepository $itemRepository
-     * @param PictureRepository $pictureRepository
-     * @return Response
-     */
-    public function getItems(ItemRepository $itemRepository, PictureRepository $pictureRepository): Response
-    {
-        return $this->render('main/index.html.twig', [
-            'items' => $itemRepository->findAll(),
-            'pictures' => $pictureRepository->findAll(),
-        ]);
-    }
+//    /**
+//     * @Route("/items/all", name="item_index", methods={"GET"})
+//     * @param ItemRepository $itemRepository
+//     * @param PictureRepository $pictureRepository
+//     * @return Response
+//     */
+//    public function getItems(ItemRepository $itemRepository, PictureRepository $pictureRepository): Response
+//    {
+//        return $this->render('main/index.html.twig', [
+//            'items' => $itemRepository->findAll(),
+//            'pictures' => $pictureRepository->findAll(),
+//        ]);
+//    }
 
     /**
      * @Route("/picture/{picture}", name="get_picture_content")
@@ -208,7 +208,7 @@ class ItemController extends AbstractController
             $entityManager->remove($picture);
             $entityManager->flush();
         }
-        return $this->redirectToRoute('item_index');
+        return $this->redirectToRoute('homepage');
     }
 
     /**

@@ -272,7 +272,7 @@ its the same what Marco put but only with a border radius tell me what you think
      height: 50px;
      justify-content: center;
      background-color: #f2f2f2;
-     /*position: relative;*/
+     position: absolute;
      /*min-height: 100vh;*/
      /*padding-bottom: 60px; !* Should be equal to the height of your footer *!*/
      /*box-shadow: 0px -10px 30px -12px rgba(0,0,0,0.75);*/

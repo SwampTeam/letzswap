@@ -95,6 +95,9 @@ body{
 
 }
 
+.navbar{
+    height: 90px;
+}
 .navbar_link {
     color: #336655;
     text-decoration: none;
@@ -109,7 +112,7 @@ body{
 /*Text from the top main page - header*/
 #elevator_pitch {
     margin-top: 10px;
-    padding: 60px 20px;
+    padding: 90px 20px 20px ;
     animation: fadein 3s;
     background-color: #336655;
     color: #ffffff;

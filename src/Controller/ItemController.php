@@ -25,7 +25,7 @@ class ItemController extends AbstractController
 {
 
     /**
-     * @Route("/items/all", name="items_all", methods={"GET"})
+     * @Route("/items/all", name="item_index", methods={"GET"})
      * @param ItemRepository $itemRepository
      * @param PictureRepository $pictureRepository
      * @return Response

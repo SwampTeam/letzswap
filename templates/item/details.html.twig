@@ -44,31 +44,52 @@
         {% endif %}
         {% if is_granted('ROLE_USER') %}
             {% if (item.getUser.getId() != app.user.id) %}
-                <a href="{{ path('item_swap', {'id': item.id}) }}">
-                    <button type="button" class="btn btn-primary">LëtzSwap!</button>
-                </a>
-
-                <a href="{{ path('item_report', {'id': item.id}) }}">
-                    <button type="button" class="btn btn-danger">Report</button>
-                </a>
+            <a href="#">
+                <button id="swap_button" type="button" class="btn btn-primary">LetzSwap!</button>
+            </a>
+            <a href="#">
+                <button id="report_button" type="button" class="btn btn-danger">Report</button>
+            </a>
             {% endif %}
         {% endif %}
     </div>
+
     <div id="swap_form" style="display:none">
-        {#{ form(swapForm, {'action': path('item_swap', {'id': item.id})}) }#}
         {{ form(swapForm) }}
     </div>
+
+    <div id="report_form" style="display:none">
+        {{ form(reportForm) }}
+    </div>
+
     <script>
         document.getElementById("swap_button").addEventListener("click", function (event) {
             event.preventDefault();
             showHideSwapForm();
         });
 
-        function showHideSwapForm() {
-            document.getElementById("swap_form").style.display === "none"
-                ? document.getElementById("swap_form").style.display = "block"
-                : document.getElementById("swap_form").style.display = "none";
+        document.getElementById("report_button").addEventListener("click", function (event) {
+            event.preventDefault();
+            showHideReportForm();
+        });
 
+        function showHideSwapForm() {
+            if (document.getElementById("swap_form").style.display === "none") {
+                document.getElementById("report_form").style.display = "none";
+                document.getElementById("swap_form").style.display = "block";
+            } else {
+                document.getElementById("swap_form").style.display = "none";
+            }
         }
+
+        function showHideReportForm() {
+            if (document.getElementById("report_form").style.display === "none") {
+                document.getElementById("swap_form").style.display = "none";
+                document.getElementById("report_form").style.display = "block";
+            } else {
+                document.getElementById("report_form").style.display = "none";
+            }
+        }
+        
     </script>
 {% endblock %}

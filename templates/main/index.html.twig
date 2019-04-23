@@ -37,8 +37,10 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{ item.title }}</h5>
                                     <div id="butons">
+                                        {% if (item.getUser.getId() != app.user.id) %}
                                         <a href="{{ path('item_report', {'id': item.getId()}) }}"
                                            class="btn btn-danger"><i class="fab fa-font-awesome-flag"></i></a>
+                                        {% endif %}
                                         <a href="{{ path('item_details', {'id': item.getId()}) }}"
                                            class="btn btn-info"><i class="fas fa-info"></i></a>
                                     </div>

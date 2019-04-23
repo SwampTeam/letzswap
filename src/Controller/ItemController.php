@@ -273,32 +273,32 @@ class ItemController extends AbstractController
             // TODO: Add this to messages
             $this->addFlash('success', "The item was successfully reported and we send an email to its owner.");
 
-            return $this->redirectToRoute('item_index');
+            return $this->redirectToRoute('homepage');
         }
     }
 
-//    /**
-//     * @Route("/{id}/swap", name="item_swap", methods={"GET"})
-//     * @param Item $item
-//     * @param Mailer $mailer
-//     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-//     */
-//    public function swapItem(Item $item, Mailer $mailer)
-//    {
-//        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
-//
-//            $user = $this->getUser();
-//
-//            // FIXME: We need a form with reason and
-//            $mailer->sendSwapMail($user, $item);
-//
-//            // TODO: Add this message to translation
-//            $this->addFlash('success', "We just sent an email to the owner informing you are interested.");
-//
-//            return $this->redirectToRoute('homepage');
-//        }
-//
-//        $this->addFlash('error', "Sorry, only registered users can swap.");
-//        $this->addFlash('warning', "To register, please click on the 'Register' button.");
-//    }
+    /**
+     * @Route("/{id}/swap", name="item_swap", methods={"GET"})
+     * @param Item $item
+     * @param Mailer $mailer
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function swapItem(Item $item, Mailer $mailer)
+    {
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+
+            $user = $this->getUser();
+
+            // FIXME: We need a form with reason and
+            $mailer->sendSwapMail($user, $item);
+
+            // TODO: Add this message to translation
+            $this->addFlash('success', "We just sent an email to the owner informing you are interested.");
+
+            return $this->redirectToRoute('homepage');
+        }
+
+        $this->addFlash('error', "Sorry, only registered users can swap.");
+        $this->addFlash('warning', "To register, please click on the 'Register' button.");
+    }
 }

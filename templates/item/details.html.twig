@@ -30,7 +30,7 @@
     </article>
 
     <div id="item_detail_buttons">
-        <a href="{{ path('item_index') }}">
+        <a href="{{ path('homepage') }}">
             <button type="button" class="btn btn-success">Back</button>
         </a>
         {% if is_granted('ROLE_USER') and (item.getUser.getId() == app.user.id) %}
@@ -43,14 +43,32 @@
 
         {% endif %}
         {% if is_granted('ROLE_USER') %}
-            <a href="{{ path('item_swap', {'id': item.id}) }}">
-                <button type="button" class="btn btn-primary">LetzSwap!</button>
-            </a>
+            {% if (item.getUser.getId() != app.user.id) %}
+                <a href="{{ path('item_swap', {'id': item.id}) }}">
+                    <button type="button" class="btn btn-primary">LëtzSwap!</button>
+                </a>
 
-            <a href="{{ path('item_report', {'id': item.id}) }}">
-                <button type="button" class="btn btn-danger">Report</button>
-            </a>
+                <a href="{{ path('item_report', {'id': item.id}) }}">
+                    <button type="button" class="btn btn-danger">Report</button>
+                </a>
+            {% endif %}
         {% endif %}
-
     </div>
+    <div id="swap_form" style="display:none">
+        {#{ form(swapForm, {'action': path('item_swap', {'id': item.id})}) }#}
+        {{ form(swapForm) }}
+    </div>
+    <script>
+        document.getElementById("swap_button").addEventListener("click", function (event) {
+            event.preventDefault();
+            showHideSwapForm();
+        });
+
+        function showHideSwapForm() {
+            document.getElementById("swap_form").style.display === "none"
+                ? document.getElementById("swap_form").style.display = "block"
+                : document.getElementById("swap_form").style.display = "none";
+
+        }
+    </script>
 {% endblock %}

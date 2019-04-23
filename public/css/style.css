@@ -59,8 +59,8 @@ body{
     margin: 10px auto 100px;
 }
 
-
-/*Navbar design*/
+.nav-elements-to-right-side
+/*Navbar design begin
 .navbar {
     z-index: 9999;
     top: 0;
@@ -108,7 +108,8 @@ body{
     text-decoration: none;
     color:#ffffff;
 }
-
+Navbar design ending
+*/
 /*Text from the top main page - header*/
 #elevator_pitch {
     margin-top: 10px;
@@ -380,10 +381,7 @@ its the same what Marco put but only with a border radius tell me what you think
 #logo a:hover {
     text-decoration: none;
 }
-#username {
-    text-align: center;
-    margin:2rem;
-}
+
 
 /* Terms of service page start */
 #terms {

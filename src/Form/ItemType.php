@@ -6,7 +6,6 @@ use App\Entity\Item;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -31,30 +30,36 @@ class ItemType extends AbstractType
                 ],
                 'multiple' => false,
                 'required' => true
-            ])
-            ->add('picture', FileType::class,
+            ]);
+
+        if ($options['empty_data']) {
+            $builder->add('picture', FileType::class,
                 ['label' => 'FORM.ITEM.PICTURE.LABEL',
                     'mapped' => false,
+                    'required' => false,
                     'constraints' => [
                         new Image([
                             'mimeTypes' => ['image/png', 'image/jpeg'],
                             'mimeTypesMessage' => 'Please upload a jpeg or a png',
-                            'maxSize' => '10M',
+                            'maxSize' => '5M',
                             'minWidth' => 300,
                             'minHeight' => 300
                         ])
                     ]
                 ]
             );
-
-        if ($options['standalone']) {
-            $builder->add(
-                'Submit',
-                SubmitType::class,
-                [
-                    'label' => 'ADD_ITEM.SUBMIT',
-                    'attr' => [
-                        'class' => 'btn-success'
+        } else {
+            $builder->add('picture', FileType::class,
+                ['label' => 'FORM.ITEM.PICTURE.LABEL',
+                    'mapped' => false,
+                    'constraints' => [
+                        new Image([
+                            'mimeTypes' => ['image/png', 'image/jpeg'],
+                            'mimeTypesMessage' => 'Please upload a jpeg or a png',
+                            'maxSize' => '5M',
+                            'minWidth' => 300,
+                            'minHeight' => 300
+                        ])
                     ]
                 ]
             );
@@ -63,9 +68,6 @@ class ItemType extends AbstractType
 
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefaults([
-            'data_class' => Item::class,
-            'standalone' => false
-        ]);
+        $resolver->setDefaults(['data_class' => Item::class]);
     }
 }

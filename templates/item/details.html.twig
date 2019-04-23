@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'ITEM.DETAILS.PAGETITLE'|trans }}{% endblock %}
+
+{% block body %}
+    <div id="avatar">
+        {{ avatar | raw }}
+        <h2>{{ username }}</h2>
+    </div>
+    <article id="description">
+        <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}" class="img-fluid" width="500px"
+             height="200px">
+
+        <table class="table">
+            <tbody>
+            <tr>
+                <th style="color: rgb(70,161,142)">Title:</th>
+                <td>{{ item.title }}</td>
+            </tr>
+            <tr>
+                <th style="color: #46a18e">Condition Status:</th>
+                <td>{{ item.conditionStatus }}</td>
+            </tr>
+            {% if item.description %}
+                <tr>
+                    <th style="color: #46a18e">Description:</th>
+                    <td>{{ item.description }}</td>
+                </tr>
+            {% endif %}
+            </tbody>
+        </table>
+    </article>
+
+    <div id="item_detail_buttons">
+        <a href="{{ path('item_index') }}">
+            <button type="button" class="btn btn-success">Back</button>
+        </a>
+
+        <a href="{{ path('item_edit', {'id': item.id}) }}">
+            <button type="button" class="btn btn-success">Edit</button>
+        </a>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+
+            <a href="{#{ path('item_swap', {'id': item.id}) }#}">
+                <button id="swap_button" type="button" class="btn btn-primary">LetzSwap!</button>
+            </a>
+
+            <a href="{#{ path('item_report', {'id': item.id}) }#}">
+                <button id="report_button" type="button" class="btn btn-danger">Report</button>
+            </a>
+
+        {% endif %}
+
+        {{ include('item/_delete-confirm.html.twig') }}
+
+
+        <div id="swap_form" style="display:none">
+            {#{ form(swapForm, {'action': path('item_swap', {'id': item.id})}) }#}
+            {{ form(swapForm) }}
+        </div>
+
+        <div id="report_form" style="display:none">
+            {#{ form(swapForm, {'action': path('item_swap', {'id': item.id})}) }#}
+            {{ form(reportForm) }}
+        </div>
+
+    </div>
+    <script>
+        document.getElementById("swap_button").addEventListener("click", function (event) {
+            event.preventDefault();
+            showHideSwapForm();
+        });
+
+        document.getElementById("report_button").addEventListener("click", function (event) {
+            event.preventDefault();
+            showHideReportForm();
+        });
+
+        function showHideSwapForm() {
+            if (document.getElementById("swap_form").style.display === "none") {
+                document.getElementById("report_form").style.display = "none";
+                document.getElementById("swap_form").style.display = "block";
+            } else {
+                document.getElementById("swap_form").style.display = "none";
+            }
+
+
+        }
+
+        function showHideReportForm() {
+            if (document.getElementById("report_form").style.display === "none") {
+                document.getElementById("swap_form").style.display = "none";
+                document.getElementById("report_form").style.display = "block";
+            } else {
+                document.getElementById("report_form").style.display = "none";
+            }
+
+        }
+    </script>
+{% endblock %}

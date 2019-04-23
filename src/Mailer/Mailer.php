@@ -70,34 +70,36 @@ class Mailer
         $this->mailer->send($message);
     }
 
-    public function sendSwapMail(User $user, Item $item)
+    public function sendSwapMail(User $user, Item $item, array $data)
     {
+        $text = $data["message"];
         $message = (new \Swift_Message())
             ->setSubject($item->getTitle() . ': someone is interested!')
             ->setFrom($this->letzswapNoReplyEmail)
             ->setTo($item->getUser()->getEmail())
             ->setBody($this->twig->render($this->htmlSwapTemplate,
-                ['user' => $user, 'item' => $item]),
+                ['user' => $user, 'item' => $item, 'text-coming-from-swapForm' => $text]),
                 'text/html')
             ->addPart($this->twig->render($this->txtSwapTemplate,
-                ['user' => $user, 'item' => $item]),
+                ['user' => $user, 'item' => $item, 'text-coming-from-swapForm' => $text]),
                 'text/plain');
         $this->mailer->send($message);
     }
 
 
-    public function sendReportMail(User $user, Item $item)
+    public function sendReportMail(User $user, Item $item, array $data)
     {
+        $text = $data["message"];
         $message = (new \Swift_Message())
             // FIXME: We need form data to pass to the email
             ->setSubject(($item->getTitle()). ': was reported!')
             ->setFrom($this->letzswapNoReplyEmail)
             ->setTo($this->letzswapContactEmail)
             ->setBody($this->twig->render($this->htmlReportTemplate,
-                ['user' => $user, 'item' => $item]),
+                ['user' => $user, 'item' => $item, 'text-coming-from-reportForm' => $text]),
                 'text/html')
             ->addPart($this->twig->render($this->txtReportTemplate,
-                ['user' => $user, 'item' => $item]),
+                ['user' => $user, 'item' => $item, 'text-coming-from-reportForm' => $text]),
                 'text/plain');
         $this->mailer->send($message);
     }

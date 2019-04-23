@@ -25,11 +25,12 @@
 
 </head>
 
-{% block topmenu %}
-    {% include 'main/header.html.twig' %}
-{% endblock %}
 
 <body>
+{% block topmenu %}
+    {% include 'main/navbar.html.twig' %}
+{% endblock %}
+
 
 <div id="App">
     {% include 'flash_message.html.twig' %}

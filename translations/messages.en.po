@@ -23,13 +23,17 @@ msgid "NAV.LOGGED_AS"
 msgstr "Logged in as %username%"
 
 msgid "NAV.ADD_ITEM"
-msgstr "Swap Now"
+msgstr "Add Item"
 
 msgid "NAV.ABOUT"
 msgstr "About"
 
+msgid "NAV.ADMIN"
+msgstr "Admin"
+
 msgid "HOME.ITEM_COUNT"
 msgstr "Total items count"
+
 
 msgid "FORM.USER.PASSWORD.ERROR.BLANK"
 msgstr "Password cannot be blank"

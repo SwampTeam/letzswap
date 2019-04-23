@@ -7,6 +7,8 @@ use App\Entity\Status;
 use App\Entity\ItemStatus;
 use App\Entity\Picture;
 use App\Form\ItemType;
+use App\Form\SwapFormType;
+use App\Form\ReportFormType;
 use App\Mailer\Mailer;
 use App\Service\AvatarGenerator as AVA;
 use App\Repository\ItemRepository;
@@ -25,7 +27,7 @@ class ItemController extends AbstractController
 {
 
     /**
-     * @Route("/", name="item_index", methods={"GET"})
+     * @Route("/items/all", name="item_index", methods={"GET"})
      * @param ItemRepository $itemRepository
      * @param PictureRepository $pictureRepository
      * @return Response
@@ -62,12 +64,10 @@ class ItemController extends AbstractController
     public function addItem(Request $request): Response
     {
         $item = new Item();
-        $picture = new Picture();
         $form = $this->createForm(ItemType::class, $item);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             // Get the user who posted the item
             $item->setUser($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
@@ -75,7 +75,9 @@ class ItemController extends AbstractController
 
             // Picture processing
             $file = $form->get('picture')->getData();
-            $fileName = Uuid::uuid4()->toString() . '.swp';
+            $ext = $file->guessExtension();
+            $fileName = Uuid::uuid4()->toString() . '.' . $ext;
+            $picture = new Picture();
             $picture->setPath($fileName);
             $picture->setMimeType($file->getMimeType());
             $picture->setItem($item);
@@ -92,10 +94,9 @@ class ItemController extends AbstractController
             $itemStatus = new ItemStatus();
             $itemStatus->setItem($item)->setStatus($status);
             $entityManager->persist($itemStatus);
-            // Manager do your job
             $entityManager->flush();
 
-            return $this->redirectToRoute('item_index');
+            return $this->redirectToRoute('homepage');
         }
         return $this->render('item/new.html.twig', [
             'item' => $item,
@@ -103,15 +104,74 @@ class ItemController extends AbstractController
         ]);
     }
 
+
     /**
      * @Route("/{id}", name="item_details", methods={"GET"})
+     * @param Request $request
      * @param Item $item
      * @param PictureRepository $pictureRepository
      * @param AVA $getGravar
+     * @param Mailer $mailer
      * @return Response
      */
-    public function getDetails(Item $item, PictureRepository $pictureRepository, AVA $getGravar): Response
+    public function getDetails(
+        Request $request, Item $item, PictureRepository $pictureRepository,
+        AVA $getGravar,
+        Mailer $mailer
+    ): Response
     {
+        $swapForm = $this->createForm(
+            SwapFormType::class,
+            null,
+            ['standalone' => true, 'method' => 'GET']
+        );
+
+        $swapForm->handleRequest($request);
+        if ($swapForm->isSubmitted() && $swapForm->isValid()) {
+
+            $user = $this->getUser();
+            $swapFormData = $swapForm->getData();
+            $mailer->sendSwapMail($user, $item, $swapFormData);
+            $this->addFlash('success', "We just sent an email to the owner informing you are interested.");
+
+            return $this->redirectToRoute('homepage');
+        }
+
+        $reportForm = $this->createForm(
+            ReportFormType::class,
+            null,
+            ['standalone' => true, 'method' => 'GET']
+        );
+
+        $reportForm->handleRequest($request);
+        if ($reportForm->isSubmitted() && $reportForm->isValid()) {
+
+            $manager = $this->getDoctrine()->getManager();
+            $status = $manager->getRepository(Status::class)->findOneByLabel('reported');
+            if (!$status) {
+                $status = new Status();
+                $status->setLabel('reported');
+                $manager->persist($status);
+            }
+
+            $itemStatus = new ItemStatus();
+            $itemStatus->setItem($item)
+                ->setStatus($status);
+            $manager->persist($itemStatus);
+
+            $manager->flush();
+
+            $user = $this->getUser();
+
+            $reportFormData = $reportForm->getData();
+            $mailer->sendReportMail($user, $item, $reportFormData);
+
+            $this->addFlash('success', "The item was successfully reported and we send an email to its owner.");
+
+            return $this->redirectToRoute('homepage');
+        }
+
+
         $email = $item->getUser()->getEmail();
         $username = $item->getUser()->getUsername();
         $showGravatar = $getGravar->getAvatar($email, $username, 200);
@@ -119,33 +179,65 @@ class ItemController extends AbstractController
             'item' => $item,
             'picture' => $pictureRepository->findOneByItem($item->getId()),
             'avatar' => $showGravatar,
-            'username' => $username
+            'username' => $username,
+            'swapForm' => $swapForm->createView(),
+            'reportForm' => $reportForm->createView(),
         ]);
+    }
+
+    public function rmFile($file)
+    {
+        $file_path = 'var/uploads' . $file;
+        if (file_exists($file_path)) {
+            chown($file_path, 465);
+            unlink($file_path);
+        }
     }
 
     /**
      * @Route("/{id}/edit", name="item_edit", methods={"GET","POST"})
      * @param Request $request
      * @param Item $item
+     * @param PictureRepository $pictureRepository
      * @return Response
+     * @throws \Exception
      */
-    public function editItem(Request $request, Item $item): Response
+    public function editItem(Request $request, Item $item, PictureRepository $pictureRepository): Response
     {
-        $form = $this->createForm(ItemType::class, $item);
+        $form = $this->createForm(ItemType::class, $item, ['empty_data' => true]);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()
-                ->getManager()
-                ->flush();
-
-            return $this->redirectToRoute('item_index', [
+            $em = $this->getDoctrine()->getManager();
+            $file = $form->get('picture')->getData();
+            if (!empty($file)) {
+                $oldPic = $item->getPictures();
+                $this->rmFile($oldPic['name']);
+                $picture = $pictureRepository->findOneByItem($item->getId());
+                $em->remove($picture);
+                unset($picture);
+                $ext = $file->guessExtension();
+                $fileName = Uuid::uuid4()->toString() . '.' . $ext;
+                $picture = new Picture();
+                $picture->setPath($fileName);
+                $picture->setMimeType($file->getMimeType());
+                $picture->setItem($item);
+                $file->move($this->getParameter('upload_directory'), $fileName);
+                $em->persist($picture);
+                $em->flush();
+            } else {
+                $this->getDoctrine()
+                    ->getManager()
+                    ->flush();
+            }
+            return $this->redirectToRoute('item_details', [
                 'id' => $item->getId(),
             ]);
         }
         return $this->render('item/edit.html.twig', [
             'item' => $item,
-            'form' => $form->createView()
+            'picture' => $item->getPictures(),
+            'form' => $form->createView(),
+            'upload_directory' => $this->getParameter('upload_directory')
         ]);
     }
 
@@ -171,60 +263,66 @@ class ItemController extends AbstractController
         return $this->redirectToRoute('item_index');
     }
 
-    /**
-     * @Route("/{id}/report", name="item_report", methods={"GET"})
-     * @param Item $item
-     * @param Mailer $mailer
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function reportItem(Item $item, Mailer $mailer)
-    {
+//    /**
+//     * @Route("/{id}/report", name="item_report", methods={"GET"})
+//     * @param Item $item
+//     * @param Mailer $mailer
+//     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+//     */
+//    public function reportItem(Item $item, Mailer $mailer)
+//    {
+//
+//        if ($this->isGranted('ROLE_USER')) {
+//
+//            $manager = $this->getDoctrine()->getManager();
+//            $status = $manager->getRepository(Status::class)->findOneByLabel('reported');
+//            if (!$status) {
+//                $status = new Status();
+//                $status->setLabel('reported');
+//                $manager->persist($status);
+//            }
+//
+//            $itemStatus = new ItemStatus();
+//            $itemStatus->setItem($item)
+//                ->setStatus($status);
+//            $manager->persist($itemStatus);
+//
+//            $manager->flush();
+//
+//            $user = $this->getUser();
+//
+//            // FIXME: We need a form with reason and
+//            $mailer->sendReportMail($user, $item);
+//
+//            // TODO: Add this to messages
+//            $this->addFlash('success', "The item was successfully reported and we send an email to its owner.");
+//
+//            return $this->redirectToRoute('item_index');
+//        }
+//    }
 
-        if ($this->isGranted('ROLE_USER')) {
-
-            $manager = $this->getDoctrine()->getManager();
-            $status = $manager->getRepository(Status::class)->findOneByLabel('reported');
-            if (!$status) {
-                $status = new Status();
-                $status->setLabel('reported');
-                $manager->persist($status);
-            }
-
-            $itemStatus = new ItemStatus();
-            $itemStatus->setItem($item)
-                ->setStatus($status);
-            $manager->persist($itemStatus);
-
-            $manager->flush();
-
-            $user = $this->getUser();
-
-            // FIXME: We need a form with reason and
-            $mailer->sendReportMail($user, $item);
-
-            // TODO: Add this to messages
-            $this->addFlash('success', "The item was successfully reported and we send an email to its owner.");
-
-            return $this->redirectToRoute('item_index');
-        }
-    }
-
-    /**
-     * @Route("/{id}/swap", name="item_swap", methods={"GET"})
-     * @param Item $item
-     * @param Mailer $mailer
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function swapItem(Item $item, Mailer $mailer)
-    {
-        $user = $this->getUser();
-
-        // FIXME: We need a form with reason and
-        $mailer->sendSwapMail($user, $item);
-
-        // TODO: Add this message to translation
-        $this->addFlash('success', "We just sent an email to the owner informing you are interested.");
-
-        return $this->redirectToRoute('item_index');
-    }
+//    /**
+//     * @Route("/{id}/swap", name="item_swap", methods={"GET"})
+//     * @param Item $item
+//     * @param Mailer $mailer
+//     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+//     */
+//    public function swapItem(Item $item, Mailer $mailer)
+//    {
+//        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+//
+//            $user = $this->getUser();
+//
+//            // FIXME: We need a form with reason and
+//            $mailer->sendSwapMail($user, $item);
+//
+//            // TODO: Add this message to translation
+//            $this->addFlash('success', "We just sent an email to the owner informing you are interested.");
+//
+//            return $this->redirectToRoute('homepage');
+//        }
+//
+//        $this->addFlash('error', "Sorry, only registered users can swap.");
+//        $this->addFlash('warning', "To register, please click on the 'Register' button.");
+//    }
 }

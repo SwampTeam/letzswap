@@ -70,17 +70,18 @@ class Mailer
         $this->mailer->send($message);
     }
 
-    public function sendSwapMail(User $user, Item $item)
+    public function sendSwapMail(User $user, Item $item, array $data)
     {
+        $text = $data["message"];
         $message = (new \Swift_Message())
             ->setSubject($item->getTitle() . ': someone is interested!')
             ->setFrom($this->letzswapNoReplyEmail)
             ->setTo($item->getUser()->getEmail())
             ->setBody($this->twig->render($this->htmlSwapTemplate,
-                ['user' => $user, 'item' => $item]),
+                ['user' => $user, 'item' => $item, 'text' => $text]),
                 'text/html')
             ->addPart($this->twig->render($this->txtSwapTemplate,
-                ['user' => $user, 'item' => $item]),
+                ['user' => $user, 'item' => $item, 'text' => $text]),
                 'text/plain');
         $this->mailer->send($message);
     }

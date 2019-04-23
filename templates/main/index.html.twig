@@ -2,94 +2,46 @@
 
 {% block title %}{{ 'HOME.PAGETITLE'|trans }}{% endblock %}
 
+{% block banner %}
+    {% include 'main/banner.html.twig' %}
+{% endblock %}
+
 {% block body %}
+    <main>
 
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <main>
-            <div id="elevator_pitch">
-                <h1>Welcome back to <span>LëtzSwap</span></h1>
-                <h2 id="username">{{ app.user.username }}   </h2>
-                <p> Letzswap is the simplest way to extend the life of your goods
-                    by giving them a new owner. Swish locally, exchange on your own terms, swap easily!
-                </p>
+        <div>
+            <div class="count my-1">
+                {{ 'HOME.ITEM_COUNT'|trans }} {{ items.getTotalItemCount }}
             </div>
 
-            <div>
-                <div class="count my-1">
-                    {{ 'HOME.ITEM_COUNT'|trans }} {{ items.getTotalItemCount }}
-                </div>
-
-                {# display navigation #}
-                <div class="navigation">
-                    {{ knp_pagination_render(items) }}
-                </div>
+            {# display navigation #}
+            <div class="pagination navigation">
+                {{ knp_pagination_render(items) }}
             </div>
+        </div>
 
-            <div class="container-fluid justify-content-center">
-                <div class="d-flex justify-content-center flex-wrap ">
-                    {% for item in items %}
-                        <div class="col">
-                            <div class="card" style="width: 17rem;">
-                                {#  TODO: Remove the width of the image, use CSS - Adolfo #}
-                                <img class="card-img-top"
-                                     src="{{ path('get_picture_content', {'picture': item.getPictures()|first.getId()}) }}"
-                                     alt="{{ item.title }}" width="250px">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ item.title }}</h5>
-                                    <div id="butons">
-                                        <a href="{{ path('item_details', {'id': item.getId()}) }}"
-                                           class="btn btn-info"><i class="fas fa-info"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-
-        </main>
-    {% else %}
-        <main>
-            <div id="elevator_pitch">
-                <h1>Welcome to <span>{{ 'APP.TITLE' | trans }}</span></h1>
-                <p> - {{ 'APP.TITLE' | trans }} website – What is it and how does it work?
-                    LetzSwap is a peer to peer platform which facilitates fast swapping of goods in Luxembourg. Users
-                    can
-                    post photos and descriptions of their items in under one minute and they can easily scroll through
-                    available items they can swap with.
-                </p>
-            </div>
-            <div>
-                <div class="count my-1">
-                    {{ 'HOME.ITEM_COUNT'|trans }} {{ items.getTotalItemCount }}
-                </div>
-
-                {# display navigation #}
-                <div class="navigation">
-                    {{ knp_pagination_render(items) }}
-                </div>
-            </div>
-
-            <div class="container-fluid justify-content-center">
-                <div class="d-flex justify-content-center flex-wrap ">
-                    {% for item in items %}
-                        <div class="col">
-                            <div class="card" style="width: 17rem;">
-                                {#  TODO: Remove the width of the image, use CSS - Adolfo #}
-                                <img class="card-img-top"
-                                     src="{{ path('get_picture_content', {'picture': item.getPictures()|first.getId()}) }}"
-                                     alt="{{ item.title }}" width="250px">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ item.title }}</h5>
+        <div class="container-fluid justify-content-center">
+            <div class="d-flex justify-content-center flex-wrap ">
+                {% for item in items %}
+                    <div class="col">
+                        <div class="card" style="width: 17rem;">
+                            {#  TODO: Remove the width of the image, use CSS - Adolfo #}
+                            <img class="card-img-top"
+                                 src="{{ path('get_picture_content', {'picture': item.getPictures()|first.getId()}) }}"
+                                 alt="{{ item.title }}" width="250px">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.title }}</h5>
+                                <div id="butons">
                                     <a href="{{ path('item_details', {'id': item.getId()}) }}"
                                        class="btn btn-info"><i class="fas fa-info"></i></a>
                                 </div>
                             </div>
                         </div>
-                    {% endfor %}
-                </div>
+                    </div>
+                {% endfor %}
             </div>
+        </div>
 
-        </main>
-    {% endif %}
+    </main>
+
 {% endblock %}

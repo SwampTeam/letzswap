@@ -1,0 +1,3 @@
+<div>
+    {% include 'main/navbar.html.twig' %}
+</div>

@@ -21,6 +21,7 @@ class Item
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="items")
      * @ORM\JoinColumn(nullable=false)
+     *
      */
     private $user;
 
@@ -46,8 +47,7 @@ class Item
     private $pictures;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\ItemStatus",
-     *     mappedBy="items", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="App\Entity\ItemStatus", cascade={"remove"}, mappedBy="items", fetch="EXTRA_LAZY")
      */
     private $statuses;
 

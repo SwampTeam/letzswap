@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'registration' %}
+
+{% block title %}{{ 'REGISTRATION.TITLE'|trans({}, 'registration') }}{% endblock %}
+
+{% block body %}
+    <div class="registration_page">
+        <div>
+            <h1 id="registration_title">{{ 'REGISTRATION.TITLE'|trans }}</h1>
+        </div>
+        <div class="registration_form_container">
+            {{ form(registrationForm) }}
+        </div>
+    </div>
+{% endblock %}

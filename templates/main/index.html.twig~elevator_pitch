@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to LëtzSwap!{% endblock %}
+
+{% block body %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <main>
+        <div id="elevator_pitch">
+            <h1>Welcome back to <span>LëtzSwap</span></h1>
+            <h2 id="username">{{ app.user.username }}   </h2>
+            <p > - LëtzSwap website – What is it and how does it work?
+                LetzSwap is a peer to peer platform which facilitates fast swapping of goods in Luxembourg. Users can
+                post photos and descriptions of their items in under one minute and they can easily scroll through
+                available items they can swap with.
+                </p>
+        </div>
+        <div class="container-fluid justify-content-center">
+            <div class="d-flex justify-content-center flex-wrap ">
+                {% for item in items | reverse %}
+                    {% for picture in pictures |reverse %}
+                        {% if picture.item.id  == item.getId()%}
+                            <div class="col">
+                                <div class="card" style="width: 17rem;">
+                                    {#  TODO: Remove the width of the image, use CSS - Adolfo #}
+                                    <img class="card-img-top" src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
+                                         alt="{{ item.title }}" width="250px">
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{ item.title }} - {{ item.conditionStatus }}</h4>
+                                        <div id="butons">
+                                            <a href="{{ path('item_report', {'id': item.getId()}) }}"
+                                               class="btn btn-danger"><i class="fab fa-font-awesome-flag"></i></a>
+                                            <a href="{{ path('item_details', {'id': item.getId()}) }}"
+                                               class="btn btn-info"><i class="fas fa-info"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+
+    </main>
+    {% else %}
+    <main>
+        <div id="elevator_pitch">
+            <h1>Welcome to <span>LëtzSwap</span></h1>
+            <p > - LëtzSwap website – What is it and how does it work?
+                LetzSwap is a peer to peer platform which facilitates fast swapping of goods in Luxembourg. Users can
+                post photos and descriptions of their items in under one minute and they can easily scroll through
+                available items they can swap with.
+            </p>
+        </div>
+        <div class="container-fluid justify-content-center">
+            <div class="d-flex justify-content-center flex-wrap ">
+                {% for item in items %}
+                    {% for picture in pictures %}
+                        {% if picture.item.id  == item.getId() %}
+                            <div class="col">
+                                <div class="card" style="width: 17rem;">
+                                    {#  TODO: Remove the width of the image, use CSS - Adolfo #}
+                                    <img class="card-img-top" src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
+                                         alt="{{ item.title }}" width="250px">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ item.title }}</h5>
+                                        <div id="butons">
+                                            <a href="{{ path('item_report', {'id': item.getId()}) }}"
+                                               class="btn btn-danger"><i class="fab fa-font-awesome-flag"></i></a>
+                                            <a href="{{ path('item_details', {'id': item.getId()}) }}"
+                                               class="btn btn-info"><i class="fas fa-info"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+
+    </main>
+    {% endif %}
+{% endblock %}

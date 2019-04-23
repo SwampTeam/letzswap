@@ -72,15 +72,9 @@ class User implements UserInterface
     private $activationToken;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Item",
-     *     mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Item", mappedBy="user", cascade={"remove"}, orphanRemoval=true)
      */
     private $items;
-
-    public function __construct()
-    {
-        $this->setRoles(['USER_ROLE']);
-    }
 
     /**
      * @return mixed
@@ -101,7 +95,7 @@ class User implements UserInterface
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="UserStatus", mappedBy="users", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="UserStatus", mappedBy="users", cascade={"remove"}, fetch="EXTRA_LAZY")
      * @ORM\JoinTable(name="user_status")
      */
     private $statuses;
@@ -123,7 +117,6 @@ class User implements UserInterface
         $this->statuses = $statuses;
         return $this;
     }
-
 
     /**
      * @param $status
@@ -165,16 +158,24 @@ class User implements UserInterface
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
+    }
+
+    /**
+     * @param string $role
+     * @return User
+     */
+    public function addRole(string $role) : self
+    {
+        $roles = $this->roles;
+        $roles[] = $role;
+        $this->roles = array_unique($roles);
+        return $this;
     }
 
     public function setRoles(array $roles): self
     {
-        $this->roles = $roles;
-
+        $this->roles = array_unique($roles);
         return $this;
     }
 

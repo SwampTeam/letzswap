@@ -3,8 +3,6 @@
 namespace App\Form;
 
 use App\Entity\Item;
-use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -20,27 +18,28 @@ class ItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, ['label' => 'FORM.ITEM.TITLE.LABEL'])
+            ->add('title', TextType::class, ['label' => 'ADD_ITEM.TITLE'])
             ->add('description', TextareaType::class,
-                ['label' => 'NAV.ADD_ITEM.DESCRIPTION.LABEL',
+                ['label' => 'FORM.ITEM.DESCRIPTION.LABEL',
                     'required' => false
                 ])
-            ->add('conditionstatus', ChoiceType::class, ['label' => 'NAV.ADD_ITEM.STATUS.LABEL',
+            ->add('conditionstatus', ChoiceType::class, ['label' => 'FORM.ITEM.STATUS.LABEL',
                 'choices' => [
-                    'As New' => 'As New',
-                    'Signs of Wear' => 'Signs of Wear',
-                    'For Parts' => 'For Parts'
+                    'FORM.ITEM.STATUS.NEW' => 'As New',
+                    'FORM.ITEM.STATUS.SIGNS' => 'Signs of Wear',
+                    'FORM.ITEM.STATUS.PARTS' => 'For Parts'
                 ],
                 'multiple' => false,
                 'required' => true
             ])
             ->add('picture', FileType::class,
-                ['label' => 'NAV.ADD_ITEM.PICTURE.LABEL',
+                ['label' => 'FORM.ITEM.PICTURE.LABEL',
                     'mapped' => false,
                     'constraints' => [
                         new Image([
                             'mimeTypes' => ['image/png', 'image/jpeg'],
-                            'maxSize' => '5M',
+                            'mimeTypesMessage' => 'Please upload a jpeg or a png',
+                            'maxSize' => '10M',
                             'minWidth' => 300,
                             'minHeight' => 300
                         ])
@@ -53,7 +52,7 @@ class ItemType extends AbstractType
                 'Submit',
                 SubmitType::class,
                 [
-                    'label' => 'NAV.ADD_ITEM.SUBMIT.LABEL',
+                    'label' => 'ADD_ITEM.SUBMIT',
                     'attr' => [
                         'class' => 'btn-success'
                     ]

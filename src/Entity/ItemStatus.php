@@ -69,9 +69,9 @@ class ItemStatus
     }
 
     /**
-     * @return Collection|Status[]
+     * @return Status
      */
-    public function getStatuses(): Collection
+    public function getStatuses(): Status
     {
         return $this->statuses;
     }

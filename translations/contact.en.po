@@ -1,0 +1,17 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+
+msgid "CONTACT.FORM.TITLE"
+msgstr "Send us a message!"
+
+msgid "CONTACT.FORM.NAME"
+msgstr "Your name"
+
+msgid "CONTACT.FORM.EMAIL"
+msgstr "Please insert your email"
+
+msgid "CONTACT.FORM.MESSAGE"
+msgstr "Please type your message"

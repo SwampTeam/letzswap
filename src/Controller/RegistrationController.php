@@ -59,24 +59,14 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            $this->addFlash('success', "You need to activate your account, please check your email.");
+            $this->addFlash('warning', "You need to activate your account, please check your email.");
 
-            // TODO: use flash message on homepage and disable activation route
-            return $this->redirectToRoute('account_activation_required');
-            // return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage');
         }
 
-        return $this->render('Registration/registration.html.twig', [
+        return $this->render('registration/registration.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
-    }
-
-    /**
-     * @Route("/account/activation/required", name="account_activation_required")
-     */
-    public function activationRequired()
-    {
-        return $this->render('Registration/activation-required.html.twig');
     }
 
     /**
@@ -98,12 +88,16 @@ class RegistrationController extends AbstractController
             throw new NotFoundHttpException('User not found');
         }
 
+
         $status = $manager->getRepository(Status::class)->findOneByLabel('active');
         if (!$status) {
             $status = new Status();
             $status->setLabel('active');
             $manager->persist($status);
         }
+
+        $user->addRole('ROLE_USER');
+        $manager->persist($user);
 
         $userStatus = new UserStatus();
         $userStatus->setUser($user)

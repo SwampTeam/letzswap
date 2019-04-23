@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Welcome to LëtzSwap!{% endblock %}
+{% block title %}{{ 'HOME.PAGETITLE'|trans }}{% endblock %}
 
 {% block body %}
     <main>
@@ -12,11 +12,10 @@
                         {% if picture.item.id  == item.getId() %}
                             <div class="col">
                                 <div class="card" style="width: 17rem;">
-                                    {#  TODO: Remove the width of the image, use CSS - Adolfo #}
-                                    <img class="card-img-top" src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
+                                    <img class="card-img-top"
+                                         src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
                                          alt="{{ item.title }}" width="250px">
                                     <div class="card-body">
-                                        <div class="card_category_free">Free</div>
                                         <h5 class="card-title">{{ item.title }}</h5>
                                         <div id="butons">
                                             <a href="{{ path('item_report', {'id': item.getId()}) }}"

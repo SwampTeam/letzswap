@@ -9,17 +9,17 @@ parameters:
     letzswap_contact_email:             'contact@letzswap.lu'
     letzswap_no-reply_email:            'no-reply@letzswap.lu'
 
-    contact_mail_html_template:         'contact/contact-mail.html.twig'
-    contact_mail_txt_template:          'contact/contact-mail.txt.twig'
+    contact_mail_html_template:         'mail/contact/contact-mail.html.twig'
+    contact_mail_txt_template:          'mail/contact/contact-mail.txt.twig'
 
-    registration_mail_html_template:    'registration/registration-mail.html.twig'
-    registration_mail_txt_template:     'registration/registration-mail.txt.twig'
+    registration_mail_html_template:    'mail/registration/registration-mail.html.twig'
+    registration_mail_txt_template:     'mail/registration/registration-mail.txt.twig'
 
-    report_mail_html_template:          'report/report-mail.html.twig'
-    report_mail_txt_template:           'report/report-mail.txt.twig'
+    report_mail_html_template:          'mail/report/report-mail.html.twig'
+    report_mail_txt_template:           'mail/report/report-mail.txt.twig'
 
-    swap_mail_html_template:            'swap/swap-mail.html.twig'
-    swap_mail_txt_template:             'swap/swap-mail.txt.twig'
+    swap_mail_html_template:            'mail/swap/swap-mail.html.twig'
+    swap_mail_txt_template:             'mail/swap/swap-mail.txt.twig'
 
     upload_directory:                   '%kernel.root_dir%/../var/uploads/'
 

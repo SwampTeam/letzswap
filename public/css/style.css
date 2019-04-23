@@ -11,6 +11,7 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
 #terms_details p::first-letter {
     font-weight: bold;
 }
@@ -55,33 +56,11 @@ body{
 #App{
     /*min-height: 70vh;*/
     max-width: 1200px;
-    margin: 80px auto 100px;
+    margin: 10px auto 100px;
 }
 
-#elevator_pitch  {
-    margin: 1rem auto 2rem auto;
-    animation: fadein 3s;
 
-}
-#elevator_pitch h1{
-    text-align: center;
-    font-family: 'Catamaran', sans-serif;
-    font-size: 40px;
-    align-items: center;
-    animation: fadein 3s;
-}
-#elevator_pitch h1 span {
-    color: #5ff03f;
-    font-weight: bold;
-}
-#elevator_pitch p {
-    margin: auto 1rem auto 1rem;
-    font-size: 24px;
-    text-align: center;
-    font-family: 'Source Sans Pro', sans-serif;
-
-}
-
+/*Navbar design*/
 .navbar {
     z-index: 9999;
     top: 0;
@@ -89,7 +68,7 @@ body{
     height: 50px;
     display: flex;
     position: fixed;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     box-shadow: -6px 4px 7px -5px rgba(0,0,0,0.75);
 }
 
@@ -99,7 +78,6 @@ body{
     padding: 0;
     display: flex;
     flex-direction: row;
-    background-color: #f2f2f2;
     color: #336655;
     list-style: none;
 }
@@ -108,15 +86,18 @@ body{
     margin-left: 5px;
     margin-right: 5px;
     border-radius: 10px;
-    font-size: 16px;
-    background-color: #c9f0e3;
-    border:1px solid #c9f0e3;
+    font-size: 12px;
+    background-color: none;
+    border:1px solid #336655;
     }
 .button:hover {
-    background-color: pink;
-    border:1px solid pink;
+    background-color: #336655;
+
 }
 
+.navbar{
+    height: 90px;
+}
 .navbar_link {
     color: #336655;
     text-decoration: none;
@@ -125,7 +106,37 @@ body{
 
 .navbar_link:hover {
     text-decoration: none;
-    color:#336655;
+    color:#ffffff;
+}
+
+/*Text from the top main page - header*/
+#elevator_pitch {
+    margin-top: 10px;
+    padding: 90px 20px 20px ;
+    animation: fadein 3s;
+    background-color: #336655;
+    color: #ffffff;
+
+}
+#elevator_pitch span {
+    color: #f3400c;
+}
+#elevator_pitch h2{
+    text-align: center;
+    font-family: 'Catamaran', sans-serif;
+    font-size: 24px;
+    align-items: center;
+    animation: fadein 3s;
+}
+#elevator_pitch h2 span {
+    color: #f3400c;
+    font-weight: bold;
+}
+#elevator_pitch p {
+    font-size: 14px;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+
 }
 
 .container-fluid {
@@ -204,12 +215,9 @@ body{
     /*transform: translateY(-5px);*/
 }
 .card:hover {
-    box-shadow: 0 0 3pt 2pt #c9f0e3;
+    box-shadow: 0 0 2pt 2pt #336655;
 }
 
-.card:hover {
-    box-shadow: 0 0 0 3pt #c9f0e3;
-}
 /* This is the end of the Fade in for the card and elevator pitch, I (Karlo) also added border-radius to the card hover
 its the same what Marco put but only with a border radius tell me what you think*/
 
@@ -236,7 +244,7 @@ its the same what Marco put but only with a border radius tell me what you think
 
 }
 #item_detail_buttons button:hover {
-    filter: brightness(130%);
+    filter: brightness(150%);
     border: 1px solid black;
 
 }
@@ -255,14 +263,14 @@ its the same what Marco put but only with a border radius tell me what you think
 }
 
 .btn-success, .btn-primary {
-    background-color: #46A18E !important;
+    background-color: #336655 !important;
     border: none;
-    border-radius: 5%;
+    border-radius: 10px;
     padding: 0.45rem;
 }
 .row img {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
 
 }.footer {
      display: flex;
@@ -271,8 +279,9 @@ its the same what Marco put but only with a border radius tell me what you think
      width: 100%;
      height: 50px;
      justify-content: center;
-     background-color: #f2f2f2;
-     position: absolute;
+     background-color: #336655;
+    color: #ffffff;
+     /*position: relative;*/
      /*min-height: 100vh;*/
      /*padding-bottom: 60px; !* Should be equal to the height of your footer *!*/
      /*box-shadow: 0px -10px 30px -12px rgba(0,0,0,0.75);*/
@@ -284,6 +293,11 @@ its the same what Marco put but only with a border radius tell me what you think
     align-items: center;
     list-style: none;
 }
+
+.footer_link{
+    text-decoration: none;
+}
+
 .registration_page {
     margin: 0 auto;
     display: flex;
@@ -308,7 +322,7 @@ its the same what Marco put but only with a border radius tell me what you think
     justify-content: center;
     max-width: 350px;
 }
-/* This is applied on the log-in form template in case of a user clicking on letzswap withouth being loged */
+/* This is applied on the log-in form template in case of a user clicking on letzswap without being logged */
 .form-control {
     margin:0.5rem;
 }
@@ -353,14 +367,14 @@ its the same what Marco put but only with a border radius tell me what you think
 #logo  {
     font-family: 'Catamaran', sans-serif;
     display: flex;
-    font-size: 20px;
+    font-size: 16px;
     align-items: center;
 }
 #logo h2 {
     font-weight: bold;
 }
 #logo a {
-    color: #5ff03f;
+    color: #336655;
 }
 
 #logo a:hover {
@@ -421,8 +435,8 @@ its the same what Marco put but only with a border radius tell me what you think
     margin: 1rem ;
 }
 
-/*Users*/
 
+/*Users*/
 #admin_dashboard_users {
     margin: 1rem 1rem 3rem 0.5rem;
     background-color: #e2e2e2;
@@ -452,7 +466,6 @@ table caption {
     font-size: 35px;
     text-align: center;
 }
-
 /*Users end*/
 
 /* Admin dashboard end */
@@ -494,7 +507,7 @@ table caption {
         justify-content: center;
         max-width: 950px;
     }
-    /* Apolline`s modal to be applied differently on each platform */
+    /* Apolline's modal to be applied differently on each platform */
     .modal-dialog {
         position: absolute;
         top: 30%;

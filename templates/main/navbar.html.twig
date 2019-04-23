@@ -1,10 +1,13 @@
-<nav class="navbar">
+<nav class="navbar " >
     <div id="logo">
-    <a href="{{ path('homepage') }}"><h2>LëtzSwap</h2></a>
+    <a href="{{ path('homepage') }}"><h2>LetzSwap</h2></a>
     </div>
-    <ul class="navbar_list">
+    <ul class="navbar_list ">
 
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <li>
+                <span id="username">{{ app.user.username }}</span>
+            </li>
             <li class="{% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
                 <a class="button navbar_link" href="{{ path('item_new') }}">
                     {{ 'NAV.ADD_ITEM'|trans }}
@@ -21,6 +24,7 @@
                     {{ 'NAV.ABOUT'|trans }}
                 </a>
             </li>
+
         {% else %}
             <li class="{% if app.request.attributes.get('_route') == 'login' %} active {% endif %}">
                 <a class="button navbar_link"  data-toggle="modal" data-target="#modalLogin"  >
@@ -39,6 +43,8 @@
                     {{ 'NAV.ABOUT'|trans }}
                 </a>
             </li>
+
+
         {% endif %}
     </ul>
 </nav>

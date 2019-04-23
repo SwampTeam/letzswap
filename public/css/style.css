@@ -59,7 +59,7 @@ body{
 }
 
 #elevator_pitch  {
-    margin: 1rem auto 2rem auto;
+    margin: 1rem 1rem 2rem 1rem;
     animation: fadein 3s;
 
 }
@@ -75,8 +75,7 @@ body{
     font-weight: bold;
 }
 #elevator_pitch p {
-    margin: auto 1rem auto 1rem;
-    font-size: 24px;
+    font-size: 23px;
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
 
@@ -138,7 +137,7 @@ body{
     width: 330px;
     height: 370px;
     background-color: white;
-    margin: 2rem;
+    margin: 1rem auto 2rem auto;
     overflow: hidden;
     border-radius: 0.5rem;
     -webkit-box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.2);
@@ -384,13 +383,13 @@ its the same what Marco put but only with a border radius tell me what you think
 /* Admin dashboard start */
 #admin_dashboard_items {
     margin: 1rem 1rem 3rem 0.5rem;
-    background-color: #e2e2e2;
-    border-radius: 1%;
+    background-color: #ffffff;
+    border-radius: 10px;
     padding: 0.3rem;
     width: 525px;
     -webkit-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);}
+    box-shadow: 0px 0px 19px -1px rgba(0, 0, 0, 0.51);}
 
 /* Items */
 #admin_dashboard_items table {
@@ -425,13 +424,13 @@ its the same what Marco put but only with a border radius tell me what you think
 
 #admin_dashboard_users {
     margin: 1rem 1rem 3rem 0.5rem;
-    background-color: #e2e2e2;
+    background-color: #ffffff;
     border-radius: 1%;
     padding: 0.3rem;
     width: 525px;
     -webkit-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);}
+    box-shadow: 0px 0px 19px -1px rgba(0, 0, 0, 0.51);}
 
 #admin_dashboard_users th {
     padding-right: 67px;
@@ -453,12 +452,35 @@ table caption {
     text-align: center;
 }
 
+
 /*Users end*/
 
 /* Admin dashboard end */
 
 /* Tablet */
 @media screen and (min-width:800px) {
+
+    #elevator_pitch  {
+        margin: 1rem 1rem 7rem 1rem;
+        animation: fadein 3s;
+    }
+    #elevator_pitch h1{
+        text-align: center;
+        font-family: 'Catamaran', sans-serif;
+        font-size: 45px;
+        align-items: center;
+        animation: fadein 3s;
+    }
+    #elevator_pitch h1 span {
+        color: #5ff03f;
+        font-weight: bold;
+    }
+    #elevator_pitch p {
+        font-size: 23px;
+        text-align: center;
+        font-family: 'Source Sans Pro', sans-serif;
+
+    }
 
     #item_detail_buttons {
         display: flow;
@@ -473,8 +495,11 @@ table caption {
         margin: 1rem;
     }
     #description img {
-        width: 600px;
-        height: 450px;
+        display: block;
+        max-width: 600px;
+        max-height:350px;
+        width: auto;
+        height: auto;
     }
     .img-thumbnail {
         border:none;
@@ -526,21 +551,20 @@ table caption {
     }
     #admin_dashboard_items {
         padding: 0.5rem;
-    }
-    #admin_dashboard_items {
         width: auto;
     }
+
     #admin_dashboard_buttons_users {
         margin: 2rem ;
     }
     #admin_dashboard_items img {
-        width: 250px;
-        height: 250px;
+        width: 150px;
+        height: 150px;
     }
     #admin_dashboard_items thead {
         display: flex;
         justify-content: flex-end;
-        padding-right: 30px;
+        padding-right: 50px;
     }
     #admin_dashboard_users {
         padding: 0.5rem;
@@ -554,13 +578,16 @@ table caption {
         padding-left: 2px;
     }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1300px) {
+
     #item_detail_buttons {
     }
     #description img {
         border-radius: 1.1%;
-        width: 800px;
-        height: 600px;
+        max-width: 800px;
+        max-height: 600px;
+        width: auto;
+        height: auto;
     }
     #elevator_pitch h1{
         text-align: center;
@@ -625,7 +652,10 @@ table caption {
         margin: 0rem auto auto 1rem;
 
     }
-
+    #admin_dashboard_items img {
+        width: 150px;
+        height: 150px;
+    }
 }
 
 

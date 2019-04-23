@@ -23,7 +23,7 @@ msgid "NAV.LOGGED_AS"
 msgstr "Logged in as %username%"
 
 msgid "NAV.ADD_ITEM"
-msgstr "Swap Now"
+msgstr "Add Item"
 
 msgid "NAV.ABOUT"
 msgstr "About"

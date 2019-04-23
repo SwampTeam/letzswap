@@ -31,6 +31,7 @@ msgstr "About"
 msgid "HOME.ITEM_COUNT"
 msgstr "Total items count"
 
+
 msgid "FORM.USER.PASSWORD.ERROR.BLANK"
 msgstr "Password cannot be blank"
 

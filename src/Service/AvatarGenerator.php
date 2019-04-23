@@ -12,7 +12,7 @@ class AvatarGenerator
      */
     public function getAvatar(string $email, string $username, int $size): string
     {
-        $grav_url = '<img src="https://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) . "?s=" . $size . '" alt="' . $username . ' logo">';
+        $grav_url = '<img src="https://www.gravatar.com/avatar/' . md5(strtolower(trim($email))) ."?r=". "&s=" . $size . '" alt="' . $username . ' logo">';
 
         return $grav_url;
     }

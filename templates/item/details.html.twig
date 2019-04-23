@@ -8,7 +8,8 @@
         <h2>{{ username }}</h2>
     </div>
     <article id="description">
-    <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}" class="img-thumbnail" width="500px" height="200px">
+        <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}" class="img-thumbnail" width="500px"
+             height="200px">
 
         <table class="table">
             <tbody>
@@ -32,19 +33,24 @@
         <a href="{{ path('item_index') }}">
             <button type="button" class="btn btn-success">Back</button>
         </a>
+        {% if is_granted('ROLE_USER') and (item.getUser.getId() == app.user.id) %}
 
-    <a href="{{ path('item_edit', {'id': item.id}) }}"><button type="button" class="btn btn-success">Edit</button></a>
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <a href="{{ path('item_edit', {'id': item.id}) }}">
+                <button type="button" class="btn btn-success">Edit</button>
+            </a>
 
-        <a href="{{ path('item_swap', {'id': item.id}) }}"><button type="button" class="btn btn-primary">LetzSwap!</button></a>
+            {{ include('item/_delete-confirm.html.twig') }}
 
-
-
-            <a href="{{ path('register', {'id': item.id}) }}"><button type="button" class="btn btn-primary">LetzSwap!</button></a>
-
-
-        <a href="{{ path('item_report', {'id': item.id}) }}"><button type="button" class="btn btn-danger">Report</button></a>
         {% endif %}
-        {{ include('item/_delete-confirm.html.twig') }}
+        {% if is_granted('ROLE_USER') %}
+            <a href="{{ path('item_swap', {'id': item.id}) }}">
+                <button type="button" class="btn btn-primary">LetzSwap!</button>
+            </a>
+
+            <a href="{{ path('item_report', {'id': item.id}) }}">
+                <button type="button" class="btn btn-danger">Report</button>
+            </a>
+        {% endif %}
+
     </div>
 {% endblock %}

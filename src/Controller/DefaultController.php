@@ -64,7 +64,7 @@ class DefaultController extends AbstractController
      */
     public function swampAction(): Response
     {
-        return $this->render('bundles/TwigBundle/Exception/error404.html.twig', []);
+        return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
     }
 
     /**
@@ -73,7 +73,7 @@ class DefaultController extends AbstractController
      */
     public function deniedAction(): Response
     {
-        return $this->render('bundles/TwigBundle/Exception/error403.html.twig', []);
+        return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
     }
 
     /**
@@ -81,7 +81,6 @@ class DefaultController extends AbstractController
      */
     public function termsOfServicesAction()
     {
-        // return $this->render('terms/terms.html.twig', ['uRoles' => $this->getUser()->getRoles()]);
         return $this->render('terms/terms.html.twig');
     }
 

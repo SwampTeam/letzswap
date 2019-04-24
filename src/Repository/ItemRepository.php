@@ -23,7 +23,18 @@ class ItemRepository extends ServiceEntityRepository
 
     public function findPaginated(Request $request, PaginatorInterface $paginator, int $itemsPerPage)
     {
+        $sql = "SELECT i.id, i_s.time, s.label FROM item i, item_status i_s, status s
+                inner JOIN item_status on s.id = item_status.statuses_id
+                inner JOIN item on item_status.items_id = item.id
+                WHERE s.label = 'active'
+                GROUP BY i.id
+                ORDER BY i_s.time DESC";
+
         $queryBuilder = $this->createQueryBuilder('p');
+//        $queryBuilder->select('i.d, i_s.time')
+//            ->from('Item', 'i')
+//            ->where();
+
         $pagination = $paginator->paginate(
             $queryBuilder->getQuery(),
             $request->query->getInt('page', 1),

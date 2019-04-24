@@ -77,10 +77,10 @@ class Mailer
             ->setFrom($this->letzswapNoReplyEmail)
             ->setTo($item->getUser()->getEmail())
             ->setBody($this->twig->render($this->htmlSwapTemplate,
-                ['user' => $user, 'item' => $item, 'text-coming-from-swapForm' => $text]),
+                ['user' => $user, 'item' => $item, 'textComingFromSwapForm' => $text]),
                 'text/html')
             ->addPart($this->twig->render($this->txtSwapTemplate,
-                ['user' => $user, 'item' => $item, 'text-coming-from-swapForm' => $text]),
+                ['user' => $user, 'item' => $item, 'textComingFromSwapForm' => $text]),
                 'text/plain');
         $this->mailer->send($message);
     }
@@ -94,10 +94,10 @@ class Mailer
             ->setFrom($this->letzswapNoReplyEmail)
             ->setTo($this->letzswapContactEmail)
             ->setBody($this->twig->render($this->htmlReportTemplate,
-                ['user' => $user, 'item' => $item, 'text-coming-from-reportForm' => $text]),
+                ['user' => $user, 'item' => $item, 'textComingFromReportForm' => $text]),
                 'text/html')
             ->addPart($this->twig->render($this->txtReportTemplate,
-                ['user' => $user, 'item' => $item, 'text-coming-from-reportForm' => $text]),
+                ['user' => $user, 'item' => $item, 'textComingFromReportForm' => $text]),
                 'text/plain');
         $this->mailer->send($message);
     }

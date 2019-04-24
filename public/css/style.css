@@ -283,11 +283,14 @@ its the same what Marco put but only with a border radius tell me what you think
     margin-top: 1rem;
     margin-bottom: 2rem;
     display: flex;
-}
+}#avatar h2 {
+    margin-top: 1.8rem;
+    font-size: 25px;
+ }
 #avatar img {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     margin-right:2rem ;
 
 }
@@ -496,6 +499,11 @@ table caption {
 #navbar_gravatar img {
     border-radius: 20px;
 }
+#description td span {
+    color: #46a18e;
+    font-weight: bold;
+    font-size: 30px;
+}
 /*Users end*/
 
 /* Admin dashboard end */
@@ -538,10 +546,21 @@ table caption {
         display: flex;
         margin: 1rem;
     }
+    /* Details for the item description */
+    #description td {
+        color: #46a18e;
+    }
+
+    #description td span {
+        color: #46a18e;
+        font-weight: bold;
+        font-size: 30px;
+    }
     #description img {
         width: 600px;
         height: 450px;
     }
+    /* Details for the item description */
     .img-thumbnail {
         border:none;
     }

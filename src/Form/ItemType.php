@@ -18,17 +18,17 @@ class ItemType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'attr' => ['class' => "button", 'placeholder' => 'ADD_ITEM.TITLE'],
+                'attr' => ['class' => "form_grey_input", 'placeholder' => 'ADD_ITEM.TITLE'],
                 'label' => false,
             ])
             ->add('description', TextareaType::class,
                 [
-                    'attr' => ['placeholder' => 'FORM.ITEM.DESCRIPTION.LABEL', 'class' => "button"],
+                    'attr' => ['placeholder' => 'FORM.ITEM.DESCRIPTION.LABEL', 'class' => "form_grey_input"],
                     'label' => false,
                     'required' => false
                 ])
             ->add('conditionstatus', ChoiceType::class, [
-                'attr' => ['class' => "button"],
+                'attr' => ['class' => "form_grey_input"],
                 'placeholder' => 'FORM.ITEM.STATUS.LABEL',
                 'label' => false,
                 'choices' => [

@@ -3,10 +3,7 @@
 {% block title %}{{ 'ITEM.DETAILS.PAGETITLE'|trans }}{% endblock %}
 
 {% block body %}
-    <div id="avatar">
-        {{ avatar.getAvatar(username, 100) | raw }}
-        <h2>{{ username }}</h2>
-    </div>
+
     <article id="description">
         <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}" class="img-thumbnail" width="500px"
              height="200px">
@@ -14,22 +11,25 @@
         <table class="table">
             <tbody>
             <tr>
-                <th style="color: rgb(70,161,142)">Title:</th>
                 <td>{{ item.title }}</td>
             </tr>
             <tr>
-                <th style="color: #46a18e">Condition Status:</th>
-                <td>{{ item.conditionStatus }}</td>
+                <td>Condition status: {{ item.conditionStatus }}</td>
             </tr>
             <tr>
-                <th style="color: #46a18e">Description:</th>
                 <td>{{ item.description }}</td>
             </tr>
             </tbody>
         </table>
     </article>
 
+
     <div id="item_detail_buttons">
+        <div id="avatar">
+            {{ avatar.getAvatar(app.user.username, 50) | raw }}
+            <h2>{{ username }}</h2>
+        </div>
+
         <a href="{{ path('homepage') }}">
             <button type="button" class="btn btn-success">Back</button>
         </a>

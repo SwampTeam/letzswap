@@ -10,7 +10,6 @@ use App\Form\ItemType;
 use App\Form\SwapFormType;
 use App\Form\ReportFormType;
 use App\Mailer\Mailer;
-use App\Service\AvatarGenerator as AVA;
 use App\Repository\ItemStatusRepository;
 use App\Repository\PictureRepository;
 use Ramsey\Uuid\Uuid;
@@ -106,13 +105,11 @@ class ItemController extends AbstractController
      * @param Request $request
      * @param Item $item
      * @param PictureRepository $pictureRepository
-     * @param AVA $getGravar
      * @param Mailer $mailer
      * @return Response
      */
     public function getDetails(
         Request $request, Item $item, PictureRepository $pictureRepository,
-        AVA $getGravar,
         Mailer $mailer
     ): Response
     {
@@ -174,11 +171,9 @@ class ItemController extends AbstractController
         }
         $email = $item->getUser()->getEmail();
         $username = $item->getUser()->getUsername();
-        $showGravatar = $getGravar->getAvatar($email, $username, 200);
         return $this->render('item/details.html.twig', [
             'item' => $item,
             'picture' => $pictureRepository->findOneByItem($item->getId()),
-            'avatar' => $showGravatar,
             'username' => $username,
             'uRoles' => $roles,
             'swapForm' => $swapForm->createView(),

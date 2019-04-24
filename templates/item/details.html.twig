@@ -4,7 +4,7 @@
 
 {% block body %}
     <div id="avatar">
-        {{ avatar | raw }}
+        {{ avatar.getAvatar(app.user.username, 50) | raw }}
         <h2>{{ username }}</h2>
     </div>
     <article id="description">

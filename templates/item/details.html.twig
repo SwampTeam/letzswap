@@ -25,11 +25,12 @@
 
 
     <div id="item_detail_buttons">
-        <div id="avatar">
-            {{ avatar.getAvatar(app.user.username, 50) | raw }}
-            <h2>{{ username }}</h2>
-        </div>
-
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            <div id="avatar">
+                {{ avatar.getAvatar(app.user.username, 100) | raw }}
+                <h2>{{ username }}</h2>
+            </div>
+        {% endif %}
         <a href="{{ path('homepage') }}">
             <button type="button" class="btn btn-success">Back</button>
         </a>
@@ -44,23 +45,23 @@
         {% endif %}
         {% if is_granted('ROLE_USER') %}
             {% if (item.getUser.getId() != app.user.id) %}
-            <a href="#">
-                <button id="swap_button" type="button" class="btn btn-primary">LëtzSwap!</button>
-            </a>
-            <a href="#">
-                <button id="report_button" type="button" class="btn btn-danger">Report</button>
-            </a>
+                <a href="#">
+                    <button id="swap_button" type="button" class="btn btn-primary">LëtzSwap!</button>
+                </a>
+                <a href="#">
+                    <button id="report_button" type="button" class="btn btn-danger">Report</button>
+                </a>
             {% endif %}
         {% endif %}
     </div>
 
-        <div id="swap_form" style="display:none">
-            {{ form(swapForm) }}
-        </div>
+    <div id="swap_form" style="display:none">
+        {{ form(swapForm) }}
+    </div>
 
-        <div id="report_form" style="display:none">
-            {{ form(reportForm) }}
-        </div>
+    <div id="report_form" style="display:none">
+        {{ form(reportForm) }}
+    </div>
 
     <script>
         document.getElementById("swap_button").addEventListener("click", function (event) {

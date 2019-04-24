@@ -23,23 +23,16 @@
                         </a>
                     </li>
                 {% endif %}
-
-
                 <li class="nav-item {% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
                     <a class="nav-link" href="{{ path('item_new') }}">
                         {{ 'NAV.ADD_ITEM'|trans }}
                     </a>
-                </li>
-                {#Here should go the href to user profile#}
-                <li class="nav-item">
-                    <a class="nav-link" id="username"> Logged as {{ app.user.username }} <i class="fas fa-user"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_logout') }}">
                         {{ 'NAV.LOGOUT'|trans }}
                     </a>
                 </li>
-
 
             {% else %}
 
@@ -63,7 +56,13 @@
                     {{ 'NAV.ABOUT'|trans }}
                 </a>
             </li>
-
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {#Here should go the href to user profile#}
+                <li class="nav-item">
+                    <a class="nav-link" id="username"
+                       alt="Logged as {{ app.user.username }}">{{ avatar.getAvatar(app.user.username, 35) | raw }}</a>
+                </li>
+            {% endif %}
         </ul>
     </div>
 </nav>

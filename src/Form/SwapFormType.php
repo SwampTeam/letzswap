@@ -21,7 +21,7 @@ class SwapFormType extends AbstractType
                 [
                     'attr' => [
                         'placeholder' => "FIXME: Info to the interested party saying what happens when he sends this",
-                        'class' => "form_gray_input"
+                        'class' => "form_grey_input"
                     ],
                     'label' => false,
                 ]);

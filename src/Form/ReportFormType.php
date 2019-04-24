@@ -31,7 +31,7 @@ class ReportFormType extends AbstractType
                     'attr' => [
                         'placeholder' => "FIXME: Info to the interested party saying what happens when he sends this.
                              Do we need more complain reasons?",
-                        'class' => "form_gray_input",
+                        'class' => "form_grey_input",
                     ],
                     'label' => false,
                 ]);

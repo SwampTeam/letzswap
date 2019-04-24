@@ -20,7 +20,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
-                'attr' => ['placeholder' => 'FORM.USER.USERNAME', 'class' => "form_gray_input"],
+                'attr' => ['placeholder' => 'FORM.USER.USERNAME', 'class' => "form_grey_input"],
                 'label' => false,
                 'label' => 'FORM.USER.USERNAME', 'required' => true
             ])
@@ -29,12 +29,12 @@ class RegistrationFormType extends AbstractType
                     'type' => PasswordType::class,
                     'invalid_message' => 'FORM.USER.PASSWORD.ERROR.DONT_MATCH',
                     'first_options' => [
-                        'attr' => ['placeholder' => 'FORM.USER.PASSWORD.FIRST', 'class' => "form_gray_input"],
+                        'attr' => ['placeholder' => 'FORM.USER.PASSWORD.FIRST', 'class' => "form_grey_input"],
                         'label' => false,
                         'required' => true
                     ],
                     'second_options' => [
-                        'attr' => ['placeholder' => 'FORM.USER.PASSWORD.REPEAT', 'class' => "form_gray_input"],
+                        'attr' => ['placeholder' => 'FORM.USER.PASSWORD.REPEAT', 'class' => "form_grey_input"],
                         'label' => false,
                         'required' => true
                     ],
@@ -43,14 +43,14 @@ class RegistrationFormType extends AbstractType
                 'email',
                 EmailType::class,
                 [
-                    'attr' => ['placeholder' => 'FORM.USER.EMAIL', 'class' => "form_gray_input"],
+                    'attr' => ['placeholder' => 'FORM.USER.EMAIL', 'class' => "form_grey_input"],
                     'label' => false,
                 ]
             )->add(
                 'tosAccepted',
                 CheckboxType::class,
                 [
-                    'attr' => [ 'class' => "form_gray_input"],
+                    'attr' => [ 'class' => "form_grey_input"],
                     'label' => 'FORM.USER.TOS_ACCEPTED',
                     'required' => true
                 ]

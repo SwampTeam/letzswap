@@ -6,14 +6,22 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     {# FIXME: We need to pass the item from ReportController, disabling the null item  #}
-    <title>{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()|default('Something')}) }} {{ user.getUsername()|default('someone') }}!</title>
+    <title>{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()|default('Something')}) }} {{user.getUsername()|default('someone')}}!</title>
 </head>
 <body>
 {# FIXME: We need to pass the item from ReportController, disabling the null item  #}
 <h1>{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()|default('Something')}) }} {{ user.getUsername()|default('someone') }}!</h1>
 
 {# FIXME: Content needed #}
-<p>We need content here! User and Item properties are available to use on the text as in titles above</p>
+
+
+<p> Your item {{'%item%': item.getTitle() }} has been reported by one of our users, we will review this report and if it
+violated our terms of service in anyway, we will delete the item you have posted.
+
+Please read our terms of service carefully before submiting your item again or we will be force to take further action such
+as banning you</p>
+
+
 {{ textComingFromReportForm }}
 
 

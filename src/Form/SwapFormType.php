@@ -20,7 +20,7 @@ class SwapFormType extends AbstractType
                 TextareaType::class,
                 [
                     'attr' => [
-                        'placeholder' => "FIXME: Info to the interested party saying what happens when he sends this",
+                        'placeholder' => "Here you write your message and what item would you like to swap with!",
                         'class' => "form_grey_input"
                     ],
                     'label' => false,

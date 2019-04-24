@@ -25,12 +25,10 @@
 
 
     <div id="item_detail_buttons">
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <div id="avatar">
-                {{ avatar.getAvatar(app.user.username, 100) | raw }}
-                <h2>{{ username }}</h2>
-            </div>
-        {% endif %}
+        <div id="avatar">
+            {{ avatar.getAvatar(item.getUser.getUsername(), 100) | raw }}
+            <h2>{{ username }}</h2>
+        </div>
         <a href="{{ path('homepage') }}">
             <button type="button" class="btn btn-success">Back</button>
         </a>
@@ -78,6 +76,11 @@
             if (document.getElementById("swap_form").style.display === "none") {
                 document.getElementById("report_form").style.display = "none";
                 document.getElementById("swap_form").style.display = "block";
+                window.scrollTo({
+                    left: 0,
+                    top: document.body.scrollHeight,
+                    behavior: "smooth"
+                });
             } else {
                 document.getElementById("swap_form").style.display = "none";
             }
@@ -87,6 +90,11 @@
             if (document.getElementById("report_form").style.display === "none") {
                 document.getElementById("swap_form").style.display = "none";
                 document.getElementById("report_form").style.display = "block";
+                window.scrollTo({
+                    left: 0,
+                    top: document.body.scrollHeight,
+                    behavior: "smooth"
+                });
             } else {
                 document.getElementById("report_form").style.display = "none";
             }

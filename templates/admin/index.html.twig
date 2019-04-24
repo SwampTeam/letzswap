@@ -4,7 +4,7 @@
 
 {% block body %}
     <div class="d-flex flex-wrap justify-content-center">
-    <div>
+    <div class="padding_admin_table">
 
     <h1>Items</h1>
     <br>
@@ -29,7 +29,7 @@
                     {% for picture in pictures %}
                         {% if picture.item.id  == item.getId() %}
                             <th scope="row"> <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
-                                     alt="{{ item.title }}" width="57px" height="57px">
+                                     alt="{{ item.title }}" width="53px" height="53px">
                             </th>
                         {% endif %}
                     {% endfor %}
@@ -70,7 +70,7 @@
         </table>
     {% endif %}
     </div>
-    <div>
+        <div class="padding_admin_table">
     {% if users == null %}
         <div class="empty-items">
             No Users found

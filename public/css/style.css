@@ -426,7 +426,7 @@ its the same what Marco put but only with a border radius tell me what you think
 #admin_dashboard_items {
     margin: 1rem 1rem 3rem 0.5rem;
     background-color: #e2e2e2;
-    border-radius: 1%;
+    border-radius: 1px;
     padding: 0.3rem;
     width: 525px;
     -webkit-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
@@ -467,7 +467,7 @@ its the same what Marco put but only with a border radius tell me what you think
 #admin_dashboard_users {
     margin: 1rem 1rem 3rem 0.5rem;
     background-color: #e2e2e2;
-    border-radius: 1%;
+    border-radius: 1px;
     padding: 0.3rem;
     width: 525px;
     -webkit-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
@@ -492,6 +492,9 @@ its the same what Marco put but only with a border radius tell me what you think
 table caption {
     font-size: 35px;
     text-align: center;
+}
+#navbar_gravatar img {
+    border-radius: 20px;
 }
 /*Users end*/
 
@@ -689,6 +692,10 @@ table caption {
     }
     #admin_dashboard_items {
         margin: auto;
+        border-radius: 10px;
+    }
+    #admin_dashboard_users {
+        border-radius: 10px;
     }
     #admin_dashboard_users {
         margin: 0rem auto auto 1rem;

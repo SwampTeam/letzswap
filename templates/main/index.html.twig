@@ -24,7 +24,7 @@
 
             <div class="pagination navigation">
                 {{ knp_pagination_render(items) }}
-            </div>
+            </div>card-img-top
         </div>
 
         <div class="container-fluid justify-content-center">
@@ -34,7 +34,7 @@
                         <div class="card">
                             <img class="card-img-top"
                                  src="{{ path('get_picture_content', {'picture': item.getPictures()|first.getId()}) }}"
-                                 alt="{{ item.title }}" width="250px">
+                                 alt="{{ item.title }}" width="250">
                             <div class="card-body">
                                 <h5 class="card-title">{{ item.title }}</h5>
                                 <div id="butons">

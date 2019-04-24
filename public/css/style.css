@@ -1,4 +1,9 @@
 /*Phone first! */
+html {
+    width: 100%;
+    overflow: hidden;
+}
+
 * {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -52,6 +57,7 @@ body{
     -ms-overscroll-behavior-x: none; /* Internet Explorer */
     -o-overscroll-behavior-x: none; /* Opera < 12.1 */
     overscroll-behavior-x: none;
+    overflow: auto;
 
 }
 

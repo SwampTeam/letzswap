@@ -21,7 +21,7 @@
                 <th>Options</th>
             </tr>
             </thead>
-            <tbody >
+            <tbody>
             {% for item in items %}
                 <tr>
                     {% for picture in pictures %}
@@ -108,27 +108,31 @@
                     <td>
                         {#options#}
 
-                        <div>
-                            <div id="admin_dashboard_buttons_users">
-                            <form method="post" action="{{ path('user_unban', {'id': user.id}) }}"
-                                  onsubmit="return confirm('Are you sure you really want to UN-BAN this user?');">
-                                <input type="hidden" name="_method" value="POST">
-                                <input type="hidden" name="csrf_token_banuser" value="{{ csrf_token('ban-user') }}"/>
-                                <button class="btn btn-primary">Unban</button>
-                            </form>
-                        </div>
-                        <div>
-                            <div id="admin_dashboard_buttons_users">
 
-                            <form method="post" action="{{ path('user_ban', {'id': user.id}) }}"
-                                  onsubmit="return confirm('Are you sure you really want to BAN this user?');">
-                                <input type="hidden" name="_method" value="POST">
-                                <input type="hidden" name="csrf_token_banuser" value="{{ csrf_token('ban-user') }}"/>
-                                <button class="btn btn-danger">Ban</button>
-                            </form>
-                        </div>
-                        <div>
-                            <div id="admin_dashboard_buttons_users">
+                        <div id="admin_dashboard_buttons_users">
+                            {% set banned = false %}
+                            {% for stats in user.getStatuses() %}
+                                {% if stats.getStatuses().getLabel() == 'banned' %}
+                                    {% set banned = true %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if banned %}
+                                <form method="post" action="{{ path('user_unban', {'id': user.id}) }}"
+                                      onsubmit="return confirm('Are you sure you really want to UN-BAN this user?');">
+                                    <input type="hidden" name="_method" value="POST">
+                                    <input type="hidden" name="csrf_token_banuser"
+                                           value="{{ csrf_token('ban-user') }}"/>
+                                    <button class="btn btn-primary">Unban</button>
+                                </form>
+                            {% else %}
+                                <form method="post" action="{{ path('user_ban', {'id': user.id}) }}"
+                                      onsubmit="return confirm('Are you sure you really want to BAN this user?');">
+                                    <input type="hidden" name="_method" value="POST">
+                                    <input type="hidden" name="csrf_token_banuser"
+                                           value="{{ csrf_token('ban-user') }}"/>
+                                    <button class="btn btn-danger">Ban</button>
+                                </form>
+                            {% endif %}
                             <form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
                                   onsubmit="return confirm('Are you sure you really want to DELETE user {{ user.username }}?');">
                                 <input type="hidden" name="_method" value="DELETE">
@@ -136,11 +140,7 @@
                                 <button class="btn btn-danger">Delete</button>
                             </form>
                         </div>
-                        </div>
-                        </div>
-                        </div>
-                        </td>
-
+                    </td>
                 </tr>
             {% endfor %}
             </tbody>

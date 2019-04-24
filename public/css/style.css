@@ -1,7 +1,6 @@
 /*Phone first! */
 html {
-    width: 100%;
-    overflow: hidden;
+    overflow: auto;
 }
 
 * {
@@ -52,13 +51,7 @@ body{
     background-color: white;
     font-family: 'Source Sans Pro', sans-serif;
     animation: fadein 1s;
-    -webkit-overscroll-behavior-x: none; /* Safari, Chrome and Opera > 12.1 */
-    -moz-overscroll-behavior-x: none; /* Firefox < 16 */
-    -ms-overscroll-behavior-x: none; /* Internet Explorer */
-    -o-overscroll-behavior-x: none; /* Opera < 12.1 */
-    overscroll-behavior-x: none;
     overflow: auto;
-
 }
 
 #App{

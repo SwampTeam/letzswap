@@ -76,6 +76,11 @@
             if (document.getElementById("swap_form").style.display === "none") {
                 document.getElementById("report_form").style.display = "none";
                 document.getElementById("swap_form").style.display = "block";
+                window.scrollTo({
+                    left: 0,
+                    top: document.body.scrollHeight,
+                    behavior: "smooth"
+                });
             } else {
                 document.getElementById("swap_form").style.display = "none";
             }
@@ -85,6 +90,11 @@
             if (document.getElementById("report_form").style.display === "none") {
                 document.getElementById("swap_form").style.display = "none";
                 document.getElementById("report_form").style.display = "block";
+                window.scrollTo({
+                    left: 0,
+                    top: document.body.scrollHeight,
+                    behavior: "smooth"
+                });
             } else {
                 document.getElementById("report_form").style.display = "none";
             }

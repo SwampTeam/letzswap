@@ -17,7 +17,7 @@ msgid "FORM.USER.PASSWORD.FIRST"
 msgstr "Password"
 
 msgid "FORM.USER.PASSWORD.REPEAT"
-msgstr "Please, repeat your password"
+msgstr "Please repeat your password"
 
 msgid "FORM.USER.EMAIL"
 msgstr "Email address"
@@ -26,7 +26,7 @@ msgid "FORM.USER.SUBMIT"
 msgstr "Submit"
 
 msgid "FORM.USER.TOS_ACCEPTED"
-msgstr "I've read and accept the Terms of Service"
+msgstr "I've read and accepted the Terms of Service"
 
 msgid "FORM.USER.USERNAME"
 msgstr "Username"
@@ -38,7 +38,7 @@ msgid "REGISTRATION.ACTIVATION.TITLE"
 msgstr "Activation required"
 
 msgid "REGISTRATION.ACTIVATION.INFO"
-msgstr "Your LëtzSwap! account is almost ready! Please check your e-mail account to activate it."
+msgstr "Your Lëtzswap account is almost ready! Please check your e-mail account to activate it."
 
 msgid "REGISTRATION.MAIL.TITLE"
 msgstr "Please activate your LëtzSwap! account"
@@ -47,10 +47,10 @@ msgid "REGISTRATION.MAIL.TEXT"
 msgstr "Hello %name%, your LëtzSwap! account was successfully created! To start swapping, please activate your account."
 
 msgid "REGISTRATION.MAIL.HTML.PLEASE_CLICK"
-msgstr "Please click"
+msgstr "Follow"
 
 msgid "REGISTRATION.MAIL.HTML.LINK"
-msgstr "on this activation link"
+msgstr "the activation link"
 
 msgid "REGISTRATION.MAIL.TXT.COPY_LINK"
 msgstr "Please copy the following link and paste it in your web browser:"

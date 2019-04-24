@@ -11,13 +11,13 @@ msgid "NAV.TERMS"
 msgstr "Terms of Service"
 
 msgid "NAV.LOGIN"
-msgstr "Login"
+msgstr "Log In"
 
 msgid "NAV.REGISTER"
 msgstr "Register"
 
 msgid "NAV.LOGOUT"
-msgstr "Logout"
+msgstr "Log Out"
 
 msgid "NAV.LOGGED_AS"
 msgstr "Logged in as %username%"
@@ -108,7 +108,7 @@ msgid "ITEM.NEW.BACKLINK"
 msgstr "Back to the items list"
 
 msgid "CONTACT.FORM.SUBJECT"
-msgstr "The subject of your message"
+msgstr "Subject"
 
 msgid "APP.TITLE"
 msgstr "Lëtzswap"
@@ -117,25 +117,25 @@ msgid "ADD_ITEM.TITLE"
 msgstr "Title"
 
 msgid "ADD_ITEM.DESCRIPTION"
-msgstr "Describe your item"
+msgstr "Item description"
 
 msgid "ADD_ITEM.STATUS"
-msgstr "Select the condition of your item"
+msgstr "Item condition"
 
 msgid "ADD_ITEM.PICTURE"
 msgstr "Choose your picture"
 
 msgid "LOGIN.USERNAME.LABEL"
-msgstr "Login"
+msgstr "Log In"
 
 msgid "LOGIN.PASSWORD.LABEL"
 msgstr "Password"
 
 msgid "LOGIN.SUBMIT"
-msgstr "Login"
+msgstr "Log In"
 
 msgid "SWAP.MAIL.TITLE"
-msgstr "E-mail from LëtzSwap!"
+msgstr "E-mail from Lëtzswap"
 
 msgid "FORM.ITEM.TITLE.LABEL"
 msgstr "Title of your item"
@@ -162,22 +162,22 @@ msgid "REPORT.MAIL.TITLE"
 msgstr "The item: %item% was reported!"
 
 msgid "ITEM.EDIT.PAGETITLE"
-msgstr "Item edition | LëtzSwap!"
+msgstr "Item edition | Lëtzswap"
 
 msgid "HOME.PAGETITLE"
-msgstr "LëtzSwap! | Swap you unused items with locals"
+msgstr "Lëtzswap | Swap you unused items with locals"
 
 msgid "ITEM.DETAILS.PAGETITLE"
-msgstr "Item details | LëtzSwap!"
+msgstr "Item details | Lëtzswap"
 
 msgid "ITEM.EDIT.TITLE"
 msgstr "Edit your item"
 
 msgid "ABOUT.PAGETITLE"
-msgstr "About LëtzSwap!"
+msgstr "About Lëtzswap"
 
 msgid "ERROR.404.PAGETITLE"
 msgstr "Welcome in the swamp!"
 
 msgid "TERMS.PAGETITLE"
-msgstr "Terms of Service | LëtzSwap!"
+msgstr "Terms of Service | Lëtzswap"

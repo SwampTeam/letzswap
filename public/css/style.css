@@ -111,6 +111,7 @@ body{
 
 /*Text from the top main page - header*/
 #elevator_pitch {
+    margin-top: 10px;
     padding: 90px 20px 20px ;
     animation: fadein 3s;
     background-color: #336655;
@@ -118,7 +119,7 @@ body{
 
 }
 #elevator_pitch span {
-    color: #f3400c;
+    color: #55aa8e;
 }
 #elevator_pitch h2{
     text-align: center;
@@ -148,7 +149,7 @@ body{
     width: 330px;
     height: 370px;
     background-color: white;
-    margin: 1rem auto 2rem auto;
+    margin: 2rem;
     overflow: hidden;
     border-radius: 0.5rem;
     -webkit-box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.2);
@@ -397,13 +398,13 @@ its the same what Marco put but only with a border radius tell me what you think
 /* Admin dashboard start */
 #admin_dashboard_items {
     margin: 1rem 1rem 3rem 0.5rem;
-    background-color: #ffffff;
-    border-radius: 10px;
+    background-color: #e2e2e2;
+    border-radius: 1%;
     padding: 0.3rem;
     width: 525px;
     -webkit-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 19px -1px rgba(0, 0, 0, 0.51);}
+    box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);}
 
 /* Items */
 #admin_dashboard_items table {
@@ -438,13 +439,13 @@ its the same what Marco put but only with a border radius tell me what you think
 /*Users*/
 #admin_dashboard_users {
     margin: 1rem 1rem 3rem 0.5rem;
-    background-color: #ffffff;
+    background-color: #e2e2e2;
     border-radius: 1%;
     padding: 0.3rem;
     width: 525px;
     -webkit-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 19px -1px rgba(0, 0, 0, 0.51);}
+    box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);}
 
 #admin_dashboard_users th {
     padding-right: 67px;
@@ -471,28 +472,29 @@ table caption {
 
 /* Tablet */
 @media screen and (min-width:800px) {
-
-    #elevator_pitch  {
-        margin: 1rem 0 0;
-        animation: fadein 3s;
-    }
-    #elevator_pitch h1{
+    #elevator_pitch h2{
         text-align: center;
         font-family: 'Catamaran', sans-serif;
-        font-size: 45px;
+        font-size: 28px;
         align-items: center;
         animation: fadein 3s;
     }
-    #elevator_pitch h1 span {
-        color: #5ff03f;
-        font-weight: bold;
-    }
     #elevator_pitch p {
-        font-size: 23px;
+        font-size: 16px;
         text-align: center;
         font-family: 'Source Sans Pro', sans-serif;
 
     }
+    .button {
+        padding: 2px 18px;
+        margin-left: 5px;
+        margin-right: 5px;
+        border-radius: 10px;
+        font-size: 14px;
+        background-color: none;
+        border:1px solid #336655;
+    }
+
 
     #item_detail_buttons {
         display: flow;
@@ -507,11 +509,8 @@ table caption {
         margin: 1rem;
     }
     #description img {
-        display: block;
-        max-width: 600px;
-        max-height:350px;
-        width: auto;
-        height: auto;
+        width: 600px;
+        height: 450px;
     }
     .img-thumbnail {
         border:none;
@@ -563,20 +562,21 @@ table caption {
     }
     #admin_dashboard_items {
         padding: 0.5rem;
+    }
+    #admin_dashboard_items {
         width: auto;
     }
-
     #admin_dashboard_buttons_users {
         margin: 2rem ;
     }
     #admin_dashboard_items img {
-        width: 150px;
-        height: 150px;
+        width: 250px;
+        height: 250px;
     }
     #admin_dashboard_items thead {
         display: flex;
         justify-content: flex-end;
-        padding-right: 50px;
+        padding-right: 30px;
     }
     #admin_dashboard_users {
         padding: 0.5rem;
@@ -590,31 +590,40 @@ table caption {
         padding-left: 2px;
     }
 }
-@media screen and (min-width: 1300px) {
-
+@media screen and (min-width: 1200px) {
     #item_detail_buttons {
     }
     #description img {
         border-radius: 1.1%;
-        max-width: 800px;
-        max-height: 600px;
-        width: auto;
-        height: auto;
+        width: 800px;
+        height: 600px;
     }
-    #elevator_pitch h1{
+    #elevator_pitch h2{
         text-align: center;
         font-family: 'Catamaran', sans-serif;
-        font-size: 70px;
+        font-size: 42px;
         align-items: center;
         animation: fadein 3s;
     }
     #elevator_pitch p {
-        font-size: 28px;
+        font-size: 24px;
         text-align: center;
         font-family: 'Source Sans Pro', sans-serif;
 
     }
+    .button {
+        padding: 2px 18px;
+        margin-left: 5px;
+        margin-right: 5px;
+        border-radius: 10px;
+        font-size: 16px;
+        background-color: none;
+        border:1px solid #336655;
+    }
 
+    .col {
+        margin-top: 6rem;
+    }
     .about_info{
         text-align: center;
         display: flex;
@@ -661,10 +670,7 @@ table caption {
         margin: 0rem auto auto 1rem;
 
     }
-    #admin_dashboard_items img {
-        width: 150px;
-        height: 150px;
-    }
+
 }
 
 

@@ -13,6 +13,9 @@
             opacity: 1;
         }
     </style>
+
+
+
     <div class="new_item_page">
         <div>
             <h1 id="registration_title">{{ 'ITEM.NEW.TITLE'|trans }}</h1>
@@ -20,10 +23,14 @@
     </div>
     <div>
         {{ form_start(form) }}
+
         {{ form_widget(form) }}
     </div>
     <div id="add_item_buttons" class="d-flex justify-content-between">
         <button class="button">Add Item</button>
     </div>
+
+
+
     {{ form_end(form) }}
 {% endblock %}

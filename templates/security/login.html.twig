@@ -10,10 +10,10 @@
 
         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
         <label for="inputUsername" class="sr-only">{{ 'LOGIN.USERNAME.LABEL' | trans }}</label>
-        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control"
+        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control form_grey_input"
                placeholder="Username" required autofocus>
         <label for="inputPassword" class="sr-only">{{ 'LOGIN.PASSWORD.LABEL' | trans }}</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <input type="password" name="password" id="inputPassword" class="form-control form_grey_input" placeholder="Password" required>
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
@@ -25,3 +25,4 @@
         </button>
     </form>
 {% endblock %}
+

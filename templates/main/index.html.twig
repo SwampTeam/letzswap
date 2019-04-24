@@ -8,13 +8,20 @@
 
 {% block body %}
     <main>
-
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if uRoles|length == 0 %}
+                <div class="alert alert-danger">You are almost done! You need to activate your account to access the
+                    website functionalities,
+                    please check your
+                    e-mails.
+                </div>
+            {% endif %}
+        {% endif %}
         <div>
             <div class="count my-1">
                 {{ 'HOME.ITEM_COUNT'|trans }} {{ items.getTotalItemCount }}
             </div>
 
-            {# display navigation #}
             <div class="pagination navigation">
                 {{ knp_pagination_render(items) }}
             </div>
@@ -24,8 +31,7 @@
             <div class="d-flex justify-content-center flex-wrap ">
                 {% for item in items %}
                     <div class="col">
-                        <div class="card" style="width: 17rem;">
-                            {#  TODO: Remove the width of the image, use CSS - Adolfo #}
+                        <div class="card">
                             <img class="card-img-top"
                                  src="{{ path('get_picture_content', {'picture': item.getPictures()|first.getId()}) }}"
                                  alt="{{ item.title }}" width="250px">

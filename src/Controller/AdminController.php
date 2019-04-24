@@ -102,7 +102,10 @@ class AdminController extends AbstractController
     {
         $manager = $this->getDoctrine()->getManager();
         $status = $statusRepository->findOneByLabel('banned');
-        $repo = $userStatusRepository->findOneByStatuses($status);
+        $repo = $userStatusRepository->findOneBy([
+            'users' => $user,
+            'statuses' => $status
+        ]);
 
         $manager->remove($repo);
         $manager->flush();

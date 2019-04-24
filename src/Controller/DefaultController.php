@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-
 use App\Repository\ItemRepository;
-use App\Repository\PictureRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,7 +11,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-
 
     /**
      * @Route("/", name="homepage", methods={"GET"})
@@ -29,8 +26,15 @@ class DefaultController extends AbstractController
     ): Response
     {
         $itemsPerPage = 4;
+//        $roles = empty($this->getUser()->getRoles()) ? $this->getUser()->getRoles() : '';
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $roles = $this->getUser()->getRoles();
+        } else {
+            $roles = '';
+        }
         return $this->render('main/index.html.twig', [
             'items' => $itemRepository->findPaginated($request, $paginator, $itemsPerPage),
+            'uRoles' => $roles
         ]);
     }
 
@@ -57,7 +61,7 @@ class DefaultController extends AbstractController
      */
     public function termsOfServicesAction()
     {
-        return $this->render('terms/terms.html.twig');
+        return $this->render('terms/terms.html.twig', ['uRoles' => $this->getUser()->getRoles()]);
     }
 
 }

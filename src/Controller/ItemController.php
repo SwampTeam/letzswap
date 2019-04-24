@@ -89,8 +89,14 @@ class ItemController extends AbstractController
 
             return $this->redirectToRoute('homepage');
         }
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $roles = $this->getUser()->getRoles();
+        } else {
+            $roles = '';
+        }
         return $this->render('item/new.html.twig', [
             'item' => $item,
+            'uRoles' => $roles,
             'form' => $form->createView(),
         ]);
     }
@@ -161,7 +167,11 @@ class ItemController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $roles = $this->getUser()->getRoles();
+        } else {
+            $roles = '';
+        }
         $email = $item->getUser()->getEmail();
         $username = $item->getUser()->getUsername();
         $showGravatar = $getGravar->getAvatar($email, $username, 200);
@@ -170,6 +180,7 @@ class ItemController extends AbstractController
             'picture' => $pictureRepository->findOneByItem($item->getId()),
             'avatar' => $showGravatar,
             'username' => $username,
+            'uRoles' => $roles,
             'swapForm' => $swapForm->createView(),
             'reportForm' => $reportForm->createView(),
         ]);
@@ -229,8 +240,14 @@ class ItemController extends AbstractController
                 'id' => $item->getId(),
             ]);
         }
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $roles = $this->getUser()->getRoles();
+        } else {
+            $roles = '';
+        }
         return $this->render('item/edit.html.twig', [
             'item' => $item,
+            'uRoles' => $roles,
             'picture' => $item->getPictures(),
             'form' => $form->createView(),
             'upload_directory' => $this->getParameter('upload_directory')

@@ -59,7 +59,17 @@ body{
     margin: 10px auto 100px;
 }
 
+.form_grey_input {
 
+    border-radius: 3px;
+    border: 0 solid lightgray;
+    background-color: lightgray;
+    color: gray();
+
+}
+.form_grey_input::placeholder {
+    color: gray();
+}
 .navbar {
 
     background-color: #ffffff;
@@ -69,6 +79,7 @@ body{
     border-radius: 102px 102px 102px 102px;
     border: 0px solid lightgray;
     background-color: lightgray;
+
 }
 .navbar-toggler {
     border: none;

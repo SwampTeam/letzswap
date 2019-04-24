@@ -19,25 +19,25 @@ class ContactFormType extends AbstractType
             ->add('name',
                 TextType::class,
                 [
-                    'attr' => ['placeholder' => 'CONTACT.FORM.NAME', 'class' => "button"],
+                    'attr' => ['placeholder' => 'CONTACT.FORM.NAME', 'class' => "form_grey_input"],
                     'label' => false,
                 ])
             ->add('subject',
                 TextType::class,
                 [
-                    'attr' => ['placeholder' => 'CONTACT.FORM.SUBJECT', 'class' => "button"],
+                    'attr' => ['placeholder' => 'CONTACT.FORM.SUBJECT', 'class' => "form_grey_input"],
                     'label' => false,
                 ])
             ->add('email',
                 EmailType::class,
                 [
-                    'attr' => ['placeholder' => 'CONTACT.FORM.EMAIL', 'class' => "button"],
+                    'attr' => ['placeholder' => 'CONTACT.FORM.EMAIL', 'class' => "form_grey_input"],
                     'label' => false,
                 ])
             ->add('message',
                 TextareaType::class,
                 [
-                    'attr' => ['placeholder' => 'CONTACT.FORM.MESSAGE', 'class' => "button"],
+                    'attr' => ['placeholder' => 'CONTACT.FORM.MESSAGE', 'class' => "form_grey_input"],
                     'label' => false,
                 ]);
 

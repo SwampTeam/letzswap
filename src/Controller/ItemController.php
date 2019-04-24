@@ -25,6 +25,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ItemController extends AbstractController
 {
 
+
     /**
      * @Route("/picture/{picture}", name="get_picture_content")
      * @param Picture $picture
@@ -239,8 +240,14 @@ class ItemController extends AbstractController
                 'id' => $item->getId(),
             ]);
         }
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $roles = $this->getUser()->getRoles();
+        } else {
+            $roles = '';
+        }
         return $this->render('item/edit.html.twig', [
             'item' => $item,
+            'uRoles' => $roles,
             'picture' => $item->getPictures(),
             'form' => $form->createView(),
             'upload_directory' => $this->getParameter('upload_directory')

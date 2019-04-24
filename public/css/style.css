@@ -5,7 +5,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    transition-duration: 0.3s;
+    transition-duration: 0.1s;
 
 }
 ::-webkit-scrollbar {
@@ -49,7 +49,7 @@ body{
     position: relative;
     background-color: white;
     font-family: 'Source Sans Pro', sans-serif;
-    animation: fadein 3s;
+    animation: fadein 1s;
 
 }
 
@@ -62,8 +62,8 @@ body{
 .form_grey_input {
 
     border-radius: 3px;
-    border: 0 solid lightgray;
-    background-color: lightgray;
+    border: 0 solid #e6e6e6;
+    background-color: #F6F6F6;
     color: gray();
 
 }
@@ -143,7 +143,7 @@ Navbar design ending
 #elevator_pitch {
     margin-top: 10px;
     padding: 90px 20px 20px ;
-    animation: fadein 3s;
+    /*animation: fadein 3s;*/
     background-color: #336655;
     color: #ffffff;
 
@@ -156,7 +156,7 @@ Navbar design ending
     font-family: 'Catamaran', sans-serif;
     font-size: 24px;
     align-items: center;
-    animation: fadein 3s;
+    /*animation: fadein 3s;*/
 }
 #elevator_pitch h2 span {
     color: #f3400c;
@@ -185,12 +185,12 @@ Navbar design ending
     -webkit-box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 1px 6px 0px rgba(166,166,166,1);
     /* card:hover*/
-    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-    -moz-animation: fadein 2s; /* Firefox < 16 */
-    -ms-animation: fadein 2s; /* Internet Explorer */
-    -o-animation: fadein 2s; /* Opera < 12.1 */
+    -webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 0.5s; /* Firefox < 16 */
+    -ms-animation: fadein 0.5s; /* Internet Explorer */
+    -o-animation: fadein 0.5s; /* Opera < 12.1 */
     -webkit-animation-direction: alternate;
-    animation: move-in 2s;
+    animation: move-in 0.5s;
 }
 .card-title {
     font-size: 18px;
@@ -504,7 +504,7 @@ table caption {
         font-family: 'Catamaran', sans-serif;
         font-size: 28px;
         align-items: center;
-        animation: fadein 3s;
+        /*animation: fadein 3s;*/
     }
     #elevator_pitch p {
         font-size: 16px;
@@ -630,7 +630,7 @@ table caption {
         font-family: 'Catamaran', sans-serif;
         font-size: 42px;
         align-items: center;
-        animation: fadein 3s;
+        /*animation: fadein 3s;*/
     }
     #elevator_pitch p {
         font-size: 24px;

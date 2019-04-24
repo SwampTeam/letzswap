@@ -8,7 +8,15 @@
 
 {% block body %}
     <main>
-
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {% if uRoles|length == 0 %}
+                <div class="alert alert-danger">You are almost done! You need to activate your account to access the
+                    website functionalities,
+                    please check your
+                    e-mails.
+                </div>
+            {% endif %}
+        {% endif %}
         <div>
             <div class="count my-1">
                 {{ 'HOME.ITEM_COUNT'|trans }} {{ items.getTotalItemCount }}

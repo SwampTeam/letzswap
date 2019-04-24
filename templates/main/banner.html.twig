@@ -1,14 +1,14 @@
 {% block banner %}
 <div id="elevator_pitch">
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <h2>Welcome back to Letzswap!</h2>
+        <h2>Welcome back to {{ 'APP.TITLE'|trans }}!</h2>
         <p > This platform is the <span>simplest way</span>
             to extend the life of your goods
             by giving them a new owner.
             <br> Swish <span>locally</span>, exchange <span>on your own terms</span>, swap <span>easily</span>!
         </p>
     {% else %}
-        <h2>Welcome to Letzswap!</h2>
+        <h2>Welcome to {{ 'APP.TITLE'|trans }}!</h2>
         <p > This platform is the <span>simplest way</span>
             to extend the life of your goods
             by giving them a new owner.

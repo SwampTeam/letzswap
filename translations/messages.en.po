@@ -111,7 +111,7 @@ msgid "CONTACT.FORM.SUBJECT"
 msgstr "The subject of your message"
 
 msgid "APP.TITLE"
-msgstr "LëtzSwap!"
+msgstr "Lëtzswap"
 
 msgid "ADD_ITEM.TITLE"
 msgstr "Title"

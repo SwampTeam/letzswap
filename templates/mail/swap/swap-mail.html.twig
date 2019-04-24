@@ -11,15 +11,18 @@
 
 {# FIXME: Content needed#}
 
-<p> {{ '%username%' user.getUsername() }} is interested in your {{ '%item%' item.getTitle() }}
+<p>
+        <h1>Hi {{ user.username }} </h1>
 
-    And he has sent the following message
+    User by the name of {{ item.user.username }} is interested in swapping something
+    with your item:  <strong>{{ item.title }}</strong><br>
 
-    {{ data.message }}
-
+        And he has sent the following message:<br>
+   <strong>{{ textComingFromSwapForm }}</strong> <br>
+    Here is his email so you can reply to him {{ item.user.email }}
 </p>
 
-<p>{{ textComingFromSwapForm }}</p>
+<p>Letzswap team</p>
 
 
 </body>

@@ -10,20 +10,17 @@
 </head>
 <body>
 {# FIXME: We need to pass the item from ReportController, disabling the null item  #}
-<h1>{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()|default('Something')}) }} {{ user.getUsername()|default('someone') }}!</h1>
 
 {# FIXME: Content needed #}
+    <h1>Hi {{ user.username }} </h1><br>
 
-
-<p> Your item {{'%item%': item.getTitle() }} has been reported by one of our users, we will review this report and if it
-violated our terms of service in anyway, we will delete the item you have posted.
+<p> Your item {{item.title }} has been reported by one of our users, we will review this report and if it
+violated our terms of service in anyway, we will delete the item you have posted.<br>
 
 Please read our terms of service carefully before submiting your item again or we will be force to take further action such
-as banning you</p>
+as banning you if you continue to post items that are prohibited on the website</p>
 
-
-{{ textComingFromReportForm }}
-
+{{ textComingFromReportForm}}
 
 </body>
 </html>

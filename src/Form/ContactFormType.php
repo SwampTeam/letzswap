@@ -18,16 +18,28 @@ class ContactFormType extends AbstractType
         $builder
             ->add('name',
                 TextType::class,
-                ['label' => 'CONTACT.FORM.NAME'])
+                [
+                    'attr' => ['placeholder' => 'CONTACT.FORM.NAME', 'class' => "button"],
+                    'label' => false,
+                ])
             ->add('subject',
                 TextType::class,
-                ['label' => 'CONTACT.FORM.SUBJECT'])
+                [
+                    'attr' => ['placeholder' => 'CONTACT.FORM.SUBJECT', 'class' => "button"],
+                    'label' => false,
+                ])
             ->add('email',
                 EmailType::class,
-                ['label' => 'CONTACT.FORM.EMAIL'])
+                [
+                    'attr' => ['placeholder' => 'CONTACT.FORM.EMAIL', 'class' => "button"],
+                    'label' => false,
+                ])
             ->add('message',
                 TextareaType::class,
-                ['label' => 'CONTACT.FORM.MESSAGE']);
+                [
+                    'attr' => ['placeholder' => 'CONTACT.FORM.MESSAGE', 'class' => "button"],
+                    'label' => false,
+                ]);
 
 
         if ($options['standalone']) {

@@ -280,8 +280,8 @@ its the same what Marco put but only with a border radius tell me what you think
      height: 50px;
      justify-content: center;
      background-color: #336655;
-    color: #ffffff;
-     /*position: relative;*/
+     color: #ffffff;
+     position: absolute;
      /*min-height: 100vh;*/
      /*padding-bottom: 60px; !* Should be equal to the height of your footer *!*/
      /*box-shadow: 0px -10px 30px -12px rgba(0,0,0,0.75);*/
@@ -621,9 +621,6 @@ table caption {
         border:1px solid #336655;
     }
 
-    .col {
-        margin-top: 6rem;
-    }
     .about_info{
         text-align: center;
         display: flex;

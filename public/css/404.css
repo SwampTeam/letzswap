@@ -1,15 +1,4 @@
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    transition-duration: 0.3s;
 
-}
-::-webkit-scrollbar {
-    display: none;
-}
 
 /*Mobile first*/
 body {
@@ -35,17 +24,16 @@ svg {
     height: 100%;
     width:100%
 }
-.swamp{
-    z-index: 1;
-    height: 600px;
-    width: 100%;
-    background-color: red;
-}
+
 
 /*Tablet responsiveness*/
 @media screen and (min-width:800px) {
     h1 {
         font-size: 12px;
+    }
+    svg {
+        height: 900px ;
+        width: 100%;
     }
 }
 
@@ -53,6 +41,10 @@ svg {
 @media screen and (min-width: 1200px) {
     h1 {
         font-size: 16px;
+    }
+    svg {
+        height: 1200px ;
+        width: 100%;
     }
 
 }

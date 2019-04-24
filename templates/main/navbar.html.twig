@@ -1,60 +1,69 @@
-<nav class="navbar " >
-    <div id="logo">
-        <a href="{{ path('homepage') }}"><h2>{{ 'APP.TITLE' | trans }}</h2></a>
-    </div>
-    <ul class="navbar_list ">
-
-        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-            <li>
-                <span id="username">{{ app.user.username }}</span>
+<!--Navbar -->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
+    <a class="navbar-brand" href="#">LetzSwap</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <form class="form-inline">
+                <input class="form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn-sm btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <li class="nav-item {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
+                <a class="nav-link" href="{{ path('about') }}">
+                    {{ 'NAV.ABOUT'|trans }}
+                </a>
             </li>
-            {% if is_granted('ROLE_ADMIN') %}
-                <li class="{% if app.request.attributes.get('_route') == 'admin' %} active {% endif %}">
-                    <a class="button navbar_link" href="{{ path('admin') }}">
-                        {{ 'NAV.ADMIN'|trans }}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                 {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item {% if app.request.attributes.get('_route') == 'admin' %} active {% endif %}">
+                        <a class="nav-link" href="{{ path('admin') }}">
+                            {{ 'NAV.ADMIN'|trans }}
+                        </a>
+                    </li>
+                {% endif %}
+
+
+                <li class="nav-item {% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
+                    <a class="nav-link" href="{{ path('item_new') }}">
+                        {{ 'NAV.ADD_ITEM'|trans }}
                     </a>
                 </li>
+                {#Here should go the href to user profile#}
+                <li class="nav-item">
+                    <a class="nav-link" id="username"> Logged as {{ app.user.username }}  <i class="fas fa-user"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('app_logout') }}">
+                        {{ 'NAV.LOGOUT'|trans }}
+                    </a>
+                </li>
+
+
+            {% else %}
+
+                <li class="nav-item {% if app.request.attributes.get('_route') == 'login' %} active {% endif %}">
+                    {#  <a class="nav-link" data-toggle="modal" data-target="#modalLogin">#}
+                    <a class="nav-link" href="{{ path('login') }}">
+                        {{ 'NAV.LOGIN'|trans }}
+                    </a>
+                    {#  </a>#}
+                </li>
+                <li class="nav-item{% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
+                    <a class="nav-link" href="{{ path('register') }}">
+                        {{ 'NAV.REGISTER'|trans }}
+                    </a>
+                </li>
+
             {% endif %}
-            <li class="{% if app.request.attributes.get('_route') == 'add_item' %} active {% endif %}">
-                <a class="button navbar_link" href="{{ path('item_new') }}">
-                    {{ 'NAV.ADD_ITEM'|trans }}
-                </a>
+
             </li>
 
-            <li class="">
-                <a class="button navbar_link" href="{{ path('app_logout') }}">
-                    {{ 'NAV.LOGOUT'|trans }}
-                </a>
-            </li>
-            <li class="{% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
-                <a class="button navbar_link" href="{{ path('about') }}">
-                    {{ 'NAV.ABOUT'|trans }}
-                </a>
-            </li>
-
-        {% else %}
-            <li class="{% if app.request.attributes.get('_route') == 'login' %} active {% endif %}">
-                {#  <a class="button navbar_link" data-toggle="modal" data-target="#modalLogin">#}
-                <a class="button navbar_link" href="{{ path('login') }}">
-                    {{ 'NAV.LOGIN'|trans }}
-                </a>
-                {#  </a>#}
-            </li>
-            <li class="{% if app.request.attributes.get('_route') == 'register' %} active {% endif %}">
-                <a class="button navbar_link" href="{{ path('register') }}">
-                    {{ 'NAV.REGISTER'|trans }}
-                </a>
-            </li>
-            <li class="{% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
-                <a class="button navbar_link" href="{{ path('about') }}">
-                    {{ 'NAV.ABOUT'|trans }}
-                </a>
-            </li>
-
-
-        {% endif %}
-    </ul>
+        </ul>
+    </div>
 </nav>
+<!--/.Navbar -->
 
 <div class="modal fade" id="modalLogin" role="dialog">
     <div class="modal-dialog">

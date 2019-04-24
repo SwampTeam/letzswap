@@ -25,7 +25,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class ItemController extends AbstractController
 {
 
-
     /**
      * @Route("/picture/{picture}", name="get_picture_content")
      * @param Picture $picture
@@ -89,8 +88,14 @@ class ItemController extends AbstractController
 
             return $this->redirectToRoute('homepage');
         }
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $roles = $this->getUser()->getRoles();
+        } else {
+            $roles = '';
+        }
         return $this->render('item/new.html.twig', [
             'item' => $item,
+            'uRoles' => $roles,
             'form' => $form->createView(),
         ]);
     }
@@ -161,7 +166,11 @@ class ItemController extends AbstractController
             return $this->redirectToRoute('homepage');
         }
 
-
+        if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $roles = $this->getUser()->getRoles();
+        } else {
+            $roles = '';
+        }
         $email = $item->getUser()->getEmail();
         $username = $item->getUser()->getUsername();
         $showGravatar = $getGravar->getAvatar($email, $username, 200);
@@ -170,6 +179,7 @@ class ItemController extends AbstractController
             'picture' => $pictureRepository->findOneByItem($item->getId()),
             'avatar' => $showGravatar,
             'username' => $username,
+            'uRoles' => $roles,
             'swapForm' => $swapForm->createView(),
             'reportForm' => $reportForm->createView(),
         ]);

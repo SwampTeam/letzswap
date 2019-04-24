@@ -27,7 +27,9 @@
 
 
 <body>
-{% include 'main/navbar.html.twig' %}
+{% block topmenu %}
+    {% include 'main/navbar.html.twig' %}
+{% endblock %}
 
 {% block banner %}
     <div style="height: 100px"></div>
@@ -35,10 +37,8 @@
 
 <div id="App">
     {% include 'flash_message.html.twig' %}
-    {% block body %}
-    {% endblock %}
+    {% block body %}{% endblock %}
 </div>
-
 
 {% block footer %}
     {% include 'main/footer.html.twig' %}

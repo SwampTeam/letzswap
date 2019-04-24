@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
+{% block title %}{{ 'ERROR.404.PAGETITLE'|trans }}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href= {{ asset('css/404.css') }}>
-
-
 {% endblock %}
 
 {% block topmenu "" %}
-{% block title %}{{ 'ERROR.404.PAGETITLE'|trans }}{% endblock %}
+{% block banner "" %}
+
 
 {% block body %}
     <h1>You shall not Pass!</h1>

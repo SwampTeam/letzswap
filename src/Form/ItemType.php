@@ -17,12 +17,20 @@ class ItemType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class, ['label' => 'ADD_ITEM.TITLE'])
+            ->add('title', TextType::class, [
+                'attr' => ['class' => "button", 'placeholder' => 'ADD_ITEM.TITLE'],
+                'label' => false,
+            ])
             ->add('description', TextareaType::class,
-                ['label' => 'FORM.ITEM.DESCRIPTION.LABEL',
+                [
+                    'attr' => ['placeholder' => 'FORM.ITEM.DESCRIPTION.LABEL', 'class' => "button"],
+                    'label' => false,
                     'required' => false
                 ])
-            ->add('conditionstatus', ChoiceType::class, ['label' => 'FORM.ITEM.STATUS.LABEL',
+            ->add('conditionstatus', ChoiceType::class, [
+                'attr' => ['class' => "button"],
+                'placeholder' => 'FORM.ITEM.STATUS.LABEL',
+                'label' => false,
                 'choices' => [
                     'FORM.ITEM.STATUS.NEW' => 'As New',
                     'FORM.ITEM.STATUS.SIGNS' => 'Signs of Wear',

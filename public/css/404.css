@@ -1,3 +1,17 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition-duration: 0.3s;
+
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+/*Mobile first*/
 body {
     background: #336655;
     margin:0;
@@ -7,6 +21,7 @@ body {
 
 h1 {
     font-family: 'Source Code Pro', sans-serif;
+    font-size: 10px;
     color: #fff;
     text-align: center;
     padding: 2em 0 0;
@@ -19,4 +34,25 @@ svg {
     left:0;
     height: 100%;
     width:100%
+}
+.swamp{
+    z-index: 1;
+    height: 600px;
+    width: 100%;
+    background-color: red;
+}
+
+/*Tablet responsiveness*/
+@media screen and (min-width:800px) {
+    h1 {
+        font-size: 12px;
+    }
+}
+
+/*Desktop responsiveness*/
+@media screen and (min-width: 1200px) {
+    h1 {
+        font-size: 16px;
+    }
+
 }

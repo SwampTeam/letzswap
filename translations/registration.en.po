@@ -32,7 +32,7 @@ msgid "FORM.USER.USERNAME"
 msgstr "Username"
 
 msgid "REGISTRATION.TITLE"
-msgstr "Registration Form"
+msgstr "Create your account "
 
 msgid "REGISTRATION.ACTIVATION.TITLE"
 msgstr "Activation required"
@@ -41,10 +41,10 @@ msgid "REGISTRATION.ACTIVATION.INFO"
 msgstr "Your LëtzSwap! account is almost ready! Please check your e-mail account to activate it."
 
 msgid "REGISTRATION.MAIL.TITLE"
-msgstr "Please, activate your LëtzSwap! account"
+msgstr "Please activate your LëtzSwap! account"
 
 msgid "REGISTRATION.MAIL.TEXT"
-msgstr "Hello %name%, your brand new LëtzSwap! account was successfully created! To start swapping, please activate your account."
+msgstr "Hello %name%, your LëtzSwap! account was successfully created! To start swapping, please activate your account."
 
 msgid "REGISTRATION.MAIL.HTML.PLEASE_CLICK"
 msgstr "Please click"
@@ -53,4 +53,4 @@ msgid "REGISTRATION.MAIL.HTML.LINK"
 msgstr "on this activation link"
 
 msgid "REGISTRATION.MAIL.TXT.COPY_LINK"
-msgstr "Please, copy the following link and paste it in your web browser:"
+msgstr "Please copy the following link and paste it in your web browser:"

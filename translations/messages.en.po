@@ -144,7 +144,7 @@ msgid "FORM.ITEM.DESCRIPTION.LABEL"
 msgstr "Description"
 
 msgid "FORM.ITEM.STATUS.LABEL"
-msgstr "How is your Item?"
+msgstr "Item condition"
 
 msgid "FORM.ITEM.STATUS.NEW"
 msgstr "As New"

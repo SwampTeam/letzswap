@@ -116,29 +116,34 @@
                                     {% set banned = true %}
                                 {% endif %}
                             {% endfor %}
-                            {% if banned %}
-                                <form method="post" action="{{ path('user_unban', {'id': user.id}) }}"
-                                      onsubmit="return confirm('Are you sure you really want to UN-BAN this user?');">
-                                    <input type="hidden" name="_method" value="POST">
-                                    <input type="hidden" name="csrf_token_banuser"
-                                           value="{{ csrf_token('ban-user') }}"/>
-                                    <button class="btn btn-primary">Unban</button>
+                            {% if (user.id != app.user.id) %}
+                                {% if banned %}
+                                    <form method="post" action="{{ path('user_unban', {'id': user.id}) }}"
+                                          onsubmit="return confirm('Are you sure you really want to UN-BAN {{ user.username }}?');">
+                                        <input type="hidden" name="_method" value="POST">
+                                        <input type="hidden" name="csrf_token_unbanuser"
+                                               value="{{ csrf_token('unban-user') }}"/>
+                                        <button class="btn btn-primary">Unban</button>
+                                    </form>
+                                {% else %}
+                                    <form method="post" action="{{ path('user_ban', {'id': user.id}) }}"
+                                          onsubmit="return confirm('Are you sure you really want to BAN {{ user.username }}?');">
+                                        <input type="hidden" name="_method" value="POST">
+                                        <input type="hidden" name="csrf_token_banuser"
+                                               value="{{ csrf_token('ban-user') }}"/>
+                                        <button class="btn btn-danger">Ban</button>
+                                    </form>
+                                {% endif %}
+                                <form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
+                                      onsubmit="return confirm('Are you sure you really want to DELETE user {{ user.username }}?');">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <input type="hidden" name="csrf_token_rmuser"
+                                           value="{{ csrf_token('delete-user') }}"/>
+                                    <button class="btn btn-danger">Delete</button>
                                 </form>
                             {% else %}
-                                <form method="post" action="{{ path('user_ban', {'id': user.id}) }}"
-                                      onsubmit="return confirm('Are you sure you really want to BAN this user?');">
-                                    <input type="hidden" name="_method" value="POST">
-                                    <input type="hidden" name="csrf_token_banuser"
-                                           value="{{ csrf_token('ban-user') }}"/>
-                                    <button class="btn btn-danger">Ban</button>
-                                </form>
+                                None
                             {% endif %}
-                            <form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
-                                  onsubmit="return confirm('Are you sure you really want to DELETE user {{ user.username }}?');">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="csrf_token_rmuser" value="{{ csrf_token('delete-user') }}"/>
-                                <button class="btn btn-danger">Delete</button>
-                            </form>
                         </div>
                     </td>
                 </tr>

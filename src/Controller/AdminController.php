@@ -15,7 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Service\AvatarGenerator as AVA;
 
 class AdminController extends AbstractController
 {
@@ -25,22 +24,20 @@ class AdminController extends AbstractController
      * @param UserRepository $userRepository
      * @param ItemRepository $itemRepository
      * @param PictureRepository $pictureRepository
-     * @param AVA $getGravar
      * @return Response
      */
-    public function getAdmin(UserRepository $userRepository, ItemRepository $itemRepository, PictureRepository $pictureRepository, AVA $getGravar): Response
+    public function getAdmin(UserRepository $userRepository, ItemRepository $itemRepository, PictureRepository $pictureRepository): Response
     {
-// if ($this->isGranted('ROLE_ADMIN')) {
-        return $this->render('admin/index.html.twig', [
-            'users' => $userRepository->findAll(),
-            'user_avatar' => $getGravar,
-            'items' => $itemRepository->findAll(),
-            'pictures' => $pictureRepository->findAll(),
-            'user_role' => $this->getUser()->getRoles()
-        ]);
-// } else {
-//  return $this->redirectToRoute('swamp');
-//  }
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->render('admin/index.html.twig', [
+                'users' => $userRepository->findAll(),
+                'items' => $itemRepository->findAll(),
+                'pictures' => $pictureRepository->findAll(),
+                'user_role' => $this->getUser()->getRoles()
+            ]);
+        } else {
+            return $this->redirectToRoute('denied');
+        }
     }
 
     /**

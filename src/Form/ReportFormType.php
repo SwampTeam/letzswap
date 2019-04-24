@@ -29,8 +29,7 @@ class ReportFormType extends AbstractType
                 TextareaType::class,
                 [
                     'attr' => [
-                        'placeholder' => "FIXME: Info to the interested party saying what happens when he sends this.
-                             Do we need more complain reasons?",
+                        'placeholder' => "Why do you think this item should be reported?",
                         'class' => "form_grey_input",
                     ],
                     'label' => false,

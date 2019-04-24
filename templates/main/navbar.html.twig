@@ -1,13 +1,14 @@
 <!--Navbar -->
 <nav class="navbar fixed-top navbar-expand-md navbar-light" style="background-color: #ffffff;" id="navbar">
-    <a class="navbar-brand" href="#">LetzSwap</a>
-    <form class="form-inline has-search">
-        <div class="form-group has-search">
-            <span class="fa fa-search form-control-feedback"></span>
-            <input type="text" class="form-control border-letzswap" placeholder="Search" id="search-height">
-        </div>
-    </form>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" href="#">{{ 'APP.TITLE'| trans }}</a>
+    {#    <form class="form-inline has-search">#}
+    {#        <div class="form-group has-search">#}
+    {#            <span class="fa fa-search form-control-feedback"></span>#}
+    {#            <input type="text" class="form-control border-letzswap" placeholder="Search" id="search-height">#}
+    {#        </div>#}
+    {#    </form>#}
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse float-right text-right pr-3" id="navbarSupportedContent">
@@ -15,7 +16,7 @@
 
 
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                 {% if is_granted('ROLE_ADMIN') %}
+                {% if is_granted('ROLE_ADMIN') %}
                     <li class="nav-item {% if app.request.attributes.get('_route') == 'admin' %} active {% endif %}">
                         <a class="nav-link" href="{{ path('admin') }}">
                             {{ 'NAV.ADMIN'|trans }}
@@ -31,7 +32,7 @@
                 </li>
                 {#Here should go the href to user profile#}
                 <li class="nav-item">
-                    <a class="nav-link" id="username"> Logged as {{ app.user.username }}  <i class="fas fa-user"></i></a>
+                    <a class="nav-link" id="username"> Logged as {{ app.user.username }} <i class="fas fa-user"></i></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ path('app_logout') }}">

@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Repository\ItemRepository;
+use App\Repository\StatusRepository;
+use App\Repository\UserStatusRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,19 +17,37 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="homepage", methods={"GET"})
      * @param ItemRepository $itemRepository
+     * @param StatusRepository $statusRepository
+     * @param UserStatusRepository $userStatusRepository
      * @param PaginatorInterface $paginator
      * @param Request $request
      * @return Response
      */
     public function index(
         ItemRepository $itemRepository,
+        StatusRepository $statusRepository,
+        UserStatusRepository $userStatusRepository,
         PaginatorInterface $paginator,
         Request $request
     ): Response
     {
         $itemsPerPage = 4;
-//        $roles = empty($this->getUser()->getRoles()) ? $this->getUser()->getRoles() : '';
+
         if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
+            $user = $this->getUser();
+            $status = $statusRepository->findOneByLabel('banned');
+            $banFind = $userStatusRepository->findOneBy([
+                'users' => $user,
+                'statuses' => $status
+            ]);
+
+            if ($banFind) {
+                $this->addFlash('danger', "You are banned from our website!");
+                return $this->render('main/index.html.twig', [
+                    'items' => $itemRepository->findPaginated($request, $paginator, $itemsPerPage),
+                    'uRoles' => 'Banned'
+                ]);
+            }
             $roles = $this->getUser()->getRoles();
         } else {
             $roles = '';
@@ -44,16 +64,16 @@ class DefaultController extends AbstractController
      */
     public function swampAction(): Response
     {
-        return $this->render('bundles/TwigBundle/Exception/error404.html.twig', []);
+        return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
     }
 
     /**
      * @Route("denied", name="denied", methods={"GET"})
      * @return Response
      */
-    public function deniedAction() : Response
+    public function deniedAction(): Response
     {
-        return $this->render('bundles/TwigBundle/Exception/error403.html.twig', []);
+        return $this->render('bundles/TwigBundle/Exception/error403.html.twig');
     }
 
     /**
@@ -61,7 +81,7 @@ class DefaultController extends AbstractController
      */
     public function termsOfServicesAction()
     {
-        return $this->render('terms/terms.html.twig', ['uRoles' => $this->getUser()->getRoles()]);
+        return $this->render('terms/terms.html.twig');
     }
 
 }

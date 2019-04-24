@@ -12,6 +12,8 @@ use App\Form\ReportFormType;
 use App\Mailer\Mailer;
 use App\Repository\ItemStatusRepository;
 use App\Repository\PictureRepository;
+use App\Repository\StatusRepository;
+use App\Repository\UserStatusRepository;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +25,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ItemController extends AbstractController
 {
-
 
     /**
      * @Route("/picture/{picture}", name="get_picture_content")
@@ -40,18 +41,33 @@ class ItemController extends AbstractController
         );
     }
 
+
     /**
-     * @Route("/new", name="item_new", methods={"GET","POST"})
      * @param Request $request
+     * @param StatusRepository $statusRepository
+     * @param UserStatusRepository $userStatusRepository
      * @return Response
      * @throws \Exception
      */
-    public function addItem(Request $request): Response
+    public function addItem(Request $request, StatusRepository $statusRepository, UserStatusRepository $userStatusRepository): Response
     {
         // Check if not activated
         if (!$this->isGranted('ROLE_USER')) {
-            // Redirect to 404 if not user activated
-            return $this->redirectToRoute('swamp');
+            // Redirect to 403 if not user activated
+            return $this->redirectToRoute('denied');
+        }
+
+        // Check if banned
+        $user = $this->getUser();
+        $status = $statusRepository->findOneByLabel('banned');
+        $banFind = $userStatusRepository->findOneBy([
+            'users' => $user,
+            'statuses' => $status
+        ]);
+
+        if ($banFind) {
+            // Redirect to 403 if  user banned
+            return $this->redirectToRoute('denied');
         }
         $item = new Item();
         $form = $this->createForm(ItemType::class, $item);
@@ -108,7 +124,8 @@ class ItemController extends AbstractController
      * @param Mailer $mailer
      * @return Response
      */
-    public function getDetails(
+    public
+    function getDetails(
         Request $request, Item $item, PictureRepository $pictureRepository,
         Mailer $mailer
     ): Response
@@ -181,7 +198,8 @@ class ItemController extends AbstractController
         ]);
     }
 
-    public function rmFile($file)
+    public
+    function rmFile($file)
     {
         $file_path = 'var/uploads' . $file;
         if (file_exists($file_path)) {
@@ -198,7 +216,8 @@ class ItemController extends AbstractController
      * @return Response
      * @throws \Exception
      */
-    public function editItem(Request $request, Item $item, PictureRepository $pictureRepository): Response
+    public
+    function editItem(Request $request, Item $item, PictureRepository $pictureRepository): Response
     {
         // Owner of the Item check
         if ($item->getUser() !== $this->getUser()) {
@@ -257,7 +276,8 @@ class ItemController extends AbstractController
      * @param ItemStatusRepository $itemStatusRepository
      * @return Response
      */
-    public function deleteItem(Request $request, Item $item, PictureRepository $pictureRepository, ItemStatusRepository $itemStatusRepository): Response
+    public
+    function deleteItem(Request $request, Item $item, PictureRepository $pictureRepository, ItemStatusRepository $itemStatusRepository): Response
     {
         if ($this->isCsrfTokenValid('delete-item', $request->request->get('csrf_token'))) {
             $entityManager = $this->getDoctrine()->getManager();

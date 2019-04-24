@@ -1,20 +1,19 @@
 <!--Navbar -->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
+<nav class="navbar fixed-top navbar-expand-md navbar-light" style="background-color: #ffffff;" id="navbar">
     <a class="navbar-brand" href="#">LetzSwap</a>
+    <form class="form-inline has-search">
+        <div class="form-group has-search">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input type="text" class="form-control border-letzswap" placeholder="Search" id="search-height">
+        </div>
+    </form>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <form class="form-inline">
-                <input class="form-control-sm mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn-sm btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            <li class="nav-item {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
-                <a class="nav-link" href="{{ path('about') }}">
-                    {{ 'NAV.ABOUT'|trans }}
-                </a>
-            </li>
+    <div class="collapse navbar-collapse float-right text-right pr-3" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+
+
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                  {% if is_granted('ROLE_ADMIN') %}
                     <li class="nav-item {% if app.request.attributes.get('_route') == 'admin' %} active {% endif %}">
@@ -58,6 +57,10 @@
 
             {% endif %}
 
+            <li class="nav-item  {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
+                <a class="nav-link" href="{{ path('about') }}">
+                    {{ 'NAV.ABOUT'|trans }}
+                </a>
             </li>
 
         </ul>

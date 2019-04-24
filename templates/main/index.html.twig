@@ -14,7 +14,6 @@
                 {{ 'HOME.ITEM_COUNT'|trans }} {{ items.getTotalItemCount }}
             </div>
 
-            {# display navigation #}
             <div class="pagination navigation">
                 {{ knp_pagination_render(items) }}
             </div>
@@ -31,11 +30,6 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ item.title }}</h5>
                                 <div id="butons">
-                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                                        {% if (is_granted('ROLE_ADMIN')) or  ((item.getUser.getId() != app.user.id)) %}
-                                            {{ include('item/_delete-confirm.html.twig') }}
-                                        {% endif %}
-                                    {% endif %}
                                     <a href="{{ path('item_details', {'id': item.getId()}) }}"
                                        class="btn btn-info"><i class="fas fa-info"></i></a>
                                 </div>

@@ -122,7 +122,7 @@
                             {% endfor %}
                             {% if banned %}
                                 <form method="post" action="{{ path('user_unban', {'id': user.id}) }}"
-                                      onsubmit="return confirm('Are you sure you really want to UN-BAN this user?');">
+                                      onsubmit="return confirm('Reactivate user?');">
                                     <input type="hidden" name="_method" value="POST">
                                     <input type="hidden" name="csrf_token_banuser"
                                            value="{{ csrf_token('ban-user') }}"/>

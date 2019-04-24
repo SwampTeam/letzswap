@@ -27,8 +27,14 @@ class ReportFormType extends AbstractType
             ])
             ->add('message',
                 TextareaType::class,
-                ['label' => "FIXME: Info to the interested party saying what happens when he sends this.
-                             Do we need more complain reasons?"]);
+                [
+                    'attr' => [
+                        'placeholder' => "FIXME: Info to the interested party saying what happens when he sends this.
+                             Do we need more complain reasons?",
+                        'class' => "form_gray_input",
+                    ],
+                    'label' => false,
+                ]);
 
 
         if ($options['standalone']) {

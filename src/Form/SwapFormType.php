@@ -18,7 +18,13 @@ class SwapFormType extends AbstractType
 
             ->add('message',
                 TextareaType::class,
-                ['label' => "FIXME: Info to the interested party saying what happens when he sends this"]);
+                [
+                    'attr' => [
+                        'placeholder' => "FIXME: Info to the interested party saying what happens when he sends this",
+                        'class' => "form_gray_input"
+                    ],
+                    'label' => false,
+                ]);
 
 
         if ($options['standalone']) {

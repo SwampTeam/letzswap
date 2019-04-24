@@ -19,22 +19,41 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('username', TextType::class, ['label' => 'FORM.USER.USERNAME', 'required' => true])
+            ->add('username', TextType::class, [
+                'attr' => ['placeholder' => 'FORM.USER.USERNAME', 'class' => "form_gray_input"],
+                'label' => false,
+                'label' => 'FORM.USER.USERNAME', 'required' => true
+            ])
             ->add('password', RepeatedType::class,
                 [
                     'type' => PasswordType::class,
                     'invalid_message' => 'FORM.USER.PASSWORD.ERROR.DONT_MATCH',
-                    'first_options' => ['label' => 'FORM.USER.PASSWORD.FIRST', 'required' => true],
-                    'second_options' => ['label' => 'FORM.USER.PASSWORD.REPEAT', 'required' => true],
+                    'first_options' => [
+                        'attr' => ['placeholder' => 'FORM.USER.PASSWORD.FIRST', 'class' => "form_gray_input"],
+                        'label' => false,
+                        'required' => true
+                    ],
+                    'second_options' => [
+                        'attr' => ['placeholder' => 'FORM.USER.PASSWORD.REPEAT', 'class' => "form_gray_input"],
+                        'label' => false,
+                        'required' => true
+                    ],
                 ]
             )->add(
                 'email',
                 EmailType::class,
-                ['label' => 'FORM.USER.EMAIL']
+                [
+                    'attr' => ['placeholder' => 'FORM.USER.EMAIL', 'class' => "form_gray_input"],
+                    'label' => false,
+                ]
             )->add(
                 'tosAccepted',
                 CheckboxType::class,
-                ['label' => 'FORM.USER.TOS_ACCEPTED', 'required' => true]
+                [
+                    'attr' => [ 'class' => "form_gray_input"],
+                    'label' => 'FORM.USER.TOS_ACCEPTED',
+                    'required' => true
+                ]
             );
 
         if ($options['standalone']) {
@@ -43,7 +62,7 @@ class RegistrationFormType extends AbstractType
                 SubmitType::class,
                 [
                     'label' => 'FORM.USER.SUBMIT',
-                    'attr' => ['class' => 'btn-success']
+                    'attr' => ['class' => 'button']
                 ]);
         }
     }

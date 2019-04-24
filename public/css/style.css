@@ -162,6 +162,12 @@ body{
     justify-content: center;
     flex-direction: row;
 }
+
+.active {
+    background-color: #5ff03f;
+}
+
+
 /*Item cards start*/
 .card {
     width: 330px;

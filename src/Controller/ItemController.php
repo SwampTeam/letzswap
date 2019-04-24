@@ -43,6 +43,7 @@ class ItemController extends AbstractController
 
 
     /**
+     * @Route("/new", name="item_new", methods={"GET","POST"})
      * @param Request $request
      * @param StatusRepository $statusRepository
      * @param UserStatusRepository $userStatusRepository

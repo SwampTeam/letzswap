@@ -1,10 +1,11 @@
 {% block banner %}
 <div id="elevator_pitch">
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <h1>Welcome back to <span>LëtzSwap</span></h1>
-        <h2 id="username">{{ app.user.username }}   </h2>
-        <p> Letzswap is the simplest way to extend the life of your goods
-            by giving them a new owner. Swish locally, exchange on your own terms, swap easily!
+        <h2>Welcome back to Letzswap!</h2>
+        <p > This platform is the <span>simplest way</span>
+            to extend the life of your goods
+            by giving them a new owner.
+            <br> Swish <span>locally</span>, exchange <span>on your own terms</span>, swap <span>easily</span>!
         </p>
     {% else %}
         <h2>Welcome to Letzswap!</h2>

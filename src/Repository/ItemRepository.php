@@ -3,7 +3,9 @@
 namespace App\Repository;
 
 use App\Entity\Item;
+use App\Entity\ItemStatus;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\Expr;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -23,22 +25,28 @@ class ItemRepository extends ServiceEntityRepository
 
     public function findPaginated(Request $request, PaginatorInterface $paginator, int $itemsPerPage)
     {
-        $sql = "SELECT i.id, i_s.time, s.label FROM item i, item_status i_s, status s
-                inner JOIN item_status on s.id = item_status.statuses_id
-                inner JOIN item on item_status.items_id = item.id
-                WHERE s.label = 'active'
-                GROUP BY i.id
-                ORDER BY i_s.time DESC";
+        $sql = "SELECT i.id, i_s.time, s.label FROM status s
+        inner JOIN item_status i_s on s.id = i_s.statuses_id
+        inner JOIN item i on i_s.items_id = i.id
+        WHERE s.label = 'active'
+        ORDER BY i_s.time DESC";
 
-        $queryBuilder = $this->createQueryBuilder('p');
-//        $queryBuilder->select('i.d, i_s.time')
-//            ->from('Item', 'i')
-//            ->where();
+        $qb = $this->_em->createQueryBuilder();
+        $qb->select('i')
+            ->from(Item::class, 'i')
+            ->innerJoin('i.statuses', 'i_s', Expr\Join::ON)
+            ->innerJoin('i_s.statuses', 's', Expr\Join::ON)
+            ->where($qb->expr()->eq('s.label', ':active'))
+            ->orderBy('i_s.time', 'DESC');
+        $qb->setParameter('active', 'active');
 
         $pagination = $paginator->paginate(
-            $queryBuilder->getQuery(),
+            $qb->getQuery(),
             $request->query->getInt('page', 1),
-            $itemsPerPage
+            $itemsPerPage,
+            [
+                'distinct' => false
+            ]
         );
 
         return $pagination;

@@ -9,16 +9,14 @@
 </head>
 <body>
 
-<h1>Hi {{ user.username }} </h1>
-<p>
-    Another {{ 'APP.TITLE'|trans }} user by the name of {{ item.user.username }} is interested in swapping something
-    for your item:  <strong>{{ item.title | lower }}</strong><br>
+<h1>Hi {{ item.user.username }}</h1>
 
-She/he has sent the following message:<br>
-   <strong>{{ textComingFromSwapForm }}</strong> <br>
+<p>Another {{ 'APP.TITLE'|trans }} user by the name of {{ user.username }} is
+    interested in swapping something for your item: <strong>{{ item.title | lower }}</strong></p>
 
-    If you are interested, please send her/him a message to the following {{ item.user.email }}
-</p>
+<p>She/he has sent the following message: <strong>{{ textComingFromSwapForm }}</strong></p>
+
+<p>If you are interested, please send her/him a message to the following {{ item.user.email }}</p>
 
 <p>{{ 'APP.TITLE'|trans }} Team</p>
 

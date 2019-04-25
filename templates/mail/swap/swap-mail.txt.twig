@@ -1,11 +1,11 @@
 {{ 'SWAP.MAIL.TITLE'|trans({'%item%': item.getTitle(), '%name%': user.getUsername()}) }}
 
-Hi {{ user.username }}
+Hi {{ item.user.username }},
 
-Another {{ 'APP.TITLE'|trans }} user by the name of {{ item.user.username }} is interested in swapping something for your item:  <strong>{{ item.title | lower }}</strong><br>
+Another {{ 'APP.TITLE'|trans }} user by the name of {{ user.username }} is interested in swapping something for your item: {{ item.title | lower }}.
 
-She/he has sent the following message: {{ textComingFromSwapForm }}
+She/he has sent the following message: {{ textComingFromSwapForm }}.
 
-If you are interested, please send her/him a message to the following {{ item.user.email }}
+If you are interested, please send her/him a message to the following {{ item.user.email }}.
 
 <{{ 'APP.TITLE'|trans }} Team

@@ -22,7 +22,6 @@ class RegistrationFormType extends AbstractType
             ->add('username', TextType::class, [
                 'attr' => ['placeholder' => 'FORM.USER.USERNAME', 'class' => "form_grey_input"],
                 'label' => false,
-                'label' => false,
             ])
             ->add('password', RepeatedType::class,
                 [

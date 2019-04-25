@@ -34,7 +34,7 @@ class AdminController extends AbstractController
                 'items' => $itemRepository->findAll(),
                 'pictures' => $pictureRepository->findAll(),
                 'user_role' => $this->getUser()->getRoles(),
-                'uRoles'=> 'admin'
+                'uRoles' => 'admin'
             ]);
         } else {
             return $this->redirectToRoute('denied');

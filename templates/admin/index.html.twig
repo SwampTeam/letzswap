@@ -1,24 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}LëtzSwap! Admin Area{% endblock %}
+{% block title %}Lëtzswap Admin Area{% endblock %}
 
 {% block body %}
-    <div id="admin_dashboards">
+    <div class="d-flex flex-wrap justify-content-center">
+    <div class="padding_admin_table">
+
+    <h1>Items</h1>
+    <br>
     {% if items == null %}
         <div class="empty-items">
             No Items found
         </div>
     {% else %}
-
-        <table class="d-flex flex-column" id="admin_dashboard_items">
-            <caption>All Items</caption>
+        <table class="table table-striped">
             <thead>
             <tr>
-                <th>Picture</th>
-                <th>Title</th>
-                <th>Reported</th>
-                <th>Owner</th>
-                <th>Options</th>
+                <th scope="col">Items</th>
+                <th scope="col">Title</th>
+                <th scope="col">Reported</th>
+                <th scope="col">Owner</th>
+                <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -26,12 +28,12 @@
                 <tr>
                     {% for picture in pictures %}
                         {% if picture.item.id  == item.getId() %}
-                            <td><img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
-                                     alt="{{ item.title }}" width="100px" height="100px">
-                            </td>
+                            <th scope="row"> <img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
+                                     alt="{{ item.title }}" width="53px" height="53px">
+                            </th>
                         {% endif %}
                     {% endfor %}
-                    <td>{{ item.title }}</td>
+                    <th scope="row" >{{ item.title }}</th>
                     <td>
                         {% set reported = false %}
                         {% for stats in item.getStatuses() %}
@@ -40,16 +42,16 @@
                             {% endif %}
                         {% endfor %}
                         {% if reported %}
-                            Yes
+                            Reported
                         {% else %}
-                            No
+
                         {% endif %}
                     </td>
                     <td>{{ item.getUser().getUsername() }}</td>
-                    <td>
-                        <div id="admin_dashboard_buttons">
+                    <td class="d-flex justify-content-between">
+                        <div>
                             <form method="get" action="{{ path('item_details', {'id': item.id}) }}">
-                                <button class="btn btn-primary">Details</button>
+                                <button class="btn btn-info btn-sm">Info</button>
                             </form>
                         </div>
 
@@ -58,7 +60,7 @@
                                   onsubmit="return confirm('Are you sure you really want to delete this item?');">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token('delete-item') }}"/>
-                                <button class="btn btn-danger">Delete</button>
+                                <button class="btn btn-outline-danger btn-sm">Delete</button>
                             </form>
                         </div>
                     </td>
@@ -67,28 +69,30 @@
             </tbody>
         </table>
     {% endif %}
-
+    </div>
+        <div class="padding_admin_table">
     {% if users == null %}
         <div class="empty-items">
             No Users found
         </div>
     {% else %}
-        <table class="d-flex flex-column" id="admin_dashboard_users">
-            <caption>All Users</caption>
+        <h1>Users</h1>
+        <br>
+        <table table class="table table-striped">
             <thead>
             <tr>
-                <th style="padding-right: 102px" width="174px">Username</th>
-                <th>E-mail</th>
-                <th>Reported</th>
-                <th>Options</th>
+                <th scope="col">Username</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Reported</th>
+                <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
             {% for user in users %}
                 <tr>
-                    <td>
+                    <th  scope="row">
                         {{ user.username }}
-                    </td>
+                    </th>
                     <td>
                         {{ user.email }}
                     </td>
@@ -100,50 +104,45 @@
                             {% endif %}
                         {% endfor %}
                         {% if reported %}
-                            Yes
+                            Reported
                         {% else %}
-                            No
+
                         {% endif %}
                     </td>
                     <td>
                         {#options#}
 
 
-                        <div id="admin_dashboard_buttons_users">
+                        <div class="d-flex justify-content-between">
                             {% set banned = false %}
                             {% for stats in user.getStatuses() %}
                                 {% if stats.getStatuses().getLabel() == 'banned' %}
                                     {% set banned = true %}
                                 {% endif %}
                             {% endfor %}
-                            {% if (user.id != app.user.id) %}
-                                {% if banned %}
-                                    <form method="post" action="{{ path('user_unban', {'id': user.id}) }}"
-                                          onsubmit="return confirm('Are you sure you really want to UN-BAN {{ user.username }}?');">
-                                        <input type="hidden" name="_method" value="POST">
-                                        <input type="hidden" name="csrf_token_unbanuser"
-                                               value="{{ csrf_token('unban-user') }}"/>
-                                        <button class="btn btn-primary">Unban</button>
-                                    </form>
-                                {% else %}
-                                    <form method="post" action="{{ path('user_ban', {'id': user.id}) }}"
-                                          onsubmit="return confirm('Are you sure you really want to BAN {{ user.username }}?');">
-                                        <input type="hidden" name="_method" value="POST">
-                                        <input type="hidden" name="csrf_token_banuser"
-                                               value="{{ csrf_token('ban-user') }}"/>
-                                        <button class="btn btn-danger">Ban</button>
-                                    </form>
-                                {% endif %}
-                                <form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
-                                      onsubmit="return confirm('Are you sure you really want to DELETE user {{ user.username }}?');">
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <input type="hidden" name="csrf_token_rmuser"
-                                           value="{{ csrf_token('delete-user') }}"/>
-                                    <button class="btn btn-danger">Delete</button>
+                            {% if banned %}
+                                <form method="post" action="{{ path('user_unban', {'id': user.id}) }}"
+                                      onsubmit="return confirm('Reactivate user?');">
+                                    <input type="hidden" name="_method" value="POST">
+                                    <input type="hidden" name="csrf_token_unbanuser"
+                                           value="{{ csrf_token('unban-user') }}"/>
+                                    <button class="btn btn-outline-warning btn-sm">Unban</button>
                                 </form>
                             {% else %}
-                                None
+                                <form method="post" action="{{ path('user_ban', {'id': user.id}) }}"
+                                      onsubmit="return confirm('Confirm user ban?');">
+                                    <input type="hidden" name="_method" value="POST">
+                                    <input type="hidden" name="csrf_token_banuser"
+                                           value="{{ csrf_token('ban-user') }}"/>
+                                    <button class="btn btn-warning btn-sm">Ban</button>
+                                </form>
                             {% endif %}
+                            <form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
+                                  onsubmit="return confirm('Confirm user DELETE? {{ user.username }}?');">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <input type="hidden" name="csrf_token_rmuser" value="{{ csrf_token('delete-user') }}"/>
+                                <button class="btn btn-danger btn-sm">Delete</button>
+                            </form>
                         </div>
                     </td>
                 </tr>
@@ -152,4 +151,5 @@
         </table>
         </div>
     {% endif %}
+    </div>
 {% endblock %}

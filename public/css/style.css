@@ -93,27 +93,6 @@ body{
     border: none;
 
 }
-/*Search bar*/
-
-/*#search-height {*/
-    /*height: 25px;*/
-/*}*/
-
-/*.has-search .form-control {*/
-    /*padding-left: 2.375rem;*/
-/*}*/
-
-/*.has-search .form-control-feedback {*/
-    /*position: absolute;*/
-    /*z-index: 2;*/
-    /*display: block;*/
-    /*width: 2.375rem;*/
-    /*height: 2.375rem;*/
-    /*line-height: 2.375rem;*/
-    /*text-align: center;*/
-    /*pointer-events: none;*/
-    /*color: #aaa;*/
-/*}*/
 
 .button {
     padding: 2px 18px;
@@ -121,7 +100,7 @@ body{
     margin-right: 5px;
     border-radius: 10px;
     font-size: 12px;
-    background-color: none;
+    background-color:#336655;
     border:1px solid #336655;
     }
 .button:hover {
@@ -261,9 +240,7 @@ body{
 }
 
 /* Item details ui, Karlo start, mobile first*/
-.table td, .table th {
-    border: none;
-}
+
 .img-thumbnail {
     border: none;
 }
@@ -289,13 +266,6 @@ body{
     width: 100px;
     height: 100px;
     margin-right:2rem ;
-}
-
-.btn-success, .btn-primary {
-    background-color: #336655 !important;
-    border: none;
-    border-radius: 10px;
-    padding: 0.45rem;
 }
 
 .row img {
@@ -419,10 +389,20 @@ body{
 #terms h1 {
     text-align: center;
 }
+
+
+.table th{
+    padding: 3px;
+}
+
+.padding_admin_table {
+    padding: 14px;
+}
+
 /* Terms of service page end */
 
 
-/* Admin dashboard start */
+/* Admin dashboard start
 #admin_dashboard_items {
     margin: 1rem 1rem 3rem 0.5rem;
     background-color: #e2e2e2;
@@ -433,7 +413,7 @@ body{
     -moz-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);}
 
-/* Items */
+
 #admin_dashboard_items table {
      border-collapse:separate;
  }
@@ -453,7 +433,6 @@ body{
 #admin_dashboard_items img {
     margin: 0.1rem;
 }
-/* Items end */
 
 #admin_dashboard_buttons {
     margin-bottom: 0.5rem;
@@ -462,8 +441,9 @@ body{
     margin: 1rem ;
 }
 
+/*
 
-/*Users*/
+/*
 #admin_dashboard_users {
     margin: 1rem 1rem 3rem 0.5rem;
     background-color: #e2e2e2;
@@ -496,6 +476,8 @@ table caption {
 #navbar_gravatar img {
     border-radius: 20px;
 }
+
+*/
 /*Users end*/
 
 /* Admin dashboard end */
@@ -699,6 +681,29 @@ table caption {
     /*}*/
 
 /*}*/
+
+/*Search bar*/
+
+/*#search-height {*/
+/*height: 25px;*/
+/*}*/
+
+/*.has-search .form-control {*/
+/*padding-left: 2.375rem;*/
+/*}*/
+
+/*.has-search .form-control-feedback {*/
+/*position: absolute;*/
+/*z-index: 2;*/
+/*display: block;*/
+/*width: 2.375rem;*/
+/*height: 2.375rem;*/
+/*line-height: 2.375rem;*/
+/*text-align: center;*/
+/*pointer-events: none;*/
+/*color: #aaa;*/
+/*}*/
+
 
 
 

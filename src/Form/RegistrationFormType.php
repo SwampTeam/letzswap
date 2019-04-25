@@ -26,7 +26,7 @@ class RegistrationFormType extends AbstractType
             ->add('password', RepeatedType::class,
                 [
                     'type' => PasswordType::class,
-                    'invalid_message' => 'FORM.USER.PASSWORD.ERROR.DONT_MATCH',
+                    'invalid_message' => "Passwords don't match",
                     'first_options' => [
                         'attr' => ['placeholder' => 'FORM.USER.PASSWORD.FIRST', 'class' => "form_grey_input"],
                         'label' => false,

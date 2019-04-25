@@ -218,6 +218,10 @@ a#navbar_gravatar.nav-link {
     padding: 0;
 }
 
+.card img {
+    height: 200px;
+}
+
 .item_open_button {
     padding: 3px;
 }

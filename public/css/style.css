@@ -210,7 +210,7 @@ body {
     padding: 0;
 }
 
-#item_open_button {
+.item_open_button {
     padding: 3px;
 }
 

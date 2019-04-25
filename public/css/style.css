@@ -107,6 +107,20 @@ a#navbar_gravatar.nav-link {
 
 }
 
+.navbar-light .navbar-brand {
+    color: #336655;
+    font-weight: bold;
+    font-size: 36px;
+}
+
+.page-item.active .page-link {
+    background-color: #336655;
+}
+
+.page-link {
+    color: #336655;
+}
+
 .button {
     padding: 5px 18px;
     margin-left: 5px;
@@ -572,8 +586,17 @@ a#navbar_gravatar.nav-link {
 /* Admin dashboard end */
 
 /*!* Tablet *!*/
-/*@media screen and (min-width:800px) {*/
+@media screen and (min-width:800px) {
+    #elevator_pitch h2 {
+        font-size: 28px;
 
+    }
+
+    #elevator_pitch p {
+        font-size: 16px;
+    }
+}
+}
 /*!* Apolline's modal to be applied differently on each platform *!*/
 /*.modal-dialog {*/
 /*position: absolute;*/
@@ -593,8 +616,17 @@ a#navbar_gravatar.nav-link {
 /*font-size: 60px;*/
 
 
-/*@media screen and (min-width: 1200px) {*/
+@media screen and (min-width: 1200px) {
 
+    #elevator_pitch h2 {
+        font-size: 42px;
+
+    }
+
+    #elevator_pitch p {
+        font-size: 24px;
+    }
+}
 /*Search bar*/
 
 /*#search-height {*/

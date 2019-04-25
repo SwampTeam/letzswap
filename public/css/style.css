@@ -62,7 +62,8 @@ body {
     margin: 10px auto 100px;
 }
 
-.form_grey_input {
+.form_grey_input,
+.inputUsernameField {
     border-radius: 3px;
     border: 0 solid #e6e6e6;
     background-color: #F6F6F6;
@@ -582,41 +583,17 @@ a#navbar_gravatar.nav-link {
     }
 
 }
-/* Terms of service page end */
 
-/*Users end*/
+/*@media screen and (min-width: 800px) {*/
+/*    #elevator_pitch h2 {*/
+/*        font-size: 40px;*/
 
-/* Admin dashboard end */
+/*    }*/
 
-/*!* Tablet *!*/
-@media screen and (min-width:800px) {
-    #elevator_pitch h2 {
-        font-size: 28px;
-
-    }
-
-    #elevator_pitch p {
-        font-size: 16px;
-    }
-}
-}
-/*!* Apolline's modal to be applied differently on each platform *!*/
-/*.modal-dialog {*/
-/*position: absolute;*/
-/*top: 30%;*/
-/*left: 50%;*/
-/*transform: translate(-50%, -50%) !important;*/
+/*    #elevator_pitch p {*/
+/*        font-size: 18px;*/
+/*    }*/
 /*}*/
-/*.about_info{*/
-/*text-align: center;*/
-/*display: flex;*/
-/*font-size: 20px;*/
-/*flex-direction: column;*/
-/*justify-content: center;*/
-/*max-width: 550px;*/
-/*}*/
-/*.about_info h2 {*/
-/*font-size: 60px;*/
 
 
 @media screen and (min-width: 1200px) {
@@ -653,7 +630,23 @@ a#navbar_gravatar.nav-link {
 /*}*/
 
 
-
+/*!* Apolline's modal to be applied differently on each platform *!*/
+/*.modal-dialog {*/
+/*position: absolute;*/
+/*top: 30%;*/
+/*left: 50%;*/
+/*transform: translate(-50%, -50%) !important;*/
+/*}*/
+/*.about_info{*/
+/*text-align: center;*/
+/*display: flex;*/
+/*font-size: 20px;*/
+/*flex-direction: column;*/
+/*justify-content: center;*/
+/*max-width: 550px;*/
+/*}*/
+/*.about_info h2 {*/
+/*font-size: 60px;*/
 
 
 

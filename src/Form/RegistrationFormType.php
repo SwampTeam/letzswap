@@ -20,7 +20,7 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('username', TextType::class, [
-                'attr' => ['placeholder' => 'FORM.USER.USERNAME', 'class' => "form_grey_input", 'id' => "inputUsername"],
+                'attr' => ['placeholder' => 'FORM.USER.USERNAME', 'class' => "form_grey_input"],
                 'label' => false,
                 'label' => false,
             ])

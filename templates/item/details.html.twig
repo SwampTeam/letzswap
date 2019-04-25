@@ -19,39 +19,42 @@
             <tr>
                 <td>{{ item.description }}</td>
             </tr>
+            <tr>
+                <td><div class="d-flex justify-content-between align-items-center">
+                        <div id="avatar">
+                            {{ avatar.getAvatar(item.getUser.getUsername(), 100) | raw }}
+                            <h2>{{ username }}</h2>
+                        </div>
+                        <a href="{{ path('homepage') }}">
+                            <button type="button" class="button-back btn">Back</button>
+                        </a>
+                        {% if is_granted('ROLE_USER') and (item.getUser.getId() == app.user.id) %}
+
+                            <a href="{{ path('item_edit', {'id': item.id}) }}">
+                                <button type="button" class="button-warning btn">Edit</button>
+                            </a>
+
+                            {{ include('item/_delete-confirm.html.twig') }}
+
+                        {% endif %}
+                        {% if is_granted('ROLE_USER') %}
+                            {% if (item.getUser.getId() != app.user.id) %}
+                                <a href="#">
+                                    <button id="swap_button" type="button" class="button btn">Swap now</button>
+                                </a>
+                                <a href="#">
+                                    <button id="report_button" type="button" class="button-danger btn">Report</button>
+                                </a>
+                            {% endif %}
+                        {% endif %}
+                    </div></td>
+            </tr>
             </tbody>
         </table>
     </article>
 
 
-    <div id="item_detail_buttons">
-        <div id="avatar">
-            {{ avatar.getAvatar(item.getUser.getUsername(), 100) | raw }}
-            <h2>{{ username }}</h2>
-        </div>
-        <a href="{{ path('homepage') }}">
-            <button type="button" class="btn btn-success">Back</button>
-        </a>
-        {% if is_granted('ROLE_USER') and (item.getUser.getId() == app.user.id) %}
 
-            <a href="{{ path('item_edit', {'id': item.id}) }}">
-                <button type="button" class="btn btn-success">Edit</button>
-            </a>
-
-            {{ include('item/_delete-confirm.html.twig') }}
-
-        {% endif %}
-        {% if is_granted('ROLE_USER') %}
-            {% if (item.getUser.getId() != app.user.id) %}
-                <a href="#">
-                    <button id="swap_button" type="button" class="btn btn-primary">LëtzSwap!</button>
-                </a>
-                <a href="#">
-                    <button id="report_button" type="button" class="btn btn-danger">Report</button>
-                </a>
-            {% endif %}
-        {% endif %}
-    </div>
 
     <div id="swap_form" style="display:none">
         {{ form(swapForm) }}

@@ -500,12 +500,12 @@ a#navbar_gravatar.nav-link {
 }
 @media screen and (max-width:800px){
     .card {
-        width: 130px;
-       height: 170px;
-
+        width: 150px;
+       height: 190px;
+    margin: 4px;
     }
     .card img {
-        height: 124px;
+        height: 145px;
     }
     .card-title {
         margin: 0.1rem;

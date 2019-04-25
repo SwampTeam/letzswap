@@ -474,7 +474,10 @@ a#navbar_gravatar.nav-link {
     max-width: 350px;
 }
 
-
+/* This is applied on the log-in form template in case of a user clicking on letzswap without being logged */
+.form-control {
+    margin: 0.5rem;
+}
 
 
 .about_info {

@@ -172,7 +172,7 @@ a#navbar_gravatar.nav-link {
 /*Item cards start*/
 .card {
     width: 230px;
-    height: 270px;
+    /*height: 270px;*/
     background-color: white;
     margin: 1rem;
     overflow: hidden;

@@ -177,7 +177,7 @@ class ItemController extends AbstractController
             $reportFormData = $reportForm->getData();
             $mailer->sendReportMail($user, $item, $reportFormData);
 
-            $this->addFlash('success', "The item was successfully reported and we send an email to its owner.");
+            $this->addFlash('success', "The item was successfully reported to the our Team. We will verify it and contact you shortly");
 
             return $this->redirectToRoute('homepage');
         }

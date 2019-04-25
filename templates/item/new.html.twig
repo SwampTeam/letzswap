@@ -3,17 +3,6 @@
 {% block title %}{{ 'ITEM.NEW.PAGETITLE'|trans }}{% endblock %}
 
 {% block body %}
-    {#    TODO: Need to be add to CSS to fix bootstrap file imput bug #}
-    <style>
-        .custom-file-label {
-            opacity: 0;
-        }
-
-        .custom-file-input {
-            opacity: 1;
-        }
-    </style>
-
 
 
     <div class="new_item_page">
@@ -29,7 +18,15 @@
     <div id="add_item_buttons" class="d-flex justify-content-between">
         <button class="button">Add Item</button>
     </div>
-
+    <script>
+        document.getElementById("item_picture")
+            .addEventListener(
+                'change',
+                function(){
+                    document.querySelector("#item_picture + label").innerText = document.getElementById("item_picture").value;
+                }
+            )
+    </script>
 
 
     {{ form_end(form) }}

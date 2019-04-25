@@ -3,16 +3,7 @@
 {% block title %}{{ 'ITEM.EDIT.PAGETITLE'|trans }}{% endblock %}
 
 {% block body %}
-    {#    TODO: Need to be add to CSS to fix bootstrap file imput bug #}
-    <style>
-        .custom-file-label {
-            opacity: 0;
-        }
 
-        .custom-file-input {
-            opacity: 1;
-        }
-    </style>
     <div class="new_item_page">
         <div>
             <h1 id="registration_title">{{ 'ITEM.EDIT.TITLE'|trans }}</h1>
@@ -30,5 +21,14 @@
     <div id="add_item_buttons" class="d-flex justify-content-between">
         <button class="button">Save</button>
     </div>
+    <script>
+        document.getElementById("item_picture")
+            .addEventListener(
+                'change',
+                function(){
+                    document.querySelector("#item_picture + label").innerText = document.getElementById("item_picture").value;
+                }
+            )
+    </script>
     {{ form_end(form) }}
 {% endblock %}

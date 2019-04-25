@@ -289,6 +289,11 @@ class ItemController extends AbstractController
             $entityManager->remove($picture);
             $entityManager->flush();
         }
+
+        if ($this->isGranted('ROLE_ADMIN')) {
+            return $this->redirectToRoute('admin');
+        }
+
         return $this->redirectToRoute('homepage');
     }
 

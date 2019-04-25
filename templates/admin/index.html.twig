@@ -51,7 +51,7 @@
                     <td class="d-flex justify-content-between">
                         <div>
                             <form method="get" action="{{ path('item_details', {'id': item.id}) }}">
-                                <button class="btn btn-info btn-sm">Info</button>
+                                <button class="btn button">Info</button>
                             </form>
                         </div>
 
@@ -60,7 +60,7 @@
                                   onsubmit="return confirm('Are you sure you really want to delete this item?');">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="csrf_token" value="{{ csrf_token('delete-item') }}"/>
-                                <button class="btn btn-outline-danger btn-sm">Delete</button>
+                                <button class="btn button-danger">Delete</button>
                             </form>
                         </div>
                     </td>
@@ -126,7 +126,7 @@
                                     <input type="hidden" name="_method" value="POST">
                                     <input type="hidden" name="csrf_token_unbanuser"
                                            value="{{ csrf_token('unban-user') }}"/>
-                                    <button class="btn btn-outline-warning btn-sm">Unban</button>
+                                    <button class="btn button-back">Unban</button>
                                 </form>
                             {% else %}
                                 <form method="post" action="{{ path('user_ban', {'id': user.id}) }}"
@@ -134,14 +134,14 @@
                                     <input type="hidden" name="_method" value="POST">
                                     <input type="hidden" name="csrf_token_banuser"
                                            value="{{ csrf_token('ban-user') }}"/>
-                                    <button class="btn btn-warning btn-sm">Ban</button>
+                                    <button class="btn button-warning">Ban</button>
                                 </form>
                             {% endif %}
                             <form method="post" action="{{ path('user_delete', {'id': user.id}) }}"
                                   onsubmit="return confirm('Confirm user DELETE? {{ user.username }}?');">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="csrf_token_rmuser" value="{{ csrf_token('delete-user') }}"/>
-                                <button class="btn btn-danger btn-sm">Delete</button>
+                                <button class="btn button-danger">Delete</button>
                             </form>
                         </div>
                     </td>

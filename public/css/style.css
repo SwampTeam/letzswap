@@ -120,8 +120,52 @@ a#navbar_gravatar.nav-link {
 .button:hover {
     background-color: #336655;
     color: white;
-
 }
+.button-warning {
+    padding: 5px 18px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 2px;
+    font-size: 14px;
+    background-color: #FFB051  ;
+    border: 1px solid #FFB051  ;
+}
+
+.button-warning:hover {
+    background-color: #F99113  ;
+    color: white;
+}
+
+.button-danger {
+    padding: 5px 18px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 2px;
+    font-size: 14px;
+    background-color: #FA5656    ;
+    border: 1px solid #FA5656    ;
+}
+
+.button-danger:hover {
+    background-color: #FC2424    ;
+    color: white;
+}
+
+.button-back {
+    padding: 5px 18px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 2px;
+    font-size: 14px;
+    background-color: #DCDCDC      ;
+    border: 1px solid #DCDCDC      ;
+}
+
+.button-back:hover {
+    background-color: #B9B9B9      ;
+    color: white;
+}
+
 
 /*Text from the top main page - header*/
 #elevator_pitch {
@@ -313,6 +357,7 @@ a#navbar_gravatar.nav-link {
     display: flex;
 }
 
+
 /* Item details ui, Karlo start, mobile first*/
 
 .img-thumbnail {
@@ -341,8 +386,8 @@ a#navbar_gravatar.nav-link {
 
 #avatar img {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 35px;
+    height: 35px;
     margin-right: 2rem;
 }
 

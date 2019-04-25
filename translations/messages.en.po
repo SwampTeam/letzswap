@@ -57,7 +57,7 @@ msgid "FORM.USER.SUBMIT"
 msgstr "Submit"
 
 msgid "FORM.USER.TOS_ACCEPTED"
-msgstr "I've read and accepted LëtzSwap! Terms of Service"
+msgstr "I've read and accepted Letzswap Terms of Service"
 
 msgid "FORM.USER.USERNAME"
 msgstr "Username"
@@ -69,13 +69,13 @@ msgid "REGISTRATION.ACTIVATION.TITLE"
 msgstr "Activation required"
 
 msgid "REGISTRATION.ACTIVATION.INFO"
-msgstr "Your LëtzSwap! account was created! Please check your email account to activate it."
+msgstr "Your Letzswap account was created! Please check your email account to activate it."
 
 msgid "REGISTRATION.MAIL.TITLE"
-msgstr "Thank you for joining the LëtzSwap! community"
+msgstr "Thank you for joining the Letzswap community"
 
 msgid "REGISTRATION.MAIL.TEXT"
-msgstr "Hello %name%, your LëtzSwap! account was successfully created! Follow the activation link to enjoy Swap now."
+msgstr "Hello %name%, your Letzswap account was successfully created! Follow the activation link to enjoy Swap now."
 
 msgid "REGISTRATION.MAIL.HTML.PLEASE_CLICK"
 msgstr "Please click"
@@ -102,7 +102,7 @@ msgid "ITEM.NEW.TITLE"
 msgstr "Add new Item"
 
 msgid "ITEM.NEW.PAGETITLE"
-msgstr "New Item | LëtzSwap!"
+msgstr "New Item | Letzswap"
 
 msgid "ITEM.NEW.BACKLINK"
 msgstr "Back to the items list"

@@ -27,7 +27,7 @@
                     {% for picture in pictures %}
                         {% if picture.item.id  == item.getId() %}
                             <td><img src="{{ path('get_picture_content', {'picture': picture.getId()}) }}"
-                                     alt="{{ item.title }}" width="110px" height="115px">
+                                     alt="{{ item.title }}" width="100px" height="100px">
                             </td>
                         {% endif %}
                     {% endfor %}

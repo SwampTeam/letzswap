@@ -8,14 +8,21 @@
     <title>{{ 'SWAP.MAIL.TITLE'|trans({'%item%': item.getTitle(), '%name%': user.getUsername()}) }}</title>
 </head>
 <body>
-<h1>{{ 'SWAP.MAIL.TITLE'|trans({'%item%': item.getTitle(), '%name%': user.getUsername()}) }}</h1>
 
 {# FIXME: Content needed#}
-<p>We need content here! User and Item properties are available to use on the text as in titles above.
-    The trans() function passes parameters gotten from User and Item entities to be inserted inside
-    the text in messages.[two letter code here].yaml</p>
 
-<p>{{ textComingFromSwapForm }}</p>
+<p>
+        <h1>Hi {{ user.username }} </h1>
+
+    User by the name of {{ item.user.username }} is interested in swapping something
+    with your item:  <strong>{{ item.title }}</strong><br>
+
+        And he has sent the following message:<br>
+   <strong>{{ textComingFromSwapForm }}</strong> <br>
+    Here is his email so you can reply to him {{ item.user.email }}
+</p>
+
+<p>Letzswap team</p>
 
 
 </body>

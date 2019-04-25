@@ -165,7 +165,7 @@ msgid "ITEM.EDIT.PAGETITLE"
 msgstr "Item edition | Lëtzswap"
 
 msgid "HOME.PAGETITLE"
-msgstr "Lëtzswap | Swap you unused items with locals"
+msgstr "Lëtzswap | Swap locally"
 
 msgid "ITEM.DETAILS.PAGETITLE"
 msgstr "Item details | Lëtzswap"

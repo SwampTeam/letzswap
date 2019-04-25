@@ -39,8 +39,8 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{ item.title }}</h5>
                                 <div>
-                                    <a class="item_open_button" href="{{ path('item_details', {'id': item.getId()}) }}"
-                                       class="btn btn-default btn-lg btn-block">More</a>
+                                    <a href="{{ path('item_details', {'id': item.getId()}) }}"
+                                       class="btn btn-default btn-lg btn-block item_open_button">More</a>
                                 </div>
                             </div>
                         </div>

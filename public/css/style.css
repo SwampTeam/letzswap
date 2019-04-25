@@ -11,6 +11,7 @@ html {
     padding: 0;
     transition-duration: 0.1s;
 }
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -18,6 +19,7 @@ html {
 #terms_details p::first-letter {
     font-weight: bold;
 }
+
 ol {
     margin: 0 0 1.5em;
     padding: 0;
@@ -41,7 +43,7 @@ ol > li:before {
     content: counter(item) ".";
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     align-items: stretch;
@@ -54,7 +56,7 @@ body{
     overflow: auto;
 }
 
-#App{
+#App {
     /*min-height: 70vh;*/
     max-width: 1200px;
     margin: 10px auto 100px;
@@ -70,17 +72,20 @@ body{
 .form_grey_input::placeholder {
     color: gray();
 }
+
 #inputUsername {
     margin: 0;
     margin-bottom: 10px;
 }
+
 #inputPassword {
     margin: 0;
     margin-bottom: 10px;
 }
+
 .navbar {
     background-color: #ffffff;
-    box-shadow: -6px 4px 7px -5px rgba(0,0,0,0.75);
+    box-shadow: -6px 4px 7px -5px rgba(0, 0, 0, 0.75);
 }
 
 .border-letzswap {
@@ -100,9 +105,10 @@ body{
     margin-right: 5px;
     border-radius: 10px;
     font-size: 12px;
-    background-color:#336655;
-    border:1px solid #336655;
-    }
+    background-color: #336655;
+    border: 1px solid #336655;
+}
+
 .button:hover {
     background-color: #336655;
     color: white;
@@ -112,26 +118,30 @@ body{
 /*Text from the top main page - header*/
 #elevator_pitch {
     margin-top: 10px;
-    padding: 90px 20px 20px ;
+    padding: 90px 20px 20px;
     /*animation: fadein 3s;*/
     background-color: #336655;
     color: #ffffff;
 
 }
+
 #elevator_pitch span {
     color: #55aa8e;
 }
-#elevator_pitch h2{
+
+#elevator_pitch h2 {
     text-align: center;
     font-family: 'Catamaran', sans-serif;
     font-size: 24px;
     align-items: center;
     /*animation: fadein 3s;*/
 }
+
 #elevator_pitch h2 span {
     color: #f3400c;
     font-weight: bold;
 }
+
 #elevator_pitch p {
     font-size: 14px;
     text-align: center;
@@ -153,14 +163,14 @@ body{
 
 /*Item cards start*/
 .card {
-    width: 330px;
-    height: 370px;
+    width: 230px;
+    height: 270px;
     background-color: white;
-    margin: 2rem;
+    margin: 1rem;
     overflow: hidden;
     border-radius: 0.5rem;
     -webkit-box-shadow: 0 1px 6px 0px rgba(0, 0, 0, 0.2);
-    box-shadow: 0px 1px 6px 0px rgba(166,166,166,1);
+    box-shadow: 0px 1px 6px 0px rgba(166, 166, 166, 1);
     /* card:hover*/
     -webkit-animation: fadein 0.5s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein 0.5s; /* Firefox < 16 */
@@ -168,10 +178,15 @@ body{
     -o-animation: fadein 0.5s; /* Opera < 12.1 */
     -webkit-animation-direction: alternate;
     animation: move-in 0.5s;
+    border: 0px;
 }
 
 .card-title {
+    margin: 0.5rem;
     font-size: 18px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .card:hover {
@@ -181,13 +196,36 @@ body{
     /*-webkit-transform: translateY(-5px);*/
     /*transform: translateY(-5px);*/
 }
+
 .card:hover {
-    box-shadow: 0 0 2pt 2pt #336655;
+    box-shadow: 0px 0px 35px -10px black;
 }
 
 .card-img-top {
-    max-height: 260px;
+    height: 73%;
     object-fit: cover;
+}
+
+.card-body {
+    padding: 0;
+}
+
+#item_open_button {
+    padding: 3px;
+}
+
+.btn-default {
+    background-color: #336655;
+    color: #FFF;
+    border-color: #336655;
+    border-radius: 0px;
+}
+
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default {
+    background-color: #336655;
+    color: #FFF;
+    border-color: #336655;
 }
 
 /*Item cards end*/
@@ -205,32 +243,52 @@ body{
 
 /* This is the start of the Fade in for the card and elevator pitch, Karlo */
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Firefox < 16 */
 @-moz-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Internet Explorer */
 @-ms-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* Opera < 12.1 */
 @-o-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 /* This is the end of the Fade in for the card and elevator pitch, I (Karlo) also added border-radius*/
@@ -244,58 +302,76 @@ body{
 .img-thumbnail {
     border: none;
 }
+
 #item_detail_buttons {
     display: flex;
     justify-content: space-between;
     margin: 0.5rem;
 
 }
+
 #item_detail_buttons button:hover {
     filter: brightness(150%);
     border: 1px solid black;
 
 }
+
 #avatar {
     margin-left: 1rem;
     margin-top: 1rem;
     margin-bottom: 2rem;
     display: flex;
 }
+
 #avatar img {
     border-radius: 50%;
     width: 100px;
     height: 100px;
-    margin-right:2rem ;
+    margin-right: 2rem;
 }
 
 .row img {
     width: 250px;
     height: 250px;
 
-}.footer {
-     display: flex;
-     z-index: 9999;
-     bottom: 0;
-     width: 100%;
-     height: 50px;
-     justify-content: center;
-     background-color: #336655;
-     color: #ffffff;
-     position: absolute;
-     /*min-height: 100vh;*/
-     /*padding-bottom: 60px; !* Should be equal to the height of your footer *!*/
-     /*box-shadow: 0px -10px 30px -12px rgba(0,0,0,0.75);*/
- }
+}
+
+.footer {
+    display: flex;
+    z-index: 9999;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    background-color: #336655;
+    color: #ffffff;
+    position: absolute;
+    /*min-height: 100vh;*/
+    /*padding-bottom: 60px; !* Should be equal to the height of your footer *!*/
+    /*box-shadow: 0px -10px 30px -12px rgba(0,0,0,0.75);*/
+}
 
 .footer_elements {
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style: none;
+
 }
 
-.footer_link{
+.footer_elements a {
     text-decoration: none;
+}
+
+.footer_elements a:hover {
+    color: orange;
+}
+
+
+.footer_link {
+    text-decoration: none;
+    color: white;
+    margin-right: 1rem;
 }
 
 .registration_page {
@@ -322,13 +398,14 @@ body{
     justify-content: center;
     max-width: 350px;
 }
+
 /* This is applied on the log-in form template in case of a user clicking on letzswap without being logged */
 .form-control {
-    margin:0.5rem;
+    margin: 0.5rem;
 }
 
 
-.about_info{
+.about_info {
     text-align: center;
     margin: 0.7rem;
     display: flex;
@@ -337,20 +414,24 @@ body{
     justify-content: center;
     max-width: 550px;
 }
+
 .about_info h2 {
     font-size: 50px;
 
 }
+
 .about_info h2 span {
     color: #5ff03f;
     font-weight: bold;
     font-size: 50px;
 
 }
+
 /* This is a bootstrap property changed to fit the responsive needs*/
 .form-group {
     margin-bottom: 0rem;
 }
+
 /*
 
 /* Apolline`s modal to be applied differently on each platform */
@@ -359,20 +440,22 @@ body{
     top: 30%;
     left: 50%;
     transform: translate(-50%, -50%) !important;
-    margin: 8.75rem auto ;
+    margin: 8.75rem auto;
 }
 
 
 /* Adding logo to navbar with help of Filip   */
-#logo  {
+#logo {
     font-family: 'Catamaran', sans-serif;
     display: flex;
     font-size: 16px;
     align-items: center;
 }
+
 #logo h2 {
     font-weight: bold;
 }
+
 #logo a {
     color: #336655;
 }
@@ -386,301 +469,70 @@ body{
 #terms {
     margin: 2rem;
 }
+
 #terms h1 {
     text-align: center;
 }
 
 
-.table th{
+.table th {
     padding: 3px;
 }
 
 .padding_admin_table {
     padding: 14px;
 }
+@media screen and (max-width:800px){
+    .card {
+        width: 130px;
+        height: 170px;
 
+    }
+    .card-title {
+        margin: 0.1rem;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .btn-default {
+        background-color: #336655;
+        color: #FFF;
+        border-color: #336655;
+        border-radius: 0px;
+        font-size: 14px;
+    }
+
+}
 /* Terms of service page end */
 
-
-/* Admin dashboard start
-#admin_dashboard_items {
-    margin: 1rem 1rem 3rem 0.5rem;
-    background-color: #e2e2e2;
-    border-radius: 1px;
-    padding: 0.3rem;
-    width: 525px;
-    -webkit-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);}
-
-
-#admin_dashboard_items table {
-     border-collapse:separate;
- }
-
-#admin_dashboard_items thead {
-    text-align: -webkit-right;
-}
-
-#admin_dashboard_items td {
-    padding-right:40px;
-}
-
-
-#admin_dashboard_items th {
-    padding-right: 40px;
-}
-#admin_dashboard_items img {
-    margin: 0.1rem;
-}
-
-#admin_dashboard_buttons {
-    margin-bottom: 0.5rem;
-}
-#admin_dashboard_buttons_users {
-    margin: 1rem ;
-}
-
-/*
-
-/*
-#admin_dashboard_users {
-    margin: 1rem 1rem 3rem 0.5rem;
-    background-color: #e2e2e2;
-    border-radius: 1px;
-    padding: 0.3rem;
-    width: 525px;
-    -webkit-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
-    box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);}
-
-#admin_dashboard_users th {
-    padding-right: 67px;
-
-}
-#admin_dashboard_users td {
-    padding-right: 45px;
-
-}
-#admin_dashboard_users table {
-    border-collapse:separate;
-
-}
-#admin_dashboard_users thead {
-    width: 545px;
-}
-table caption {
-    font-size: 35px;
-    text-align: center;
-}
-#navbar_gravatar img {
-    border-radius: 20px;
-}
-
-*/
 /*Users end*/
 
 /* Admin dashboard end */
 
 /*!* Tablet *!*/
 /*@media screen and (min-width:800px) {*/
-    /*#elevator_pitch h2{*/
-        /*text-align: center;*/
-        /*font-family: 'Catamaran', sans-serif;*/
-        /*font-size: 28px;*/
-        /*align-items: center;*/
-        /*!*animation: fadein 3s;*!*/
-    /*}*/
-    /*#elevator_pitch p {*/
-        /*font-size: 16px;*/
-        /*text-align: center;*/
-        /*font-family: 'Source Sans Pro', sans-serif;*/
 
-    /*}*/
-    /*.button {*/
-        /*padding: 2px 18px;*/
-        /*margin-left: 5px;*/
-        /*margin-right: 5px;*/
-        /*border-radius: 10px;*/
-        /*font-size: 14px;*/
-        /*background-color: none;*/
-        /*border:1px solid #336655;*/
-    /*}*/
-
-
-    /*#item_detail_buttons {*/
-        /*display: flow;*/
-        /*justify-content: center;*/
-        /*margin: 1rem;*/
-    /*}*/
-    /*#item_detail_buttons button {*/
-        /*margin: 1rem;*/
-    /*}*/
-    /*#description {*/
-        /*display: flex;*/
-        /*margin: 1rem;*/
-    /*}*/
-    /*#description img {*/
-        /*width: 600px;*/
-        /*height: 450px;*/
-    /*}*/
-    /*.img-thumbnail {*/
-        /*border:none;*/
-    /*}*/
-    /*#back_button {*/
-        /*display: block;*/
-        /*margin-top: 1rem;*/
-        /*margin-left: auto;*/
-        /*margin-right: auto;*/
-        /*width: 20%;*/
-
-    /*}*/
-    /*.new_item_page {*/
-        /*margin: 0 auto;*/
-        /*display: flex;*/
-        /*flex-direction: column;*/
-        /*justify-content: center;*/
-        /*max-width: 950px;*/
-    /*}*/
-    /*!* Apolline's modal to be applied differently on each platform *!*/
-    /*.modal-dialog {*/
-        /*position: absolute;*/
-        /*top: 30%;*/
-        /*left: 50%;*/
-        /*transform: translate(-50%, -50%) !important;*/
-    /*}*/
-    /*.about_info{*/
-        /*text-align: center;*/
-        /*display: flex;*/
-        /*font-size: 20px;*/
-        /*flex-direction: column;*/
-        /*justify-content: center;*/
-        /*max-width: 550px;*/
-    /*}*/
-    /*.about_info h2 {*/
-        /*font-size: 60px;*/
-
-    /*}*/
-    /*.about_info h2 span {*/
-        /*color: #5ff03f;*/
-        /*font-weight: bold;*/
-        /*font-size: 60px;*/
-
-    /*}*/
-    /*#admin_dashboards {*/
-        /*display: flex;*/
-        /*flex-direction: column;*/
-        /*margin: 2rem;*/
-    /*}*/
-    /*#admin_dashboard_items {*/
-        /*padding: 0.5rem;*/
-    /*}*/
-    /*#admin_dashboard_items {*/
-        /*width: auto;*/
-    /*}*/
-    /*#admin_dashboard_buttons_users {*/
-        /*margin: 2rem ;*/
-    /*}*/
-    /*#admin_dashboard_items img {*/
-        /*width: 250px;*/
-        /*height: 250px;*/
-    /*}*/
-    /*#admin_dashboard_items thead {*/
-        /*display: flex;*/
-        /*justify-content: flex-end;*/
-        /*padding-right: 30px;*/
-    /*}*/
-    /*#admin_dashboard_users {*/
-        /*padding: 0.5rem;*/
-        /*align-self: center;*/
-    /*}*/
-
-    /*#admin_dashboard_buttons_users {*/
-        /*margin: 2rem ;*/
-    /*}*/
-    /*#admin_dashboard_users thead {*/
-        /*padding-left: 2px;*/
-    /*}*/
+/*!* Apolline's modal to be applied differently on each platform *!*/
+/*.modal-dialog {*/
+/*position: absolute;*/
+/*top: 30%;*/
+/*left: 50%;*/
+/*transform: translate(-50%, -50%) !important;*/
 /*}*/
+/*.about_info{*/
+/*text-align: center;*/
+/*display: flex;*/
+/*font-size: 20px;*/
+/*flex-direction: column;*/
+/*justify-content: center;*/
+/*max-width: 550px;*/
+/*}*/
+/*.about_info h2 {*/
+/*font-size: 60px;*/
+
+
 /*@media screen and (min-width: 1200px) {*/
-    /*#item_detail_buttons {*/
-    /*}*/
-    /*#description img {*/
-        /*border-radius: 1.1%;*/
-        /*width: 800px;*/
-        /*height: 600px;*/
-    /*}*/
-    /*#elevator_pitch h2{*/
-        /*text-align: center;*/
-        /*font-family: 'Catamaran', sans-serif;*/
-        /*font-size: 42px;*/
-        /*align-items: center;*/
-        /*!*animation: fadein 3s;*!*/
-    /*}*/
-    /*#elevator_pitch p {*/
-        /*font-size: 24px;r*/
-        /*text-align: center;*/
-        /*font-family: 'Source Sans Pro', sans-serif;*/
-
-    /*}*/
-    /*.button {*/
-        /*padding: 2px 18px;*/
-        /*margin-left: 5px;*/
-        /*margin-right: 5px;*/
-        /*border-radius: 10px;*/
-        /*font-size: 16px;*/
-        /*background-color: none;*/
-        /*border:1px solid #336655;*/
-    /*}*/
-
-    /*.about_info{*/
-        /*text-align: center;*/
-        /*display: flex;*/
-        /*font-size: 20px;*/
-        /*flex-direction: column;*/
-        /*justify-content: center;*/
-        /*max-width: 550px;*/
-    /*}*/
-    /*.about_info h2 {*/
-        /*font-size: 70px;*/
-
-    /*}*/
-    /*.about_info h2 span {*/
-        /*color: #5ff03f;*/
-        /*font-weight: bold;*/
-        /*font-size: 70px;*/
-
-    /*}*/
-    /*.about_info p {*/
-        /*font-size: 25px;*/
-    /*}*/
-    /*!* Apolline`s modal to be applied differently on each platform *!*/
-    /*.modal-dialog {*/
-        /*position: absolute;*/
-        /*top: 30%;*/
-        /*left: 50%;*/
-        /*transform: translate(-50%, -50%) !important;*/
-    /*}*/
-
-    /*#admin_dashboards {*/
-        /*display: flex;*/
-        /*flex-direction:row ;*/
-        /*width: 1700px;*/
-        /*margin-top: 0.1rem;*/
-    /*}*/
-    /*#App {*/
-        /*min-height: initial;*/
-        /*max-width: none;*/
-    /*}*/
-    /*#admin_dashboard_items {*/
-        /*margin: auto;*/
-    /*}*/
-    /*#admin_dashboard_users {*/
-        /*margin: 0rem auto auto 1rem;*/
-
-    /*}*/
-
-/*}*/
 
 /*Search bar*/
 

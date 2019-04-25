@@ -5,22 +5,17 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {# FIXME: We need to pass the item from ReportController, disabling the null item  #}
-    <title>{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()|default('Something')}) }} {{user.getUsername()|default('someone')}}!</title>
+    <title>{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()|default('Something')}) }}
+        {{ user.getUsername()|default('someone') }}!</title>
 </head>
 <body>
-{# FIXME: We need to pass the item from ReportController, disabling the null item  #}
+<h1>Hi Admin </h1><br>
 
-{# FIXME: Content needed #}
-    <h1>Hi {{ user.username }} </h1><br>
+<p> The {{ item.title }}, belonging to {{ item.user.username }}, has been reported by one of our users as being {{ givenReportReason }}.<br>
 
-<p> Your item {{item.title }} has been reported by one of our users, we will review this report and if it
-violated our terms of service in anyway, we will delete the item you have posted.<br>
+    The reporting user, {{ user.username }} has sent the following message.</p>
 
-Please read our terms of service carefully before submiting your item again or we will be force to take further action such
-as banning you if you continue to post items that are prohibited on the website</p>
-
-{{ textComingFromReportForm}}
+"{{ textComingFromReportForm }}"
 
 </body>
 </html>

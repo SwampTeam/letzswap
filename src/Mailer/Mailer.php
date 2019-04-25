@@ -88,16 +88,17 @@ class Mailer
     public function sendReportMail(User $user, Item $item, array $data)
     {
         $text = $data["message"];
+        $reason = $data["reportReason"];
         $message = (new \Swift_Message())
             // FIXME: We need form data to pass to the email
             ->setSubject(($item->getTitle()). ': was reported!')
             ->setFrom($this->letzswapNoReplyEmail)
             ->setTo($this->letzswapContactEmail)
             ->setBody($this->twig->render($this->htmlReportTemplate,
-                ['user' => $user, 'item' => $item, 'textComingFromReportForm' => $text]),
+                ['user' => $user, 'item' => $item, 'textComingFromReportForm' => $text, 'givenReportReason' => $reason]),
                 'text/html')
             ->addPart($this->twig->render($this->txtReportTemplate,
-                ['user' => $user, 'item' => $item, 'textComingFromReportForm' => $text]),
+                ['user' => $user, 'item' => $item, 'textComingFromReportForm' => $text, 'givenReportReason' => $reason]),
                 'text/plain');
         $this->mailer->send($message);
     }

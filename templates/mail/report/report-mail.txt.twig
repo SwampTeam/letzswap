@@ -1,6 +1,8 @@
-{# FIXME: We need to pass the item from ReportController, disabling the default item #}
-{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()|default('Something')}) }} {{ user.getUsername()|default('someone') }}!
+{{ 'REPORT.MAIL.TITLE'|trans({'%item%': item.getTitle()|default('Something')}) }}
+        {{ user.getUsername()|default('someone') }}!
 
-{# FIXME: We need content using the entities Item and User properties as above
- if the report didn't come from loged in User, user is null and |default() will be rendered instead #}
-{{ textComingFromReportForm }}
+The {{ item.title }}, belonging to {{ item.user.username }}, has been reported by one of our users as being {{ givenReportReason }}.
+
+The reporting user, {{ user.username }} has sent the following message.
+
+"{{ textComingFromReportForm }}"

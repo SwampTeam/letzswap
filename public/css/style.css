@@ -88,6 +88,14 @@ body {
     box-shadow: -6px 4px 7px -5px rgba(0, 0, 0, 0.75);
 }
 
+#navbar_gravatar img {
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    height: 30px;
+}
+a#navbar_gravatar.nav-link {
+    padding:5px;
+}
 .border-letzswap {
     border-radius: 102px 102px 102px 102px;
     border: 0px solid lightgray;

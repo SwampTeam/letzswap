@@ -9,20 +9,18 @@
 </head>
 <body>
 
-{# FIXME: Content needed#}
-
+<h1>Hi {{ user.username }} </h1>
 <p>
-        <h1>Hi {{ user.username }} </h1>
+    Another {{ 'APP.TITLE'|trans }} user by the name of {{ item.user.username }} is interested in swapping something
+    for your item:  <strong>{{ item.title | lower }}</strong><br>
 
-    User by the name of {{ item.user.username }} is interested in swapping something
-    with your item:  <strong>{{ item.title }}</strong><br>
-
-        And he has sent the following message:<br>
+She/he has sent the following message:<br>
    <strong>{{ textComingFromSwapForm }}</strong> <br>
-    Here is his email so you can reply to him {{ item.user.email }}
+
+    If you are interested, please send her/him a message to the following {{ item.user.email }}
 </p>
 
-<p>Letzswap team</p>
+<p>{{ 'APP.TITLE'|trans }} Team</p>
 
 
 </body>

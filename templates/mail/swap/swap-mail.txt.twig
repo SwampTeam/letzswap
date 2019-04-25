@@ -1,4 +1,11 @@
 {{ 'SWAP.MAIL.TITLE'|trans({'%item%': item.getTitle(), '%name%': user.getUsername()}) }}
 
-{# FIXME: We need content using the entities Item and User properties as above #}
-{{ textComingFromSwapForm }}
+Hi {{ user.username }}
+
+Another {{ 'APP.TITLE'|trans }} user by the name of {{ item.user.username }} is interested in swapping something for your item:  <strong>{{ item.title | lower }}</strong><br>
+
+She/he has sent the following message: {{ textComingFromSwapForm }}
+
+If you are interested, please send her/him a message to the following {{ item.user.email }}
+
+<{{ 'APP.TITLE'|trans }} Team

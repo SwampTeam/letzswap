@@ -84,8 +84,8 @@
                     <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
                 <div class="modal-body">
-                    <input type="text" value="{{ last_username|default("") }}" name="username" id="inputUsername"
-                           class="form-control"
+                    <input type="text" value="{{ last_username|default("") }}" name="username"
+                           class="form-control inputUsername"
                            placeholder="Username" required autofocus><br>
                     <label for="inputPassword" class="sr-only">{{ 'LOGIN.PASSWORD.LABEL' | trans }}</label>
                     <input type="password" name="password" id="inputPassword" class="form-control"

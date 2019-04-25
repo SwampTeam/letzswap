@@ -57,7 +57,7 @@ body {
 }
 
 #App {
-    /*min-height: 70vh;*/
+    min-height: 70vh;
     max-width: 1200px;
     margin: 10px auto 100px;
 }
@@ -73,12 +73,12 @@ body {
     color: gray();
 }
 
-#inputUsername {
+.inputUsername {
     margin: 0;
     margin-bottom: 10px;
 }
 
-#inputPassword {
+.inputPassword {
     margin: 0;
     margin-bottom: 10px;
 }

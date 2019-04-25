@@ -14,6 +14,11 @@
     <div class="collapse navbar-collapse float-right text-right pr-3" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
 
+            <li class="nav-item  {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
+                <a class="nav-link" href="{{ path('about') }}">
+                    {{ 'NAV.ABOUT'|trans }}
+                </a>
+            </li>
 
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 {% if is_granted('ROLE_ADMIN') %}
@@ -53,13 +58,15 @@
 
             {% endif %}
 
-            <li class="nav-item  {% if app.request.attributes.get('_route') == 'about' %} active {% endif %}">
-                <a class="nav-link" href="{{ path('about') }}">
-                    {{ 'NAV.ABOUT'|trans }}
-                </a>
-            </li>
+
             {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                 {#Here should go the href to user profile#}
+
+                <li class="nav-item">
+                    <a class="nav-link">
+                       {{ app.user.username }}</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" id="navbar_gravatar"
                        alt="Logged as {{ app.user.username }}">{{ avatar.getAvatar(app.user.username, 35) | raw }}</a>

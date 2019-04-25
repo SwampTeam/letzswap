@@ -46,6 +46,7 @@ class ContactController extends AbstractController
 
         return $this->render('about/about.html.twig', [
             'contactForm' => $form->createView(),
+            'uRoles' => ''
         ]);
     }
 }

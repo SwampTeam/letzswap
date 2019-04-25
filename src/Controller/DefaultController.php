@@ -81,7 +81,9 @@ class DefaultController extends AbstractController
      */
     public function termsOfServicesAction()
     {
-        return $this->render('terms/terms.html.twig');
+        return $this->render('terms/terms.html.twig', [
+            'uRoles' => ''
+        ]);
     }
 
 }

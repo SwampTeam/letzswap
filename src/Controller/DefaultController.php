@@ -31,7 +31,7 @@ class DefaultController extends AbstractController
         Request $request
     ): Response
     {
-        $itemsPerPage = 4;
+        $itemsPerPage = 8;
 
         if ($this->isGranted('IS_AUTHENTICATED_FULLY')) {
             $user = $this->getUser();

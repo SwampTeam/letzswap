@@ -108,13 +108,13 @@ a#navbar_gravatar.nav-link {
 }
 
 .button {
-    padding: 2px 18px;
+    padding: 5px 18px;
     margin-left: 5px;
     margin-right: 5px;
-    border-radius: 10px;
-    font-size: 12px;
-    background-color: #336655;
-    border: 1px solid #336655;
+    border-radius: 2px;
+    font-size: 14px;
+    background-color: #99B2AA;
+    border: 1px solid #99B2AA;
 }
 
 .button:hover {
@@ -165,7 +165,11 @@ a#navbar_gravatar.nav-link {
 }
 
 .active {
-    background-color: #5ff03f;
+    background-color: #99B2AA;
+}
+
+.active a {
+    color: white;
 }
 
 
@@ -376,7 +380,7 @@ a#navbar_gravatar.nav-link {
 }
 
 .footer_elements a:hover {
-    color: orange;
+    color:#ff6600;
 }
 
 
@@ -433,7 +437,7 @@ a#navbar_gravatar.nav-link {
 }
 
 .about_info h2 span {
-    color: #5ff03f;
+    color: #336655;
     font-weight: bold;
     font-size: 50px;
 

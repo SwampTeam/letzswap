@@ -26,7 +26,7 @@
             .addEventListener(
                 'change',
                 function(){
-                    document.querySelector("#item_picture + label").innerText = document.getElementById("item_picture").value;
+                    document.querySelector("#item_picture + label").innerText = document.getElementById("item_picture").files[0].name;
                 }
             )
     </script>
